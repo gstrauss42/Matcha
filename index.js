@@ -1,34 +1,42 @@
-/**
+/*
  * Required External Modules
  */
 
 const express = require("express");
 const path = require("path");
+var multer = require('multer');
+var bodyParser = require('body-parser');
 
-/**
+
+/*
  * App Variables
  */
 
 const app = express();
 const port = process.env.PORT || "4040";
 
-/**
+
+/*
  *  App Configuration
  */
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
+app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, "public")));
 
-/**
+
+/*
  * Routes Definitions
  */
 
+// landing page
 app.get("/", (req, res) => {
     res.render("index");
   });
 
-/**
+
+/*
  * Server Activation
  */
 
@@ -37,13 +45,10 @@ app.listen(port, () => {
   });
 
 
+/*
+ * Page Handling 
+ */ 
 
-
-app.use(express.static('public'));
-
-
-// middleware test
-//First middleware before response is sent 
 
 // login page
 var login = require('./pages/login.js');
