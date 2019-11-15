@@ -1,9 +1,49 @@
-var express = require('express');
-var app = express();
+/**
+ * Required External Modules
+ */
 
-app.get('/', function(req, res){
-    res.send('Hello There');
- })
+const express = require("express");
+const path = require("path");
+
+/**
+ * App Variables
+ */
+
+const app = express();
+const port = process.env.PORT || "4040";
+
+/**
+ *  App Configuration
+ */
+
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
+app.use(express.static(path.join(__dirname, "public")));
+
+/**
+ * Routes Definitions
+ */
+
+app.get("/", (req, res) => {
+    res.render("index");
+  });
+
+/**
+ * Server Activation
+ */
+
+app.listen(port, () => {
+    console.log(`Listening to requests on http://localhost:${port}`);
+  });
+
+
+
+
+app.use(express.static('public'));
+
+
+// middleware test
+//First middleware before response is sent 
 
 // login page
 var login = require('./pages/login.js');
@@ -49,5 +89,3 @@ app.use('/pages/create', create);
 // app.get('/:var_words', function(req, res){
 //    res.send('these are not the ' + req.params.var_words + '\'s you are looking for');
 // });
-
-app.listen(4040);
