@@ -1,0 +1,22 @@
+{
+  "name": "matcha",
+  "version": "1.0.0",
+  "description": "Matcha",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gstrauss42/matcha.git"
+  },
+  "author": "gstrauss jhansen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gstrauss42/matcha/issues"
+  },
+  "homepage": "https://github.com/gstrauss42/matcha#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
