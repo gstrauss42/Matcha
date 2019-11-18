@@ -1,13 +1,63 @@
-extends layout
+//- block layout-content
+//-   div.View
+//-     h1.Banner Matcha
+//-     div.Message
+//-       div.Title
+//-         h3 Looking for love?
+//-         h1 we got you covered
+//-       span.Details start meeting people now!
+//-     div.NavButtons
+//-       a(href="/login")
+//-           div.NavButton Login
 
-block layout-content
-  div.View
-    h1.Banner Matcha
-    div.Message
-      div.Title
-        h3 Looking for love?
-        h1 we got you covered
-      span.Details start meeting people now!
-    div.NavButtons
-      a(href="/login")
-          div.NavButton Login
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    //- meta(name="theme-color", content="#000000")
+    title Matcha
+    link(rel="stylesheet" href="main.css")
+  body
+    section.banner.full
+      article
+        img(src="slide01.jpg", alt="", srcset="")
+        div.inner
+          header
+            p Venture into a new world with us and never go back
+            h2 Matcha
+
+      article
+        img(src="slide02.jpg", alt="", srcset="")
+        div.inner
+          header
+            p Venture into a new world with us and never go back
+            h2 Simplicity
+
+      article
+        img(src="slide03.jpg", alt="", srcset="")
+        div.inner
+          header
+            p Venture into a new world with us and never go back
+            h2 Convenience
+
+      article
+        img(src="slide04.jpg", alt="", srcset="")
+        div.inner
+          header
+            p Venture into a new world with us and never go back
+            h2 Meet and greet
+
+      article
+        img(src="slide05.jpg", alt="", srcset="")
+        div.inner
+          header
+            p Venture into a new world with us and never go back
+            h2 It's a deal!
+
+  //- Scripts
+  script(src='/js/jquery.min.js')
+  script(src='/js/jquery.scrollex.min.js')
+  script(src='/js/skel.min.js')
+  script(src='/js/util.js')
+  script(src='/js/main.js')
