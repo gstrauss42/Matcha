@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/theoretical_dissertations', function(req, res){
-   res.send('GET route on things. CREATE');
+router.get('/', function(req, res){
+   res.send('GET route on CREATE');
 });
-router.post('/theoretical_dissertations', function(req, res){
-   res.send('POST route on things. CREATE');
+router.post('/', function(req, res){
+   res.send('POST route on CREATE');
 });
 
 //export this router to use in our index.js
