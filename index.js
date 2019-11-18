@@ -30,6 +30,7 @@ app.use(cookieParser());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 app.use(express.static('public'));
+app.use('/js', express.static('views/js'));
 app.use(express.static(path.join(__dirname, "public")));
 mongoose.connect(`mongodb+srv://gstrauss:qwerty0308@matcha-ch0yb.gcp.mongodb.net/test?retryWrites=true&w=majority`);
 app.use(session({secret: "secret session"}));
@@ -96,8 +97,8 @@ app.get("/search_user", (req,res) => {
 
 
 /*
- * Page Handling 
- */ 
+ * Page Handling
+ */
 // login page
 var login = require('./pages/login.js');
 app.use('/login', login);
