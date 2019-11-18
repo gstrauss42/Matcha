@@ -3,8 +3,15 @@
  */
 const express = require("express");
 const path = require("path");
-var multer = require('multer');
-var bodyParser = require('body-parser');
+// var multer = require('multer');
+// var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
+
+
+
+
 
 
 
@@ -19,10 +26,22 @@ const port = process.env.PORT || "4040";
 /*
  *  App Configuration
  */
+app.use(cookieParser());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, "public")));
+mongoose.connect(`mongodb+srv://gstrauss:qwerty0308@matcha-ch0yb.gcp.mongodb.net/test?retryWrites=true&w=majority`);
+app.use(session({secret: "secret session"}));
+
+
+
+
+
+
+
+
+
 
 
 

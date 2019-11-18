@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
+const app = express()
 
-router.get('/', function(req, res){
-   res.send('GET route on CREATE');
-});
+app.use(express.urlencoded())
+
 router.post('/', function(req, res){
    res.send('POST route on CREATE');
 });

@@ -30,3 +30,13 @@ block layout-content
     br
     a(href="/search_user")
         div.NavButton search_user
+    br
+    form(action='/create', method='POST')
+        p
+            | name:
+            input(type='text', name='name', value='')
+            |          surname:
+            input(type='text', name='surname', value='')
+            |          username:
+            input(type='text', name='username', value='')
+        input(type='submit', value='Submit')
