@@ -140,9 +140,11 @@ var search_user = require('./pages/search_user.js');
 app.use('/search_user', search_user);
 
 // not the webpage youre looking for
-app.get('/:var_words', function(req, res){
-   res.send('these are not the ' + req.params.var_words + '\'s you are looking for');
-});
+var user_confirm = require('./pages/user_confirm.js')
+app.use('/:var_words', user_confirm);
+// app.get('/:var_words', function(req, res){
+//    res.send('these are not the ' + req.params.var_words + '\'s you are looking for');
+// });
 
 
 
