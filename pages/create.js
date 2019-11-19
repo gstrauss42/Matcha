@@ -12,21 +12,34 @@ router.post('/create', bodyParser.urlencoded(), function(req, res, next){
    var _user = new Models.user ({
       name: req.body.name,
       surname: req.body.surname,
-      email: req.body.username
+      email: req.body.email,
+      password: req.body.password
    });
 
-   _user.find(function(error, users){
-      if(users == 0)
+   Models.user.findOne({ email: req.body.email }, function(err, user) {
+      if(err) {
+         //handle error here
+      }
+      //if a user was found, that means the user's email matches the entered email
+      if (user)
+      {
+            var err = new Error('A user with that email has already registered. Please use a different email..')
+           err.status = 400;
+           return next(err);
+      } 
+      else
+      {
          _user.save(function(err){
             if(err)
                console.error(error);
             else
                res.redirect('/');
          });
-   });
+      }
+   }); 
+});
 
 
-})
 
 //export this router to use in our index.js
 module.exports = router;

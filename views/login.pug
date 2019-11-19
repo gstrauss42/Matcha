@@ -1,1 +1,40 @@
-extends create
+extends layout
+
+block layout-content
+    a(href="/chat")
+        div.NavButton chat
+    br
+    a(href="/create")
+        div.NavButton create
+    br
+    a(href="/forgot_password")
+        div.NavButton forgot_password
+    br
+    a(href="/login")
+        div.NavButton login
+    br
+    a(href="/matched_profile")
+        div.NavButton matched profile
+    br
+    a(href="/matches")
+        div.NavButton matches
+    br
+    a(href="/notifications")
+        div.NavButton notifications
+    br
+    a(href="/profile")
+        div.NavButton profile
+    br
+    a(href="/search_results")
+        div.NavButton search_results
+    br
+    a(href="/search_user")
+        div.NavButton search_user
+    br
+    form(action='/login/login', method='POST')
+        p
+            | email:
+            input(type='text', name='email')
+            |          password:
+            input(type='password', name='password')
+        input(type='submit', value='Submit')
