@@ -43,21 +43,21 @@ html
                                                 .tab-content-inner.active(data-content='signup')
 
                                                     h3 Login details
-                                                    form(action="", method="post")
+                                                    form(action="login/login", method="post")
 
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="email") Email
-                                                                input#email.form-control(type="email", name="login_email")
+                                                                input#email.form-control(type="email", name="email")
                                                         
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="password") Password
-                                                                input#password.form-control(type="password", name="login_pass")
+                                                                input#password.form-control(type="password", name="password")
 
                                                         .row.form-group
                                                             .col-md-12
-                                                                input.btn.btn-primary.btn-block(type="submit" name="login" value="Submit")
+                                                                input.btn.btn-primary.btn-block(type="submit" value="Login")
 
         footer#gtco-footer
             .gtco-container

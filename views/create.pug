@@ -32,7 +32,7 @@ html
                     .row
                         .col-md-12.col-md-offset-0.text-left
                             .row.row-mt-15em
-                                .col-md-7.mt-text.animate-box(data-animate-effect='fadeInUp')
+                                .col-md-8.mt-text.animate-box(data-animate-effect='fadeInUp')
                                     h1 Your journey starts here!
                                 .col-md-4.col-md-push-1.animate-box(data-animate-effect='fadeInRight')
                                     .form-wrap
@@ -41,32 +41,32 @@ html
                                                 .tab-content-inner.active(data-content='signup')
 
                                                     h3 Enter the following details
-                                                    form(action="", method="post")
+                                                    form(action="create/create", method="post")
 
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="fullname") Name
-                                                                input#fullname.form-control(type="text", name="usr_name")
+                                                                input#fullname.form-control(type="text", name="name")
 
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="surname") Surname
-                                                                input#surname.form-control(type="text", name="usr_surname")
+                                                                input#surname.form-control(type="text", name="surname")
 
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="email") Email
-                                                                input#email.form-control(type="email", name="usr_email")
+                                                                input#email.form-control(type="email", name="email")
 
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="age") Age
-                                                                input#age.form-control(type="text", name="usr_age")
+                                                                input#age.form-control(type="text", name="age")
 
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="gender") Gender
-                                                                select#gender.form-control(name="usr_gender")
+                                                                select#gender.form-control(name="gender")
                                                                     option(value="") Other
                                                                     option(value="") Male
                                                                     option(value="") Female
@@ -74,7 +74,7 @@ html
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="preferences") Preferences
-                                                                select#preferences.form-control(name="usr_pref")
+                                                                select#preferences.form-control(name="preferences")
                                                                     option(value="") Bi-Sexual
                                                                     option(value="") Male
                                                                     option(value="") Female
@@ -82,11 +82,11 @@ html
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="password") Password
-                                                                input#password.form-control(type="password", name="usr_pass")
+                                                                input#password.form-control(type="password", name="password")
                                                         
                                                         .row.form-group
                                                             .col-md-12
-                                                                input.btn.btn-primary.btn-block(type="submit" name="create" value="Submit")
+                                                                input.btn.btn-primary.btn-block(type="submit" value="Let's go!")
 
         footer#gtco-footer
             .gtco-container
