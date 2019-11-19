@@ -53,27 +53,19 @@ router.post('/create', bodyParser.urlencoded(), function(req, res, next){
 
               var safe = bcrypt.hash(Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15), 10);
             
-
-                 
-
                  console.log(safe);
                  
                  var mailOptions = {
                     // should be replaced with real recipient's account
                     to: req.body.email,
                     subject: 'words',
-                    text: 'please follow this link to validate your account localhost:4040/'
+                    text: 'please follow this link to validate your account localhost:4040/' + safe
                   };
-                  
-                  safe.then(data => {
-                     mailOptions.text += safe;
 
                transporter.sendMail(mailOptions, (error, info) => {
                   if (error) {
                       return console.log(error);
                   }
-                   })
-
 
                });
                res.redirect('/');
@@ -86,3 +78,7 @@ router.post('/create', bodyParser.urlencoded(), function(req, res, next){
 
 //export this router to use in our index.js
 module.exports = router;
+
+
+
+
