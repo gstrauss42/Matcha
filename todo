@@ -1,7 +1,7 @@
 ummm
 work...
 
-make the create account email you confirmation
 generate session cookies
 make fields secure
 only allow login after verification
+generate random secure validation hashes
