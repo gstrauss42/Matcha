@@ -1460,7 +1460,7 @@ form label {
 
 .row-mt-15em {
   margin-top: 15em;
-  margin-bottom: 15em;
+  margin-bottom: 10em;
 }
 @media screen and (max-width: 768px) {
   .row-mt-15em {
