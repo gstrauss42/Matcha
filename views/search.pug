@@ -1,9 +1,9 @@
 //- a page where you can select multiple search parameters and the results are displayed below
 
-//- use a usual used header (black color)
+//- use a usual used header
 //- do the search parameters section with multiple selectable paramaters
 //- search results will be displayed underneath (will require working backend)
-//- use a usual used footer (black color)
+//- use a usual used footer
 
 doctype html
 html(lang="en")
@@ -22,9 +22,11 @@ html(lang="en")
         header
             nav.navbar.navbar-expand-md.navbar-dark.bg-dark
                 a.navbar-brand(href="/") MATCHA
+
                 //- burger button
                 button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSuppportedContent")
                     span.navbar-toggler-icon
+
                 //- targeted info by button
                 #navbarSuppportedContent.collapse.navbar-collapse
                     ul.navbar-nav.ml-auto
@@ -38,6 +40,7 @@ html(lang="en")
                             a.nav-link(href="notifications") Notifications
                         li.nav-item
                             a.nav-link(href="/") Home
+
         //- search results go here
         .alert.alert-primary.alert-dismissible.fade.show(role="alert")
             a(href="matched_profile")
@@ -53,6 +56,7 @@ html(lang="en")
                 strong Gabriel Strauss
             button.close(type="button" data-dismiss="alert" aria-label="Close")
                 span(aria-hidden="true") &times;
+
         //- footer
         footer.page-footer.font-small.mdb-color.pt-4.bg-light.text-dark
             .container.text-center.text-md-left
