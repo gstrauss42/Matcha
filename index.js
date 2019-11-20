@@ -73,10 +73,6 @@ app.get("/login", (req,res) => {
 app.get("/matched_profile", (req,res) => {
   res.render("matched_profile");
 })
-// matches
-app.get("/matches", (req,res) => {
-  res.render("matches");
-})
 // notifications
 app.get("/notifications", (req,res) => {
   res.render("notifications");
@@ -85,13 +81,9 @@ app.get("/notifications", (req,res) => {
 app.get("/profile", (req,res) => {
   res.render("profile");
 })
-// search_results
-app.get("/search_results", (req,res) => {
-  res.render("search_results");
-})
 // search_user
-app.get("/search_user", (req,res) => {
-  res.render("search_user");
+app.get("/search", (req,res) => {
+  res.render("search");
 })
 
 
