@@ -46,43 +46,43 @@ html
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="fullname") Name
-                                                                input#fullname.form-control(type="text", name="name")
+                                                                input#fullname.form-control(type="text", name="name", required)
 
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="surname") Surname
-                                                                input#surname.form-control(type="text", name="surname")
+                                                                input#surname.form-control(type="text", name="surname", required)
 
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="email") Email
-                                                                input#email.form-control(type="email", name="email")
+                                                                input#email.form-control(type="email", name="email", required)
 
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="age") Age
-                                                                input#age.form-control(type="text", name="age")
+                                                                input#age.form-control(type="text", name="age", required)
 
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="gender") Gender
-                                                                select#gender.form-control(name="gender")
-                                                                    option(value="") Other
-                                                                    option(value="") Male
-                                                                    option(value="") Female
+                                                                select#gender.form-control(name="gender", placeholder="", required)
+                                                                    option(value="Other") Other
+                                                                    option(value="Male") Male
+                                                                    option(value="Female") Female
 
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="preferences") Preferences
                                                                 select#preferences.form-control(name="preferences")
-                                                                    option(value="") Bi-Sexual
-                                                                    option(value="") Male
-                                                                    option(value="") Female
+                                                                    option(value="Bi-Sexual") Bi-Sexual
+                                                                    option(value="Male") Male
+                                                                    option(value="Female") Female
 
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="password") Password
-                                                                input#password.form-control(type="password", name="password")
+                                                                input#password.form-control(type="password", name="password", required)
                                                         
                                                         .row.form-group
                                                             .col-md-12
@@ -95,7 +95,10 @@ html
                     .col-md-4
                         .gtco-widget
                             h3 About us
-                            p blah blah get fcking
+                            p In this day and age meeting new people and forming relationships is more difficult than ever, 
+                                | wether it be from a busy job or a lack of opportunity. Matcha's vision is to offer young and old people the unique opportunity to meet
+                                | that potential special partner in life, all at your fingertips!
+                                | But remember, there's more to love than just emojis and midnight texts.
 
                     .col-md-3.col-md-push-1
                         .gtco-widget
