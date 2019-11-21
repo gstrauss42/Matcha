@@ -3,7 +3,7 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
-        title Matcha | Search a user
+        title Matcha | Notifications
         script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
         script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
@@ -35,7 +35,34 @@ html(lang="en")
                                 li.nav-item
                                     a.nav-link(href="/") Home
 
-
+                //- notifications
+                .d-flex.justify-content-center.align-items-center.notification-box(aria-live="polite" aria-atomic="true")
+                    .toast(role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false")
+                        .toast-header
+                            strong.mr-auto New Message
+                            small time ago
+                            button.ml-2.mb-1.close(type='button' data-dismiss="toast" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        .toast-body
+                            | So and so messaged you
+                .d-flex.justify-content-center.align-items-center.notification-box(aria-live="polite" aria-atomic="true")
+                    .toast(role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false")
+                        .toast-header
+                            strong.mr-auto New Like
+                            small time ago
+                            button.ml-2.mb-1.close(type='button' data-dismiss="toast" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        .toast-body
+                            | So and so liked your profile
+                .d-flex.justify-content-center.align-items-center.notification-box(aria-live="polite" aria-atomic="true")
+                    .toast(role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false")
+                        .toast-header
+                            strong.mr-auto New View
+                            small time ago
+                            button.ml-2.mb-1.close(type='button' data-dismiss="toast" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        .toast-body
+                            | So and so viewed your profile
 
             //- footer
             footer.page-footer.font-small.mdb-color.pt-4.bg-light.text-dark
@@ -68,3 +95,6 @@ html(lang="en")
                                 strong  @jadonhansen
                             a.text-info.github-link(href='https://gstrauss42')
                                 strong  @gstrauss
+
+    
+    script(src="/js/notification.js")
