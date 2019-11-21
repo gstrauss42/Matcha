@@ -10,5 +10,7 @@ db.once("open", function(callback) {
 });
 
 var user = mongoose.model("users", users.userSchema); //This creates the Bug model.
+// var verif = mongoose.model("verif", users.verifSchema); //This creates the Bug model.
 
 module.exports.user = user; /* Export the Bug model so index.js can access it. */
+// module.exports.verif = verif; /* Export the Bug model so index.js can access it. */

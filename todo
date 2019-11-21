@@ -4,4 +4,3 @@ work...
 generate session cookies
 make fields secure
 only allow login after verification
-generate random secure validation hashes

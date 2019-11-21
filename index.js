@@ -14,7 +14,6 @@ var cookieParser = require('cookie-parser');
 
 
 
-
 /*
  * App Variables
  */

@@ -5,8 +5,17 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
      name: String,
      surname: String,
      email: String,
+     age: String,
+     gender: String,
+     prefferances: String,
      password: String,
+     verif: String,
      isverified: { type: Boolean, default: false}
 });
  
-module.exports.userSchema = userSchema; //Export bugSchema so that models.js can access it.
+// var verifSchema = new mongoose.Schema({
+//      verif: String
+// });
+
+module.exports.userSchema = userSchema; //Export schemas so that models.js can access it.
+// module.exports.verifSchema = verifSchema;
