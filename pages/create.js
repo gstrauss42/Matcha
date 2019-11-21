@@ -6,24 +6,36 @@ var mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 mongoose.connect(`mongodb+srv://gstrauss:qwerty0308@matcha-ch0yb.gcp.mongodb.net/test?retryWrites=true&w=majority`);
 app.use(bodyParser.urlencoded({ extended: true }));
-var Models = require("../db/models");
+var Model = require("../db/models");
+var crypto = require('crypto');
+var randomstring = require("randomstring");
+
+
+
+
 
 var nodeMailer = require('nodemailer');
 
 router.post('/create', bodyParser.urlencoded(), function(req, res, next){
    
-   var _user = new Models.user ({
+   this.salt = crypto.randomBytes(16).toString('hex');
+
+   var safe = crypto.pbkdf2Sync(randomstring.generate(), '100' ,1000, 64, `sha512`).toString(`hex`);
+   var pass = crypto.pbkdf2Sync(req.body.password, '100' ,1000, 64, `sha512`).toString(`hex`);
+
+   var _user = new Model.user ({
       name: req.body.name,
       surname: req.body.surname,
-      email: req.body.email
+      email: req.body.email,
+      password: pass,
+      age: req.body.age,
+      gender: req.body.gender,
+      prefferances: req.body.preferences,
+      verif: safe
    });
 
-   bcrypt.hash(req.body.password, 10, function(err, hash){
-      _user.password = hash;
-   });
 
-
-   Models.user.findOne({ email: req.body.email }, function(err, user) {
+   Model.user.findOne({ email: req.body.email }, function(err, user) {
       if(err) {
          //handle error here
       }
@@ -40,6 +52,9 @@ router.post('/create', bodyParser.urlencoded(), function(req, res, next){
                console.error(error);
             else
             {
+               
+               // emailer
+
                let transporter = nodeMailer.createTransport({
                   host: 'smtp.gmail.com',
                   port: 465,
@@ -50,11 +65,16 @@ router.post('/create', bodyParser.urlencoded(), function(req, res, next){
                       pass: 'qwerty0308'
                   }
               });
+            //   this.salt = crypto.randomBytes(16).toString('hex');
 
-              var safe = bcrypt.hash(Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15), 10);
-            
-                 console.log(safe);
+            //   var safe = crypto.pbkdf2Sync(randomstring.generate(), this.salt, 1000, 64, `sha512`).toString(`hex`); 
+              
+            //   var verif = new Models.verif ({
+            //    verif: safe
+            //    });
                  
+               // verif.save(function(err){});
+
                  var mailOptions = {
                     // should be replaced with real recipient's account
                     to: req.body.email,

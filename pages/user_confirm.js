@@ -1,9 +1,18 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
+var Models = require("../db/models");
+
+var user = Models.user
 
 router.get('/', function(req, res){
    var check = req.originalUrl.substring(1);
-   res.send(check);
+   Models.user.findOneAndUpdate({ verif:check }, { $set : { isverified: "true"}}, function(err, _update) {
+   
+      res.redirect('/login');
+
+   });
+   // res.redirect('/login');
 });
 router.post('/', function(req, res){
    res.send('POST route on matched_profile');
