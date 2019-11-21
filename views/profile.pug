@@ -36,12 +36,17 @@ html(lang="en")
                                 li.nav-item
                                     a.nav-link(href="/") Home
 
-
             //- profile info
-            form(action="", method="post")
-                input(type="text", name="user_tag", placeholder="type tag in here")
-                button(type="submit", name="add_tag") Add interest
-
+            form(action="porfile-update", method="post")
+                .form-row.align-items-center
+                    .col-auto
+                        label.sr-only(for="inlineFormInputGroup") Username
+                        .input-group.mb-2
+                            .input-group-prepend
+                                .input-group-text #
+                            input#inlineFormInputGroup.form-control(type="text", name="interest_tag", placeholder="interest tag")
+                    .col-auto
+                        button.btn.btn-primary.mb-2(type="submit") Add tag
 
             //- footer
             footer.page-footer.font-small.mdb-color.pt-4.bg-light.text-dark
