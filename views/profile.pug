@@ -37,14 +37,14 @@ html(lang="en")
                                     a.nav-link(href="/") Home
 
             //- profile info
-            form(action="porfile-update", method="post")
+            form(action="profile-update", method="post")
                 .form-row.align-items-center
                     .col-auto
                         label.sr-only(for="inlineFormInputGroup") Username
                         .input-group.mb-2
                             .input-group-prepend
                                 .input-group-text #
-                            input#inlineFormInputGroup.form-control(type="text", name="interest_tag", placeholder="interest tag")
+                            input#inlineFormInputGroup.form-control(type="text", name="interest_tag", placeholder="interest tag" required)
                     .col-auto
                         button.btn.btn-primary.mb-2(type="submit") Add tag
 
