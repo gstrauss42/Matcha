@@ -28,16 +28,16 @@ html(lang="en")
                                 li.nav-item.dropdown
                                     a#navbarDropdown.nav-link.dropdown-toggle(href="#" role="button" data-toggle="dropdown") Options
                                     .dropdown-menu(aria-labelledby="navbarDropdown")
-                                        a.dropdown-item(href="search") Search user
+                                        a.dropdown-item(href="search") Match Me!
                                         .dropdown-divider
-                                        a.dropdown-item(href="logout") Logout
+                                        a.dropdown-item(href="notifications") Notifications
                                 li.nav-item
-                                    a.nav-link(href="notifications") Notifications
+                                    a.nav-link(href="logout") Logout
                                 li.nav-item
                                     a.nav-link(href="/") Home
 
             //- profile info
-            form(action="profile-update", method="post")
+            form(action="add_tag", method="post")
                 .form-row.align-items-center
                     .col-auto
                         label.sr-only(for="inlineFormInputGroup") Username
