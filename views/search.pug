@@ -13,42 +13,48 @@ html(lang="en")
         link(rel="stylesheet", href="main.css")
     body
         .page-container
-            header.mb-3
-                nav.navbar.navbar-expand-md.navbar-dark.bg-dark
-                    a.navbar-brand(href="/") MATCHA
-
-                    //- burger button
-                    button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSuppportedContent")
-                        span.navbar-toggler-icon
-
-                    //- targeted info by button
-                    #navbarSuppportedContent.collapse.navbar-collapse
-                        ul.navbar-nav.ml-auto
-                            li.nav-item.dropdown
-                                a#navbarDropdown.nav-link.dropdown-toggle(href="#" role="button" data-toggle="dropdown") Options
-                                .dropdown-menu(aria-labelledby="navbarDropdown")
-                                    a.dropdown-item(href="profile") Profile
-                                    .dropdown-divider
-                                    a.dropdown-item(href="logout") Logout
-                            li.nav-item
-                                a.nav-link(href="notifications") Notifications
-                            li.nav-item
-                                a.nav-link(href="/") Home
             .content-wrap
+                header.mb-3
+                    nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+                        a.navbar-brand(href="/") MATCHA
+
+                        //- burger button on phone screens
+                        button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSuppportedContent")
+                            span.navbar-toggler-icon
+
+                        //- targeted info by button
+                        #navbarSuppportedContent.collapse.navbar-collapse
+                            ul.navbar-nav.ml-auto
+                                li.nav-item.dropdown
+                                    a#navbarDropdown.nav-link.dropdown-toggle(href="#" role="button" data-toggle="dropdown") Options
+                                    .dropdown-menu(aria-labelledby="navbarDropdown")
+                                        a.dropdown-item(href="profile") Profile
+                                        .dropdown-divider
+                                        a.dropdown-item(href="logout") Logout
+                                li.nav-item
+                                    a.nav-link(href="notifications") Notifications
+                                li.nav-item
+                                    a.nav-link(href="/") Home
 
                 //- search results go here
                 .alert.alert-primary.alert-dismissible.fade.show.ml-3.mr-3(role="alert")
-                    a(href="matched_profile")
-                        img.rounded(src="", alt="profile_image")
-                    a(href="matched_profile")
-                        strong Jadon Hansen
+                    .media
+                        a(href="matched_profile")
+                            img.rounded.mr-2.search-profile(src="pic02.jpg", alt="profile_image")
+                        .media-body
+                            a(href="matched_profile")
+                                strong Jadon Hansen
+                            p.search-profile-descrip.mb-0 Description and interests
                     button.close(type="button" data-dismiss="alert" aria-label="Close")
                         span(aria-hidden="true") &times;
                 .alert.alert-primary.alert-dismissible.fade.show.ml-3.mr-3(role="alert")
-                    a(href="matched_profile")
-                        img.rounded(src="", alt="profile_image")
-                    a(href="matched_profile")
-                        strong Gabriel Strauss
+                    .media
+                        a(href="matched_profile")
+                            img.rounded.mr-2.search-profile(src="pic03.jpg", alt="profile_image")
+                        .media-body
+                            a(href="matched_profile")
+                                strong Gabriel Strauss
+                            p.search-profile-descrip.mb-0 Description and interests
                     button.close(type="button" data-dismiss="alert" aria-label="Close")
                         span(aria-hidden="true") &times;
 

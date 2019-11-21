@@ -1,0 +1,76 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Matcha | Search a user
+        script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
+        link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
+        link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
+        link(rel="stylesheet", href="main.css")
+    body
+        .page-container
+            .content-wrap
+                header.mb-3
+                    nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+                        a.navbar-brand(href="/") MATCHA
+
+                        //- burger button on phone screens
+                        button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSuppportedContent")
+                            span.navbar-toggler-icon
+
+                        //- targeted info by button
+                        #navbarSuppportedContent.collapse.navbar-collapse
+                            ul.navbar-nav.ml-auto
+                                li.nav-item.dropdown
+                                    a#navbarDropdown.nav-link.dropdown-toggle(href="#" role="button" data-toggle="dropdown") Options
+                                    .dropdown-menu(aria-labelledby="navbarDropdown")
+                                        a.dropdown-item(href="search") Search user
+                                        .dropdown-divider
+                                        a.dropdown-item(href="logout") Logout
+                                li.nav-item
+                                    a.nav-link(href="notifications") Notifications
+                                li.nav-item
+                                    a.nav-link(href="/") Home
+
+
+            //- profile info
+            form(action="", method="post")
+                input(type="text", name="user_tag", placeholder="type tag in here")
+                button(type="submit", name="add_tag") Add interest
+
+
+            //- footer
+            footer.page-footer.font-small.mdb-color.pt-4.bg-light.text-dark
+                .container.text-center.text-md-left
+
+                    .row.text-center.text-md-left.mt-3.pb-3
+
+                        .col-md-6.col-lg-5.col-xl-4.mx-auto.mt-3
+                            h6.text-uppercase.mb-4.font-weight-bold About us
+                            p
+                                | In this day and age meeting new people and forming relationships is more difficult than ever,
+                                | wether it be from a busy job or a lack of opportunity. Matcha's vision is to offer young and old people the unique opportunity to meet
+                                | that potential special partner in life, all at your fingertips!
+                                | But remember, there's more to love than just emojis and midnight texts.
+
+                        .col-md-5.col-lg-4.col-xl-3.mx-auto.mt-3
+                            h6.text-uppercase.mb-4.font-weight-bold Get In Touch
+                            p
+                                a.text-info(href="http://instagram.com/jadon.hansen") Instagram
+                            p
+                                a.text-info(href="http://facebook.com/jadon.hansen.56") Facebook
+                            p
+                                a.text-info(href="https://mail.google.com/mail/u/0/#inbox?compose=new") ftmatcha@gmail.com
+                    hr
+                    .row
+                        .col.text-center
+                            p
+                                | &copy; 2019 Matcha. All rights reserved.
+                            a.text-info.github-link(href='https://jadonhansen')
+                                strong  @jadonhansen
+                            a.text-info.github-link(href='https://gstrauss42')
+                                strong  @gstrauss

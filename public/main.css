@@ -1,3 +1,5 @@
+/* used in the footer for every page */
+
 .page-container {
     position: relative;
     min-height: 100vh;
@@ -16,4 +18,41 @@ footer {
 
 .github-link {
     opacity: 0.75;
+}
+
+@media only screen and (max-width:  768px) {
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 36rem;
+    }
+    .content-wrap {
+        padding-bottom: 36rem;
+    }
+}
+
+@media only screen and (max-width:  640px) {
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 39rem;
+    }
+    .content-wrap {
+        padding-bottom: 39rem;
+    }
+}
+
+/* used for search user page */
+
+.search-profile {
+    width: 80px;
+    height: 70px;
+}
+
+@media only screen and (max-width:  640px) {
+    .search-profile-descrip {
+        font-size: 13px;
+    }
 }
