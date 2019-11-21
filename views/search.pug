@@ -1,10 +1,3 @@
-//- a page where you can select multiple search parameters and the results are displayed below
-
-//- use a usual used header
-//- do the search parameters section with multiple selectable paramaters
-//- search results will be displayed underneath (will require working backend)
-//- use a usual used footer
-
 doctype html
 html(lang="en")
     head
@@ -19,72 +12,74 @@ html(lang="en")
         link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
         link(rel="stylesheet", href="main.css")
     body
-        header
-            nav.navbar.navbar-expand-md.navbar-dark.bg-dark
-                a.navbar-brand(href="/") MATCHA
+        .page-container
+            header.mb-3
+                nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+                    a.navbar-brand(href="/") MATCHA
 
-                //- burger button
-                button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSuppportedContent")
-                    span.navbar-toggler-icon
+                    //- burger button
+                    button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSuppportedContent")
+                        span.navbar-toggler-icon
 
-                //- targeted info by button
-                #navbarSuppportedContent.collapse.navbar-collapse
-                    ul.navbar-nav.ml-auto
-                        li.nav-item.dropdown
-                            a#navbarDropdown.nav-link.dropdown-toggle(href="#" role="button" data-toggle="dropdown") Options
-                            .dropdown-menu(aria-labelledby="navbarDropdown")
-                                a.dropdown-item(href="profile") Profile
-                                .dropdown-divider
-                                a.dropdown-item(href="logout") Logout
-                        li.nav-item
-                            a.nav-link(href="notifications") Notifications
-                        li.nav-item
-                            a.nav-link(href="/") Home
+                    //- targeted info by button
+                    #navbarSuppportedContent.collapse.navbar-collapse
+                        ul.navbar-nav.ml-auto
+                            li.nav-item.dropdown
+                                a#navbarDropdown.nav-link.dropdown-toggle(href="#" role="button" data-toggle="dropdown") Options
+                                .dropdown-menu(aria-labelledby="navbarDropdown")
+                                    a.dropdown-item(href="profile") Profile
+                                    .dropdown-divider
+                                    a.dropdown-item(href="logout") Logout
+                            li.nav-item
+                                a.nav-link(href="notifications") Notifications
+                            li.nav-item
+                                a.nav-link(href="/") Home
+            .content-wrap
 
-        //- search results go here
-        .alert.alert-primary.alert-dismissible.fade.show(role="alert")
-            a(href="matched_profile")
-                img.rounded(src="", alt="profile_image")
-            a(href="matched_profile")
-                strong Jadon Hansen
-            button.close(type="button" data-dismiss="alert" aria-label="Close")
-                span(aria-hidden="true") &times;
-        .alert.alert-primary.alert-dismissible.fade.show(role="alert")
-            a(href="matched_profile")
-                img.rounded(src="", alt="profile_image")
-            a(href="matched_profile")
-                strong Gabriel Strauss
-            button.close(type="button" data-dismiss="alert" aria-label="Close")
-                span(aria-hidden="true") &times;
+                //- search results go here
+                .alert.alert-primary.alert-dismissible.fade.show.ml-3.mr-3(role="alert")
+                    a(href="matched_profile")
+                        img.rounded(src="", alt="profile_image")
+                    a(href="matched_profile")
+                        strong Jadon Hansen
+                    button.close(type="button" data-dismiss="alert" aria-label="Close")
+                        span(aria-hidden="true") &times;
+                .alert.alert-primary.alert-dismissible.fade.show.ml-3.mr-3(role="alert")
+                    a(href="matched_profile")
+                        img.rounded(src="", alt="profile_image")
+                    a(href="matched_profile")
+                        strong Gabriel Strauss
+                    button.close(type="button" data-dismiss="alert" aria-label="Close")
+                        span(aria-hidden="true") &times;
 
-        //- footer
-        footer.page-footer.font-small.mdb-color.pt-4.bg-light.text-dark
-            .container.text-center.text-md-left
+            //- footer
+            footer.page-footer.font-small.mdb-color.pt-4.bg-light.text-dark
+                .container.text-center.text-md-left
 
-                .row.text-center.text-md-left.mt-3.pb-3
+                    .row.text-center.text-md-left.mt-3.pb-3
 
-                    .col-md-6.col-lg-5.col-xl-4.mx-auto.mt-3
-                        h6.text-uppercase.mb-4.font-weight-bold About us
-                        p
-                            | In this day and age meeting new people and forming relationships is more difficult than ever,
-                            | wether it be from a busy job or a lack of opportunity. Matcha's vision is to offer young and old people the unique opportunity to meet
-                            | that potential special partner in life, all at your fingertips!
-                            | But remember, there's more to love than just emojis and midnight texts.
+                        .col-md-6.col-lg-5.col-xl-4.mx-auto.mt-3
+                            h6.text-uppercase.mb-4.font-weight-bold About us
+                            p
+                                | In this day and age meeting new people and forming relationships is more difficult than ever,
+                                | wether it be from a busy job or a lack of opportunity. Matcha's vision is to offer young and old people the unique opportunity to meet
+                                | that potential special partner in life, all at your fingertips!
+                                | But remember, there's more to love than just emojis and midnight texts.
 
-                    .col-md-5.col-lg-4.col-xl-3.mx-auto.mt-3
-                        h6.text-uppercase.mb-4.font-weight-bold Get In Touch
-                        p
-                            a(href="http://instagram.com/jadon.hansen") Instagram
-                        p
-                            a(href="http://facebook.com/jadon.hansen.56") Facebook
-                        p
-                            a(href="https://mail.google.com/mail/u/0/#inbox?compose=new") ftmatcha@gmail.com
-                hr
-                .row
-                    .col.text-center
-                        p
-                            | &copy; 2019 Matcha. All rights reserved.
-                        a(href='https://jadonhansen')
-                            strong  @jadonhansen
-                        a(href='https://gstrauss42')
-                            strong  @gstrauss
+                        .col-md-5.col-lg-4.col-xl-3.mx-auto.mt-3
+                            h6.text-uppercase.mb-4.font-weight-bold Get In Touch
+                            p
+                                a.text-info(href="http://instagram.com/jadon.hansen") Instagram
+                            p
+                                a.text-info(href="http://facebook.com/jadon.hansen.56") Facebook
+                            p
+                                a.text-info(href="https://mail.google.com/mail/u/0/#inbox?compose=new") ftmatcha@gmail.com
+                    hr
+                    .row
+                        .col.text-center
+                            p
+                                | &copy; 2019 Matcha. All rights reserved.
+                            a.text-info.github-link(href='https://jadonhansen')
+                                strong  @jadonhansen
+                            a.text-info.github-link(href='https://gstrauss42')
+                                strong  @gstrauss
