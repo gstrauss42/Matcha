@@ -26,17 +26,31 @@ html(lang="en")
                         #navbarSuppportedContent.collapse.navbar-collapse
                             ul.navbar-nav.ml-auto
                                 li.nav-item.dropdown
-                                    a#navbarDropdown.nav-link.dropdown-toggle(href="#" role="button" data-toggle="dropdown") Options
+                                    a#navbarDropdown.nav-link.dropdown-toggle(href="#" role="button" data-toggle="dropdown") More
                                     .dropdown-menu(aria-labelledby="navbarDropdown")
                                         a.dropdown-item(href="profile") Profile
                                         .dropdown-divider
-                                        a.dropdown-item(href="logout") Logout
+                                        a.dropdown-item(href="notifications") Notifications
                                 li.nav-item
-                                    a.nav-link(href="notifications") Notifications
+                                    a.nav-link(href="logout") Logout
                                 li.nav-item
                                     a.nav-link(href="/") Home
 
                 //- search results go here
+
+                //- by default show users from the same area and ONLY opposite sex (in bi/non-specified case match with all)
+                //- this can be sorted by age, location, fame rating, common tags
+
+                //- advanced search options:
+                //- age, fame rating, location, one/more tags
+
+                .row.mr-0.ml-0
+                    .col
+                        p Advanced search options here
+                .row.mr-0.ml-0
+                    .col
+                        p Filter parameters dropdown | Ascending or descending dropdown
+
                 .alert.alert-primary.alert-dismissible.fade.show.ml-3.mr-3(role="alert")
                     .media
                         a(href="matched_profile")
