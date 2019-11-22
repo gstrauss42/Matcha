@@ -44,7 +44,7 @@ footer {
     }
 }
 
-/* used for search user page */
+/* for search user page */
 
 .search-profile {
     width: 80px;
@@ -55,4 +55,10 @@ footer {
     .search-profile-descrip {
         font-size: 13px;
     }
+}
+
+/* for notifications page */
+
+.notification-box {
+    min-height: 100px;
 }
