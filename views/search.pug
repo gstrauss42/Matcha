@@ -36,21 +36,53 @@ html(lang="en")
                                 li.nav-item
                                     a.nav-link(href="/") Home
 
-                //- search results go here
-
-                //- by default show users from the same area and ONLY opposite sex (in bi/non-specified case match with all)
-                //- this can be sorted by age, location, fame rating, common tags
-
                 //- advanced search options:
-                //- age, fame rating, location, one/more tags
+                    //- age, fame rating, location, one/more tags
+                h4 Advanced Search
+                form(action="", method="post")
+                    .row.ml-0.mr-0
+                        .col
+                            .form-group
+                                label(for="age") Age
+                                input#age.pl-1(type="text", name="age", placeholder="19")
+                        .col
+                            .form-group
+                                .custom-control.custom-checkbox
+                                    input#location.custom-control-input(type="checkbox", name="location")
+                                    label.custom-control-label(for="location") Nearby location
+                        .col
+                            .form-group
+                                .custom-control.custom-checkbox
+                                    input#rating.custom-control-input(type="checkbox", name="rating")
+                                    label.custom-control-label(for="rating") Similar fame rating
+                        .col
+                            .form-group
+                                | be able to choose multiple tags
+                    .form-group
+                        input.btn.btn-dark(type="submit", name="advanced_search", value="Match!")
 
-                .row.mr-0.ml-0
-                    .col
-                        p Advanced search options here
-                .row.mr-0.ml-0
-                    .col
-                        p Filter parameters dropdown | Ascending or descending dropdown
+                hr
+                //- by default show users from the same area and ONLY opposite sex (in bi/non-specified case match with all)
+                    //- this can be sorted by age, location, fame rating, common tags
+                form(action="", method="post")
+                    .row.mr-0.ml-0
+                        .form-group
+                            label(for="selectGender") Filter by
+                            select#selectGender.form-control(name="filter")
+                                option(value="age") Age
+                                option(value="location") Location
+                                option(value="rating") Fame Rating
+                                option(value="common_tags") Tags in common
+                        .form-group
+                            label(for="selectGender") Order
+                            select#selectGender.form-control(name="order")
+                                option(value="ascending") Ascending
+                                option(value="descending") Descending
+                        .form-group
+                            input.btn.btn-dark(type="submit", name="filter_all", value="Go!")
 
+                hr
+                //- search results go here
                 .alert.alert-primary.alert-dismissible.fade.show.ml-3.mr-3(role="alert")
                     .media
                         a(href="matched_profile")

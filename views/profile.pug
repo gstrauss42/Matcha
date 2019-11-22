@@ -115,15 +115,9 @@ html(lang="en")
                             //- modify location yes/no
                             form(action="", method="post")
                                 .form-group
-                                    .custom-control.custom-radio
-                                        input#radio1.custom-control-input(type="radio", name="yes")
-                                        label.custom-control-input(for="radio1") Use location to improve matching accuracy
-                                .form-group
-                                    .custom-control.custom-radio
-                                        input#radio2.custom-control-input(type="radio", name="no")
-                                        label.custom-control-input(for="radio2") Don't detect location
-                                .form-group
-                                    input.btn.btn-dark(type="submit", name="submit_loc")
+                                    .custom-control.custom-switch
+                                        input#location.custom-control-input(type="checkbox", name="location")
+                                        label.custom-control-label(for="location") Use location to match with users
 
                 //- add interest tags
                 .row.ml-0.mr-0
