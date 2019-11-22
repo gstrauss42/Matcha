@@ -130,12 +130,32 @@ app.use('/search_results', search_results);
 var search_user = require('./pages/search_user.js');
 app.use('/search_user', search_user);
 
+// add tag
+var add_tag = require('./pages/add_tag.js');
+app.use('/add_tag', add_tag);
+
+// logout
+var logout = require('./pages/logout.js');
+app.use('/logout', logout);
+
+// testing
+var test = require('./pages/test.js');
+app.use('/test', test);
+
+
+
+
+
 // not the webpage youre looking for
 var user_confirm = require('./pages/user_confirm.js')
 app.use('/:var_words', user_confirm);
 // app.get('/:var_words', function(req, res){
 //    res.send('these are not the ' + req.params.var_words + '\'s you are looking for');
 // });
+
+
+
+
 
 
 
