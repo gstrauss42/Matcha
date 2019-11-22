@@ -12,15 +12,12 @@ var crypto = require('crypto');
 
 router.get('/', function(req, res){
     res.send('GET route on add_tag');
- });
- 
- router.post('/', bodyParser.urlencoded(), function(req, res){
-   var tags = new Model.tag ({
-      name: req.session.name,
-      tag: req.body.tag
-   });
-   tags.save();
-   res.redirect("/profile");
+});
+
+router.post('/', bodyParser.urlencoded(), function(req, res){
+
+   Models.user.findOneAndUpdate({ email: req.session.name }, { $push : req.body.tag});
+   res.redirect('profile');
 });
 
  module.exports = router;
