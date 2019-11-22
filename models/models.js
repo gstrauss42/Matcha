@@ -14,9 +14,9 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
    password: String,
    verif: String,
    isverified: { type: Boolean, default: false},
-//    tags: [{
-//       type: String
-//   }]
+   tags: [{
+      type: String
+  }]
 });
 
 var tagSchema = new mongoose.Schema({
