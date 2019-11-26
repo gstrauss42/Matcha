@@ -39,7 +39,7 @@ html(lang="en")
                 //- advanced search options:
                     //- age, fame rating, location, one/more tags
                 h4 Advanced Search
-                form(action="", method="post")
+                form(action="/search", method="post")
                     .row.ml-0.mr-0
                         .col
                             .form-group
@@ -64,7 +64,7 @@ html(lang="en")
                 hr
                 //- by default show users from the same area and ONLY opposite sex (in bi/non-specified case match with all)
                     //- this can be sorted by age, location, fame rating, common tags
-                form(action="", method="post")
+                form(action="/search", method="post")
                     .row.mr-0.ml-0
                         .form-group
                             label(for="selectGender") Filter by

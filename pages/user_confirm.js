@@ -3,14 +3,14 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Models = require("../models/models");
 
-var user = Models.user
-
 router.get('/', function(req, res){
    var check = req.originalUrl.substring(1);
-   Models.user.findOneAndUpdate({ verif:check }, { $set : { isverified: "true"}}, function(err, _update) {
-   
-      res.redirect('/login');
-
+   Models.user.findOneAndUpdate(
+      { verif:check },
+      { $set : { isverified: "true"}}
+      , function(err, _update) {
+         
+         res.redirect('/login');
    });
    // res.redirect('/login');
 });

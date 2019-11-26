@@ -80,7 +80,7 @@ app.get("/notifications", (req,res) => {
 app.get("/profile", (req,res) => {
   res.render("profile");
 })
-// search_user
+// search
 app.get("/search", (req,res) => {
   res.render("search");
 })
@@ -130,6 +130,10 @@ app.use('/search_results', search_results);
 var search_user = require('./pages/search_user.js');
 app.use('/search_user', search_user);
 
+// search
+var search = require('./pages/search.js');
+app.use('/search', search);
+
 // add tag
 var add_tag = require('./pages/add_tag.js');
 app.use('/add_tag', add_tag);
@@ -137,6 +141,11 @@ app.use('/add_tag', add_tag);
 // logout
 var logout = require('./pages/logout.js');
 app.use('/logout', logout);
+
+// update_profile
+var update_profile = require('./pages/update_profile.js');
+app.use('/update_profile', update_profile);
+
 
 // testing
 var test = require('./pages/test.js');

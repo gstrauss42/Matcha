@@ -1,8 +1,8 @@
 ummm
 work...
 
-figure out push to allow for ading of variabels and pull for removing of variables from tags in user documents
-forgot password unique link
+update email adress by checking if email exists already if not updating session to reflect new email and updating db, decide if verification email is required for change and if so implement updates post confirmation
+make the searchy things happen
 make fields secure
 handle errors
 

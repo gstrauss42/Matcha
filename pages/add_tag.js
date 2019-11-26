@@ -2,12 +2,11 @@ var express = require('express');
 var router = express.Router();
 var session = require('express-session');
 const app = express()
-const bcrypt = require('bcrypt');
 var mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 mongoose.connect(`mongodb+srv://gstrauss:qwerty0308@matcha-ch0yb.gcp.mongodb.net/test?retryWrites=true&w=majority`);
 app.use(bodyParser.urlencoded({ extended: true }));
-var Model = require("../models/models");
+var Models = require("../models/models");
 var crypto = require('crypto');
 
 router.get('/', function(req, res){
@@ -16,8 +15,15 @@ router.get('/', function(req, res){
 
 router.post('/', bodyParser.urlencoded(), function(req, res){
 
-   Models.user.findOneAndUpdate({ email: req.session.name }, { $push : req.body.tag});
-   res.redirect('profile');
+    Models.user.findOneAndUpdate(
+        { email : req.session.name },
+        { $push : { tags: req.body.tag}}
+        , function(err, _update) {
+            res.redirect('/profile');
+      });
+       
+//    res.redirect('profile');
+    // res.send(req.body.tag)
 });
 
  module.exports = router;
