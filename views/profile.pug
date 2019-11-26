@@ -45,94 +45,109 @@ html(lang="en")
                     //- yes/no use location specific targeting
                     //- add tags
 
-                //- profile images
-                .row.ml-0.mr-0
-                    .col
-                        p this is first image and name underneath
-                    .col
-                        p this is the other images
+                //- profile info
+                .container-fluid.mb-3
+                    .row.ml-0.mr-0
+                        .col-md-2
+                            img#main-profile-img.rounded-circle.img-main(src="pic01.jpg", alt="main-profile")
+                        .col-md-3.mt-1
+                            strong
+                                label(for="main-profile-img") Jadon Hansen
+                            h6 About me:
 
-                //- bio left, current info on the right (including current tags)
-                .row.ml-0.mr-0
-                    .col
-                        p bio here
-                    .col
-                        p info
+                    hr
+                //- other profile images
+                .container-fluid
+                    img.img-prof.mr-2(src="pic01.jpg", alt="user_img2")
+                    img.img-prof.mr-2(src="pic01.jpg", alt="user_img3")
+                    img.img-prof.mr-2(src="pic01.jpg", alt="user_img4")
+                    img.img-prof.mr-2(src="pic01.jpg", alt="user_img5")
+                    hr
 
                 //- more options, tab view
-                .row.ml-0.mr-0
-                    #nav-tab.nav.nav-tabs(role='tablist')
-                        a#nav-home-tab.nav-item.nav-link.active(data-toggle='tab' href='#nav-home' role='tab' aria-controls='nav-home' aria-selected='true') Associativity
-                        a#nav-profile-tab.nav-item.nav-link(data-toggle='tab' href='#nav-profile' role='tab' aria-controls='nav-profile' aria-selected='false') Advanced
-                        a#nav-contact-tab.nav-item.nav-link(data-toggle='tab' href='#nav-contact' role='tab' aria-controls='nav-contact' aria-selected='false') Location
-                    #nav-tabContent.tab-content
+                .container-fluid.pb-4
+                    .row
+                        .col
+                            #nav-tab.nav.nav-tabs(role='tablist')
+                                a#nav-home-tab.nav-item.nav-link.active(data-toggle='tab' href='#nav-home' role='tab' aria-controls='nav-home' aria-selected='true') Associativity
+                                a#nav-profile-tab.nav-item.nav-link(data-toggle='tab' href='#nav-profile' role='tab' aria-controls='nav-profile' aria-selected='false') Advanced
+                                a#nav-contact-tab.nav-item.nav-link(data-toggle='tab' href='#nav-contact' role='tab' aria-controls='nav-contact' aria-selected='false') Location
+                            #nav-tabContent.tab-content
 
-                        #nav-home.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='nav-home-tab')
-                            //- modifying gender and preference
-                            form(action="/update_profile", method="post")
-                                .form-group
-                                    label(for="selectGender") Gender
-                                    select#selectGender.form-control(name="gender_select")
-                                        option(value="Male") Male
-                                        option(value="Female") Female
-                                        option(value="Other") Other
-                                .form-group
-                                    label(for="selectPref") Partner Preference
-                                    select#selectPref.form-control(name="pref_select")
-                                        option(value="Male") Male
-                                        option(value="Female") Female
-                                        option(value="Bi-Sexual") Bi-Sexual
-                                .form-group
-                                    input.btn.btn-dark(type="submit", name="submit_pref")
+                                #nav-home.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='nav-home-tab')
+                                    //- modifying gender and preference
+                                    form(action="/update_profile", method="post")
+                                        .form-row
+                                            .col-md-5
+                                                label.mt-2(for="selectGender") Gender
+                                                select#selectGender.form-control.mb-2(name="gender_select")
+                                                    option(value="Male") Male
+                                                    option(value="Female") Female
+                                                    option(value="Other") Other
+                                        .form-row
+                                            .col-md-5
+                                                label(for="selectPref") Partner Preference
+                                                select#selectPref.form-control.mb-3(name="pref_select")
+                                                    option(value="Male") Male
+                                                    option(value="Female") Female
+                                                    option(value="Bi-Sexual") Bi-Sexual
+                                        .form-row.mb-1
+                                            input.btn.btn-dark(type="submit", name="submit_pref")
 
-                        #nav-profile.tab-pane.fade(role='tabpanel' aria-labelledby='nav-profile-tab')
-                            //- modifying details
-                            form(action="/update_profile", method="post")
-                                .form-group
-                                    label(for="name") Name
-                                    input#name.pl-1(type="text", name="name", placeholder="Jadon")
-                                .form-group
-                                    label(for="surname") Surname
-                                    input#surname.pl-1(type="text", name="surname", placeholder="Hansen")
-                                .form-group
-                                    label(for="age") Age
-                                    input#age.pl-1(type="text", name="age", placeholder="19")
-                                .form-group
-                                    label(for="email") Email Address
-                                    input#email.pl-1(type="email", name="email", placeholder="jhansen@gmailco.za")
-                                .form-group
-                                    label(for="password") New Password
-                                    input#password.pl-1(type="password", name="pass")
-                                    small#passwordHelpBlock.form-text.text-muted
-                                        | Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                                .form-group
-                                    label(for="repeat") Repeat Password
-                                    input#repeat.pl-1(type="password", name="repeat_pass")
-                                .form-group
-                                    input.btn.btn-dark(type="submit", name="submit_details")
+                                #nav-profile.tab-pane.fade(role='tabpanel' aria-labelledby='nav-profile-tab')
+                                    //- modifying details
+                                    form(action="/update_profile", method="post")
+                                        .form-group
+                                            label.mr-1.mt-3(for="name") Name
+                                            input#name.pl-1(type="text", name="name", placeholder="Jadon")
+                                        .form-group
+                                            label.mr-1(for="surname") Surname
+                                            input#surname.pl-1(type="text", name="surname", placeholder="Hansen")
+                                        .form-group
+                                            label.mr-1(for="age") Age
+                                            input#age.pl-1(type="text", name="age", placeholder="18+")
+                                        .form-group
+                                            label.mr-1(for="email") Email Address
+                                            input#email.pl-1(type="email", name="email", placeholder="example@gmailco.za")
+                                        .form-group
+                                            label.mr-1(for="password") New Password
+                                            input#password.pl-1(type="password", name="pass")
+                                            small#passwordHelpBlock.form-text.text-muted
+                                                | Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                                        .form-group
+                                            label.mr-1(for="repeat") Repeat Password
+                                            input#repeat.pl-1(type="password", name="repeat_pass")
+                                        .form-group
+                                            input.btn.btn-dark(type="submit", name="submit_details")
 
-                        #nav-contact.tab-pane.fade(role='tabpanel' aria-labelledby='nav-contact-tab')
-                            //- modify location yes/no
-                            form(action="", method="post")
-                                .form-group
-                                    .custom-control.custom-switch
-                                        input#location.custom-control-input(type="checkbox", name="location")
-                                        label.custom-control-label(for="location") Use location to match with users
+                                #nav-contact.tab-pane.fade(role='tabpanel' aria-labelledby='nav-contact-tab')
+                                    //- modify location yes/no
+                                    form(action="", method="post")
+                                        .form-group
+                                            .custom-control.custom-switch
+                                                input#location.custom-control-input(type="checkbox", name="location")
+                                                label.custom-control-label.mt-2(for="location") Use location to match with users
+                        .col
+                            //- current info on the right (including current tags)
+                            p current info
+                            p name , surname
+                            p email
+                            p fame rating
 
                 //- add interest tags
-                .row.ml-0.mr-0
-                    h4 Add an interest tag
-                        form(action="add_tag", method="post")
-                            .form-row.align-items-center.ml-0.mr-0
-                                .col-auto
-                                    label.sr-only(for="inlineFormInputGroup") Username
-                                    .input-group.mb-2
-                                        .input-group-prepend
-                                            .input-group-text #
-                                        input#inlineFormInputGroup.form-control(type="text", name="tag", placeholder="interest tag" required)
-                                .col-auto
+                .container-fluid.pb-2
+                    h5 Add an interest tag
+                    form(action="add_tag", method="post")
+                        .form-row.align-items-center
+                            .col-auto
+                                label.sr-only(for="inlineFormInputGroup") Tag
+                                .input-group.mb-2
+                                    .input-group-prepend
+                                        .input-group-text #
+                                    input#inlineFormInputGroup.form-control(type="text", name="tag", placeholder="interest tag" required)
+                            .col-auto
                                     button.btn.btn-primary.mb-2(type="submit") Add tag
-
+                    p Current tags:
 
             //- footer
             footer.page-footer.font-small.mdb-color.pt-4.bg-light.text-dark

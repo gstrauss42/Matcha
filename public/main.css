@@ -77,3 +77,48 @@ footer {
         padding-bottom: 2px;
     }
 }
+
+/* User profile page */
+
+.img-main {
+    height: 220px;
+    width: 220px;
+}
+
+.img-prof {
+    height: 160px;
+    width: 160px;
+}
+
+@media only screen and (max-width:  1050px) {
+    .img-main {
+        height: 200px;
+        width: 200px;
+    }
+    .img-prof {
+        height: 170px;
+        width: 170px;
+    }
+}
+
+@media only screen and (max-width:  800px) {
+    .img-main {
+        height: 160px;
+        width: 160px;
+    }
+    .img-prof {
+        height: 130px;
+        width: 130px;
+    }
+}
+
+@media only screen and (max-width:  450px) {
+    .img-main {
+        height: 100px;
+        width: 100px;
+    }
+    .img-prof {
+        height: 70px;
+        width: 70px;
+    }
+}
