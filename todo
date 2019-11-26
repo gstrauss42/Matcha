@@ -2,7 +2,8 @@ ummm
 work...
 
 update email adress by checking if email exists already if not updating session to reflect new email and updating db, decide if verification email is required for change and if so implement updates post confirmation
-make the searchy things happen
+start using .env
+add the rest of the search variables and learn to get them to render onto the page
 make fields secure
 handle errors
 

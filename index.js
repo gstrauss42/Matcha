@@ -147,13 +147,11 @@ var update_profile = require('./pages/update_profile.js');
 app.use('/update_profile', update_profile);
 
 
+
+
 // testing
 var test = require('./pages/test.js');
 app.use('/test', test);
-
-
-
-
 
 // not the webpage youre looking for
 var user_confirm = require('./pages/user_confirm.js')
@@ -161,10 +159,6 @@ app.use('/:var_words', user_confirm);
 // app.get('/:var_words', function(req, res){
 //    res.send('these are not the ' + req.params.var_words + '\'s you are looking for');
 // });
-
-
-
-
 
 
 

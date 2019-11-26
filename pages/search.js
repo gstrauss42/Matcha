@@ -6,19 +6,29 @@ const bodyParser = require('body-parser');
 router.post('/', bodyParser.urlencoded(), function(req, res){
 
     Models.user.find(
-        { $and: [{age: req.body.age},
-            // {function("location")},
-            // {function("fame rating")},
-        ]},
-        function(err, doc){
-            if(doc){
-                res.send(doc);
-            }
-            else{
-                res.render('search');
-            }
-        }
-    )
+        {"email" : req.session.name},
+        function(err, details){
+            Models.user.find(
+                { $and: [{age: req.body.age},
+                    // {"gender" : details.prefferances},
+                    // {function("location")},
+                    // {function("location")},
+                    // {function("fame rating")},
+                ]},
+                function(err, doc){
+                    // console.log(details);
+                    // console.log(details[0]);
+                    console.log(doc);
+                    if(doc[0]){
+                        res.send(doc);
+                    }
+                    else{
+                        res.render('search');
+                    }
+                }
+            )
+        })
+
 // age : name="age"
 // nearby location : name="location"
 // similar fame rating : name="rating"
