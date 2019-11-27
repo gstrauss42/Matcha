@@ -27,8 +27,6 @@ router.post('/login', bodyParser.urlencoded(), function(req, res){
             if(user.password == safe && user.isverified == 1)
             {
                const clientIp = requestIp.getClientIp(req);
-               console.log(1000);
-               console.log(clientIp);
                // ip tracking
                Models.user.findOneAndUpdate({ email : req.body.email },
                   { "location" : clientIp }
