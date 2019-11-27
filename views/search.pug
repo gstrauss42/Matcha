@@ -56,10 +56,9 @@ html(lang="en")
                                 .form-group
                                     input.btn.btn-dark(type="submit", name="advanced_search", value="Match!")
                             .col
+                                h6 Include various tags
 
                                 //- each id for the checkboxes must be different
-
-                                h6 Include various tags
                                 .form-group.mb-0
                                     .custom-control.custom-checkbox
                                         input#various.custom-control-input(type="checkbox", name="various")
@@ -68,6 +67,11 @@ html(lang="en")
                                     .custom-control.custom-checkbox
                                         input#various1.custom-control-input(type="checkbox", name="various1")
                                         label.custom-control-label(for="various1") Variable showing tag (e.g.)
+
+                                small.form-text.text-muted
+                                    | To add/see more tags appear here make sure you have added them to your 
+                                    a(href="profile") profile 
+                                    | first
 
                     hr
                 //- by default show users from same area & ONLY correct sex (in bi/non-specified case match with all): this can be sorted by age, location, fame rating, common tags
