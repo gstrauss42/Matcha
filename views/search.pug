@@ -38,21 +38,21 @@ html(lang="en")
 
                 //- advanced search options: age, fame rating, location, one/more tags
                 .container-fluid
-                    h4.ml-3.mb-3 Advanced Search
+                    h4.advanced-heading.ml-3.mb-3 Advanced Search
                     form(action="/search", method="post")
                         .row.ml-0.mr-0
                             .col-md-6
                                 .form-group
-                                    label.mr-1(for="age") Age
+                                    label.label-text.mr-1(for="age") Age
                                     input#age.pl-1(type="text", name="age", placeholder="18+")
                                 .form-group
                                     .custom-control.custom-checkbox
                                         input#location.custom-control-input(type="checkbox", name="location")
-                                        label.custom-control-label(for="location") Nearby location
+                                        label.label-text.custom-control-label(for="location") Nearby location
                                 .form-group
                                     .custom-control.custom-checkbox
                                         input#rating.custom-control-input(type="checkbox", name="rating")
-                                        label.custom-control-label(for="rating") Similar fame rating
+                                        label.label-text.custom-control-label(for="rating") Similar fame rating
                                 .form-group
                                     input.btn.btn-dark(type="submit", name="advanced_search", value="Match!")
                             .col
@@ -62,11 +62,11 @@ html(lang="en")
                                 .form-group.mb-0
                                     .custom-control.custom-checkbox
                                         input#various.custom-control-input(type="checkbox", name="various")
-                                        label.custom-control-label(for="various") Variable showing tag (e.g.)
+                                        label.label-text.custom-control-label(for="various") Variable showing tag (e.g.)
                                 .form-group.mb-0
                                     .custom-control.custom-checkbox
                                         input#various1.custom-control-input(type="checkbox", name="various1")
-                                        label.custom-control-label(for="various1") Variable showing tag (e.g.)
+                                        label.label-text.custom-control-label(for="various1") Variable showing tag (e.g.)
 
                                 small.form-text.text-muted
                                     | To add/see more tags appear here make sure you have added them to your 
@@ -80,7 +80,7 @@ html(lang="en")
                         .row.mr-0.ml-0
                             .col-md-2
                                 .form-group
-                                    label(for="selectGender") Filter by
+                                    label.label-text(for="selectGender") Filter by
                                     select#selectGender.form-control(name="filter")
                                         option(value="age") Age
                                         option(value="location") Location
@@ -88,7 +88,7 @@ html(lang="en")
                                         option(value="common_tags") Tags in common
                             .col-md-2
                                 .form-group
-                                    label(for="selectGender") Order
+                                    label.label-text(for="selectGender") Order
                                     select#selectGender.form-control(name="order")
                                         option(value="ascending") Ascending
                                         option(value="descending") Descending
@@ -104,7 +104,7 @@ html(lang="en")
                                 img.rounded.mr-2.search-profile(src="pic02.jpg", alt="profile_image")
                             .media-body
                                 a(href="matched_profile")
-                                    strong Jadon Hansen
+                                    strong.custom-username Jadon Hansen
                                 p.search-profile-descrip.mb-0 Description and interests
                         button.close(type="button" data-dismiss="alert" aria-label="Close")
                             span(aria-hidden="true") &times;
@@ -114,7 +114,7 @@ html(lang="en")
                                 img.rounded.mr-2.search-profile(src="pic03.jpg", alt="profile_image")
                             .media-body
                                 a(href="matched_profile")
-                                    strong Gabriel Strauss
+                                    strong.custom-username Gabriel Strauss
                                 p.search-profile-descrip.mb-0 Description and interests
                         button.close(type="button" data-dismiss="alert" aria-label="Close")
                             span(aria-hidden="true") &times;
