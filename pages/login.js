@@ -1,14 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var iplocation = require("iplocation").default;
 const app = express();
-const bcrypt = require('bcrypt');
 var mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 mongoose.connect(`mongodb+srv://gstrauss:qwerty0308@matcha-ch0yb.gcp.mongodb.net/test?retryWrites=true&w=majority`);
 app.use(bodyParser.urlencoded({ extended: true }));
 var Model = require("../models/models");
 var crypto = require('crypto');
-var session = require('express-session');
 
 router.post('/login', bodyParser.urlencoded(), function(req, res){
    
@@ -20,6 +19,9 @@ router.post('/login', bodyParser.urlencoded(), function(req, res){
 
             if(user.password == safe && user.isverified == 1)
             {
+               // iplocation('56.70.97.8', function(err, val){
+                  // perform database saving of information
+               // });
                req.session.name = req.body.email;  
                res.redirect('/profile');
             }

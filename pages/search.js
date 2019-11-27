@@ -10,15 +10,15 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
         function(err, details){
             Models.user.find(
                 { $and: [{age: req.body.age},
-                    // {"gender" : details.prefferances},
+                    
+                    {"gender" : details[0].prefferances},
                     // {function("location")},
                     // {function("location")},
                     // {function("fame rating")},
                 ]},
                 function(err, doc){
-                    // console.log(details);
-                    // console.log(details[0]);
-                    console.log(doc);
+                    console.log(details[0].prefferances);
+                    // console.log(doc);
                     if(doc[0]){
                         res.send(doc);
                     }
