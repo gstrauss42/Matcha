@@ -6,14 +6,14 @@
 }
 
 .content-wrap {
-    padding-bottom: 26.25rem;
+    padding-bottom: 24rem;
 }
 
 footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 26.25rem;
+    height: 24rem;
 }
 
 .github-link {
@@ -38,6 +38,10 @@ footer {
 .search-profile {
     width: 80px;
     height: 70px;
+}
+
+.filter-btn {
+    margin-top: 2rem;
 }
 
 @media only screen and (max-width:  640px) {

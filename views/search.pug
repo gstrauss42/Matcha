@@ -37,50 +37,64 @@ html(lang="en")
                                     a.nav-link(href="/") Home
 
                 //- advanced search options: age, fame rating, location, one/more tags
-                .container-flex
-                    h4.ml-2.mb-3 Advanced Search
+                .container-fluid
+                    h4.ml-3.mb-3 Advanced Search
                     form(action="/search", method="post")
-                        //- .row.ml-0.mr-0
-                        .form-group
-                            label(for="age") Age
-                            input#age.pl-1(type="text", name="age", placeholder="19")
-                        .form-group
-                            .custom-control.custom-checkbox
-                                input#location.custom-control-input(type="checkbox", name="location")
-                                label.custom-control-label(for="location") Nearby location
-                        .form-group
-                            .custom-control.custom-checkbox
-                                input#rating.custom-control-input(type="checkbox", name="rating")
-                                label.custom-control-label(for="rating") Similar fame rating
-                        .form-group
-                                | be able to choose multiple tags
-                        .form-group
-                            input.btn.btn-dark(type="submit", name="advanced_search", value="Match!")
+                        .row.ml-0.mr-0
+                            .col-md-6
+                                .form-group
+                                    label.mr-1(for="age") Age
+                                    input#age.pl-1(type="text", name="age", placeholder="18+")
+                                .form-group
+                                    .custom-control.custom-checkbox
+                                        input#location.custom-control-input(type="checkbox", name="location")
+                                        label.custom-control-label(for="location") Nearby location
+                                .form-group
+                                    .custom-control.custom-checkbox
+                                        input#rating.custom-control-input(type="checkbox", name="rating")
+                                        label.custom-control-label(for="rating") Similar fame rating
+                                .form-group
+                                    input.btn.btn-dark(type="submit", name="advanced_search", value="Match!")
+                            .col
+
+                                //- each id for the checkboxes must be different
+
+                                h6 Include various tags
+                                .form-group.mb-0
+                                    .custom-control.custom-checkbox
+                                        input#various.custom-control-input(type="checkbox", name="various")
+                                        label.custom-control-label(for="various") Variable showing tag (e.g.)
+                                .form-group.mb-0
+                                    .custom-control.custom-checkbox
+                                        input#various1.custom-control-input(type="checkbox", name="various1")
+                                        label.custom-control-label(for="various1") Variable showing tag (e.g.)
 
                     hr
-                //- by default show users from the same area and ONLY opposite sex (in bi/non-specified case match with all): this can be sorted by age, location, fame rating, common tags
-                .container-flex
+                //- by default show users from same area & ONLY correct sex (in bi/non-specified case match with all): this can be sorted by age, location, fame rating, common tags
+                .container-fluid
                     form(action="/search", method="post")
                         .row.mr-0.ml-0
-                            .form-group
-                                label(for="selectGender") Filter by
-                                select#selectGender.form-control(name="filter")
-                                    option(value="age") Age
-                                    option(value="location") Location
-                                    option(value="rating") Fame Rating
-                                    option(value="common_tags") Tags in common
-                            .form-group
-                                label(for="selectGender") Order
-                                select#selectGender.form-control(name="order")
-                                    option(value="ascending") Ascending
-                                    option(value="descending") Descending
-                            .form-group
-                                input.btn.btn-dark(type="submit", name="filter_all", value="Go!")
+                            .col-md-2
+                                .form-group
+                                    label(for="selectGender") Filter by
+                                    select#selectGender.form-control(name="filter")
+                                        option(value="age") Age
+                                        option(value="location") Location
+                                        option(value="rating") Fame Rating
+                                        option(value="common_tags") Tags in common
+                            .col-md-2
+                                .form-group
+                                    label(for="selectGender") Order
+                                    select#selectGender.form-control(name="order")
+                                        option(value="ascending") Ascending
+                                        option(value="descending") Descending
+                            .col-md-2
+                                input.btn.btn-dark.filter-btn(type="submit", name="filter_all", value="Go!")
 
-                hr
+                    hr
                 //- search results go here (!!!!!!!!!!if cant use alert then use media objects!!!!!!!!!)
-                .container-flex
-                    .alert.alert-primary.alert-dismissible.fade.show.ml-3.mr-3(role="alert")
+                .container-fluid
+                    .alert.alert-primary.alert-dismissible.fade.show.ml-4.mr-4(role="alert")
                         .media
                             a(href="matched_profile")
                                 img.rounded.mr-2.search-profile(src="pic02.jpg", alt="profile_image")
@@ -90,7 +104,7 @@ html(lang="en")
                                 p.search-profile-descrip.mb-0 Description and interests
                         button.close(type="button" data-dismiss="alert" aria-label="Close")
                             span(aria-hidden="true") &times;
-                    .alert.alert-primary.alert-dismissible.fade.show.ml-3.mr-3(role="alert")
+                    .alert.alert-primary.alert-dismissible.fade.show.ml-4.mr-4(role="alert")
                         .media
                             a(href="matched_profile")
                                 img.rounded.mr-2.search-profile(src="pic03.jpg", alt="profile_image")
@@ -102,13 +116,13 @@ html(lang="en")
                             span(aria-hidden="true") &times;
 
             //- footer
-            footer.page-footer.font-small.mdb-color.pt-4.bg-light.text-dark
+            footer.page-footer.font-small.mdb-color.bg-light.text-dark
                 .container.text-center.text-md-left
 
-                    .row.text-center.text-md-left.mt-3.pb-3
+                    .row.text-center.text-md-left.mt-3.pb-1
 
                         .col-md-6.col-lg-5.col-xl-4.mx-auto.mt-3
-                            h6.text-uppercase.mb-4.font-weight-bold About us
+                            h6.text-uppercase.mb-3.font-weight-bold About us
                             p
                                 | In this day and age meeting new people and forming relationships is more difficult than ever,
                                 | wether it be from a busy job or a lack of opportunity. Matcha's vision is to offer young and old people the unique opportunity to meet
@@ -116,7 +130,7 @@ html(lang="en")
                                 | But remember, there's more to love than just emojis and midnight texts.
 
                         .col-md-5.col-lg-4.col-xl-3.mx-auto.mt-3
-                            h6.text-uppercase.mb-4.font-weight-bold Get In Touch
+                            h6.text-uppercase.mb-3.font-weight-bold Get In Touch
                             p
                                 a.text-info(href="http://instagram.com/jadon.hansen") Instagram
                             p
