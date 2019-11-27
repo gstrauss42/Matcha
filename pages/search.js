@@ -5,39 +5,16 @@ const bodyParser = require('body-parser');
 
 router.post('/', bodyParser.urlencoded(), function(req, res){
 
-    Models.user.find(
-        {"email" : req.session.name},
-        function(err, details){
-            var thegoodgood = '';
-            if(req.body.age)
-                thegoodgood += "{ \"age\" : \"" + req.body.age + "\" },"; 
-            else if(req.body.location)
-                thegoodgood += "{location :" + req.body.location + "},"; 
-            else if(req.body.rating)
-                thegoodgood += "{rating :" + req.body.rating + "},";
-            else
-                thegoodgood = "{ isverified : true },"
-            thegoodgood = thegoodgood.substring(0, thegoodgood.length - 1);
-            console.log(thegoodgood);
-            Models.user.find(
-                { $and: [thegoodgood,
-                    
-                    {"gender" : details[0].prefferances},
-                    {"prefferances" : details[0].gender},
-                    // {function("location")},
-                    // {function("fame rating")},
-                ]},
-                function(err, doc){
-                    // console.log(doc[0].name);
-                    if(doc[0]){
-                        res.send(doc);
-                    }
-                    else{
-                        res.render('search');
-                    }
-                }
-            )
-        })
+    Models.user.find({isverified: "true"},function(err, doc){
+        if(doc)
+        {
+            res.send(doc);
+        }
+        else{
+            res.render('search');
+        }
+    })
+});
 
 // age : name="age"
 // nearby location : name="location"
@@ -51,7 +28,6 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
     
 
 //    res.render("search");
-});
 
 //export this router to use in our index.js
 module.exports = router;

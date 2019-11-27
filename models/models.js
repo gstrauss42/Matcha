@@ -13,7 +13,7 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
    gender: String,
    prefferances: String,
    fame_rating: String,
-   Location: String,
+   location: String,
    password: String,
    verif: String,
    isverified: { type: Boolean, default: false},
