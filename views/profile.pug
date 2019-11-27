@@ -10,6 +10,7 @@ html(lang="en")
         script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
         link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
         link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
+        script(src="https://kit.fontawesome.com/17df3da6b8.js", crossorigin="anonymous")
         link(rel="stylesheet", href="main.css")
     body
         .page-container
@@ -36,15 +37,6 @@ html(lang="en")
                                 li.nav-item
                                     a.nav-link(href="/") Home
 
-                //- profile info:
-                    //- Gender update
-                    //- preference update
-                    //- name, surname, email, password update
-                    //- update images (max 5)
-                    //- fame rating
-                    //- yes/no use location specific targeting
-                    //- add tags
-
                 //- profile info
                 .container
                     .container-fluid.mb-5
@@ -54,20 +46,21 @@ html(lang="en")
                             .col-md-0.mt-4.custom-margin-bio
                                 strong
                                     h3.custom-text-name Jadon Hansen
-                                h6.pb-2.custom-text-rating Rating
+                                h6.custom-text-rating Rating
+                                i#alter-bio.fas.fa-cog
                                 p.custom-text-bio stuff about me
 
                     //- other profile images
                     .container-fluid.mb-5
                         .row.mr-0.ml-0
                             .col-md-0
-                                img.img-fluid.rounded-circle.img-prof.mr-2(src="pic01.jpg", alt="user_img2")
+                                img#profile-img-two.img-fluid.rounded-circle.img-prof.mr-2(src="pic01.jpg", alt="user_img2")
                             .col-md-0
-                                img.img-fluid.rounded-circle.img-prof.mr-2(src="pic02.jpg", alt="user_img3")
+                                img#profile-img-three.img-fluid.rounded-circle.img-prof.mr-2(src="pic02.jpg", alt="user_img3")
                             .col-md-0
-                                img.img-fluid.rounded-circle.img-prof.mr-2(src="pic03.jpg", alt="user_img4")
+                                img#profile-img-four.img-fluid.rounded-circle.img-prof.mr-2(src="pic03.jpg", alt="user_img4")
                             .col-md-0
-                                img.img-fluid.rounded-circle.img-prof.mr-2(src="pic04.jpg", alt="user_img5")
+                                img#profile-img-five.img-fluid.rounded-circle.img-prof.mr-2(src="pic04.jpg", alt="user_img5")
 
                     //- more options, tab view
                     .container-fluid.mb-5
@@ -131,10 +124,15 @@ html(lang="en")
                                         .custom-control.custom-switch
                                             input#location.custom-control-input(type="checkbox", name="location")
                                             label.custom-control-label.mt-2(for="location") Use location to match with users
-                            
+
                             #nav-info.tab-pane.fade(role='tabpanel' aria-labelledby='nav-info-tab')
                                 //- current info
-                                p.mt-2 this is my curent info
+                                p.mt-2 Name and surname:
+                                p Age:
+                                p Email:
+                                p Gender:
+                                p Preference:
+                                p Location usage:
 
                     //- add interest tags
                     .container-fluid.mb-5
@@ -149,14 +147,12 @@ html(lang="en")
                                         input#inlineFormInputGroup.form-control(type="text", name="tag", placeholder="interest tag" required)
                                 .col-auto
                                         button.btn.btn-primary.mb-2(type="submit") Add tag
-                        p Current tags:
+                        p Current tags: You have no tags related to your profile.
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark
                 .container.text-center.text-md-left
-
                     .row.text-center.text-md-left.mt-3.pb-1
-
                         .col-md-6.col-lg-5.col-xl-4.mx-auto.mt-3
                             h6.text-uppercase.mb-3.font-weight-bold About us
                             p
@@ -164,7 +160,6 @@ html(lang="en")
                                 | wether it be from a busy job or a lack of opportunity. Matcha's vision is to offer young and old people the unique opportunity to meet
                                 | that potential special partner in life, all at your fingertips!
                                 | But remember, there's more to love than just emojis and midnight texts.
-
                         .col-md-5.col-lg-4.col-xl-3.mx-auto.mt-3
                             h6.text-uppercase.mb-3.font-weight-bold Get In Touch
                             p
@@ -182,3 +177,5 @@ html(lang="en")
                                 strong  @jadonhansen
                             a.text-info.github-link(href='https://gstrauss42')
                                 strong  @gstrauss
+
+    script(src="/js/profile_alterations.js")
