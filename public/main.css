@@ -77,3 +77,130 @@ footer {
         padding-bottom: 2px;
     }
 }
+
+/* User profile page */
+
+.custom-margin-pfp {
+    margin-top: 2rem;
+}
+
+.custom-margin-bio {
+    margin-left: 4rem;
+}
+
+.img-main {
+    height: 180px;
+    width: 180px;
+
+}
+
+.img-prof {
+    height: 100px;
+    width: 100px;
+}
+
+@media only screen and (max-width:  1050px) {
+    .img-main {
+        height: 180px;
+        width: 180px;
+    }
+    .img-prof {
+        height: 100px;
+        width: 100px;
+    }
+}
+
+@media only screen and (max-width:  800px) {
+    .img-main {
+        height: 160px;
+        width: 160px;
+    }
+    .img-prof {
+        height: 100px;
+        width: 100px;
+    }
+    .custom-margin-pfp {
+        margin-top: 1rem;
+    }
+    .custom-margin-bio {
+        margin-left: 3rem;
+    }
+}
+
+@media only screen and (max-width:  510px) {
+    .img-main {
+        height: 140px;
+        width: 140px;
+    }
+    .img-prof {
+        height: 90px;
+        width: 90px;
+    }
+    .custom-text-name {
+        font-size: 22px;
+    }
+    .custom-text-rating {
+        font-size: 15px;
+    }
+    .custom-text-bio {
+        font-size: 15px;
+    }
+    .custom-margin-pfp {
+        margin-top: 0.5rem;
+    }
+    .custom-margin-bio {
+        margin-left: 3rem;
+    }
+}
+
+@media only screen and (max-width:  450px) {
+    .img-main {
+        height: 90px;
+        width: 90px;
+    }
+    .img-prof {
+        height: 60px;
+        width: 60px;
+    }
+    .custom-text-name {
+        font-size: 20px;
+    }
+    .custom-text-rating {
+        font-size: 14px;
+    }
+    .custom-text-bio {
+        font-size: 14px;
+    }
+    .custom-margin-pfp {
+        margin-top: 0rem;
+    }
+    .custom-margin-bio {
+        margin-left: 2rem;
+    }
+}
+
+@media only screen and (max-width:  325px) {
+    .img-main {
+        height: 90px;
+        width: 90px;
+    }
+    .img-prof {
+        height: 55px;
+        width: 55px;
+    }
+    .custom-text-name {
+        font-size: 13px;
+    }
+    .custom-text-rating {
+        font-size: 11px;
+    }
+    .custom-text-bio {
+        font-size: 11px;
+    }
+    .custom-margin-pfp {
+        margin-top: 0rem;
+    }
+    .custom-margin-bio {
+        margin-left: 1rem;
+    }
+}
