@@ -57,7 +57,7 @@ router.post('/create', bodyParser.urlencoded(), function(req, res, next){
                var mailOptions = {
                   // should be replaced with real recipient's account
                   to: req.body.email,
-                  subject: 'words',
+                  subject: 'Email Confirmation',
                   text: 'please follow this link to validate your account localhost:4040/' + safe
                };
 

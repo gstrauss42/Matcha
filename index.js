@@ -153,6 +153,10 @@ app.use('/update_profile', update_profile);
 var test = require('./pages/test.js');
 app.use('/test', test);
 
+// updating email
+var email_update = require('./pages/email_update.js')
+app.use('/check/:var_words', email_update);
+
 // not the webpage youre looking for
 var user_confirm = require('./pages/user_confirm.js')
 app.use('/:var_words', user_confirm);

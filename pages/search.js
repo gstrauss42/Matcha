@@ -8,17 +8,27 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
     Models.user.find(
         {"email" : req.session.name},
         function(err, details){
+            var thegoodgood = '';
+            if(req.body.age)
+                thegoodgood += "{ \"age\" : \"" + req.body.age + "\" },"; 
+            else if(req.body.location)
+                thegoodgood += "{location :" + req.body.location + "},"; 
+            else if(req.body.rating)
+                thegoodgood += "{rating :" + req.body.rating + "},";
+            else
+                thegoodgood = "{ isverified : true },"
+            thegoodgood = thegoodgood.substring(0, thegoodgood.length - 1);
+            console.log(thegoodgood);
             Models.user.find(
-                { $and: [{age: req.body.age},
+                { $and: [thegoodgood,
                     
                     {"gender" : details[0].prefferances},
-                    // {function("location")},
+                    {"prefferances" : details[0].gender},
                     // {function("location")},
                     // {function("fame rating")},
                 ]},
                 function(err, doc){
-                    console.log(details[0].prefferances);
-                    // console.log(doc);
+                    // console.log(doc[0].name);
                     if(doc[0]){
                         res.send(doc);
                     }

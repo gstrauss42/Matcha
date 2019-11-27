@@ -3,6 +3,8 @@ var router = express.Router();
 var Models = require("../models/models");
 const bodyParser = require('body-parser');
 var crypto = require('crypto');
+var randomstring = require("randomstring");
+var nodeMailer = require('nodemailer');
 
 router.get('/', function(req, res){
     res.redirect('/profile');
@@ -59,14 +61,43 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                 console.log("updated password");
         });
     }
-    // if(req.body.email)
-    // {
-    //     Models.user.findOneAndUpdate({ email : req.session.name },
-    //         { "email" : req.body.email }
-    //         , function(err, _update) {
-    //             console.log("updated email");
-    //     });
-    // }
+    if(req.body.email)
+    {
+        Models.user.find({email : req.body.email}, function(err, yes){
+            if(!yes[0])
+            {
+                var safe = crypto.pbkdf2Sync(randomstring.generate(), '100' ,1000, 64, `sha512`).toString(`hex`);
+                console.log(req.body.email);
+                Models.user.findOneAndUpdate({ email : req.session.name },
+                    { $set : {"verif" : safe, "verif_email" : req.body.email}}
+                    , function(err, _update) {
+
+                        console.log("set new verif");
+                });
+
+                let transporter = nodeMailer.createTransport({
+                    host: 'smtp.gmail.com',
+                    port: 465,
+                    secure: true,
+                    auth: {
+                        user: 'ftmatcha@gmail.com',
+                        pass: 'qwerty0308'
+                    }
+                });
+                var mailOptions = {
+                    to: req.body.email,
+                    subject: 'Update Email',
+                    text: 'please follow this link to validate your account localhost:4040/check/' + safe
+                };
+                transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        return console.log(error);
+                    }
+                });
+                console.log("sent mail");
+            }        
+        });
+    }
     res.redirect("/profile");
 
 });

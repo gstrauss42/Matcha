@@ -8,6 +8,7 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
    name: String,
    surname: String,
    email: String,
+   verif_email: String,
    age: String,
    gender: String,
    prefferances: String,
