@@ -1,12 +1,12 @@
 
 window.addEventListener('DOMContentLoaded', (event) => {
 	
-	console.log(document.getElementById("main-profile-img"));
-	
-	// // When a person wants to edit their bio and clicks the gear
-	// document.getElementById("alter-bio").addEventListener("click", function () {
-		// 	//open modal?
-		// });
+	// When a person wants to edit their bio and clicks the gear
+	document.getElementById("alter-bio").addEventListener("mouseover", () => applyOverlay("alter-bio"));
+	document.getElementById("alter-bio").addEventListener("mouseout", () => removeOverlay("alter-bio"));
+	document.getElementById("alter-bio").addEventListener("click", function () {
+		alert('Altering bio in progress');
+	});
 
 	// The following is adding and removing overlays to images as well as upload(click) events
 	document.getElementById("main-profile-img").addEventListener("mouseover", () => applyOverlay("main-profile-img"));

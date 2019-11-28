@@ -11,3 +11,5 @@ Gabriel:
 Jadon:
     - js function when switch is changed for location setting //this woulda confused me a bit if you hadnt put your name there bro XD <-- XDXDXD
     - do chat and notification page
+	- if user has location pref set to off: (currently to always display that its on)
+		input#location.custom-control-input(type="checkbox", name="location")
