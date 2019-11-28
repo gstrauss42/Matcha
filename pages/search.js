@@ -2,42 +2,21 @@ var express = require('express');
 var router = express.Router();
 var Models = require("../models/models");
 const bodyParser = require('body-parser');
+var mongoose = require("mongoose");
+
+var db = mongoose.connection;
+
 
 router.post('/', bodyParser.urlencoded(), function(req, res){
-
-    Models.user.find(
-        {"email" : req.session.name},
-        function(err, details){
-            var thegoodgood = '';
-            if(req.body.age)
-                thegoodgood += "{ \"age\" : \"" + req.body.age + "\" },"; 
-            else if(req.body.location)
-                thegoodgood += "{location :" + req.body.location + "},"; 
-            else if(req.body.rating)
-                thegoodgood += "{rating :" + req.body.rating + "},";
-            else
-                thegoodgood = "{ isverified : true },"
-            thegoodgood = thegoodgood.substring(0, thegoodgood.length - 1);
-            console.log(thegoodgood);
-            Models.user.find(
-                { $and: [thegoodgood,
-                    
-                    {"gender" : details[0].prefferances},
-                    {"prefferances" : details[0].gender},
-                    // {function("location")},
-                    // {function("fame rating")},
-                ]},
-                function(err, doc){
-                    // console.log(doc[0].name);
-                    if(doc[0]){
-                        res.send(doc);
-                    }
-                    else{
-                        res.render('search');
-                    }
-                }
-            )
-        })
+    Models.user.find({email: req.session.name}, function(err, doc)
+    {
+        console.log(doc);
+        Models.user.find({$and: [{gender: doc[0].prefferances}, {prefferances: doc[0].gender}]} , function(err, val){
+            console.log(val);
+        });
+    });
+    res.redirect("/search");
+});
 
 // age : name="age"
 // nearby location : name="location"
@@ -48,10 +27,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
 //  order by (ascending, descending) : name="order"
 // these fall under the displaying options which is the go submit button
 
-    
-
 //    res.render("search");
-});
 
 //export this router to use in our index.js
 module.exports = router;
