@@ -13,6 +13,110 @@ html(lang="en")
         script(src="https://kit.fontawesome.com/17df3da6b8.js", crossorigin="anonymous")
         link(rel="stylesheet", href="main.css")
     body
+        //- modal for bio change
+        #modalBio.modal.fade(tabindex="-1", role="dialog", aria-labelledby="bioModalLabel", aria-hidden="true")
+            .modal-dialog(role="document")
+                .modal-content
+                    .modal-header
+                        h5#bioModalLabel.modal-title Edit your Bio
+                        button.close(type="button", data-dismiss="modal", aria-label="Close")
+                            span(aria-hidden="true") &times;
+                    .modal-body
+                            form(action="bio_change", method="post")
+                                .form-group
+                                    textarea#bio_text.form-control(type="text", name="bio", rows="7")
+                                        | variable output here
+                                        | of their bio
+                                .form-group
+                                button.btn.btn-primary(type="submit", name="bio_save") Save Changes	
+                    .modal-footer
+                        button.btn.btn-secondary(type="button", data-dismiss="modal") Close
+
+        //- modal for main profile image change
+        #modalMain.modal.fade(tabindex="-1", role="dialog", aria-labelledby="mainModalLabel", aria-hidden="true")
+            .modal-dialog(role="document")
+                .modal-content
+                    .modal-header
+                        h5#mainModalLabel.modal-title Edit your Bio
+                        button.close(type="button", data-dismiss="modal", aria-label="Close")
+                            span(aria-hidden="true") &times;
+                    .modal-body
+                            form(action="change_pfp", method="post")
+                                .form-group
+                                    input#main_img(type="file", name="main_img", accept="image/*")
+                                .form-group
+                                button.btn.btn-primary(type="submit", name="main_save") Save Changes	
+                    .modal-footer
+                        button.btn.btn-secondary(type="button", data-dismiss="modal") Close
+
+        //- modal for TWO profile image change
+        #modalTwo.modal.fade(tabindex="-1", role="dialog", aria-labelledby="twoModalLabel", aria-hidden="true")
+            .modal-dialog(role="document")
+                .modal-content
+                    .modal-header
+                        h5#twoModalLabel.modal-title Edit your Bio
+                        button.close(type="button", data-dismiss="modal", aria-label="Close")
+                            span(aria-hidden="true") &times;
+                    .modal-body
+                            form(action="change_pfp", method="post")
+                                .form-group
+                                    input#two_img(type="file", name="two_img", accept="image/*")
+                                .form-group
+                                button.btn.btn-primary(type="submit", name="two_save") Save Changes	
+                    .modal-footer
+                        button.btn.btn-secondary(type="button", data-dismiss="modal") Close
+
+        //- modal for THREE profile image change
+        #modalThree.modal.fade(tabindex="-1", role="dialog", aria-labelledby="threeModalLabel", aria-hidden="true")
+            .modal-dialog(role="document")
+                .modal-content
+                    .modal-header
+                        h5#ThreeModalLabel.modal-title Edit your Bio
+                        button.close(type="button", data-dismiss="modal", aria-label="Close")
+                            span(aria-hidden="true") &times;
+                    .modal-body
+                            form(action="change_pfp", method="post")
+                                .form-group
+                                    input#three_img(type="file", name="three_img")
+                                .form-group
+                                button.btn.btn-primary(type="submit", name="three_save", accept="image/*") Save Changes	
+                    .modal-footer
+                        button.btn.btn-secondary(type="button", data-dismiss="modal") Close
+
+        //- modal for FOUR profile image change
+        #modalFour.modal.fade(tabindex="-1", role="dialog", aria-labelledby="fourModalLabel", aria-hidden="true")
+            .modal-dialog(role="document")
+                .modal-content
+                    .modal-header
+                        h5#fourModalLabel.modal-title Edit your Bio
+                        button.close(type="button", data-dismiss="modal", aria-label="Close")
+                            span(aria-hidden="true") &times;
+                    .modal-body
+                            form(action="change_pfp", method="post")
+                                .form-group
+                                    input#four_img(type="file", name="four_img")
+                                .form-group
+                                button.btn.btn-primary(type="submit", name="four_save", accept="image/*") Save Changes	
+                    .modal-footer
+                        button.btn.btn-secondary(type="button", data-dismiss="modal") Close
+
+        //- modal for FIVE profile image change
+        #modalFive.modal.fade(tabindex="-1", role="dialog", aria-labelledby="fiveModalLabel", aria-hidden="true")
+            .modal-dialog(role="document")
+                .modal-content
+                    .modal-header
+                        h5#fiveModalLabel.modal-title Edit your Bio
+                        button.close(type="button", data-dismiss="modal", aria-label="Close")
+                            span(aria-hidden="true") &times;
+                    .modal-body
+                            form(action="change_pfp", method="post")
+                                .form-group
+                                    input#five_img(type="file", name="five_img", accept="image/*")
+                                .form-group
+                                button.btn.btn-primary(type="submit", name="five_save") Save Changes	
+                    .modal-footer
+                        button.btn.btn-secondary(type="button", data-dismiss="modal") Close
+
         .page-container
             .content-wrap
                 header
@@ -42,25 +146,25 @@ html(lang="en")
                     .container-fluid.mb-5
                         .row.mr-0.ml-0.custom-margin-pfp
                             .col-md-0
-                                img#main-profile-img.rounded-circle.img-main.mt-3(src="bg.jpg", alt="main-profile")
+                                img#main-profile-img.rounded-circle.img-main.mt-3(src="bg.jpg", alt="main-profile", data-toggle="modal", data-target="#modalMain")
                             .col-md-0.mt-4.custom-margin-bio
                                 strong
                                     h3.custom-text-name Jadon Hansen
                                 h6.custom-text-rating Rating
-                                i#alter-bio.fas.fa-cog
+                                i#alter-bio.fas.fa-cog(data-toggle="modal", data-target="#modalBio")
                                 p.custom-text-bio stuff about me
 
                     //- other profile images
                     .container-fluid.mb-5
                         .row.mr-0.ml-0
                             .col-md-0
-                                img#profile-img-two.img-fluid.rounded-circle.img-prof.mr-2(src="pic01.jpg", alt="user_img2")
+                                img#profile-img-two.img-fluid.rounded-circle.img-prof.mr-2(src="pic01.jpg", alt="user_img2", data-toggle="modal", data-target="#modalTwo")
                             .col-md-0
-                                img#profile-img-three.img-fluid.rounded-circle.img-prof.mr-2(src="pic02.jpg", alt="user_img3")
+                                img#profile-img-three.img-fluid.rounded-circle.img-prof.mr-2(src="pic02.jpg", alt="user_img3", data-toggle="modal", data-target="#modalThree")
                             .col-md-0
-                                img#profile-img-four.img-fluid.rounded-circle.img-prof.mr-2(src="pic03.jpg", alt="user_img4")
+                                img#profile-img-four.img-fluid.rounded-circle.img-prof.mr-2(src="pic03.jpg", alt="user_img4", data-toggle="modal", data-target="#modalFour")
                             .col-md-0
-                                img#profile-img-five.img-fluid.rounded-circle.img-prof.mr-2(src="pic04.jpg", alt="user_img5")
+                                img#profile-img-five.img-fluid.rounded-circle.img-prof.mr-2(src="pic04.jpg", alt="user_img5", data-toggle="modal", data-target="#modalFive")
 
                     //- more options, tab view
                     .container-fluid.mb-5
@@ -89,7 +193,7 @@ html(lang="en")
                                                 option(value="Female") Female
                                                 option(value="Bi-Sexual") Bi-Sexual
                                     .form-row.mb-1
-                                        input.btn.btn-dark(type="submit", name="submit_pref", value="Submit Changes")
+                                        input.btn.btn-dark(type="submit", name="submit_pref", value="Save Changes")
 
                             #nav-profile.tab-pane.fade(role='tabpanel' aria-labelledby='nav-profile-tab')
                                 //- modifying details
@@ -110,19 +214,19 @@ html(lang="en")
                                         label.mr-1(for="password") New Password
                                         input#password.pl-1(type="password", name="pass")
                                         small#passwordHelpBlock.form-text.text-muted
-                                            | Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                                            | Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emojis.
                                     .form-group
                                         label.mr-1(for="repeat") Repeat Password
                                         input#repeat.pl-1(type="password", name="repeat_pass")
                                     .form-group
-                                        input.btn.btn-dark(type="submit", name="submit_details", value="Submit Changes")
+                                        input.btn.btn-dark(type="submit", name="submit_details", value="Save Changes")
 
                             #nav-contact.tab-pane.fade(role='tabpanel' aria-labelledby='nav-contact-tab')
                                 //- modify location yes/no
-                                form(action="", method="post")
+                                form(action="location_set", method="post")
                                     .form-group
                                         .custom-control.custom-switch
-                                            input#location.custom-control-input(type="checkbox", name="location", checked)
+                                            input#location.custom-control-input(type="checkbox", name="location", checked, onchange="this.form.submit()")
                                             label.custom-control-label.mt-2(for="location") Use location to match with users
 
                             #nav-info.tab-pane.fade(role='tabpanel' aria-labelledby='nav-info-tab')
