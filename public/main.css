@@ -320,14 +320,25 @@ footer {
     }
 }
 
+/* Chat page */
 
+.chat-box {
+    -moz-box-shadow:    inset 0 0 4px #000000;
+    -webkit-box-shadow: inset 0 0 4px #000000;
+    box-shadow:         inset 0 0 4px #000000;
+    height: 50%;
+    overflow: auto;
+}
 
+.task-box {
+    -moz-box-shadow:    0 2px #000000;
+    -webkit-box-shadow: 0 0 2px #000000;
+    box-shadow:         0 0 2px #000000;
+}
 
-
-
-
-
-
+textarea {
+    overflow: auto;
+}
 
 
 /* Template */

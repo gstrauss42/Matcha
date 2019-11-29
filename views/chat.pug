@@ -37,6 +37,25 @@ html(lang="en")
                                 li.nav-item
                                     a.nav-link(href="/") Home
 
+                //- Chat interface
+                .container
+                    .container-fluid.task-box
+                        p.pt-1.pb-1 Chatting with
+                            a(href="matched_profile")   Name Surname
+                            |...
+                    .container-fluid.chat-box.pt-2.mb-3
+                        //- while messages not at the end
+                        //- if message from friend
+                        p.text-left message
+                        //- else if message from logged in user
+                        p.text-right message
+                    .container-fluid.pl-0.pr-0.mb-3
+                        form(action="post_message", method="post")
+                            .input-group
+                                textarea#message.form-control(name="message_text", rows="2", placeholder="Type a message...")
+                                .input-group-append
+                                    button.btn.btn-secondary(type="submit", name="submit_message") Send
+
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark
                 .container.text-center.text-md-left
