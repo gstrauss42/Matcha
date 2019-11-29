@@ -1,7 +1,6 @@
-
 window.addEventListener('DOMContentLoaded', (event) => {
-	
-	// adding and removing overlays to gear
+
+	// adding and removing overlays to gear (personal profile)
 	document.getElementById("alter-bio").addEventListener("mouseover", () => applyOverlay("alter-bio"));
 	document.getElementById("alter-bio").addEventListener("mouseout", () => removeOverlay("alter-bio"));
 

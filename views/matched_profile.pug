@@ -9,8 +9,27 @@ html(lang="en")
         script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
         link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
         link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
+        script(src="https://kit.fontawesome.com/17df3da6b8.js", crossorigin="anonymous")
         link(rel="stylesheet", href="main.css")
     body
+        //- modal for further options
+        #modalOptions.modal.fade(tabindex="-1", role="dialog", aria-labelledby="OptModalLabel", aria-hidden="true")
+            .modal-dialog(role="document")
+                .modal-content
+                    .modal-header
+                        h5#OptModalLabel.modal-title Further options
+                        button.close(type="button", data-dismiss="modal", aria-label="Close")
+                            span(aria-hidden="true") &times;
+                    .modal-body
+                            form(action="block_action", method="post")
+                                .form-group
+                                    button.btn.btn-primary(type="submit", name="block") Block user
+                            form(action="fake_action", method="post")
+                                .form-group
+                                    button.btn.btn-primary(type="submit", name="fake") Report as fake user	
+                    .modal-footer
+                        button.btn.btn-secondary(type="button", data-dismiss="modal") Close
+
         .page-container.ml-0.mr-0
             .content-wrap
                 header.mb-3
@@ -36,6 +55,25 @@ html(lang="en")
                                     a.nav-link(href="logout") Logout
                                 li.nav-item
                                     a.nav-link(href="/") Home
+
+                //- profile info
+                .container
+                    .container-fluid.mb-3
+                        .row.mr-0.ml-0.custom-margin-pfp
+                            .col-md-0
+                                img#main-profile-img.rounded-circle.img-main.mt-3(src="bg.jpg", alt="main-profile")
+                            .col-md-0.mt-4.custom-margin-bio
+                                strong
+                                    h3.custom-text-name Jadon Hansen
+                                        i#options.fas.fa-cog.ml-1(data-toggle="modal", data-target="#modalOptions")
+                                h6.custom-text-rating Rating
+                                p.custom-text-bio bio about user
+                    .container-fluid
+                        p last seen: 12:00pm / online
+                    .container-fluid
+                        p like button(if liked then option to unlike), status: not connected/connected, chat button
+                    .container-fluid
+                        p 4 remaining images
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark
@@ -65,3 +103,5 @@ html(lang="en")
                                 strong  @jadonhansen
                             a.text-info.github-link(href='https://gstrauss42')
                                 strong  @gstrauss
+
+    script(src="/js/profile_friend.js")
