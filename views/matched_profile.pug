@@ -117,18 +117,18 @@ html(lang="en")
                         .row.mr-0.ml-0.custom-margin-pfp
                             .col-md-0
                                 img#main-profile-img.rounded-circle.img-main.mt-3(src="bg.jpg", alt="main-profile", data-toggle="modal", data-target="#main")
-                            .col-md-0.mt-4.custom-margin-bio
+                            .col-md-0.mt-4.mr-2.custom-margin-bio
                                 strong
                                     h3.custom-text-name Jadon Hansen
                                 h6.custom-text-rating Rating
                                 p.custom-text-bio bio about user
-                            .col-md-1.pt-4
+                            .col-md-0.pt-4.mr-1
                                 //- if not liked before
                                 form(action="like", method="post")
                                     .form-group
-                                        button.btn.btn-primary(type="submit", name="like") Like
+                                        button.btn.btn-primary.btn-resize(type="submit", name="like") Like
                             .col-md-0.pt-4
-                                button#options.btn.btn-primary(data-toggle="modal", data-target="#modalOptions") More
+                                button#options.btn.btn-primary.btn-resize(data-toggle="modal", data-target="#modalOptions") More
 
                             //- else if has liked before
                             //- form(action="unlike", method="post")
@@ -137,7 +137,7 @@ html(lang="en")
 
                     .container-fluid.mb-4
                         //- if offline
-                        small.text-muted.status-off last seen: 14:00pm
+                        small.text-muted.status-off last seen: 12/04/19 14:00pm
                         //- if online
                         //- small.text-muted.status-on online now
 
@@ -150,28 +150,28 @@ html(lang="en")
                         .jumbotron.remove-padd
                             h4.display-4.connect-heading You two are connected!
                             hr.my-4
-                            p Open or start your chat :)
+                            p.connect-paragraph Open or start your chat :)
                             //- must have a specific identifier for each users connected chat
-                            a.btn.btn-primary.btn-log(href="matched_profile/code" role="button") Chat
+                            a.btn.btn-primary.btn-resize(href="chat?k=code" role="button") Chat
 
                     .container-fluid.mb-4
                         .row.ml-0.mr-0
-                            .col-md-3.pl-0.pr-1
+                            .col-sm-3.col-md-3.pl-0.pr-1
                                 img#two.friends-images(src="pic01.jpg", alt="img-two", data-toggle="modal", data-target="#twoMod")
-                            .col-md-3.pl-0.pr-1
+                            .col-sm-3.col-md-3.pl-0.pr-1
                                 img#three.friends-images(src="pic02.jpg", alt="img-three", data-toggle="modal", data-target="#threeMod")
-                            .col-md-3.pl-0.pr-1
+                            .col-sm-3.col-md-3.pl-0.pr-1
                                 img#four.friends-images(src="pic03.jpg", alt="img-four", data-toggle="modal", data-target="#fourMod")
-                            .col-md-3.pl-0.pr-1
+                            .col-sm-3.col-md-3.pl-0.pr-1
                                 img#five.friends-images(src="bg.jpg", alt="img-five", data-toggle="modal", data-target="#fiveMod")
 
                     .container-fluid.mb-4
-                        h5 About Me
-                        p.mb-1.pl-2 Gender:
-                        p.mb-1.pl-2 Looking for:
-                        p.mb-1.pl-2 Age:
-                        p.mb-1.pl-2 Tags:
-                        p.mb-1.pl-2 Location usage: On/Off
+                        h5.about-heading About Me
+                        p.mb-1.pl-2.para-re Gender:
+                        p.mb-1.pl-2.para-re Looking for:
+                        p.mb-1.pl-2.para-re Age:
+                        p.mb-1.pl-2.para-re Tags:
+                        p.mb-1.pl-2.para-re Location usage: On/Off
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark
