@@ -340,6 +340,29 @@ textarea {
     overflow: auto;
 }
 
+@media only screen and (max-width:  510px) {
+    .chat-box {
+        height: 72vh;
+    }
+}
+
+@media only screen and (max-width:  375px) {
+    .chat-box {
+        height: 74vh;
+    }
+}
+
+@media only screen and (max-width:  370px) {
+    .chat-box {
+        height: 68vh;
+    }
+}
+
+@media only screen and (max-width:  325px) {
+    .chat-box {
+        height: 63vh;
+    }
+}
 
 /* Template */
 
