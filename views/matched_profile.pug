@@ -30,6 +30,61 @@ html(lang="en")
                     .modal-footer
                         button.btn.btn-secondary(type="button", data-dismiss="modal") Close
 
+        //- modal for main profile image
+        #main.modal.fade(tabindex="-1", role="dialog", aria-labelledby="mainModalLabel", aria-hidden="true")
+            .modal-dialog(role="document")
+                .modal-content
+                    .modal-header
+                        button.close(type="button", data-dismiss="modal", aria-label="Close")
+                            span(aria-hidden="true") &times;
+                    .modal-body
+                        //- populate their images here
+                        img.modal-image(src="bg.jpg", alt="main-profile")
+
+        //- modal for TWO profile image
+        #twoMod.modal.fade(tabindex="-1", role="dialog", aria-labelledby="twoModalLabel", aria-hidden="true")
+            .modal-dialog(role="document")
+                .modal-content
+                    .modal-header
+                        button.close(type="button", data-dismiss="modal", aria-label="Close")
+                            span(aria-hidden="true") &times;
+                    .modal-body
+                        //- populate their images here
+                        img.modal-image(src="pic01.jpg", alt="main-profile")
+
+        //- modal for THREE profile image
+        #threeMod.modal.fade(tabindex="-1", role="dialog", aria-labelledby="threeModalLabel", aria-hidden="true")
+            .modal-dialog(role="document")
+                .modal-content
+                    .modal-header
+                        button.close(type="button", data-dismiss="modal", aria-label="Close")
+                            span(aria-hidden="true") &times;
+                    .modal-body
+                        //- populate their images here
+                        img.modal-image(src="pic02.jpg", alt="main-profile")
+
+        //- modal for FOUR profile image
+        #fourMod.modal.fade(tabindex="-1", role="dialog", aria-labelledby="fourModalLabel", aria-hidden="true")
+            .modal-dialog(role="document")
+                .modal-content
+                    .modal-header
+                        button.close(type="button", data-dismiss="modal", aria-label="Close")
+                            span(aria-hidden="true") &times;
+                    .modal-body
+                        //- populate their images here
+                        img.modal-image(src="pic03.jpg", alt="main-profile")
+
+        //- modal for FIVE profile image
+        #fiveMod.modal.fade(tabindex="-1", role="dialog", aria-labelledby="fiveModalLabel", aria-hidden="true")
+            .modal-dialog(role="document")
+                .modal-content
+                    .modal-header
+                        button.close(type="button", data-dismiss="modal", aria-label="Close")
+                            span(aria-hidden="true") &times;
+                    .modal-body
+                        //- populate their images here
+                        img.modal-image(src="pic04.jpg", alt="main-profile")
+
         .page-container.ml-0.mr-0
             .content-wrap
                 header.mb-3
@@ -61,19 +116,62 @@ html(lang="en")
                     .container-fluid.mb-3
                         .row.mr-0.ml-0.custom-margin-pfp
                             .col-md-0
-                                img#main-profile-img.rounded-circle.img-main.mt-3(src="bg.jpg", alt="main-profile")
+                                img#main-profile-img.rounded-circle.img-main.mt-3(src="bg.jpg", alt="main-profile", data-toggle="modal", data-target="#main")
                             .col-md-0.mt-4.custom-margin-bio
                                 strong
                                     h3.custom-text-name Jadon Hansen
-                                        i#options.fas.fa-cog.ml-1(data-toggle="modal", data-target="#modalOptions")
                                 h6.custom-text-rating Rating
                                 p.custom-text-bio bio about user
-                    .container-fluid
-                        p last seen: 12:00pm / online
-                    .container-fluid
-                        p like button(if liked then option to unlike), status: not connected/connected, chat button
-                    .container-fluid
-                        p 4 remaining images
+                            .col-md-1.pt-4
+                                //- if not liked before
+                                form(action="like", method="post")
+                                    .form-group
+                                        button.btn.btn-primary(type="submit", name="like") Like
+                            .col-md-0.pt-4
+                                button#options.btn.btn-primary(data-toggle="modal", data-target="#modalOptions") More
+
+                            //- else if has liked before
+                            //- form(action="unlike", method="post")
+                            //-     .form-group
+                            //-         button.btn.btn-primary(type="submit", name="unlike") Unlike
+
+                    .container-fluid.mb-4
+                        //- if offline
+                        small.text-muted.status-off last seen: 14:00pm
+                        //- if online
+                        //- small.text-muted.status-on online now
+
+                    .container-fluid.mb-4
+                        //- if not connected
+                        //- .jumbotron.remove-padd
+                        //-     h4.display-4.connect-heading You two are not connected!
+                        //-     p.lead Like this user and receive a like from them to start a connection.
+                        //- if connected
+                        .jumbotron.remove-padd
+                            h4.display-4.connect-heading You two are connected!
+                            hr.my-4
+                            p Open or start your chat :)
+                            //- must have a specific identifier for each users connected chat
+                            a.btn.btn-primary.btn-log(href="matched_profile/code" role="button") Chat
+
+                    .container-fluid.mb-4
+                        .row.ml-0.mr-0
+                            .col-md-3.pl-0.pr-1
+                                img#two.friends-images(src="pic01.jpg", alt="img-two", data-toggle="modal", data-target="#twoMod")
+                            .col-md-3.pl-0.pr-1
+                                img#three.friends-images(src="pic02.jpg", alt="img-three", data-toggle="modal", data-target="#threeMod")
+                            .col-md-3.pl-0.pr-1
+                                img#four.friends-images(src="pic03.jpg", alt="img-four", data-toggle="modal", data-target="#fourMod")
+                            .col-md-3.pl-0.pr-1
+                                img#five.friends-images(src="bg.jpg", alt="img-five", data-toggle="modal", data-target="#fiveMod")
+
+                    .container-fluid.mb-4
+                        h5 About Me
+                        p.mb-1.pl-2 Gender:
+                        p.mb-1.pl-2 Looking for:
+                        p.mb-1.pl-2 Age:
+                        p.mb-1.pl-2 Tags:
+                        p.mb-1.pl-2 Location usage: On/Off
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark
