@@ -130,12 +130,13 @@ html(lang="en")
                         //- targeted info by button
                         #navbarSuppportedContent.collapse.navbar-collapse
                             ul.navbar-nav.ml-auto
+                                li.nav-item
+                                    a.nav-link(href="notifications")
+                                        i.fas.fa-bell.mt-1
                                 li.nav-item.dropdown
                                     a#navbarDropdown.nav-link.dropdown-toggle(href="#" role="button" data-toggle="dropdown") More
                                     .dropdown-menu(aria-labelledby="navbarDropdown")
                                         a.dropdown-item(href="search") Match Me!
-                                        .dropdown-divider
-                                        a.dropdown-item(href="notifications") Notifications
                                 li.nav-item
                                     a.nav-link(href="logout") Logout
                                 li.nav-item

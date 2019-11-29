@@ -9,6 +9,7 @@ html(lang="en")
         script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
         link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
         link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
+        script(src="https://kit.fontawesome.com/17df3da6b8.js", crossorigin="anonymous")
         link(rel="stylesheet", href="main.css")
     body
         .page-container.ml-0.mr-0
@@ -24,14 +25,15 @@ html(lang="en")
                         //- targeted info by button
                         #navbarSuppportedContent.collapse.navbar-collapse
                             ul.navbar-nav.ml-auto
+                                li.nav-item
+                                    a.nav-link(href="notifications")
+                                        i.fas.fa-bell.mt-1
                                 li.nav-item.dropdown
                                     a#navbarDropdown.nav-link.dropdown-toggle(href="#" role="button" data-toggle="dropdown") More
                                     .dropdown-menu(aria-labelledby="navbarDropdown")
                                         a.dropdown-item(href="profile") Profile
                                         .dropdown-divider
                                         a.dropdown-item(href="search") Match Me!
-                                        .dropdown-divider
-                                        a.dropdown-item(href="notifications") Notifications
                                 li.nav-item
                                     a.nav-link(href="logout") Logout
                                 li.nav-item
@@ -46,9 +48,9 @@ html(lang="en")
                     .container-fluid.chat-box.pt-2.mb-3
                         //- while messages not at the end
                         //- if message from friend
-                        p.text-left message
+                        p#text-receive.text-left message
                         //- else if message from logged in user
-                        p.text-right message
+                        p#text-send.text-right message
                     .container-fluid.pl-0.pr-0.mb-3
                         form(action="post_message", method="post")
                             .input-group

@@ -340,6 +340,25 @@ textarea {
     overflow: auto;
 }
 
+#message {
+    border-left: 5px solid blue;
+}
+
+#text-send {
+    border-right: 4px solid green;
+    padding-right: 3px;
+    border-radius: 3px;
+    /* background-color: lightgrey; */
+    margin-left: 4rem;
+}
+
+#text-receive {
+    border-left: 4px solid orange;
+    padding-left: 3px;
+    border-radius: 3px;
+    /* background-color: lightgrey; */
+}
+
 @media only screen and (max-width:  510px) {
     .chat-box {
         height: 72vh;
