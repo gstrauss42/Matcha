@@ -12,6 +12,14 @@ router.get('/', function(req, res){
 
 router.post('/', bodyParser.urlencoded(), function(req, res){
     
+    if(req.body.bio)
+    {
+        Models.user.findOneAndUpdate({ email : req.session.name },
+            { "bio" : req.body.bio }
+            , function(err, _update) {
+                console.log("updated bio");
+        });
+    }
     if(req.body.name)
     {
         Models.user.findOneAndUpdate({ email : req.session.name },
@@ -98,7 +106,10 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
             }        
         });
     }
-    res.redirect("/profile");
+    // porifle doc passed for rendering
+    Models.user.findOne({email : req.session.name}, function(err, ret){
+        res.render(('profile'), {profile: ret});
+    });
 
 });
  

@@ -146,6 +146,9 @@ app.use('/logout', logout);
 var update_profile = require('./pages/update_profile.js');
 app.use('/update_profile', update_profile);
 
+// bio_update
+var bio_update = require('./pages/bio_update.js');
+app.use('/bio_change', bio_update);
 
 
 

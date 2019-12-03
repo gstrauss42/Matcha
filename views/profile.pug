@@ -22,7 +22,7 @@ html(lang="en")
                         button.close(type="button", data-dismiss="modal", aria-label="Close")
                             span(aria-hidden="true") &times;
                     .modal-body
-                            form(action="bio_change", method="post")
+                            form(action="update_profile", method="post")
                                 .form-group
                                     textarea#bio_text.form-control(type="text", name="bio", rows="7")
                                         | variable output here

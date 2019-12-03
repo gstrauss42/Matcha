@@ -6,6 +6,7 @@ var db = mongoose.connection;
 
 var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
    name: String,
+   bio: String,
    surname: String,
    email: String,
    verif_email: String,
@@ -19,7 +20,10 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
    isverified: { type: Boolean, default: false},
    tags: [{
       type: String
-  }]
+   }],
+   likes: [{
+      type: String
+   }]
 });
 
 var holderSchema = new mongoose.Schema({
