@@ -10,15 +10,7 @@ router.get('/:var_words', function(req, res){
    // });
    Models.user.findOne({"email":req.session.name}, function(err, doc){
       console.log(doc);
-      var name = doc.name;
-      var rating = doc.rating;
-      var gender = doc.gender;
-      var prefferances = doc.prefferances;
-      var age = doc.age;
-      var tag = doc.tags;
-      var location = doc.location;
-      var bio = doc.bio;
-      res.render("matched_profile", name, rating, gender, prefferances, age, tags, location, bio);
+      res.render("matched_profile", {name : doc.name, rating: doc.rating, gender: doc.gender, prefferances: doc.prefferances, age: doc.age, tags: doc.tags, location: doc.location, bio: doc.bio});
    })
    // Models.user.findOne({id : check})
 });
