@@ -8,7 +8,9 @@ router.get('/:var_words', function(req, res){
    // Models.user.findOne({"id" : ret}, function(err, val){
       // res.render("matched_profile" + val); //for the final one
    // });
-   res.render("matched_profile");
+   Models.user.findOne({"email":req.session.name}, function(err, doc){
+      res.render("matched_profile" + doc);
+   })
    // Models.user.findOne({id : check})
 });
 
@@ -24,7 +26,7 @@ router.post('/matched_profile/:var_words', bodyParser.urlencoded(), function(req
          Models.user.findOneAndUpdate({email : req.session.name}, {likes : req.body.like}, function(err, ret){
             console.log("liked user");
          });
-         render("matched_profile" + url + doc);
+         res.render("matched_profile" + url + doc);
       }
       // get the back end for these next 2 working
       else if(req.body.fake == '')
