@@ -24,7 +24,8 @@ router.post('/matched_profile/:var_words', bodyParser.urlencoded(), function(req
          Models.user.findOneAndUpdate({email : req.session.name}, {likes : req.body.like}, function(err, ret){
             console.log("liked user");
          });
-         redirect("matched_profile" + url + doc);
+         console.log(doc);
+         res.render("matched_profile" + url + doc);
       }
       // get the back end for these next 2 working
       else if(req.body.fake == '')

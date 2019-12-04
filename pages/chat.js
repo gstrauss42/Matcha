@@ -8,5 +8,11 @@ router.post('/', function(req, res){
    res.send('POST route on Chat');
 });
 
+// io.on('connection', function(socket){
+//    socket.on('chat message', function(msg){
+//      io.emit('chat message', msg);
+//    });
+//  });
+
 //export this router to use in our index.js
 module.exports = router;
