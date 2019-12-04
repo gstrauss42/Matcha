@@ -2,11 +2,13 @@ ummm
 work...
 
 Gabriel:
+    - fix passing of info to jadon
     - start using .env
     - add the rest of the search variables
     - make fields secure
     - handle errors
     - figure out how to get which user's page your on
+    - add picture saving to the DB
 
 Jadon:
     - js function when switch is changed for location setting //this woulda confused me a bit if you hadnt put your name there bro XD <-- XDXDXD
