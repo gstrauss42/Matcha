@@ -12,29 +12,33 @@ router.get('/:var_words', function(req, res){
    // Models.user.findOne({id : check})
 });
 
-router.post('/:var_words', bodyParser.urlencoded(), function(req, res){
+router.post('/matched_profile/:var_words', bodyParser.urlencoded(), function(req, res){
+   var url = req.originalUrl.substring(17);
+   res.redirect('~/matched_profile/' + url);
+   console.log(url);
+   console.log(req.body);
    if(req.body.like == '')
    {
+      console.log(req.originalUrl);
       Models.user.findOneAndUpdate({email : req.session.name}, {likes : req.body.like}, function(err, ret){
-         var url = req.originalUrl.substring(17); 
-         res.redirect('/matched_profile/' + url);
          console.log("liked user");
       });
+      redirect("matched_profile" + url);
    }
    // get the back end for these next 2 working
    else if(req.body.fake == '')
    {
-      res.redirect("matched_profile");
+      res.redirect("matched_profile" + url);
       console.log("reported fake user");
    }
    else if(req.body.block == '')
    {
-      res.redirect("matched_profile");
+      res.redirect("matched_profile/" + url);
       console.log("blocked user");
    }
    else
    {
-      res.redirect("matched_profile");
+      res.redirect("/matched_profile/" + url);
       console.log(req.body);
    }
 });

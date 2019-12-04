@@ -29,6 +29,8 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                     if(search.location != req.body.location)
                         val.splice(index, 1);
                 }
+                // explicit tags
+                // ...
             }});
             console.log(val);
             res.render(('search'), {matches: val});
