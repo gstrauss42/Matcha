@@ -76,10 +76,6 @@ app.get("/matched_profile", (req,res) => {
 app.get("/notifications", (req,res) => {
   res.render("notifications");
 })
-// profile
-app.get("/profile", (req,res) => {
-  res.render("profile");
-})
 // search
 app.get("/search", (req,res) => {
   res.render("search");
