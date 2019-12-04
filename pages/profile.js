@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Model = require("../models/models");
+var Models = require("../models/models");
 const bodyParser = require('body-parser');
 
 router.get('/', function(req, res){
@@ -11,7 +11,7 @@ router.get('/', function(req, res){
 });
 
 router.post('/', bodyParser.urlencoded(), function(req, res){
-   var user = new Model.user ({
+   var user = new Models.user ({
       name: req.session.name,
       tag: req.body.tag
    });
