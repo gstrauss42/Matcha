@@ -9,7 +9,8 @@ router.get('/:var_words', function(req, res){
       // res.render("matched_profile" + val); //for the final one
    // });
    Models.user.findOne({"email":req.session.name}, function(err, doc){
-      res.render("matched_profile" + doc);
+      console.log(doc);
+      res.render("matched_profile", doc.name);
    })
    // Models.user.findOne({id : check})
 });
