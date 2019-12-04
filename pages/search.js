@@ -33,7 +33,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                 // ...
             }});
             console.log(val);
-            res.redirect('profile');
+            res.render(('search'), {matches: val});
         });
     });
 });
