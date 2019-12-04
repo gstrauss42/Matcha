@@ -24,9 +24,8 @@ html(lang="en")
                     .modal-body
                             form(action="update_profile", method="post")
                                 .form-group
-                                    textarea#bio_text.form-control(type="text", name="bio", rows="7")
-                                        | variable output here
-                                        | of their bio
+                                    if bio
+                                        textarea#bio_text.form-control(type="text", name="bio", rows="7")= bio
                                 .form-group
                                     button.btn.btn-primary(type="submit", name="bio_save") Save Changes	
                     .modal-footer
@@ -150,10 +149,13 @@ html(lang="en")
                                 img#main-profile-img.rounded-circle.img-main.mt-3(src="bg.jpg", alt="main-profile", data-toggle="modal", data-target="#modalMain")
                             .col-md-0.mt-4.custom-margin-bio
                                 strong
-                                    h3.custom-text-name Jadon Hansen
-                                h6.custom-text-rating Rating
+                                    h3.custom-text-name= name + " " + surname
+                                h6.custom-text-rating= "Rating " + rating 
                                 i#alter-bio.fas.fa-cog(data-toggle="modal", data-target="#modalBio")
-                                p.custom-text-bio stuff about me
+                                if bio
+                                    p.custom-text-bio= bio
+                                else
+                                    p.custom-text-bio Create a bio by clicking on the gear icon
 
                     //- other profile images
                     .container-fluid.mb-5
@@ -232,12 +234,15 @@ html(lang="en")
 
                             #nav-info.tab-pane.fade(role='tabpanel' aria-labelledby='nav-info-tab')
                                 //- current info
-                                p.mt-2 Name and surname:
-                                p Age:
-                                p Email:
-                                p Gender:
-                                p Preference:
-                                p Location usage:
+                                p.mt-2= "Name and surname: " + name + " " + surname
+                                p= "Age: " + age
+                                p= "Email: " + email
+                                p= "Gender: " + gender
+                                p= "Preference: " + prefferance
+                                if location
+                                    p Location usage: Yes
+                                else
+                                    p Location usage: No
 
                     //- add interest tags
                     .container-fluid.mb-5

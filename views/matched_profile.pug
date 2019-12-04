@@ -120,7 +120,7 @@ html(lang="en")
                                 img#main-profile-img.rounded-circle.img-main.mt-3(src="bg.jpg", alt="main-profile", data-toggle="modal", data-target="#main")
                             .col-md-0.mt-4.mr-2.custom-margin-bio
                                 strong
-                                    h3.custom-text-name= name
+                                    h3.custom-text-name= name + " " + surname
                                 h6.custom-text-rating= 'Rating ' + rating
                                 p.custom-text-bio= bio
                             .col-md-0.pt-4.mr-1
@@ -171,9 +171,13 @@ html(lang="en")
                         p.mb-1.pl-2.para-re= 'Gender: ' + gender
                         p.mb-1.pl-2.para-re= 'Looking for: ' + prefferances
                         p.mb-1.pl-2.para-re= 'Age: ' + age
-                        p.mb-1.pl-2.para-re= 'Tags: ' + tags
-                    if location == '1'
-                        p.mb-1.pl-2.para-re= 'Location usage: ' + location
+                        p.mb-1.pl-2.para-re.d-inline= "Tags: "
+                        for gold in tags
+                            p.d-inline= '#' + gold + " "
+                        if location
+                            p.mb-1.pl-2.para-re Location usage: Yes
+                        else
+                            p.mb-1.pl-2.para-re Location usage: No
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark
