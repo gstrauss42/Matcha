@@ -15,7 +15,7 @@ router.get('/:var_words', function(req, res){
       var gender = doc.gender;
       var prefferances = doc.prefferances;
       var age = doc.age;
-      var tag = doc.tags;
+      var tags = doc.tags;
       var location = doc.location;
       var bio = doc.bio;
       res.render("matched_profile", name, rating, gender, prefferances, age, tags, location, bio);
