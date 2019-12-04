@@ -120,9 +120,9 @@ html(lang="en")
                                 img#main-profile-img.rounded-circle.img-main.mt-3(src="bg.jpg", alt="main-profile", data-toggle="modal", data-target="#main")
                             .col-md-0.mt-4.mr-2.custom-margin-bio
                                 strong
-                                    h3.custom-text-name Jadon Hansen
-                                h6.custom-text-rating Rating
-                                p.custom-text-bio bio about user
+                                    h3.custom-text-name= name
+                                h6.custom-text-rating= 'Rating ' + rating
+                                p.custom-text-bio= bio
                             .col-md-0.pt-4.mr-1
                                 //- if not liked before
                                 form(action="matched_profile", method="post")
@@ -138,7 +138,7 @@ html(lang="en")
 
                     .container-fluid.mb-4
                         //- if offline
-                        small.text-muted.status-off last seen: 12/04/19 14:00pm
+                        small.text-muted.status-off= 'last seen: ' + last_seen
                         //- if online
                         //- small.text-muted.status-on online now
 
@@ -168,11 +168,11 @@ html(lang="en")
 
                     .container-fluid.mb-4
                         h5.about-heading About Me
-                        p.mb-1.pl-2.para-re Gender:
-                        p.mb-1.pl-2.para-re Looking for:
-                        p.mb-1.pl-2.para-re Age:
-                        p.mb-1.pl-2.para-re Tags:
-                        p.mb-1.pl-2.para-re Location usage: On/Off
+                        p.mb-1.pl-2.para-re= 'Gender: ' + gender
+                        p.mb-1.pl-2.para-re= 'Looking for: ' + prefferances
+                        p.mb-1.pl-2.para-re= 'Age: ' + age
+                        p.mb-1.pl-2.para-re= 'Tags: ' + tags
+                        p.mb-1.pl-2.para-re= 'Location usage: ' + location
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark
