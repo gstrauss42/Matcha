@@ -121,8 +121,8 @@ html(lang="en")
                             .col-md-0.mt-4.mr-2.custom-margin-bio
                                 strong
                                     h3.custom-text-name= name
-                                h6.custom-text-rating= 'Rating ' + doc.rating
-                                p.custom-text-bio= doc.bio
+                                h6.custom-text-rating= 'Rating ' + rating
+                                p.custom-text-bio= bio
                             .col-md-0.pt-4.mr-1
                                 //- if not liked before
                                 form(action="matched_profile", method="post")
@@ -138,7 +138,7 @@ html(lang="en")
 
                     .container-fluid.mb-4
                         //- if offline
-                        small.text-muted.status-off= 'last seen: ' + doc.last_seen
+                        small.text-muted.status-off= 'last seen: ' + last_seen
                         //- if online
                         //- small.text-muted.status-on online now
 
@@ -168,11 +168,11 @@ html(lang="en")
 
                     .container-fluid.mb-4
                         h5.about-heading About Me
-                        p.mb-1.pl-2.para-re= 'Gender: ' + doc.gender
-                        p.mb-1.pl-2.para-re= 'Looking for: ' + doc.prefferances
-                        p.mb-1.pl-2.para-re= 'Age: ' + doc.age
-                        p.mb-1.pl-2.para-re= 'Tags: ' + doc.tags
-                        p.mb-1.pl-2.para-re= 'Location usage: ' + doc.location
+                        p.mb-1.pl-2.para-re= 'Gender: ' + gender
+                        p.mb-1.pl-2.para-re= 'Looking for: ' + prefferances
+                        p.mb-1.pl-2.para-re= 'Age: ' + age
+                        p.mb-1.pl-2.para-re= 'Tags: ' + tags
+                        p.mb-1.pl-2.para-re= 'Location usage: ' + location
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark
