@@ -8,13 +8,16 @@ router.get('/:var_words', function(req, res){
    // Models.user.findOne({"id" : ret}, function(err, val){
       // res.render("matched_profile" + val); //for the final one
    // });
-   res.render("matched_profile");
+   Models.user.findOne({"email":req.session.name}, function(err, doc){
+      console.log(doc);
+      res.render("matched_profile", doc.name);
+   })
    // Models.user.findOne({id : check})
 });
 
 router.post('/matched_profile/:var_words', bodyParser.urlencoded(), function(req, res){
    var url = req.originalUrl.substring(17);
-   res.redirect('~/matched_profile/' + url);
+   // res.redirect('~/matched_profile/' + url);
    console.log(url);
    console.log(req.body);
    Models.user.findOne({"email": req.session.name}, function(err, doc){
@@ -24,7 +27,10 @@ router.post('/matched_profile/:var_words', bodyParser.urlencoded(), function(req
          Models.user.findOneAndUpdate({email : req.session.name}, {likes : req.body.like}, function(err, ret){
             console.log("liked user");
          });
+<<<<<<< HEAD
          console.log(doc);
+=======
+>>>>>>> 2ea1d6587921f1645691f1736c726d89e9054317
          res.render("matched_profile" + url + doc);
       }
       // get the back end for these next 2 working
