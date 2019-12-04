@@ -108,7 +108,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
     }
     // porifle doc passed for rendering
     Models.user.findOne({email : req.session.name}, function(err, ret){
-        res.render(('profile'), {profile: ret});
+        res.render(('profile'));
     });
 
 });
