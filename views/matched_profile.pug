@@ -21,10 +21,10 @@ html(lang="en")
                         button.close(type="button", data-dismiss="modal", aria-label="Close")
                             span(aria-hidden="true") &times;
                     .modal-body
-                            form(action="block_action", method="post")
+                            form(action="matched_profile", method="post")
                                 .form-group
                                     button.btn.btn-primary(type="submit", name="block") Block user
-                            form(action="fake_action", method="post")
+                            form(action="matched_profile", method="post")
                                 .form-group
                                     button.btn.btn-primary(type="submit", name="fake") Report as fake user	
                     .modal-footer
@@ -125,7 +125,7 @@ html(lang="en")
                                 p.custom-text-bio= bio
                             .col-md-0.pt-4.mr-1
                                 //- if not liked before
-                                form(action="like", method="post")
+                                form(action="matched_profile", method="post")
                                     .form-group
                                         button.btn.btn-primary.btn-resize(type="submit", name="like") Like
                             .col-md-0.pt-4

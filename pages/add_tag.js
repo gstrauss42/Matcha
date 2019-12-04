@@ -20,8 +20,8 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
         { $push : { tags: req.body.tag}}
         , function(err, _update) {
             res.redirect('/profile');
+            console.log("added tag");
       });
-       
 //    res.redirect('profile');
     // res.send(req.body.tag)
 });
