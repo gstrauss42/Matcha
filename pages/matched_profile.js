@@ -17,30 +17,32 @@ router.post('/matched_profile/:var_words', bodyParser.urlencoded(), function(req
    res.redirect('~/matched_profile/' + url);
    console.log(url);
    console.log(req.body);
-   if(req.body.like == '')
-   {
-      console.log(req.originalUrl);
-      Models.user.findOneAndUpdate({email : req.session.name}, {likes : req.body.like}, function(err, ret){
-         console.log("liked user");
-      });
-      redirect("matched_profile" + url);
-   }
-   // get the back end for these next 2 working
-   else if(req.body.fake == '')
-   {
-      res.redirect("matched_profile" + url);
-      console.log("reported fake user");
-   }
-   else if(req.body.block == '')
-   {
-      res.redirect("matched_profile/" + url);
-      console.log("blocked user");
-   }
-   else
-   {
-      res.redirect("/matched_profile/" + url);
-      console.log(req.body);
-   }
+   Models.user.findOne({"email": req.session.name}, function(err, doc){
+      if(req.body.like == '')
+      {
+         console.log(req.originalUrl);
+         Models.user.findOneAndUpdate({email : req.session.name}, {likes : req.body.like}, function(err, ret){
+            console.log("liked user");
+         });
+         redirect("matched_profile" + url + doc);
+      }
+      // get the back end for these next 2 working
+      else if(req.body.fake == '')
+      {
+         res.redirect("matched_profile" + url);
+         console.log("reported fake user");
+      }
+      else if(req.body.block == '')
+      {
+         res.redirect("matched_profile/" + url);
+         console.log("blocked user");
+      }
+      else
+      {
+         res.redirect("/matched_profile/" + url);
+         console.log(req.body);
+      }
+   });
 });
 
 //export this router to use in our index.js
