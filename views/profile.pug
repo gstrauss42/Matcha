@@ -26,6 +26,8 @@ html(lang="en")
                                 .form-group
                                     if bio
                                         textarea#bio_text.form-control(type="text", name="bio", rows="7")= bio
+                                    else
+                                        textarea#bio_text.form-control(type="text", name="bio", rows="7")
                                 .form-group
                                     button.btn.btn-primary(type="submit", name="bio_save") Save Changes	
                     .modal-footer
@@ -238,7 +240,7 @@ html(lang="en")
                                 p= "Age: " + age
                                 p= "Email: " + email
                                 p= "Gender: " + gender
-                                p= "Preference: " + prefferance
+                                p= "Preference: " + prefferances
                                 if location
                                     p Location usage: Yes
                                 else
