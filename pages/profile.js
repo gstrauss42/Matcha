@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 router.get('/', function(req, res){
    Models.user.findOne({"email":req.session.name}, function(err, doc){
       console.log(doc);
-      res.render("matched_profile", {name : doc.name, surname:doc.surname ,rating: doc.rating, gender: doc.gender, prefferances: doc.prefferances, age: doc.age, tags: doc.tags, location: doc.location, bio: doc.bio});
+      res.render("profile", {name : doc.name, surname:doc.surname ,rating: doc.rating, gender: doc.gender, prefferances: doc.prefferances, age: doc.age, tags: doc.tags, location: doc.location, bio: doc.bio});
    })
 });
 
