@@ -26,6 +26,8 @@ html(lang="en")
                                 .form-group
                                     if bio
                                         textarea#bio_text.form-control(type="text", name="bio", rows="7")= bio
+                                    else
+                                        textarea#bio_text.form-control(type="text", name="bio", rows="7")
                                 .form-group
                                     button.btn.btn-primary(type="submit", name="bio_save") Save Changes	
                     .modal-footer
