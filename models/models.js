@@ -22,8 +22,17 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
       type: String
    }],
    likes: [{
-      type: String
-   }]
+      email: String
+   }],
+   location_status: String,
+   
+   images: [{
+      image0: { data: Buffer, contentType: String },
+      image1: { data: Buffer, contentType: String },
+      image2: { data: Buffer, contentType: String },
+      image3: { data: Buffer, contentType: String },
+      image4: { data: Buffer, contentType: String }
+   }],
 });
 
 var holderSchema = new mongoose.Schema({

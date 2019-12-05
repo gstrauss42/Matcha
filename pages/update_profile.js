@@ -6,12 +6,30 @@ var crypto = require('crypto');
 var randomstring = require("randomstring");
 var nodeMailer = require('nodemailer');
 
-router.get('/', function(req, res){
-    res.redirect('/profile');
-});
-
 router.post('/', bodyParser.urlencoded(), function(req, res){
-    
+    console.log(req.body);
+    if(req.body.image1)
+    {
+        Models.user.findOneAndUpdate({ email : req.session.name },
+            { "images.image1" : req.body.image1 }
+            , function(err, _update) {
+                console.log("updated image1");
+        });
+    }
+    if(req.body.location_status)
+    {
+        Models.user.findOneAndUpdate({email: req.session.name},
+            {"location_status": req.body.location_status},
+            // needs the passing of the correct path
+            function(err, doc){
+                doc.images.data = fs.readFileSync(imgPath);
+                doc.images.contentType = 'image/png';
+                doc.save(function(err, info){
+                    console.log(info);
+                });
+                console.log("updated  location status");
+        });
+    }
     if(req.body.bio)
     {
         Models.user.findOneAndUpdate({ email : req.session.name },
@@ -110,7 +128,6 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
     Models.user.findOne({email : req.session.name}, function(err, ret){
         res.redirect(('profile'));
     });
-
 });
  
 //export this router to use in our index.js

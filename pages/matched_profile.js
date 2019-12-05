@@ -3,47 +3,49 @@ var router = express.Router();
 var Models = require("../models/models");
 const bodyParser = require('body-parser');
 
-router.get('/:var_words', function(req, res){
-   var ret = req.originalUrl.substring(17);
-   // Models.user.findOne({"id" : ret}, function(err, val){
-      // res.render("matched_profile" + val); //for the final one
-   // });
-   Models.user.findOne({"email":req.session.name}, function(err, doc){
-      console.log(doc);
-      res.render("matched_profile", {name : doc.name, surname:doc.surname ,rating: doc.rating, gender: doc.gender, prefferances: doc.prefferances, age: doc.age, tags: doc.tags, location: doc.location, bio: doc.bio});
-   })
-   // Models.user.findOne({id : check})
+router.get('/', function(req, res){
+   // make the identified a hidden input field rather than a url for routing   
+   // get this info dynamically
+   Models.user.findOne({"_id" : "5dde122fded99722842e234b"}, function(err, doc){
+      res.render("matched_profile", {name : doc.name,
+                                    surname:doc.surname,
+                                    rating: doc.rating,
+                                    gender: doc.gender,
+                                    prefferances: doc.prefferances,
+                                    age: doc.age,
+                                    tags: doc.tags,
+                                    location: doc.location,
+                                    bio: doc.bio});
+   });
 });
 
-router.post('/matched_profile/:var_words', bodyParser.urlencoded(), function(req, res){
-   var url = req.originalUrl.substring(17);
-   // res.redirect('~/matched_profile/' + url);
-   console.log(url);
+router.post('/', bodyParser.urlencoded(), function(req, res){
    console.log(req.body);
    Models.user.findOne({"email": req.session.name}, function(err, doc){
+      // decide how you want to configure liking
       if(req.body.like == '')
       {
-         console.log(req.originalUrl);
-         Models.user.findOneAndUpdate({email : req.session.name}, {likes : req.body.like}, function(err, ret){
+         // use hidden input form to find user page and perform updates to db
+         Models.user.findOneAndUpdate({email : req.session.name}, {"likes.email" : req.body.like}, function(err, ret){
             console.log("liked user");
          });
-         res.render("matched_profile" + url + doc);
+         res.redirect("matched_profile");
       }
       // get the back end for these next 2 working
       else if(req.body.fake == '')
       {
-         res.redirect("matched_profile" + url);
+         res.redirect("matched_profile");
          console.log("reported fake user");
       }
       else if(req.body.block == '')
       {
-         res.redirect("matched_profile/" + url);
+         res.redirect("matched_profile");
          console.log("blocked user");
       }
       else
       {
-         res.redirect("/matched_profile/" + url);
-         console.log(req.body);
+         res.redirect("/matched_profile");
+         console.log("how you do dis");
       }
    });
 });

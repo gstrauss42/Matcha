@@ -68,10 +68,6 @@ app.get("/forgot_password", (req,res) => {
 app.get("/login", (req,res) => {
   res.render("login");
 })
-// matched_profile
-app.get("/matched_profile", (req,res) => {
-  res.render("matched_profile");
-})
 // notifications
 app.get("/notifications", (req,res) => {
   res.render("notifications");
@@ -157,8 +153,10 @@ var email_update = require('./pages/email_update.js')
 app.use('/check/:var_words', email_update);
 
 // not the webpage youre looking for
-var user_confirm = require('./pages/user_confirm.js')
-app.use('/:var_words', user_confirm);
+// var user_confirm = require('./pages/user_confirm.js')
+// app.use('/:var_words', user_confirm);
+
+
 // app.get('/:var_words', function(req, res){
 //    res.send('these are not the ' + req.params.var_words + '\'s you are looking for');
 // });

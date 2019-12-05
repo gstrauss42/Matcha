@@ -42,9 +42,9 @@ html(lang="en")
                         button.close(type="button", data-dismiss="modal", aria-label="Close")
                             span(aria-hidden="true") &times;
                     .modal-body
-                            form(action="change_pfp", method="post")
+                            form(action="update_profile", method="post")
                                 .form-group
-                                    input#main_img(type="file", name="main_img", accept="image/*")
+                                    input#main_img(type="file", name="image0", accept="image/*")
                                 .form-group
                                     button.btn.btn-primary(type="submit", name="main_save") Save Changes	
                     .modal-footer
@@ -59,9 +59,9 @@ html(lang="en")
                         button.close(type="button", data-dismiss="modal", aria-label="Close")
                             span(aria-hidden="true") &times;
                     .modal-body
-                            form(action="change_pfp", method="post")
+                            form(action="update_profile", method="post")
                                 .form-group
-                                    input#two_img(type="file", name="two_img", accept="image/*")
+                                    input#two_img(type="file", name="image1", accept="image/*")
                                 .form-group
                                     button.btn.btn-primary(type="submit", name="two_save") Save Changes	
                     .modal-footer
@@ -76,9 +76,9 @@ html(lang="en")
                         button.close(type="button", data-dismiss="modal", aria-label="Close")
                             span(aria-hidden="true") &times;
                     .modal-body
-                            form(action="change_pfp", method="post")
+                            form(action="update_profile", method="post")
                                 .form-group
-                                    input#three_img(type="file", name="three_img")
+                                    input#three_img(type="file", name="image2")
                                 .form-group
                                     button.btn.btn-primary(type="submit", name="three_save", accept="image/*") Save Changes	
                     .modal-footer
@@ -93,9 +93,9 @@ html(lang="en")
                         button.close(type="button", data-dismiss="modal", aria-label="Close")
                             span(aria-hidden="true") &times;
                     .modal-body
-                            form(action="change_pfp", method="post")
+                            form(action="update_profile", method="post")
                                 .form-group
-                                    input#four_img(type="file", name="four_img")
+                                    input#four_img(type="file", name="image3")
                                 .form-group
                                     button.btn.btn-primary(type="submit", name="four_save", accept="image/*") Save Changes	
                     .modal-footer
@@ -110,9 +110,9 @@ html(lang="en")
                         button.close(type="button", data-dismiss="modal", aria-label="Close")
                             span(aria-hidden="true") &times;
                     .modal-body
-                            form(action="change_pfp", method="post")
+                            form(action="update_profile", method="post")
                                 .form-group
-                                    input#five_img(type="file", name="five_img", accept="image/*")
+                                    input#five_img(type="file", name="image4", accept="image/*")
                                 .form-group
                                     button.btn.btn-primary(type="submit", name="five_save") Save Changes	
                     .modal-footer
@@ -228,10 +228,10 @@ html(lang="en")
 
                             #nav-contact.tab-pane.fade(role='tabpanel' aria-labelledby='nav-contact-tab')
                                 //- modify location yes/no
-                                form(action="location_set", method="post")
+                                form(action="update_profile", method="post")
                                     .form-group
                                         .custom-control.custom-switch
-                                            input#location.custom-control-input(type="checkbox", name="location", checked, onchange="this.form.submit()")
+                                            input#location.custom-control-input(type="checkbox", name="location_status", checked, onchange="this.form.submit()")
                                             label.custom-control-label.mt-2(for="location") Use location to match with users
 
                             #nav-info.tab-pane.fade(role='tabpanel' aria-labelledby='nav-info-tab')
