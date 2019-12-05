@@ -149,7 +149,7 @@ html(lang="en")
                                 if main
                                     img#main-profile-img.rounded-circle.img-main.mt-3(src= main, alt="main-profile", data-toggle="modal", data-target="#modalMain")
                                 else
-                                    img#main-profile-img.rounded-circle.img-main.mt-3(src="temp.png", alt="main-profile", data-toggle="modal", data-target="#modalMain")
+                                    img#main-profile-img.rounded-circle.img-main.mt-3(src="user.jpg", alt="main-profile", data-toggle="modal", data-target="#modalMain")
                             .col-md-0.mt-4.custom-margin-bio
                                 strong
                                     h3.custom-text-name= name + " " + surname
@@ -169,17 +169,17 @@ html(lang="en")
                                 else
                                     img#profile-img-two.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img2", data-toggle="modal", data-target="#modalTwo")
                             .col-md-0
-                                if three
+                                if two && three
                                     img#profile-img-three.img-fluid.rounded-circle.img-prof.mr-2(src= three, alt="user_img3", data-toggle="modal", data-target="#modalThree")
                                 else
                                     img#profile-img-three.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img3", data-toggle="modal", data-target="#modalThree")
                             .col-md-0
-                                if four
+                                if two && three && four
                                     img#profile-img-four.img-fluid.rounded-circle.img-prof.mr-2(src= four, alt="user_img4", data-toggle="modal", data-target="#modalFour")
                                 else
                                     img#profile-img-four.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img4", data-toggle="modal", data-target="#modalFour")
                             .col-md-0
-                                if five
+                                if two && three && four && five
                                     img#profile-img-five.img-fluid.rounded-circle.img-prof.mr-2(src= five, alt="user_img5", data-toggle="modal", data-target="#modalFive")
                                 else
                                     img#profile-img-five.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img5", data-toggle="modal", data-target="#modalFive")
@@ -272,7 +272,12 @@ html(lang="en")
                                         input#inlineFormInputGroup.form-control(type="text", name="tag", placeholder="interest tag" required)
                                 .col-auto
                                         button.btn.btn-primary.mb-2(type="submit") Add tag
-                        p Current tags: You have no tags related to your profile.
+                        if tags
+                            p.d-inline= "Current tags: "
+                            for gold in tags
+                                p.d-inline= '#' + gold + " "
+                        else
+                            p Current tags: You have no tags related to your profile.
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark
