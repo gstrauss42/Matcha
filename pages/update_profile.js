@@ -5,16 +5,19 @@ const bodyParser = require('body-parser');
 var crypto = require('crypto');
 var randomstring = require("randomstring");
 var nodeMailer = require('nodemailer');
+var multer = require('multer');
 
 router.post('/', bodyParser.urlencoded(), function(req, res){
     console.log(req.body);
     if(req.body.image1)
     {
-        Models.user.findOneAndUpdate({ email : req.session.name },
-            { "images.image1" : req.body.image1 }
-            , function(err, _update) {
-                console.log("updated image1");
-        });
+        const encoded = req.body.image1.toString('base64')
+        console.log(encoded)
+        // Models.user.findOneAndUpdate({ email : req.session.name },
+        //     { "images.image1" : req.body.image1 }
+        //     , function(err, _update) {
+        //         console.log("updated image1");
+        // });
     }
     if(req.body.location_status)
     {

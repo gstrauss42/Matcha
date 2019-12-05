@@ -67,6 +67,7 @@ router.post('/create', bodyParser.urlencoded(), function(req, res, next){
                   }
                });
                res.redirect('/');
+               console.log("created account");
             }
          });
       }

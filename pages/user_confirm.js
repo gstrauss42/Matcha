@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
 var Models = require("../models/models");
 
 router.get('/', function(req, res){
