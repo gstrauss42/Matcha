@@ -39,7 +39,7 @@ html(lang="en")
                             span(aria-hidden="true") &times;
                     .modal-body
                         //- populate their images here
-                        img.modal-image(src="bg.jpg", alt="main-profile")
+                        img.modal-image(src= main, alt="main-profile")
 
         //- modal for TWO profile image
         #twoMod.modal.fade(tabindex="-1", role="dialog", aria-labelledby="twoModalLabel", aria-hidden="true")
@@ -50,7 +50,7 @@ html(lang="en")
                             span(aria-hidden="true") &times;
                     .modal-body
                         //- populate their images here
-                        img.modal-image(src="pic01.jpg", alt="main-profile")
+                        img.modal-image(src= two, alt="main-profile")
 
         //- modal for THREE profile image
         #threeMod.modal.fade(tabindex="-1", role="dialog", aria-labelledby="threeModalLabel", aria-hidden="true")
@@ -61,7 +61,7 @@ html(lang="en")
                             span(aria-hidden="true") &times;
                     .modal-body
                         //- populate their images here
-                        img.modal-image(src="pic02.jpg", alt="main-profile")
+                        img.modal-image(src= three, alt="main-profile")
 
         //- modal for FOUR profile image
         #fourMod.modal.fade(tabindex="-1", role="dialog", aria-labelledby="fourModalLabel", aria-hidden="true")
@@ -72,7 +72,7 @@ html(lang="en")
                             span(aria-hidden="true") &times;
                     .modal-body
                         //- populate their images here
-                        img.modal-image(src="pic03.jpg", alt="main-profile")
+                        img.modal-image(src= four, alt="main-profile")
 
         //- modal for FIVE profile image
         #fiveMod.modal.fade(tabindex="-1", role="dialog", aria-labelledby="fiveModalLabel", aria-hidden="true")
@@ -83,7 +83,7 @@ html(lang="en")
                             span(aria-hidden="true") &times;
                     .modal-body
                         //- populate their images here
-                        img.modal-image(src="pic04.jpg", alt="main-profile")
+                        img.modal-image(src= five, alt="main-profile")
 
         .page-container.ml-0.mr-0
             .content-wrap
@@ -117,54 +117,61 @@ html(lang="en")
                     .container-fluid.mb-3
                         .row.mr-0.ml-0.custom-margin-pfp
                             .col-md-0
-                                img#main-profile-img.rounded-circle.img-main.mt-3(src="bg.jpg", alt="main-profile", data-toggle="modal", data-target="#main")
+                                if main
+                                    img#main-profile-img.rounded-circle.img-main.mt-3(src= main, alt="main-profile", data-toggle="modal", data-target="#main")
+                                else
+                                    img#main-profile-img.rounded-circle.img-main.mt-3(src="user.jpg", alt="main-profile")
                             .col-md-0.mt-4.mr-2.custom-margin-bio
                                 strong
                                     h3.custom-text-name= name + " " + surname
                                 h6.custom-text-rating= 'Rating ' + rating
                                 p.custom-text-bio= bio
                             .col-md-0.pt-4.mr-1
-                                //- if not liked before
-                                form(action="matched_profile", method="post")
-                                    .form-group
-                                        button.btn.btn-primary.btn-resize(type="submit", name="like") Like
+                                if liked == 0
+                                    form(action="matched_profile", method="post")
+                                        .form-group
+                                            button.btn.btn-primary.btn-resize(type="submit", name="like") Like
+                                else if liked
+                                    form(action="unlike", method="post")
+                                        .form-group
+                                            button.btn.btn-primary(type="submit", name="unlike") Unlike
+
                             .col-md-0.pt-4
                                 button#options.btn.btn-primary.btn-resize(data-toggle="modal", data-target="#modalOptions") More
 
-                            //- else if has liked before
-                            //- form(action="unlike", method="post")
-                            //-     .form-group
-                            //-         button.btn.btn-primary(type="submit", name="unlike") Unlike
+                    .container-fluid.mb-4
+                        if status == "offline"
+                            small.text-muted.status-off= 'last seen: ' + last_seen
+                        else if status == "online"
+                            small.text-muted.status-on online now
 
                     .container-fluid.mb-4
-                        //- if offline
-                        small.text-muted.status-off= 'last seen: ' + last_seen
-                        //- if online
-                        //- small.text-muted.status-on online now
-
-                    .container-fluid.mb-4
-                        //- if not connected
-                        //- .jumbotron.remove-padd
-                        //-     h4.display-4.connect-heading You two are not connected!
-                        //-     p.lead Like this user and receive a like from them to start a connection.
-                        //- if connected
-                        .jumbotron.remove-padd
-                            h4.display-4.connect-heading You two are connected!
-                            hr.my-4
-                            p.connect-paragraph Open or start your chat :)
-                            //- must have a specific identifier for each users connected chat
-                            a.btn.btn-primary.btn-resize(href="chat?k=code" role="button") Chat
+                        if connected
+                            .jumbotron.remove-padd
+                                h4.display-4.connect-heading You two are connected!
+                                hr.my-4
+                                p.connect-paragraph Open or start your chat :)
+                                //- must have a specific identifier for each users connected chat`
+                                a.btn.btn-primary.btn-resize(href="chat?k=code" role="button") Chat
+                        else
+                            .jumbotron.remove-padd
+                                h4.display-4.connect-heading You two are not connected!
+                                p.lead Like this user and receive a like from them to start a connection.
 
                     .container-fluid.mb-4
                         .row.ml-0.mr-0
                             .col-sm-3.col-md-3.pl-0.pr-1
-                                img#two.friends-images(src="pic01.jpg", alt="img-two", data-toggle="modal", data-target="#twoMod")
+                                if two
+                                    img#two.friends-images(src="pic01.jpg", alt="img-two", data-toggle="modal", data-target="#twoMod")
                             .col-sm-3.col-md-3.pl-0.pr-1
-                                img#three.friends-images(src="pic02.jpg", alt="img-three", data-toggle="modal", data-target="#threeMod")
+                                if three
+                                    img#three.friends-images(src="pic02.jpg", alt="img-three", data-toggle="modal", data-target="#threeMod")
                             .col-sm-3.col-md-3.pl-0.pr-1
-                                img#four.friends-images(src="pic03.jpg", alt="img-four", data-toggle="modal", data-target="#fourMod")
+                                if four
+                                    img#four.friends-images(src="pic03.jpg", alt="img-four", data-toggle="modal", data-target="#fourMod")
                             .col-sm-3.col-md-3.pl-0.pr-1
-                                img#five.friends-images(src="bg.jpg", alt="img-five", data-toggle="modal", data-target="#fiveMod")
+                                if five
+                                    img#five.friends-images(src="bg.jpg", alt="img-five", data-toggle="modal", data-target="#fiveMod")
 
                     .container-fluid.mb-4
                         h5.about-heading About Me

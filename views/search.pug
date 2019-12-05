@@ -12,6 +12,7 @@ html(lang="en")
         link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
         script(src="https://kit.fontawesome.com/17df3da6b8.js", crossorigin="anonymous")
         link(rel="stylesheet", href="main.css")
+        script(src="js/user_fetch")
     body
         .page-container
             .content-wrap
@@ -103,16 +104,19 @@ html(lang="en")
                 else if basic_matches
                     for data, i in basic_matches
                         .container-fluid
-                            form(action="matched_profile", method="post")
+                            form#viewUser(action="matched_profile", method="post")
                                 input(type="hidden", name="hidden_id", value= data['_id'])
                                 .alert.alert-primary.alert-dismissible.fade.show.ml-4.mr-4(role="alert")
                                     .media
                                         if data['images']['image0']
-                                            img.rounded.mr-2.search-profile(src= data['images']['image0'], alt="profile_image")
+                                            a(href="javascript: submitform()")
+                                                img.rounded.mr-2.search-profile(src= data['images']['image0'], alt="profile_image")
                                         else
-                                            img.rounded.mr-2.search-profile(src="user.jpg", alt="profile_image")
+                                            a(href="javascript: submitform()")
+                                                img.rounded.mr-2.search-profile(src="user.jpg", alt="profile_image")
                                         .media-body
-                                            strong.custom-username= data['name'] + " " + data['surname']
+                                            a(href="javascript: submitform()")
+                                                strong.custom-username= data['name'] + " " + data['surname']
                                             p.search-profile-descrip.mb-0= data['bio']
                                     button.close(type="button" data-dismiss="alert" aria-label="Close")
                                         span(aria-hidden="true") &times;
