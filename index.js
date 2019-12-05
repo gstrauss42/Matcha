@@ -9,7 +9,6 @@ var cookieParser = require('cookie-parser');
 
 
 
-
 /*
  * App Variables
  */
@@ -33,18 +32,18 @@ app.use(session({secret: "secret session"}));
 
 
 
-
-
-
-
-
 /*
  * Routes Definitions
  */
+
 //home page
 app.get("/", (req, res) => {
-    res.render("index");
-  });
+  res.render("index");
+});
+//home page (if not logged out)
+app.get("/home", (req,res) => {
+  res.render("home");
+})
 // chat page
 app.get("/chat", (req,res) => {
   res.render("chat");
@@ -67,10 +66,10 @@ app.get("/notifications", (req,res) => {
 })
 
 
-
 /*
  * Page Handling
  */
+
 // login page
 var login = require('./pages/login.js');
 app.use('/login', login);
