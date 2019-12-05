@@ -3,13 +3,9 @@
  */
 const express = require("express");
 const path = require("path");
-// var multer = require('multer');
-// var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
-
-
 
 
 
