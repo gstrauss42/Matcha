@@ -102,10 +102,6 @@ app.use('/forgot_password', forgot_password);
 var matched_profile = require('./pages/matched_profile.js');
 app.use('/matched_profile', matched_profile);
 
-// matches
-var matches = require('./pages/matches.js');
-app.use('/matches', matches);
-
 // notifications
 var notifications = require('./pages/notifications.js');
 app.use('/notifications', notifications);
@@ -113,14 +109,6 @@ app.use('/notifications', notifications);
 // profile
 var profile = require('./pages/profile.js');
 app.use('/profile', profile);
-
-// search_results
-var search_results = require('./pages/search_results.js');
-app.use('/search_results', search_results);
-
-// search_user
-var search_user = require('./pages/search_user.js');
-app.use('/search_user', search_user);
 
 // search
 var search = require('./pages/search.js');

@@ -18,5 +18,4 @@ Jadon:
 	- if user has location pref set to off: (currently to always display that its on)
 		do this:     input#location.custom-control-input(type="checkbox", name="location")
 
-
     -maybe make the profile->advanced fields for Name and surname blank

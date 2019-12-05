@@ -40,7 +40,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                 // explicit tags
                 // ...
             }});
-            res.render(('search'), {matches: Array.from(val)});
+            res.render(('search'), {"basic_matches": Array.from(val)});
         });
     });
 });
