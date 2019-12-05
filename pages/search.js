@@ -3,6 +3,15 @@ var router = express.Router();
 var Models = require("../models/models");
 const bodyParser = require('body-parser');
 
+router.get('/', function(req, res){
+    Models.user.find({email: req.session.name}, function(err, doc)
+    {
+        Models.user.find({$and: [{gender: doc[0].prefferances}, {prefferances: doc[0].gender}]} , function(err, val){
+            res.render("search", val);
+        });
+    });
+});
+
 router.post('/', bodyParser.urlencoded(), function(req, res){
     Models.user.find({email: req.session.name}, function(err, doc)
     {
@@ -31,21 +40,10 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                 // explicit tags
                 // ...
             }});
-            console.log(val);
-            res.render(('search'), {matches: val});
+            res.render(('search'), {matches: Array.from(val)});
         });
     });
 });
-
-// age : name="age"
-// nearby location : name="location"
-// similar fame rating : name="rating"
-// these fall under match submit button
-
-// filter by (age, location, fame rating, tags in common) : name="filter"
-//  order by (ascending, descending) : name="order"
-// these fall under the displaying options which is the go submit button
-
 
 //export this router to use in our index.js
 module.exports = router;
