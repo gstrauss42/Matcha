@@ -218,10 +218,10 @@ html(lang="en")
                                 form(action="/update_profile", method="post")
                                     .form-group
                                         label.mr-1.mt-3(for="name") Name
-                                        input#name.pl-1(type="text", name="name", placeholder="Jadon")
+                                        input#name.pl-1(type="text", name="name")
                                     .form-group
                                         label.mr-1(for="surname") Surname
-                                        input#surname.pl-1(type="text", name="surname", placeholder="Hansen")
+                                        input#surname.pl-1(type="text", name="surname")
                                     .form-group
                                         label.mr-1(for="age") Age
                                         input#age.pl-1(type="text", name="age", placeholder="18+")
@@ -244,7 +244,10 @@ html(lang="en")
                                 form(action="update_profile", method="post")
                                     .form-group
                                         .custom-control.custom-switch
-                                            input#location.custom-control-input(type="checkbox", name="location_status", checked, onchange="this.form.submit()")
+                                            if location == 1
+                                                input#location.custom-control-input(type="checkbox", name="location_status", checked, onchange="this.form.submit()")
+                                            else if location == 0
+                                                input#location.custom-control-input(type="checkbox", name="location_status", onchange="this.form.submit()")
                                             label.custom-control-label.mt-2(for="location") Use location to match with users
 
                             #nav-info.tab-pane.fade(role='tabpanel' aria-labelledby='nav-info-tab')
