@@ -105,7 +105,7 @@ html(lang="en")
                     for data, i in basic_matches
                         .container-fluid
                             form#viewUser(action="matched_profile", method="post")
-                                input(type="hidden", name="hidden_id", value= data['_id'])
+                                input(type="hidden", name="id", value= data['_id'])
                                 .alert.alert-primary.alert-dismissible.fade.show.ml-4.mr-4(role="alert")
                                     .media
                                         if data['images']['image0']
