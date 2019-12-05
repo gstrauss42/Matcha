@@ -42,15 +42,17 @@ html(lang="en")
                 //- Chat interface
                 .container
                     .container-fluid.task-box
-                        p.pt-1.pb-1 Chatting with
-                            a(href="matched_profile")   Name Surname
-                            |...
+                        p.pt-1.pb-1= "Chatting with "
+                            a(href="matched_profile")= name + " " + surname
                     .container-fluid.chat-box.pt-2.mb-3
-                        //- while messages not at the end
-                        //- if message from friend
-                        p#text-receive.text-left message
-                        //- else if message from logged in user
-                        p#text-send.text-right message
+                        if messages
+                            for data, i in messages
+                                if data[user] == "me"
+                                    p#text-send.text-right= data[message]
+                                else if data[user] == "friend"
+                                    p#text-receive.text-left= data[message]
+                        else
+                            h6.text-center There are no messsages here! Start a chat
                     .container-fluid.pl-0.pr-0.mb-3
                         form(action="post_message", method="post")
                             .input-group

@@ -30,8 +30,8 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
       image3: { data: Buffer, contentType: String },
       image4: { data: Buffer, contentType: String }
    }],
-   connected: Int8Array,
-   liked: Int8Array
+   // connected: Int8Array,
+   // liked: Int8Array
 });
 
 var tagSchema = new mongoose.Schema({

@@ -11,6 +11,7 @@ html(lang="en")
         link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
         script(src="https://kit.fontawesome.com/17df3da6b8.js", crossorigin="anonymous")
         link(rel="stylesheet", href="main.css")
+        script(src="js/fetch_chat.js")
     body
         //- modal for further options
         #modalOptions.modal.fade(tabindex="-1", role="dialog", aria-labelledby="OptModalLabel", aria-hidden="true")
@@ -23,9 +24,11 @@ html(lang="en")
                     .modal-body
                             form(action="matched_profile", method="post")
                                 .form-group
+                                    input(type="hidden", name="id", value= _id)
                                     button.btn.btn-primary(type="submit", name="block") Block user
                             form(action="matched_profile", method="post")
                                 .form-group
+                                    input(type="hidden", name="id", value= _id)
                                     button.btn.btn-primary(type="submit", name="fake") Report as fake user	
                     .modal-footer
                         button.btn.btn-secondary(type="button", data-dismiss="modal") Close
@@ -39,7 +42,7 @@ html(lang="en")
                             span(aria-hidden="true") &times;
                     .modal-body
                         //- populate their images here
-                        img.modal-image(src= main, alt="main-profile")
+                        img.modal-image(src= image0, alt="main-profile")
 
         //- modal for TWO profile image
         #twoMod.modal.fade(tabindex="-1", role="dialog", aria-labelledby="twoModalLabel", aria-hidden="true")
@@ -50,7 +53,7 @@ html(lang="en")
                             span(aria-hidden="true") &times;
                     .modal-body
                         //- populate their images here
-                        img.modal-image(src= two, alt="main-profile")
+                        img.modal-image(src= image1, alt="main-profile")
 
         //- modal for THREE profile image
         #threeMod.modal.fade(tabindex="-1", role="dialog", aria-labelledby="threeModalLabel", aria-hidden="true")
@@ -61,7 +64,7 @@ html(lang="en")
                             span(aria-hidden="true") &times;
                     .modal-body
                         //- populate their images here
-                        img.modal-image(src= three, alt="main-profile")
+                        img.modal-image(src= image2, alt="main-profile")
 
         //- modal for FOUR profile image
         #fourMod.modal.fade(tabindex="-1", role="dialog", aria-labelledby="fourModalLabel", aria-hidden="true")
@@ -72,7 +75,7 @@ html(lang="en")
                             span(aria-hidden="true") &times;
                     .modal-body
                         //- populate their images here
-                        img.modal-image(src= four, alt="main-profile")
+                        img.modal-image(src= image3, alt="main-profile")
 
         //- modal for FIVE profile image
         #fiveMod.modal.fade(tabindex="-1", role="dialog", aria-labelledby="fiveModalLabel", aria-hidden="true")
@@ -83,7 +86,7 @@ html(lang="en")
                             span(aria-hidden="true") &times;
                     .modal-body
                         //- populate their images here
-                        img.modal-image(src= five, alt="main-profile")
+                        img.modal-image(src= image4, alt="main-profile")
 
         .page-container.ml-0.mr-0
             .content-wrap
@@ -118,7 +121,7 @@ html(lang="en")
                         .row.mr-0.ml-0.custom-margin-pfp
                             .col-md-0
                                 if main
-                                    img#main-profile-img.rounded-circle.img-main.mt-3(src= main, alt="main-profile", data-toggle="modal", data-target="#main")
+                                    img#main-profile-img.rounded-circle.img-main.mt-3(src= image0, alt="main-profile", data-toggle="modal", data-target="#main")
                                 else
                                     img#main-profile-img.rounded-circle.img-main.mt-3(src="user.jpg", alt="main-profile")
                             .col-md-0.mt-4.mr-2.custom-margin-bio
@@ -135,7 +138,6 @@ html(lang="en")
                                     form(action="unlike", method="post")
                                         .form-group
                                             button.btn.btn-primary(type="submit", name="unlike") Unlike
-
                             .col-md-0.pt-4
                                 button#options.btn.btn-primary.btn-resize(data-toggle="modal", data-target="#modalOptions") More
 
@@ -151,8 +153,9 @@ html(lang="en")
                                 h4.display-4.connect-heading You two are connected!
                                 hr.my-4
                                 p.connect-paragraph Open or start your chat :)
-                                //- must have a specific identifier for each users connected chat`
-                                a.btn.btn-primary.btn-resize(href="chat?k=code" role="button") Chat
+                                form#viewChat(action="chat", method="post")
+                                    input(type="hidden", name="id", value= _id)
+                                    a.btn.btn-primary.btn-resize(href="javascript: submitForm()", role="button") Chat
                         else
                             .jumbotron.remove-padd
                                 h4.display-4.connect-heading You two are not connected!
@@ -162,16 +165,16 @@ html(lang="en")
                         .row.ml-0.mr-0
                             .col-sm-3.col-md-3.pl-0.pr-1
                                 if two
-                                    img#two.friends-images(src="pic01.jpg", alt="img-two", data-toggle="modal", data-target="#twoMod")
+                                    img#two.friends-images(src= image1, alt="img-two", data-toggle="modal", data-target="#twoMod")
                             .col-sm-3.col-md-3.pl-0.pr-1
                                 if three
-                                    img#three.friends-images(src="pic02.jpg", alt="img-three", data-toggle="modal", data-target="#threeMod")
+                                    img#three.friends-images(src= image2, alt="img-three", data-toggle="modal", data-target="#threeMod")
                             .col-sm-3.col-md-3.pl-0.pr-1
                                 if four
-                                    img#four.friends-images(src="pic03.jpg", alt="img-four", data-toggle="modal", data-target="#fourMod")
+                                    img#four.friends-images(src= image3, alt="img-four", data-toggle="modal", data-target="#fourMod")
                             .col-sm-3.col-md-3.pl-0.pr-1
                                 if five
-                                    img#five.friends-images(src="bg.jpg", alt="img-five", data-toggle="modal", data-target="#fiveMod")
+                                    img#five.friends-images(src= image4, alt="img-five", data-toggle="modal", data-target="#fiveMod")
 
                     .container-fluid.mb-4
                         h5.about-heading About Me
@@ -179,8 +182,11 @@ html(lang="en")
                         p.mb-1.pl-2.para-re= 'Looking for: ' + prefferances
                         p.mb-1.pl-2.para-re= 'Age: ' + age
                         p.mb-1.pl-2.para-re.d-inline= "Tags: "
-                        for gold in tags
-                            p.d-inline= '#' + gold + " "
+                        if tags[0]
+                            for gold in tags
+                                p.d-inline= '#' + gold + " "
+                        else
+                            p.d-inline= "None"
                         if location
                             p.mb-1.pl-2.para-re Location usage: Yes
                         else
