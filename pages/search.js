@@ -7,7 +7,7 @@ router.get('/', function(req, res){
     Models.user.find({email: req.session.name}, function(err, doc)
     {
         Models.user.find({$and: [{gender: doc[0].prefferances}, {prefferances: doc[0].gender}]} , function(err, val){
-            res.render("search", val);
+            res.render(('search'), {"basic_matches": Array.from(val)});
         });
     });
 });

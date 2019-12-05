@@ -5,8 +5,22 @@ const bodyParser = require('body-parser');
 
 router.get('/', function(req, res){
    Models.user.findOne({"email":req.session.name}, function(err, doc){
-      res.render("profile", {name : doc.name, surname:doc.surname, email:doc.email, rating: doc.rating, gender: doc.gender, prefferances: doc.prefferances, age: doc.age, tags: doc.tags, location: doc.location, bio: doc.bio});
-   })
+      res.render("profile", {name : doc.name,
+                           surname:doc.surname,
+                           email:doc.email,
+                           image0 :doc.images.image0,
+                           image1 :doc.images.image1,
+                           image2 :doc.images.image2,
+                           image3 :doc.images.image3,
+                           image4 :doc.images.image4,
+                           rating: doc.rating,
+                           gender: doc.gender,
+                           prefferances: doc.prefferances,
+                           age: doc.age,
+                           tags: doc.tags,
+                           location: doc.location,
+                           bio: doc.bio});
+   });
 });
 
 router.post('/', bodyParser.urlencoded(), function(req, res){

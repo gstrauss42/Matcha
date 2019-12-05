@@ -42,9 +42,6 @@ app.use(session({secret: "secret session"}));
 
 
 
-
-
-
 /*
  * Routes Definitions
  */
