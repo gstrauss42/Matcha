@@ -11,10 +11,6 @@ html(lang="en")
         link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
         script(src="https://kit.fontawesome.com/17df3da6b8.js", crossorigin="anonymous")
         link(rel="stylesheet", href="main.css")
-        //- for io socket chat
-        script(src="https://cdn.socket.io/socket.io-1.2.0.js")
-        script(src="https://code.jquery.com/jquery-1.11.1.js") 
-        script(src="js/chat.js")
     body
         .page-container.ml-0.mr-0
             .content-wrap
@@ -49,18 +45,20 @@ html(lang="en")
                         p.pt-1.pb-1= "Chatting with "
                             a(href="matched_profile")= name + " " + surname
                     .container-fluid.chat-box.pt-2.mb-3
-
-                        //- what is in the socket io example
-                        ul#messages
-
+                        if messages
+                            for data, i in messages
+                                if data[user] == "me"
+                                    p#text-send.text-right= data[message]
+                                else if data[user] == "friend"
+                                    p#text-receive.text-left= data[message]
+                        else
+                            h6.text-center There are no messsages here! Start a chat
                     .container-fluid.pl-0.pr-0.mb-3
-
-                        //- what is in the socket io example
-                        form(action="")
-                            input#m(autocomplete="off")
-                            button Send
-
-
+                        form(action="post_message", method="post")
+                            .input-group
+                                textarea#message.form-control(name="message_text", rows="2", placeholder="Type a message...")
+                                .input-group-append
+                                    button.btn.btn-secondary(type="submit", name="submit_message") Send
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark
@@ -87,6 +85,6 @@ html(lang="en")
                             p
                                 | &copy; 2019 Matcha. All rights reserved.
                             a.text-info.github-link(href='https://jadonhansen')
-                                strong @jadonhansen
+                                strong  @jadonhansen
                             a.text-info.github-link(href='https://gstrauss42')
-                                strong @gstrauss
+                                strong  @gstrauss
