@@ -69,10 +69,6 @@ app.get("/login", (req,res) => {
 app.get("/notifications", (req,res) => {
   res.render("notifications");
 })
-// search
-app.get("/search", (req,res) => {
-  res.render("search");
-})
 
 
 
