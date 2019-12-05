@@ -96,28 +96,38 @@ html(lang="en")
                                 input.btn.btn-dark.filter-btn(type="submit", name="filter_all", value="Go!")
 
                     hr
-                //- search results go here (!!!!!!!!!!if cant use alert then use media objects!!!!!!!!!)
-                .container-fluid
-                    .alert.alert-primary.alert-dismissible.fade.show.ml-4.mr-4(role="alert")
-                        .media
-                            a(href="matched_profile")
-                                img.rounded.mr-2.search-profile(src="pic02.jpg", alt="profile_image")
-                            .media-body
-                                a(href="matched_profile")
-                                    strong.custom-username Jadon Hansen
-                                p.search-profile-descrip.mb-0 Description and interests
-                        button.close(type="button" data-dismiss="alert" aria-label="Close")
-                            span(aria-hidden="true") &times;
-                    .alert.alert-primary.alert-dismissible.fade.show.ml-4.mr-4(role="alert")
-                        .media
-                            a(href="matched_profile")
-                                img.rounded.mr-2.search-profile(src="pic03.jpg", alt="profile_image")
-                            .media-body
-                                a(href="matched_profile")
-                                    strong.custom-username Gabriel Strauss
-                                p.search-profile-descrip.mb-0 Description and interests
-                        button.close(type="button" data-dismiss="alert" aria-label="Close")
-                            span(aria-hidden="true") &times;
+                if basic_matches
+                    for data, i in basic_matches
+                        //- search results go here (!!!!!!!!!!if cant use alert then use media objects!!!!!!!!!)
+                        .container-fluid
+                            form(action="matched_profile", method="post")
+                                input(type="hidden", name="hidden_id", value= data[i][_id])
+                                .alert.alert-primary.alert-dismissible.fade.show.ml-4.mr-4(role="alert")
+                                    .media
+                                        if data[i][images][image0]
+                                            img.rounded.mr-2.search-profile(src= data[i][images][image0], alt="profile_image")
+                                        else
+                                            img.rounded.mr-2.search-profile(src= temp.png, alt="profile_image")
+                                        .media-body
+                                            strong.custom-username= data[i][name] + " " + data[i][surname]
+                                            p.search-profile-descrip.mb-0= data[i][bio]
+                                    button.close(type="button" data-dismiss="alert" aria-label="Close")
+                                        span(aria-hidden="true") &times;
+                
+                        //- .alert.alert-primary.alert-dismissible.fade.show.ml-4.mr-4(role="alert")
+                        //-     .media
+                        //-         a(href="matched_profile")
+                        //-             img.rounded.mr-2.search-profile(src="pic03.jpg", alt="profile_image")
+                        //-         .media-body
+                        //-             a(href="matched_profile")
+                        //-                 strong.custom-username Gabriel Strauss
+                        //-             p.search-profile-descrip.mb-0 Description and interests
+                        //-     button.close(type="button" data-dismiss="alert" aria-label="Close")
+                        //-         span(aria-hidden="true") &times;
+                
+                //- else if advanced_matches
+
+
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark
