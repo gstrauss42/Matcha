@@ -4,10 +4,6 @@ const bodyParser = require('body-parser');
 var nodeMailer = require('nodemailer');
 var Model = require("../models/models");
 
-router.get('/', function(req, res){
-   res.send('GET route on Forgot_password');
-});
-
 router.post('/', bodyParser.urlencoded(), function(req, res){
 
    Model.user.findOne({ email: req.body.email }, function(err, user) {

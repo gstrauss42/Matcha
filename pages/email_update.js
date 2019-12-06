@@ -16,9 +16,6 @@ router.get('/', function(req, res){
                 });
         });
 });
-router.post('/', function(req, res){
-   res.send('POST route on Search_results');
-});
 
 //export this router to use in our index.js
 module.exports = router;

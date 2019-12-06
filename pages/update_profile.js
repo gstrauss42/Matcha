@@ -6,13 +6,14 @@ var crypto = require('crypto');
 var randomstring = require("randomstring");
 var nodeMailer = require('nodemailer');
 var multer = require('multer');
+const upload = multer({ dest: 'uploads/' })
+const fs = require('fs')
 
-router.post('/', bodyParser.urlencoded(), function(req, res){
+router.post('/', bodyParser.urlencoded(), upload.single('image1'), function(req, res){
     console.log(req.body);
     if(req.body.image1)
     {
-        const encoded = req.body.image1.toString('base64')
-        console.log(encoded)
+        console.log(req.file)
         Models.user.findOneAndUpdate({ email : req.session.name },
             { "images.image1" : req.body.image1 }
             , function(err, _update) {
