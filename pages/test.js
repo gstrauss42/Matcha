@@ -1,8 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var session = require('express-session');
-var Model = require("../models/models");
-const app = express();
 
 router.get('/', function(req, res){
    res.send(req.session);

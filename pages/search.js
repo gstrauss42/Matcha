@@ -16,7 +16,6 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
     Models.user.find({email: req.session.name}, function(err, doc)
     {
         Models.user.find({$and: [{gender: doc[0].prefferances}, {prefferances: doc[0].gender}]} , function(err, val){
-            console.log(req.body);
             // var search becomes your index counter
             val.forEach(function(search, index){
             {
