@@ -1,3 +1,3 @@
-function submitform() {
-    document.forms["viewUser"].submit();
+function submitform(id) {
+    document.forms[id].submit();
 }
