@@ -12,6 +12,7 @@ html(lang="en")
         link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
         script(src="https://kit.fontawesome.com/17df3da6b8.js", crossorigin="anonymous")
         link(rel="stylesheet", href="main.css")
+        script(src="js/locat_update.js")
     body
         //- modal for bio change
         #modalBio.modal.fade(tabindex="-1", role="dialog", aria-labelledby="bioModalLabel", aria-hidden="true")
@@ -253,14 +254,15 @@ html(lang="en")
 
                             #nav-contact.tab-pane.fade(role='tabpanel' aria-labelledby='nav-contact-tab')
                                 //- modify location yes/no
-                                form(action="update_profile", method="post")
+                                form#lock(action="update_profile", method="post")
                                     .form-group
                                         .custom-control.custom-switch.ml-1
                                             if location
-                                                input#locat.custom-control-input(type="checkbox", name="location_status", checked, onchange="this.form.submit(0)")
+                                                input#locat.custom-control-input(type="checkbox", name="location_status", value="0", checked)
                                             else
-                                                input#locat.custom-control-input(type="checkbox", name="location_status", onchange="this.form.submit(1)")
+                                                input#locat.custom-control-input(type="checkbox", name="location_status", value="1")
                                             label.custom-control-label.mt-2(for="locat") Use location to match with users
+                                            //- , onChange="this.form.submit();"
 
                     //- add interest tags
                     .container-fluid.mb-5

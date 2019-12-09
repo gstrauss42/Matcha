@@ -20,6 +20,9 @@ router.post('/', bodyParser.urlencoded(), upload.single('image1'), function(req,
                 console.log("updated image1");
         });
     }
+
+    console.log(req.body.location_status); // for jadons debugging
+
     if(req.body.location_status)
     {
         Models.user.findOneAndUpdate({email: req.session.name},
