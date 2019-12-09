@@ -256,12 +256,11 @@ html(lang="en")
                                 form(action="update_profile", method="post")
                                     .form-group
                                         .custom-control.custom-switch.ml-1
-                                            if location == 1
-                                                input#location.custom-control-input(type="checkbox", name="location_status", checked, onchange="this.form.submit()")
-                                            else if location == 0
-                                                input#location.custom-control-input(type="checkbox", name="location_status", onchange="this.form.submit()")
-                                            label.custom-control-label.mt-2(for="location") Use location to match with users
-
+                                            if location
+                                                input#locat.custom-control-input(type="checkbox", name="location_status", checked, onchange="this.form.submit(0)")
+                                            else
+                                                input#locat.custom-control-input(type="checkbox", name="location_status", onchange="this.form.submit(1)")
+                                            label.custom-control-label.mt-2(for="locat") Use location to match with users
 
                     //- add interest tags
                     .container-fluid.mb-5
