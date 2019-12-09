@@ -22,26 +22,28 @@ router.get('/', bodyParser.urlencoded(), function(req, res){
 });
 
 router.post('/', bodyParser.urlencoded(), function(req, res){
-   Models.user.findOne({"email": req.session.name}, function(err, doc){
       if(req.body.like == '')
       {
-         console.log(req.body);
-         Models.user.findOne({"_id": req.body._id}, function(err, info){
-            console.log(info)
-            Models.user.findOneAndUpdate({email : req.session.name}, {"likes.email" : info.email}, function(err, ret){
-               console.log("liked user");
+         console.log(req.session.name);
+         Models.user.findOne({"_id": req.body._id}, function(err, doc){
+            Models.user.findOneAndUpdate(
+               {email : req.session.name},
+               {$push : {likes: doc.email}},
+               function(err, ret){
+                  console.log(ret);
+                  console.log("liked user");
+                  res.render("matched_profile", {name : doc.name,
+                                                surname:doc.surname,
+                                                rating: doc.rating,
+                                                gender: doc.gender,
+                                                prefferances: doc.prefferances,
+                                                age: doc.age,
+                                                tags: doc.tags,
+                                                location: doc.location,
+                                                _id: doc._id,
+                                                liked: "1",
+                                                bio: doc.bio});
             });
-            res.render("matched_profile", {name : doc.name,
-               surname:doc.surname,
-               rating: doc.rating,
-               gender: doc.gender,
-               prefferances: doc.prefferances,
-               age: doc.age,
-               tags: doc.tags,
-               location: doc.location,
-               _id: doc._id,
-               liked: "0",
-               bio: doc.bio});
          });
       }
       // get the back end for these next 2 working
@@ -95,7 +97,6 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                                           bio: doc.bio});
          });
       }
-   });
 });
 
 //export this router to use in our index.js
