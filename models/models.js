@@ -20,7 +20,7 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
       type: String
    }],
    likes: [{
-      email: String
+      type: String
    }],
    location_status: String,
    images: [{

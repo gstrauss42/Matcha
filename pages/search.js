@@ -7,7 +7,7 @@ router.get('/', function(req, res){
     Models.user.find({email: req.session.name}, function(err, doc)
     {
         Models.user.find({$and: [{gender: doc[0].prefferances}, {prefferances: doc[0].gender}]} , function(err, val){
-            res.render(('search'), {"basic_matches": Array.from(val)});
+            res.render(('search'), {"basic_matches": Array.from(val)}, {"tags": Array.from(doc.tags)});
         });
     });
 });
@@ -39,6 +39,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                 // explicit tags
                 // ...
             }});
+            console.log(req.body);
             res.render(('search'), {"basic_matches": Array.from(val)});
         });
     });
