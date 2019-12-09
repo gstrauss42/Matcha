@@ -11,7 +11,6 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
         { email : req.session.name },
         { $push : { tags: req.body.tag}}
         , function(err, _update) {
-            console.log(_update);
             res.redirect('/profile');
             console.log("added tag");
       });

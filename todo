@@ -11,6 +11,8 @@ Gabriel:
 
     - password forget link - send to email
 
+    -sort out other render variables on matched_profile mainly with liked and connected passing variables
+
 Jadon:
     - !!!!!!!!!!!!!js function when switch is changed for location setting
     - fix location switch
