@@ -62,10 +62,10 @@ html(lang="en")
                                 //- each id for the checkboxes must be different
                                 .form-group.mb-0
                                     if tags
-                                        for data in tags
+                                        for gold in tags
                                             .custom-control.custom-checkbox
-                                                input#various.custom-control-input(type="checkbox", name= data)
-                                                label.label-text.custom-control-label(for= data)= data
+                                                input#various.custom-control-input(type="checkbox", name= gold)
+                                                label.label-text.custom-control-label(for= gold)= gold
 
                                 small.form-text.text-muted
                                     | To add/see more tags appear here make sure you have added them to your 
@@ -97,6 +97,24 @@ html(lang="en")
                     hr
                 //- advanced search results go here
                 if advanced_matches
+                    //- for data_one, j, in basic_matches
+                    //-     .container-fluid
+                    //-         form#viewUser(action="matched_profile", method="post")
+                    //-             input(type="hidden", name="_id", value= data_one['_id'])
+                    //-             .alert.alert-primary.alert-dismissible.fade.show.ml-4.mr-4(role="alert")
+                    //-                 .media
+                    //-                     if data_one['images']['image0']
+                    //-                         a(href="javascript: submitform()")
+                    //-                             img.rounded.mr-2.search-profile(src= data_one['images']['image0'], alt="profile_image")
+                    //-                     else
+                    //-                         a(href="javascript: submitform()")
+                    //-                             img.rounded.mr-2.search-profile(src="user.jpg", alt="profile_image")
+                    //-                     .media-body
+                    //-                         a(href="javascript: submitform()")
+                    //-                             strong.custom-username= data_one['name'] + " " + data_one['surname']
+                    //-                         p.search-profile-descrip.mb-0= data_one['bio']
+                    //-                 button.close(type="button" data-dismiss="alert" aria-label="Close")
+                    //-                     span(aria-hidden="true") &times;
 
                 //-basic search page results
                 else if basic_matches
