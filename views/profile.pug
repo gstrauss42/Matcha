@@ -266,22 +266,16 @@ html(lang="en")
                     //- add interest tags
                     .container-fluid.mb-5
                         h5 Add an interest tag
-
-
-                        //- for 'maybe' production
-                        //- form(action="add_tag", method="post")
-                        //-     .form-row.align-items-center
-                        //-         .col-auto
-                        //-             label.sr-only(for="inlineFormInputGroup") Tag
-                        //-             .input-group.mb-2
-                        //-                 .input-group-prepend
-                        //-                     .input-group-text #
-                        //-                 input#inlineFormInputGroup.form-control(type="text", name="tag", placeholder="interest tag" required)
-                        //-         .col-auto
-                        //-                 button.btn.btn-primary.mb-2(type="submit") Add tag
-                        
-                        
-
+                        form(action="add_tag", method="post")
+                            .form-row.align-items-center
+                                .col-auto
+                                    label.sr-only(for="inlineFormInputGroup") Tag
+                                    .input-group.mb-2
+                                        .input-group-prepend
+                                            .input-group-text #
+                                        input#inlineFormInputGroup.form-control(type="text", name="tag", placeholder="interest tag" required)
+                                .col-auto
+                                        button.btn.btn-primary.mb-2(type="submit") Add tag
                         if tags
                             p.d-inline= "Current tags: "
                             for gold in tags
