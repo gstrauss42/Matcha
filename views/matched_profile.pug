@@ -24,11 +24,11 @@ html(lang="en")
                     .modal-body
                             form(action="matched_profile", method="post")
                                 .form-group
-                                    input(type="hidden", name="id", value= _id)
+                                    input(type="hidden", name="_id", value= _id)
                                     button.btn.btn-primary(type="submit", name="block") Block user
                             form(action="matched_profile", method="post")
                                 .form-group
-                                    input(type="hidden", name="id", value= _id)
+                                    input(type="hidden", name="_id", value= _id)
                                     button.btn.btn-primary(type="submit", name="fake") Report as fake user	
                     .modal-footer
                         button.btn.btn-secondary(type="button", data-dismiss="modal") Close
@@ -132,10 +132,12 @@ html(lang="en")
                             .col-md-0.pt-4.mr-1
                                 if liked == 0
                                     form(action="matched_profile", method="post")
+                                        input(type="hidden", name="_id", value= _id)
                                         .form-group
                                             button.btn.btn-primary.btn-resize(type="submit", name="like") Like
                                 else if liked
                                     form(action="unlike", method="post")
+                                        input(type="hidden", name="_id", value= _id)
                                         .form-group
                                             button.btn.btn-primary(type="submit", name="unlike") Unlike
                             .col-md-0.pt-4
