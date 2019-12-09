@@ -4,9 +4,11 @@ var Models = require("../models/models");
 const bodyParser = require('body-parser');
 
 router.get('/', function(req, res){
-    Models.user.find({email: req.session.name}, function(err, doc)
+    Models.user.findOne({email: req.session.name}, function(err, doc)
     {
-        Models.user.find({$and: [{gender: doc[0].prefferances}, {prefferances: doc[0].gender}]} , function(err, val){
+        console.log(doc.tags);
+        Models.user.findOne({$and: [{gender: doc.prefferances}, {prefferances: doc.gender}]} , function(err, val){
+            console.log(val);
             res.render(('search'), {"basic_matches": Array.from(val)}, {"tags": Array.from(doc.tags)});
         });
     });
