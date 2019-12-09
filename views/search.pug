@@ -61,13 +61,11 @@ html(lang="en")
 
                                 //- each id for the checkboxes must be different
                                 .form-group.mb-0
-                                    .custom-control.custom-checkbox
-                                        input#various.custom-control-input(type="checkbox", name="various")
-                                        label.label-text.custom-control-label(for="various") Variable showing tag (e.g.)
-                                .form-group.mb-0
-                                    .custom-control.custom-checkbox
-                                        input#various1.custom-control-input(type="checkbox", name="various1")
-                                        label.label-text.custom-control-label(for="various1") Variable showing tag (e.g.)
+                                    if tags
+                                        for data in tags
+                                            .custom-control.custom-checkbox
+                                                input#various.custom-control-input(type="checkbox", name= data)
+                                                label.label-text.custom-control-label(for= data)= data
 
                                 small.form-text.text-muted
                                     | To add/see more tags appear here make sure you have added them to your 
