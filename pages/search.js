@@ -6,9 +6,12 @@ const bodyParser = require('body-parser');
 router.get('/', function(req, res){
     Models.user.findOne({email: req.session.name}, function(err, doc)
     {
-        Models.user.findOne({$and: [{gender: doc.prefferances}, {prefferances: doc.gender}]} , function(err, val){
-            var tags = Array.from(doc.tags)
-            res.render(('search'), { "tags" : tags, "basic_matches": Array.from(val)});
+        Models.user.find({$and: [{gender: doc.prefferances}, {prefferances: doc.gender}]} , function(err, val){
+            var tags = Array.from(doc.tags);
+            res.render('search', {
+                        "tags" : tags,
+                        "basic_matches": Array.from(val)
+            });
         });
     });
 });
