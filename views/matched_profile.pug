@@ -136,7 +136,7 @@ html(lang="en")
                                         .form-group
                                             button.btn.btn-primary.btn-resize(type="submit", name="like") Like
                                 else if liked
-                                    form(action="unlike", method="post")
+                                    form(action="matched_profile", method="post")
                                         input(type="hidden", name="_id", value= _id)
                                         .form-group
                                             button.btn.btn-primary(type="submit", name="unlike") Unlike
