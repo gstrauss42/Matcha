@@ -2,16 +2,12 @@ ummm
 work...
 
 Gabriel:
-    - fix passing of info to jadon
-    - start using .env
-    - add the rest of the search variables
     - make fields secure
     - handle errors
-    - get jadon to send the hidden form and implement it
     - finish reading the stack overflow page
     - get jadon to send hidden input form and then update liked information of specific users based on page
 
-    - location prefferance button not passing info to backend
+    - updates last_seen variable when a person logs out
 
     - password forget link - send to email
 
