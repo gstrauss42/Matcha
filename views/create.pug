@@ -32,9 +32,11 @@ html
                     .row
                         .col-md-12.col-md-offset-0.text-left
                             .row.row-mt-15em
-                                .col-md-8.mt-text.animate-box(data-animate-effect='fadeInUp')
+                                //- added for special css resizing
+                                #specialone.col-md-8.mt-text.animate-box(data-animate-effect='fadeInUp')
                                     h1 Your journey starts here!
-                                .col-md-4.col-md-push-1.animate-box(data-animate-effect='fadeInRight')
+                                //- added for special css resizing
+                                #specialtwo.col-md-4.col-md-push-1.animate-box(data-animate-effect='fadeInRight')
                                     .form-wrap
                                         .tab
                                             .tab-content
@@ -52,6 +54,11 @@ html
                                                             .col-md-12
                                                                 label(for="surname") Surname
                                                                 input#surname.form-control(type="text", name="surname", required)
+
+                                                        .row.form-group
+                                                            .col-md-12
+                                                                label(for="username") Username
+                                                                input#username.form-control(type="text", name="username", required)
 
                                                         .row.form-group
                                                             .col-md-12
