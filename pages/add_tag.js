@@ -14,8 +14,6 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
             res.redirect('/profile');
             console.log("added tag");
       });
-//    res.redirect('profile');
-    // res.send(req.body.tag)
 });
 
  module.exports = router;

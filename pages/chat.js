@@ -1,8 +1,8 @@
 var express = require('express');
-// var http = require('http').Server(express);
-// var io = require('socket.io')(http);
+var server = require('../index');
+var io = require('socket.io')(server);
 var router = express.Router();
-var io = require('../index');
+
 
 router.post('/', function(req, res){
    res.render('chat');

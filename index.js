@@ -32,8 +32,8 @@ app.use(session({secret: "secret session"}));
 
 var http = require('http');
 const server = http.createServer(app);
-var io = require('socket.io')(server);
-module.exports = io;
+
+module.exports = server;
 
 
 /*
@@ -140,6 +140,6 @@ app.use('/check/:var_words', email_update);
 /*
  * Server Activation
  */
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Listening to requests on http://localhost:${port}`);
 });

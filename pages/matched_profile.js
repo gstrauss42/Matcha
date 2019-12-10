@@ -3,10 +3,6 @@ var router = express.Router();
 var Models = require("../models/models");
 const bodyParser = require('body-parser');
 
-// router.get('/', bodyParser.urlencoded(), function(req, res){
-  
-// });
-
 router.post('/', bodyParser.urlencoded(), function(req, res){
    console.log('test');
    console.log(req.body);
