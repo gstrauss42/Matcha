@@ -8,18 +8,19 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 
 
-
+// var express = require('express');
+// var router = express.Router();
 /*
- * App Variables
- */
+* App Variables
+*/
 const app = express();
 const port = process.env.PORT || "8081";
 
 
 
 /*
- *  App Configuration
- */
+*  App Configuration
+*/
 app.use(cookieParser());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
@@ -29,7 +30,10 @@ app.use(express.static(path.join(__dirname, "public")));
 mongoose.connect(`mongodb+srv://gstrauss:qwerty0308@matcha-ch0yb.gcp.mongodb.net/test?retryWrites=true&w=majority`);
 app.use(session({secret: "secret session"}));
 
-
+var http = require('http');
+const server = http.createServer(app);
+var io = require('socket.io')(server);
+module.exports = io;
 
 
 /*
@@ -43,10 +47,6 @@ app.get("/", (req, res) => {
 //home page (if not logged out)
 app.get("/home", (req,res) => {
   res.render("home");
-})
-// chat page
-app.get("/chat", (req,res) => {
-  res.render("chat");
 })
 // create page
 app.get('/create', function (req, res) {
@@ -136,8 +136,6 @@ app.use('/check/:var_words', email_update);
 // app.get('/:var_words', function(req, res){
 //    res.send('these are not the ' + req.params.var_words + '\'s you are looking for');
 // });
-
-
 
 /*
  * Server Activation

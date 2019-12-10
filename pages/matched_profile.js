@@ -53,6 +53,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                                                 location: doc.location,
                                                 _id: doc._id,
                                                 liked: "0",
+                                                connected : "0",
                                                 bio: doc.bio});
             });
          });
@@ -60,41 +61,81 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
       // get the back end for these next 2 working
       else if(req.body.fake == '')
       {
-         Models.user.findOne({"_id" : req.body._id}, function(err, doc){
-            res.render("matched_profile", {name : doc.name,
-                                          surname:doc.surname,
-                                          rating: doc.rating,
-                                          gender: doc.gender,
-                                          prefferances: doc.prefferances,
-                                          age: doc.age,
-                                          tags: doc.tags,
-                                          location: doc.location,
-                                          _id: doc._id,
-                                          liked: "0",
-                                          bio: doc.bio});
+         Models.user.findOne({email : req.session.name}, function(err, check){
+            Models.user.findOne({"_id" : req.body._id}, function(err, doc){
+               connected = '0';
+               liked = '0';
+               if(check.likes)
+               {
+                  if(check.likes.includes(doc.email))
+                  {
+                     liked = '1';
+                     if(doc.likes.includes(check.email))
+                        connected = '1';
+                  }
+               }
+               res.render("matched_profile", {name : doc.name,
+                                             surname:doc.surname,
+                                             rating: doc.rating,
+                                             gender: doc.gender,
+                                             prefferances: doc.prefferances,
+                                             age: doc.age,
+                                             tags: doc.tags,
+                                             location: doc.location,
+                                             _id: doc._id,
+                                             "liked": liked,
+                                             "connected": connected,
+                                             bio: doc.bio});
+            });
+            console.log("reported fake user");
          });
-         console.log("reported fake user");
       }
       else if(req.body.block == '')
       {
-         Models.user.findOne({"_id" : req.body._id}, function(err, doc){
-            res.render("matched_profile", {name : doc.name,
-                                          surname:doc.surname,
-                                          rating: doc.rating,
-                                          gender: doc.gender,
-                                          prefferances: doc.prefferances,
-                                          age: doc.age,
-                                          tags: doc.tags,
-                                          location: doc.location,
-                                          _id: doc._id,
-                                          liked: "0",
-                                          bio: doc.bio});
+         Models.user.findOne({email : req.session.name}, function(err, check){
+            Models.user.findOne({"_id" : req.body._id}, function(err, doc){
+               connected = '0';
+               liked = '0';
+               if(check.likes)
+               {
+                  if(check.likes.includes(doc.email))
+                  {
+                     liked = '1';
+                     if(doc.likes.includes(check.email))
+                        connected = '1';
+                  }
+               }
+               res.render("matched_profile", {name : doc.name,
+                                             surname:doc.surname,
+                                             rating: doc.rating,
+                                             gender: doc.gender,
+                                             prefferances: doc.prefferances,
+                                             age: doc.age,
+                                             tags: doc.tags,
+                                             location: doc.location,
+                                             _id: doc._id,
+                                             "liked": liked,
+                                             "connected": connected,
+                                             bio: doc.bio});
+            });
+            console.log("blocked user");
          });
-         console.log("blocked user");
       }
       else
       {
-         Models.user.findOne({"_id" : req.body._id}, function(err, doc){
+         Models.user.findOne({email : req.session.name}, function(err, check){
+            Models.user.findOne({"_id" : req.body._id}, function(err, doc){
+               connected = '0';
+               liked = '0';
+               if(check.likes)
+               {
+                  if(check.likes.includes(doc.email))
+                  {
+                     liked = '1';
+                     if(doc.likes.includes(check.email))
+                        connected = '1';
+                  }
+               }
             res.render("matched_profile", {name : doc.name,
                                           surname:doc.surname,
                                           rating: doc.rating,
@@ -104,11 +145,14 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                                           tags: doc.tags,
                                           location: doc.location,
                                           _id: doc._id,
-                                          liked: "0",
+                                          "liked": liked,
+                                          "connected": connected,
                                           bio: doc.bio});
+            });
          });
       }
    }
+   // start of the psuedo get
    else{
 
       Models.user.findOne({email : req.session.name}, function(err, check){

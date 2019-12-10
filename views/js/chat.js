@@ -1,5 +1,6 @@
 $(function () {
     var socket = io();
+    // var socket = io.connect('http://localhost:8000');
     $('form').submit(function(){
       socket.emit('chat message', $('#m').val());
       $('#m').val('');

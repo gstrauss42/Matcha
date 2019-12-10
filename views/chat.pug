@@ -14,8 +14,21 @@ html(lang="en")
         //- for io socket chat
         script(src="https://cdn.socket.io/socket.io-1.2.0.js")
         script(src="https://code.jquery.com/jquery-1.11.1.js") 
-        script(src="js/chat.js")
+        script(src="./js/chat.js")
     body
+        //- script.
+        //-     $(function () {
+        //-         var socket = io();
+        //-         $('form').submit(function(){
+        //-         socket.emit('chat message', $('#m').val());
+        //-         $('#m').val('');
+        //-         return false;
+        //-         });
+        //-         socket.on('chat message', function(msg){
+        //-         $('#messages').append($('<li>').text(msg));
+        //-         window.scrollTo(0, document.body.scrollHeight);
+        //-         });
+        //-     });
         .page-container.ml-0.mr-0
             .content-wrap
                 header.mb-3
@@ -56,7 +69,7 @@ html(lang="en")
                     .container-fluid.pl-0.pr-0.mb-3
 
                         //- what is in the socket io example
-                        form(action="")
+                        form#messages(action="")
                             input#m(autocomplete="off")
                             button Send
 

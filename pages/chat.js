@@ -1,17 +1,18 @@
 var express = require('express');
+// var http = require('http').Server(express);
+// var io = require('socket.io')(http);
 var router = express.Router();
-var http = require('http').Server(router);
-var io = require('socket.io')(http);
+var io = require('../index');
 
 router.post('/', function(req, res){
-   res.send('POST route on Chat');
+   res.render('chat');
 });
 
 io.on('connection', function(socket){
-   socket.on('chat message', function(msg){
-     io.emit('chat message', msg);
-   });
- });
+  console.log("connected");
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
 
-//export this router to use in our index.js
 module.exports = router;
