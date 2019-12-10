@@ -11,24 +11,10 @@ html(lang="en")
         link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
         script(src="https://kit.fontawesome.com/17df3da6b8.js", crossorigin="anonymous")
         link(rel="stylesheet", href="main.css")
-        //- for io socket chat
         script(src="https://cdn.socket.io/socket.io-1.2.0.js")
         script(src="https://code.jquery.com/jquery-1.11.1.js") 
         script(src="./js/chat.js")
     body
-        //- script.
-        //-     $(function () {
-        //-         var socket = io();
-        //-         $('form').submit(function(){
-        //-         socket.emit('chat message', $('#m').val());
-        //-         $('#m').val('');
-        //-         return false;
-        //-         });
-        //-         socket.on('chat message', function(msg){
-        //-         $('#messages').append($('<li>').text(msg));
-        //-         window.scrollTo(0, document.body.scrollHeight);
-        //-         });
-        //-     });
         .page-container.ml-0.mr-0
             .content-wrap
                 header.mb-3
