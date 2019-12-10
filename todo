@@ -5,7 +5,8 @@ Gabriel:
     - make fields secure
     - handle errors
     - finish reading the stack overflow page
-    - get jadon to send hidden input form and then update liked information of specific users based on page
+
+    - get block and report fake user to work (if blocked then that person will not show up in search results for the person who blocked them)
 
     - updates last_seen variable when a person logs out
 
@@ -14,5 +15,5 @@ Gabriel:
     -sort out other render variables on matched_profile mainly with liked and connected passing variables
 
 Jadon:
-    - !!!!!!!!!!!!!js function when switch is changed for location setting
-    - fix location switch
+    - create modal for login page for resetting password. Will wait for a boolean in the frontend
+    
