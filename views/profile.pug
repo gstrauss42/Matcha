@@ -34,28 +34,48 @@ html(lang="en")
                         button.btn.btn-secondary(type="button", data-dismiss="modal") Close
 
         //- modal for viewing stats
-        #modalStats.modal.fade(tabindex="-1", role="dialog", aria-labelledby="statsModalLabel", aria-hidden="true")
-            .modal-dialog(role="document")
+        #modalStats.modal.fade.bd-example-modal-lg(tabindex="-1", role="dialog", aria-labelledby="statsModalLabel", aria-hidden="true")
+            .modal-dialog.modal-lg(role="document")
                 .modal-content
                     .modal-header
                         h5#statsModalLabel.modal-title Profile Statistics
                         button.close(type="button", data-dismiss="modal", aria-label="Close")
                             span(aria-hidden="true") &times;
                     .modal-body
-                        h6 Viewing stats
+                        u
+                            h5 Viewing stats
                         .row.ml-0.mr-0
-                            .col-md-4
-                                p You have viewed:
-                            .col-md-7
-                                p Your profile was viewed by:
-
-                        h6 Like stats
+                            .col-md-5
+                                p.statfont You have viewed:
+                                    if viewed
+                                        for data in viewed
+                                            p.statsmall.ml-2= data
+                                    else
+                                        p.statsmall.ml-2 None
+                            .col
+                                p.statfont Your profile was viewed by:
+                                    if views
+                                        for info in views
+                                            p.statsmall.ml-2= info
+                                    else
+                                        p.statsmall.ml-2 No views
+                        u
+                            h5 Like stats
                         .row.ml-0.mr-0
-                            .col-md-4
-                                p You have liked:
-                            .col-md-7
-                                p Your profile was liked by:
-
+                            .col-md-5
+                                p.statfont You have liked:
+                                    if liked
+                                        for paper in liked
+                                            p.statsmall.ml-2= paper
+                                    else
+                                        p.statsmall.ml-2 None
+                            .col
+                                p.statfont Your profile was liked by:
+                                    if likes
+                                        for fax in likes
+                                            p.statsmall.ml-2= fax
+                                    else
+                                        p.statsmall.ml-2 No likes
                     .modal-footer
                         button.btn.btn-secondary(type="button", data-dismiss="modal") Close
 
@@ -188,7 +208,6 @@ html(lang="en")
                                 h6.custom-text-rating= "Rating " + rating 
                                 i#alter-bio.fas.fa-cog.mr-2(data-toggle="modal", data-target="#modalBio")
                                 button#stats.badge.badge-light.pt-0.pb-0.mb-1(name="stats", data-toggle="modal", data-target="#modalStats") View stats
-                                //- or use btn.btn-light
                                 if bio
                                     p.custom-text-bio= bio
                                 else

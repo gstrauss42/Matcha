@@ -219,6 +219,14 @@ footer {
     height: 25px;
 }
 
+.statfont {
+    font-size: 17px;
+}
+
+.statsmall {
+    font-size: 14px;;
+}
+
 @media only screen and (max-width:  1050px) {
     .img-main {
         height: 180px;
