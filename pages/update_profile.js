@@ -45,6 +45,14 @@ router.post('/', bodyParser.urlencoded(), upload.single('image1'), function(req,
                 console.log("updated bio");
         });
     }
+    if(req.body.username)
+    {
+        Models.user.findOneAndUpdate({ email : req.session.name },
+            { "username" : req.body.username }
+            , function(err, _update) {
+                console.log("updated username");
+        });
+    }
     if(req.body.name)
     {
         Models.user.findOneAndUpdate({ email : req.session.name },

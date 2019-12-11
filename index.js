@@ -60,10 +60,6 @@ app.get("/forgot_password", (req,res) => {
 app.get("/login", (req,res) => {
   res.render("login");
 })
-// notifications
-app.get("/notifications", (req,res) => {
-  res.render("notifications");
-})
 
 
 /*

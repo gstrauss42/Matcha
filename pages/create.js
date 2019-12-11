@@ -21,18 +21,21 @@ router.post('/create', bodyParser.urlencoded(), function(req, res, next){
       } 
       else
       {
+         console.log(req.body);
          var safe = crypto.pbkdf2Sync(randomstring.generate(), '100' ,1000, 64, `sha512`).toString(`hex`);
          var pass = crypto.pbkdf2Sync(req.body.password, '100' ,1000, 64, `sha512`).toString(`hex`);
       
          var _user = new Model.user ({
             name: req.body.name,
+            username: req.body.username,
             surname: req.body.surname,
             email: req.body.email,
             password: pass,
             age: req.body.age,
             gender: req.body.gender,
             prefferances: req.body.preferences,
-            verif: safe
+            verif: safe,
+            notifications: "Welcome to Matcha"
          });
 
          _user.save(function(err){

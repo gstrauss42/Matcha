@@ -4,6 +4,7 @@ var db = mongoose.connection;
 
 var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
    name: String,
+   username: String,
    bio: String,
    surname: String,
    email: String,
@@ -20,6 +21,9 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
       type: String
    }],
    likes: [{
+      type: String
+   }],
+   notifications:[{
       type: String
    }],
    location_status: String,

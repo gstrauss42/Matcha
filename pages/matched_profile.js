@@ -10,12 +10,16 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
    {
       if(req.body.like == '')
       {
-         Models.user.findOne({"_id": req.body._id}, function(err, doc){
+         Models.user.findOneAndUpdate({"_id": req.body._id}, {$push: {notifications: req.session.name + " liked you"}}, function(err, doc){
             Models.user.findOneAndUpdate(
                {email : req.session.name},
-               {$push : {likes: doc.email}},
+               {$push :{likes: doc.email}},
                function(err, ret){
-                  console.log("liked user");
+                  connected = '0';
+                  if(doc.likes.includes(ret.email)){
+                     connected = '1';
+                  }
+                  console.log("liked user\nupdated notifications");
                   res.render("matched_profile", {name : doc.name,
                                                 surname:doc.surname,
                                                 rating: doc.rating,
@@ -26,6 +30,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                                                 location: doc.location,
                                                 _id: doc._id,
                                                 liked: "1",
+                                                "connected": connected,
                                                 bio: doc.bio});
             });
          });

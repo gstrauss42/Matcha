@@ -8,6 +8,7 @@ router.get('/', function(req, res){
       res.render("profile", {name : doc.name,
                            surname:doc.surname,
                            email:doc.email,
+                           username: doc.username,
                            image0 :doc.images.image0,
                            image1 :doc.images.image1,
                            image2 :doc.images.image2,
