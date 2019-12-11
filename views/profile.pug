@@ -33,6 +33,19 @@ html(lang="en")
                     .modal-footer
                         button.btn.btn-secondary(type="button", data-dismiss="modal") Close
 
+        //- modal for viewing stats
+        #modalStats.modal.fade(tabindex="-1", role="dialog", aria-labelledby="statsModalLabel", aria-hidden="true")
+            .modal-dialog(role="document")
+                .modal-content
+                    .modal-header
+                        h5#statsModalLabel.modal-title Profile Statistics
+                        button.close(type="button", data-dismiss="modal", aria-label="Close")
+                            span(aria-hidden="true") &times;
+                    .modal-body
+                        
+                    .modal-footer
+                        button.btn.btn-secondary(type="button", data-dismiss="modal") Close
+
         //- modal for main profile image change
         #modalMain.modal.fade(tabindex="-1", role="dialog", aria-labelledby="mainModalLabel", aria-hidden="true")
             .modal-dialog(role="document")
@@ -127,13 +140,15 @@ html(lang="en")
                         //- burger button on phone screens
                         button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSuppportedContent")
                             span.navbar-toggler-icon
-
+                            
                         //- targeted info by button
                         #navbarSuppportedContent.collapse.navbar-collapse
                             ul.navbar-nav.ml-auto
                                 li.nav-item
                                     a.nav-link(href="notifications")
                                         i.fas.fa-bell.mt-1
+                                        if count > 0
+                                            span.badge.badge-dark= count
                                 li.nav-item
                                     a.nav-link(href="search") Match Me!
                                 li.nav-item
@@ -158,7 +173,9 @@ html(lang="en")
                                 strong
                                     h3.custom-text-name= username
                                 h6.custom-text-rating= "Rating " + rating 
-                                i#alter-bio.fas.fa-cog(data-toggle="modal", data-target="#modalBio")
+                                i#alter-bio.fas.fa-cog.mr-2(data-toggle="modal", data-target="#modalBio")
+                                button#stats.badge.badge-light.pt-0.pb-0.mb-1(name="stats", data-toggle="modal", data-target="#modalStats") View stats
+                                //- or use btn.btn-light
                                 if bio
                                     p.custom-text-bio= bio
                                 else

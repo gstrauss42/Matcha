@@ -30,6 +30,8 @@ html(lang="en")
                                 li.nav-item
                                     a.nav-link(href="notifications")
                                         i.fas.fa-bell.mt-1
+                                        if count > 0
+                                            span.badge.badge-dark= count
                                 li.nav-item
                                     a.nav-link(href="profile") Profile
                                 li.nav-item
