@@ -10,28 +10,6 @@ html
         link(rel="stylesheet", href="style_form.css")
         script(src="/js/modernizr-2.6.2.min.js")
     body
-
-        //- modal for forgot password activation
-        #modalPass.modal.fade(tabindex="-1", role="dialog", aria-labelledby="passModalLabel", aria-hidden="true")
-            .modal-dialog(role="document")
-                .modal-content
-                    .modal-header
-                        h5#passModalLabel.modal-title Enter a new password
-                        button.close(type="button", data-dismiss="modal", aria-label="Close")
-                            span(aria-hidden="true") &times;
-                    .modal-body
-                            form(action="update_password", method="post")
-                                .form-group
-                                    label(for="pass") New Password
-                                    input#pass(type="password", name="password")
-                                .form-group
-                                    label(for="rep") Repeat Password
-                                    input#rep(type="password", name="repeat")
-                                .form-group
-                                    button.btn.btn-primary(type="submit", name="pass_save") Save	
-                    .modal-footer
-                        button.btn.btn-secondary(type="button", data-dismiss="modal") Close
-
         #page
             nav.gtco-nav
                 .gtco-container
