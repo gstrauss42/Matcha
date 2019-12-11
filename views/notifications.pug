@@ -40,6 +40,25 @@ html(lang="en")
 
                     //- new notifications
                     .col
+
+
+
+                        .d-flex.justify-content-center.align-items-center.notification-box(aria-live="polite" aria-atomic="true")
+                            strong.notif-heading New notifications
+                        for data in notifications
+                            .d-flex.justify-content-center.align-items-center.notification-box(aria-live="polite" aria-atomic="true")
+                                .toast(role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false")
+                                    .toast-header.notif-bg
+                                        strong.mr-auto.notif-color type of notif
+                                        small.ml-4 time ago
+                                        button.ml-2.mb-1.close(type='button' data-dismiss="toast" aria-label="Close")
+                                            span(aria-hidden="true") &times;
+                                    .toast-body
+                                        p= notifications
+
+
+
+
                         //- .d-flex.justify-content-center.align-items-center.notification-box(aria-live="polite" aria-atomic="true")
                         //-     strong.notif-heading New notifications
                         //- .d-flex.justify-content-center.align-items-center.notification-box(aria-live="polite" aria-atomic="true")
