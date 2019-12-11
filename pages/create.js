@@ -15,9 +15,9 @@ router.post('/create', bodyParser.urlencoded(), function(req, res, next){
       }
       if (user)
       {
-            var err = new Error('A user with that email has already registered. Please use a different email..')
-           err.status = 400;
-           return next(err);
+         var err = new Error('A user with that email has already registered. Please use a different email..')
+         err.status = 400;
+         return next(err);
       } 
       else
       {
