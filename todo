@@ -14,5 +14,11 @@ Gabriel:
 
     -sort out other render variables on matched_profile mainly with liked and connected passing variables
 
+    - create a visit history of who you have visited
+    - create a liked history of who you have liked (DONE already)
+    - create a viewed history of others who have visited/viewed you
+    - create a liked history of others who have liked you
+
 Jadon:
     - create modal for login page for resetting password. Will wait for a boolean in the frontend
+    - Create a button to view stats

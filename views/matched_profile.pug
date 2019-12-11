@@ -129,12 +129,12 @@ html(lang="en")
                                 h6.custom-text-rating= 'Rating ' + rating
                                 p.custom-text-bio= bio
                             .col-md-0.pt-4.mr-1
-                                if liked == 0
+                                if liked == 0 && image0
                                     form(action="matched_profile", method="post")
                                         input(type="hidden", name="_id", value= _id)
                                         .form-group
                                             button.btn.btn-primary.btn-resize(type="submit", name="like") Like
-                                else if liked
+                                else if liked == 1
                                     form(action="matched_profile", method="post")
                                         input(type="hidden", name="_id", value= _id)
                                         .form-group
@@ -149,11 +149,11 @@ html(lang="en")
                             small.text-muted.status-on online now
 
                     .container-fluid.mb-4
-                        if connected == 0
+                        if connected == 0 && image0
                             .jumbotron.remove-padd
                                 h4.display-4.connect-heading You two are not connected!
                                 p.lead Like this user and receive a like from them to start a connection.
-                        else
+                        else if connected == 1
                             .jumbotron.remove-padd
                                 h4.display-4.connect-heading You two are connected!
                                 hr.my-4
@@ -161,6 +161,10 @@ html(lang="en")
                                 form#viewChat(action="chat", method="post")
                                     input(type="hidden", name="id", value= _id)
                                     input.btn.btn-primary.btn-resize(type="submit", name="chat" , value="Chat")
+                        else
+                            .jumbotron.remove-padd
+                                h4.display-4.connect-heading You two are not connected!
+                                p.lead This user requires at least one image for you to be able to connect with them!
                             
 
                     .container-fluid.mb-4

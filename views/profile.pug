@@ -143,6 +143,11 @@ html(lang="en")
 
                 //- profile info
                 .container
+                    if !image0
+                    .container-fluid.mb-2
+                        .row.ml-0.mr-0
+                            p.font-weight-bold Please upload at least one profile image for other users to be able to like and connect with your profile.
+
                     .container-fluid.mb-5
                         .row.mr-0.ml-0.custom-margin-pfp
                             .col-md-0
@@ -152,7 +157,7 @@ html(lang="en")
                                     img#main-profile-img.rounded-circle.img-main.mt-3(src="user.jpg", alt="main-profile", data-toggle="modal", data-target="#modalMain")
                             .col-md-0.mt-4.custom-margin-bio
                                 strong
-                                    h3.custom-text-name= name + " " + surname
+                                    h3.custom-text-name= username
                                 h6.custom-text-rating= "Rating " + rating 
                                 i#alter-bio.fas.fa-cog(data-toggle="modal", data-target="#modalBio")
                                 if bio
