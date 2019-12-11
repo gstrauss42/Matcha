@@ -141,13 +141,12 @@ html(lang="en")
                                 li.nav-item
                                     a.nav-link(href="home") Home
 
+                if !image0 && !image1 && !image2 && !image3 && !image4
+                #profile-notif.row-md-12.ml-0.mr-0.mb-0
+                    p.bg-danger.text-center.pl-2.pr-2.pt-1.pb-1 Please upload at least one profile image for other users to be able to like and connect with your profile.
+            
                 //- profile info
                 .container
-                    if !image0
-                    .container-fluid.mb-2
-                        .row.ml-0.mr-0
-                            p.font-weight-bold Please upload at least one profile image for other users to be able to like and connect with your profile.
-
                     .container-fluid.mb-5
                         .row.mr-0.ml-0.custom-margin-pfp
                             .col-md-0

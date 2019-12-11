@@ -149,7 +149,7 @@ html(lang="en")
                             small.text-muted.status-on online now
 
                     .container-fluid.mb-4
-                        if connected == 0 && image0
+                        if connected == 0 && (image0 || image1 || image2 || image3 || image4) 
                             .jumbotron.remove-padd
                                 h4.display-4.connect-heading You two are not connected!
                                 p.lead Like this user and receive a like from them to start a connection.
