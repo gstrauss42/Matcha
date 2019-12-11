@@ -96,8 +96,8 @@ router.post('/', bodyParser.urlencoded(), upload.single('image1'), function(req,
     if(req.body.pass && req.body.repeat_pass && req.body.pass == req.body.repeat_pass)
     {
         var pass = crypto.pbkdf2Sync(req.body.pass, '100' ,1000, 64, `sha512`).toString(`hex`);
-        Models.user.findOneAndUpdate({ email : req.session.name },
-            { "password" : pass }
+        Models.user.findOneAndUpdate({ email : req.session.name }
+            ,{ "password" : pass }
             , function(err, _update) {
                 console.log("updated password");
         });
