@@ -8,6 +8,7 @@ router.get('/', function(req, res){
       res.render('notifications', {"notifications" : doc.notifications});
    });
 });
+
 router.post('/', function(req, res){
    res.send('POST route on Notifications');
 });
