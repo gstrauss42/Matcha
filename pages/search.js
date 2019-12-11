@@ -10,6 +10,7 @@ router.get('/', function(req, res){
             var tags = Array.from(doc.tags);
             res.render('search', {
                         "tags" : tags,
+                        "count" : doc.notifications.length,
                         "basic_matches": Array.from(val)
             });
         });

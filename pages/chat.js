@@ -5,7 +5,7 @@ var router = express.Router();
 
 
 router.post('/', function(req, res){
-   res.render('chat');
+  res.render('chat');
 });
 
 io.on('connection', function(socket){

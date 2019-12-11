@@ -18,6 +18,7 @@ router.get('/', function(req, res){
                            gender: doc.gender,
                            prefferances: doc.prefferances,
                            age: doc.age,
+                           count: doc.notifications.length,
                            tags: doc.tags,
                            location: doc.location,
                            bio: doc.bio});
