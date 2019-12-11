@@ -4,7 +4,6 @@ work...
 Gabriel:
     - make fields secure
     - handle errors
-    - finish reading the stack overflow page
 
     - get block and report fake user to work (if blocked then that person will not show up in search results for the person who blocked them)
 

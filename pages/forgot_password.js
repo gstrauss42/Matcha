@@ -3,6 +3,8 @@ var router = express.Router();
 const bodyParser = require('body-parser');
 var nodeMailer = require('nodemailer');
 var Model = require("../models/models");
+var crypto = require('crypto');
+var randomstring = require("randomstring");
 
 router.post('/', bodyParser.urlencoded(), function(req, res){
 
@@ -10,6 +12,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
       if(user)
       {
          // emalier
+         var safe = crypto.pbkdf2Sync(randomstring.generate(), '100' ,1000, 64, `sha512`).toString(`hex`);
          let transporter = nodeMailer.createTransport({
             host: 'smtp.gmail.com',
             port: 465,
@@ -23,21 +26,18 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
             // should be replaced with real recipient's account
             to: req.body.email,
             subject: 'Dont be like that',
-            text: 'access is a tough thing to grant.... good thing you\'ve got an uncle in the software business (no copyrights where infringed in this email, any and all apparnt infringements are unintentional and entirely the viewers own bias)'
+            text: 'Your reset password verification link, localhost:8081/' + safe
          };
          transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-               return console.log(error);
+               console.log(error);
             }
          });
-      }
-      else{
-
+         Model.user.findOneAndUpdate({email : req.body.email}, {verif : safe}, function(err, doc){
+            console.log("updated verif and sent mail verif:" + doc.verif);
+         })
       }
    });
-
-   
-
    res.redirect('/login');
 });
 

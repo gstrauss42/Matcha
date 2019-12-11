@@ -114,7 +114,9 @@ app.use('/update_profile', update_profile);
 var bio_update = require('./pages/bio_update.js');
 app.use('/bio_change', bio_update);
 
-
+// reset_password
+var reset_password = require('./pages/reset_password.js');
+app.use('/reset_password', reset_password);
 
 // testing
 var test = require('./pages/test.js');
@@ -125,8 +127,8 @@ var email_update = require('./pages/email_update.js')
 app.use('/check/:var_words', email_update);
 
 // not the webpage youre looking for
-// var user_confirm = require('./pages/user_confirm.js')
-// app.use('/:var_words', user_confirm);
+var user_confirm = require('./pages/user_confirm.js')
+app.use('/:var_words', user_confirm);
 
 
 // app.get('/:var_words', function(req, res){
