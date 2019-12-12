@@ -165,8 +165,8 @@ footer {
 /* for notifications page */
 
 .notification-box {
-    min-height: 100px;
-    min-width: 100px;
+    max-width: 900px;
+    width: 55%;
 }
 
 .notif-heading {
@@ -187,10 +187,6 @@ footer {
     }
     .notif-heading {
         font-size: 15px;
-    }
-    .notification-box {
-        min-height: 40px;
-        padding-bottom: 2px;
     }
 }
 
