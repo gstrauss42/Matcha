@@ -16,8 +16,8 @@ router.get('/', function(req, res){
                               image3 :doc.images.image3,
                               image4 :doc.images.image4,
                               views : doc.notifications.length,
-                              liked: doc.likes.length,
-                              likes: count.length,
+                              liked: doc.likes.length, // i need an array of the people
+                              likes: count.length, // i need an array of the people
                               rating: doc.rating,
                               gender: doc.gender,
                               prefferances: doc.prefferances,

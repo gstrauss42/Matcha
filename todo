@@ -4,7 +4,9 @@ work...
 Gabriel: (extras = ...)
 
     - !!!!!!!!!!!!! got to be able to send the following info with each notification to the notification page --> username(who sent it), the time the notification happened, the notification message itself
-    
+
+    - get location to work
+
     - make fields secure
 
     - handle errors
