@@ -28,6 +28,8 @@ html(lang="en")
                             form(action="matched_profile", method="post")
                                 .form-group
                                     input(type="hidden", name="_id", value= _id)
+                                    input.form-control.mb-2(type="text", name="details", required)
+                                    small.form-text.text-muted Please specify a reason as to why you are reporting this user
                                     button.btn.btn-primary(type="submit", name="fake") Report as fake user	
                     .modal-footer
                         button.btn.btn-secondary(type="button", data-dismiss="modal") Close
