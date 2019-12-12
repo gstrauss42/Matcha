@@ -13,7 +13,7 @@ html(lang="en")
 
         script.
             function submitlink() {
-                document.forms[].submit();
+                document.getElementById("link").submit();
             }
 
     body
@@ -35,7 +35,7 @@ html(lang="en")
                                     .dropdown-menu(aria-labelledby="navbarDropdown")
                                         a.dropdown-item(href="profile") Profile
                                         .dropdown-divider
-                                        form(action="search", method="post")
+                                        form#link(action="search", method="post")
                                             a.dropdown-item(href="javascript: submitlink()") Match Me!
                                 li.nav-item
                                     a.nav-link(href="logout") Logout

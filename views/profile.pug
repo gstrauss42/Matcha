@@ -15,7 +15,7 @@ html(lang="en")
 
         script.
             function submitlink() {
-                document.forms[].submit();
+                document.getElementById("link").submit();
             }
 
     body
@@ -189,7 +189,7 @@ html(lang="en")
                                         if count > 0
                                             span.badge.badge-dark= count
                                 li.nav-item
-                                    form(action="search", method="post")
+                                    form#link(action="search", method="post")
                                         a.nav-link(href="javascript: submitlink()") Match Me!
                                 li.nav-item
                                     a.nav-link(href="logout") Logout
@@ -272,16 +272,34 @@ html(lang="en")
                                         .col-md-5
                                             label.mt-2.ml-1(for="selectGender") Gender
                                             select#selectGender.form-control.mb-2.ml-1(name="gender_select")
-                                                option(value="Male") Male
-                                                option(value="Female") Female
-                                                option(value="Other") Other
+                                                if gender === "Male"
+                                                    option(value="Male", selected="selected") Male
+                                                else
+                                                    option(value="Male") Male
+                                                if gender === "Female"
+                                                    option(value="Female", selected="selected") Female
+                                                else
+                                                    option(value="Female") Female
+                                                if gender === "Other"
+                                                    option(value="Other", selected="selected") Other
+                                                else
+                                                    option(value="Other") Other
                                     .form-row
                                         .col-md-5
                                             label.ml-1(for="selectPref") Partner Preference
                                             select#selectPref.form-control.mb-3.ml-1(name="pref_select")
-                                                option(value="Male") Male
-                                                option(value="Female") Female
-                                                option(value="Bi-Sexual") Bi-Sexual
+                                                if prefferances === "Male"
+                                                    option(value="Male", selected="selected") Male
+                                                else
+                                                    option(value="Male") Male
+                                                if prefferances === "Female"
+                                                    option(value="Female", selected="selected") Female
+                                                else
+                                                    option(value="Female") Female
+                                                if prefferances === "Bi-Sexual"
+                                                    option(value="Bi-Sexual", selected="selected") Bi-Sexual
+                                                else
+                                                    option(value="Bi-Sexual") Bi-Sexual
                                     .form-row.mb-1
                                         input.btn.btn-dark.ml-2(type="submit", name="submit_pref", value="Save Changes")
 
