@@ -20,10 +20,6 @@ Gabriel: (extras = ...)
 
 Jadon: (priority = !!!)
 
-    !!! - pass tags on search as an array and not seperate variables, also populate the tags count variable
-
-    - make Matche Me! link in the header a post request (balnk should work... I think)
-
     - display default value for gender and partner preference under profile->associativity as the users current prefferance
 
     - notifications arent looping properly, all info is being rendered into each notification

@@ -12,7 +12,12 @@ html(lang="en")
         link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
         script(src="https://kit.fontawesome.com/17df3da6b8.js", crossorigin="anonymous")
         link(rel="stylesheet", href="main.css")
-        script(src="js/fetch_user.js")
+
+        script.
+            function submitform(id) {
+                document.forms[id].submit();
+            }
+
     body
         .page-container
             .content-wrap
@@ -65,7 +70,8 @@ html(lang="en")
                                     if tags
                                         for gold, k in tags
                                             .custom-control.custom-checkbox
-                                                input.custom-control-input(type="checkbox", name= k, id= gold)
+                                                //- giving all checkboxes one name so that it will be put into an array for backend
+                                                input.custom-control-input(type="checkbox", name= 'check', id= gold)
                                                 - awe = k;
                                                 label.label-text.custom-control-label(for= gold)= gold
                                     input(type="hidden", name="tag_amount", value= awe)
