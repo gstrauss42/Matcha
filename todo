@@ -2,6 +2,7 @@ ummm
 work...
 
 Gabriel:
+
     - make fields secure
     
     - handle errors
@@ -10,17 +11,19 @@ Gabriel:
 
     - updates last_seen variable when a person logs out
 
-    -upload images
+    - upload images
 
     - configure chat
 
-    -ajaxify(maybe)
+    - ajaxify(maybe)
 
     - set email port to be dynamic in emails
 
+    - set viewed count, your views, liked count / array, how many people you have liked
+
 Jadon:
 
-    - pass tags on search as an array and not seperate variables so i can acess the names, also populate the tags count variable
+    - pass tags on search as an array and not seperate variables, also populate the tags count variable
 
     - display default value for gender and partner preference under profile->associativity as the users current prefferance
 
@@ -28,4 +31,8 @@ Jadon:
 
     - recreate the notifications page
 
+    - get stats to work on profile page, information passed as ints dont render
+
     - get popups working
+
+    - create an error page ({404 not found}, {oops something went wrong} and potentially {please try that again})

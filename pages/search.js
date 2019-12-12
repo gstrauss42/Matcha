@@ -52,7 +52,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                             break;
                         }
                     }
-                    // if(req.body.tags[0] && chop_check == val.length)
+                    // if(req.body.tags)
                     // {
                     //     // input sort once arrray of tags has been given
                     // }
