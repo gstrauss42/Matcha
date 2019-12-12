@@ -65,7 +65,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
       else if(req.body.fake == '')
       {
          Models.user.findOne({email : req.session.name}, function(err, check){
-            Models.user.findOne({"_id" : req.body._id}, function(err, doc){
+            Models.user.findOneAndUpdate({"_id" : req.body._id}, {$push : {reports: req.body.details}}, function(err, doc){
                connected = '0';
                liked = '0';
                if(check.likes)

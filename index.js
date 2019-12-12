@@ -29,8 +29,10 @@ app.set("view engine", "pug");
 app.use(express.static('public'));
 app.use('/js', express.static('views/js'));
 app.use(express.static(path.join(__dirname, "public")));
-mongoose.connect(`mongodb+srv://gstrauss:qwerty0308@matcha-ch0yb.gcp.mongodb.net/test?retryWrites=true&w=majority`);
-app.use(session({secret: "secret session"}));
+require('dotenv').config()
+
+mongoose.connect('mongodb+srv://gstrauss:' + process.env.password +'@matcha-ch0yb.gcp.mongodb.net/test?retryWrites=true&w=majority');
+app.use(session({secret: process.env.secret}));
 
 // app.use(multer({dest:'./uploads/'}));
 
@@ -142,6 +144,9 @@ app.use('/:var_words', user_confirm);
 /*
  * Server Activation
  */
-server.listen(port, () => {
-  console.log(`Listening to requests on http://localhost:${port}`);
+
+console.log("\n" + process.env.port + "\n");
+
+server.listen(process.env.port, () => {
+  console.log(`Listening to requests on http://localhost:${process.env.port}/`);
 });

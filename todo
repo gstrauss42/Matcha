@@ -4,24 +4,21 @@ work...
 Gabriel: (extras = ...)
 
     - make fields secure
-    
-    - start using .env
 
     - handle errors
 
-    - find out what fake user is supposed to do
+    - create a viewed history of just names
 
-    - updates last_seen variable when a person logs out
+    - store reports as a string under reports in the db on report button click and info supplied
 
     - upload images
-
-    - configure chat
-
-    ... - ajaxify
+        - configure chat
+            - updates last_seen variable when a person logs out
+    
+    .. - ajaxify
 
     ... - set email port to be dynamic in emails
 
-    - create a viewed history of just names
 
 Jadon: (priority = !!!)
 

@@ -7,7 +7,7 @@ var Models = require("../models/models");
 var crypto = require('crypto');
 const requestIp = require('request-ip');
 
-router.post('/login', bodyParser.urlencoded(), function(req, res){
+router.post('/', bodyParser.urlencoded(), function(req, res){
    Models.user.findOne({ email: req.body.email }, function(err, user) {
       if(user)
       {
@@ -30,6 +30,10 @@ router.post('/login', bodyParser.urlencoded(), function(req, res){
             else
             res.send("Somethings wrong, please ensure you verified your account by following the link and that you typed your password in correctly");
                // res.redirect('/login');
+      }
+      else
+      {
+         res.render("login");
       }
    });
 });
