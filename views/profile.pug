@@ -12,6 +12,12 @@ html(lang="en")
         link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
         script(src="https://kit.fontawesome.com/17df3da6b8.js", crossorigin="anonymous")
         link(rel="stylesheet", href="main.css")
+
+        script.
+            function submitlink() {
+                document.forms[].submit();
+            }
+
     body
         //- modal for bio change
         #modalBio.modal.fade(tabindex="-1", role="dialog", aria-labelledby="bioModalLabel", aria-hidden="true")
@@ -183,7 +189,8 @@ html(lang="en")
                                         if count > 0
                                             span.badge.badge-dark= count
                                 li.nav-item
-                                    a.nav-link(href="search") Match Me!
+                                    form(action="search", method="post")
+                                        a.nav-link(href="javascript: submitlink()") Match Me!
                                 li.nav-item
                                     a.nav-link(href="logout") Logout
                                 li.nav-item

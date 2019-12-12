@@ -10,6 +10,12 @@ html(lang="en")
         link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
         link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
         link(rel="stylesheet", href="main.css")
+
+        script.
+            function submitlink() {
+                document.forms[].submit();
+            }
+
     body
         .page-container.ml-0.mr-0
             .content-wrap
@@ -29,7 +35,8 @@ html(lang="en")
                                     .dropdown-menu(aria-labelledby="navbarDropdown")
                                         a.dropdown-item(href="profile") Profile
                                         .dropdown-divider
-                                        a.dropdown-item(href="search") Match Me!
+                                        form(action="search", method="post")
+                                            a.dropdown-item(href="javascript: submitlink()") Match Me!
                                 li.nav-item
                                     a.nav-link(href="logout") Logout
                                 li.nav-item
@@ -40,8 +47,6 @@ html(lang="en")
 
                     //- new notifications
                     .col
-
-
 
                         .d-flex.justify-content-center.align-items-center.notification-box(aria-live="polite" aria-atomic="true")
                             strong.notif-heading New notifications
@@ -185,5 +190,6 @@ html(lang="en")
                                 strong  @jadonhansen
                             a.text-info.github-link(href='https://gstrauss42')
                                 strong  @gstrauss
-    
-    script(src="/js/notification.js")
+
+    script.
+        $('.toast').toast('show')

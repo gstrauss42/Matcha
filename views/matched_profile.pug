@@ -11,6 +11,12 @@ html(lang="en")
         link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
         script(src="https://kit.fontawesome.com/17df3da6b8.js", crossorigin="anonymous")
         link(rel="stylesheet", href="main.css")
+
+        script.
+            function submitlink() {
+                document.forms[].submit();
+            }
+
     body
         //- modal for further options
         #modalOptions.modal.fade(tabindex="-1", role="dialog", aria-labelledby="OptModalLabel", aria-hidden="true")
@@ -25,11 +31,12 @@ html(lang="en")
                                 .form-group
                                     input(type="hidden", name="_id", value= _id)
                                     button.btn.btn-primary(type="submit", name="block") Block user
+                            hr
                             form(action="matched_profile", method="post")
                                 .form-group
                                     input(type="hidden", name="_id", value= _id)
                                     input.form-control.mb-2(type="text", name="details", required)
-                                    small.form-text.text-muted Please specify a reason as to why you are reporting this user
+                                    small.form-text.text-muted.mb-1 Please specify a reason as to why you are reporting this user
                                     button.btn.btn-primary(type="submit", name="fake") Report as fake user	
                     .modal-footer
                         button.btn.btn-secondary(type="button", data-dismiss="modal") Close
@@ -112,7 +119,8 @@ html(lang="en")
                                     .dropdown-menu(aria-labelledby="navbarDropdown")
                                         a.dropdown-item(href="profile") Profile
                                         .dropdown-divider
-                                        a.dropdown-item(href="search") Match Me!
+                                        form(action="search", method="post")
+                                            a.dropdown-item(href="javascript: submitlink()") Match Me!
                                 li.nav-item
                                     a.nav-link(href="logout") Logout
                                 li.nav-item

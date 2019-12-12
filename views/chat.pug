@@ -14,6 +14,12 @@ html(lang="en")
         script(src="https://cdn.socket.io/socket.io-1.2.0.js")
         script(src="https://code.jquery.com/jquery-1.11.1.js") 
         script(src="./js/chat.js")
+
+        script.
+            function submitlink() {
+                document.forms[].submit();
+            }
+
     body
         .page-container.ml-0.mr-0
             .content-wrap
@@ -38,7 +44,8 @@ html(lang="en")
                                     .dropdown-menu(aria-labelledby="navbarDropdown")
                                         a.dropdown-item(href="profile") Profile
                                         .dropdown-divider
-                                        a.dropdown-item(href="search") Match Me!
+                                        form(action="search", method="post")
+                                            a.dropdown-item(href="javascript: submitlink()") Match Me!
                                 li.nav-item
                                     a.nav-link(href="logout") Logout
                                 li.nav-item
