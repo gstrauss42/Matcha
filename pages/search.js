@@ -20,6 +20,7 @@ router.get('/', function(req, res){
 router.post('/', bodyParser.urlencoded(), function(req, res){
     Models.user.findOne({email: req.session.name}, function(err, doc)
     {
+        var p = 0;
         Models.user.find({$and: [{gender: doc.prefferances}, {prefferances: doc.gender}]} , function(err, val){
             let i = 0;
             while(val[i])
@@ -57,8 +58,8 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                         val.splice(i, 1);
                         break;
                     }
-                    if(doc.email)
-                    // if(req.body.tags)
+                    // if(req.body.p)
+                    // if(req.body.)
                     // {
                     //     // input sort once arrray of tags has been given
                     // }

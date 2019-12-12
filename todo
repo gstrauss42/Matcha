@@ -11,8 +11,6 @@ Gabriel: (extras = ...)
 
     - create a viewed history of just names
 
-    - store reports as a string under reports in the db on report button click and info supplied
-
     - upload images
         - configure chat
             - updates last_seen variable when a person logs out
