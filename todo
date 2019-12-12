@@ -3,6 +3,8 @@ work...
 
 Gabriel: (extras = ...)
 
+    - !!!!!!!!!!!!! got to be able to send the following info with each notification to the notification page --> username(who sent it), the time the notification happened, the notification message itself
+    
     - make fields secure
 
     - handle errors
@@ -23,10 +25,6 @@ Gabriel: (extras = ...)
 Jadon: (priority = !!!)
 
     - display default value for gender and partner preference under profile->associativity as the users current prefferance
-
-    - notifications arent looping properly, all info is being rendered into each notification
-
-    - recreate the notifications page
 
     - get stats to work on profile page, information passed as ints dont render
 
