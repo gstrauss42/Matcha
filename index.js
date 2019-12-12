@@ -8,6 +8,8 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 
 
+var multer = require('multer');
+
 // var express = require('express');
 // var router = express.Router();
 /*
@@ -29,6 +31,8 @@ app.use('/js', express.static('views/js'));
 app.use(express.static(path.join(__dirname, "public")));
 mongoose.connect(`mongodb+srv://gstrauss:qwerty0308@matcha-ch0yb.gcp.mongodb.net/test?retryWrites=true&w=majority`);
 app.use(session({secret: "secret session"}));
+
+// app.use(multer({dest:'./uploads/'}));
 
 var http = require('http');
 const server = http.createServer(app);

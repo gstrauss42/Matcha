@@ -96,8 +96,8 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
       }
       else if(req.body.block == '')
       {
-         Models.user.findOne({email : req.session.name}, function(err, check){
-            Models.user.findOne({"_id" : req.body._id}, function(err, doc){
+         Models.user.findOne({"_id" : req.body._id}, function(err, doc){
+            Models.user.findOneAndUpdate({email : req.session.name}, {$push :{blocked : doc.email}}, function(err, check){
                connected = '0';
                liked = '0';
                if(check.likes)
@@ -162,7 +162,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
    else{
 
       Models.user.findOne({email : req.session.name}, function(err, check){
-         Models.user.findOne({"_id" : req.body._id}, function(err, doc){
+         Models.user.findOneAndUpdate({"_id" : req.body._id}, {$push : {"notifications" : check.username + " viewed your profile"}}, function(err, doc){
             connected = '0';
             liked = '0';
             if(check.likes)

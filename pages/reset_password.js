@@ -10,7 +10,6 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
         Models.user.findOneAndUpdate({ verif : req.body.url }
             ,{ "password" : pass }
             , function(err, doc) {
-                console.log(doc);
                 res.redirect("login");
         });
     }

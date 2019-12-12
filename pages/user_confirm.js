@@ -5,7 +5,7 @@ var Models = require("../models/models");
 router.get('/', function(req, res){
    var check = req.originalUrl.substring(1);
    Models.user.findOne({verif:check}, function(err, doc){
-      if(doc.isverified == false){
+      if(doc && doc.isverified == false){
          Models.user.findOneAndUpdate(
             { verif:check },
             { $set : { isverified: "true"}}

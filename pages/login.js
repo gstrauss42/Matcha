@@ -7,14 +7,6 @@ var Models = require("../models/models");
 var crypto = require('crypto');
 const requestIp = require('request-ip');
 
-// const ipMiddleware = function(req, res, next) {
-//    const clientIp = requestIp.getClientIp(req);
-//    console.log(1000);
-//    console.log(clientIp);
-//    Model.user.findOne({email:req.body.email})
-//    next();
-// };
-
 router.post('/login', bodyParser.urlencoded(), function(req, res){
    Models.user.findOne({ email: req.body.email }, function(err, user) {
       if(user)

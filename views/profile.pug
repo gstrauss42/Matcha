@@ -105,7 +105,7 @@ html(lang="en")
                         button.close(type="button", data-dismiss="modal", aria-label="Close")
                             span(aria-hidden="true") &times;
                     .modal-body
-                            form(action="update_profile", method="post")
+                            form(action="update_profile", method="post", enctype="multipart/form-data")
                                 .form-group
                                     input#two_img(type="file", name="image1", accept="image/*")
                                 .form-group

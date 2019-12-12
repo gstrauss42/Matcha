@@ -3,20 +3,21 @@ work...
 
 Gabriel:
     - make fields secure
+    
     - handle errors
 
     - get block and report fake user to work (if blocked then that person will not show up in search results for the person who blocked them)
 
     - updates last_seen variable when a person logs out
 
-    - password forget link - send to email
+    -upload images
 
-    -sort out other render variables on matched_profile mainly with liked and connected passing variables
+    - configure chat
 
-    - create a visit history of who you have visited
-    - create a liked history of who you have liked (DONE already)
-    - create a viewed history of others who have visited/viewed you
-    - create a liked history of others who have liked you
+    -ajaxify(maybe)
+
+    - set email port to be dynamic in emails
 
 Jadon:
-    
+
+    - notifications arent looping properly, all info is being rendered into each notification

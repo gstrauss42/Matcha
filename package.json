@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/gstrauss42/matcha#readme",
   "dependencies": {
+    "base64-stream": "^1.0.0",
     "bcrypt": "^3.0.7",
     "body-parser": "^1.19.0",
+    "busboy": "^0.3.1",
+    "connect-busboy": "0.0.2",
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
