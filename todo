@@ -22,11 +22,7 @@ Gabriel: (extras = ...)
     ... - set email port to be dynamic in emails
 
 
-Jadon: (priority = !!!)
-
-    - display default value for gender and partner preference under profile->associativity as the users current prefferance
-
-    - get stats to work on profile page, information passed as ints dont render
+Jadon:
 
     - get popups working
 
