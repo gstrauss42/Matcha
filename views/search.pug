@@ -66,8 +66,9 @@ html(lang="en")
                                         for gold, k in tags
                                             .custom-control.custom-checkbox
                                                 input.custom-control-input(type="checkbox", name= k, id= gold)
+                                                - awe = k;
                                                 label.label-text.custom-control-label(for= gold)= gold
-                                    input(type="hidden", name="tag_amount", value= k)
+                                    input(type="hidden", name="tag_amount", value= awe)
                                 small.form-text.text-muted
                                     | To add/see more tags appear here make sure you have added them to your 
                                     a(href="profile") profile 
