@@ -52,6 +52,12 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                             break;
                         }
                     }
+                    if(doc.blocked && doc.blocked.includes(val[i].email))
+                    {
+                        val.splice(i, 1);
+                        break;
+                    }
+                    if(doc.email)
                     // if(req.body.tags)
                     // {
                     //     // input sort once arrray of tags has been given

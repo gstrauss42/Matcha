@@ -16,6 +16,9 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
    location: String,
    password: String,
    verif: String,
+   reports: [{
+      type: String
+   }],
    isverified: { type: Boolean, default: false},
    tags: [{
       type: String

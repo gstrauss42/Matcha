@@ -1,13 +1,15 @@
 ummm
 work...
 
-Gabriel:
+Gabriel: (extras = ...)
 
     - make fields secure
     
+    - start using .env
+
     - handle errors
 
-    - get block and report fake user to work (if blocked then that person will not show up in search results for the person who blocked them)
+    - find out what fake user is supposed to do
 
     - updates last_seen variable when a person logs out
 
@@ -15,15 +17,17 @@ Gabriel:
 
     - configure chat
 
-    - ajaxify(maybe)
+    ... - ajaxify
 
-    - set email port to be dynamic in emails
+    ... - set email port to be dynamic in emails
 
-    - set viewed count, your views, liked count / array, how many people you have liked
+    - create a viewed history of just names
 
-Jadon:
+Jadon: (priority = !!!)
 
-    - pass tags on search as an array and not seperate variables, also populate the tags count variable
+    !!! - pass tags on search as an array and not seperate variables, also populate the tags count variable
+
+    - make Matche Me! link in the header a post request (balnk should work... I think)
 
     - display default value for gender and partner preference under profile->associativity as the users current prefferance
 
