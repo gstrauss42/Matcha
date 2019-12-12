@@ -20,4 +20,12 @@ Gabriel:
 
 Jadon:
 
+    - pass tags on search as an array and not seperate variables so i can acess the names, also populate the tags count variable
+
+    - display default value for gender and partner preference under profile->associativity as the users current prefferance
+
     - notifications arent looping properly, all info is being rendered into each notification
+
+    - recreate the notifications page
+
+    - get popups working
