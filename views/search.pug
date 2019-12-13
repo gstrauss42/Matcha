@@ -71,7 +71,7 @@ html(lang="en")
                                         for gold, k in tags
                                             .custom-control.custom-checkbox
                                                 //- giving all checkboxes one name so that it will be put into an array for backend
-                                                input.custom-control-input(type="checkbox", name= 'check', id= gold)
+                                                input.custom-control-input(type="checkbox", name= gold, id= gold)
                                                 - awe = k;
                                                 label.label-text.custom-control-label(for= gold)= gold
                                     input(type="hidden", name="tag_amount", value= awe)
