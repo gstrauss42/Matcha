@@ -23,10 +23,12 @@ router.post('/', upload.single('picture'), function (req, res)
             var newImg = fs.readFileSync(req.file.path);
             // encodes the file as a base64 string
             var encImg = newImg.toString('base64');
-            Models.user.findOneAndUpdate({email : req.session.name}, { $push :{images: encImg}}, function(err, result){
-                if (err) { console.log(err); };
-                    res.redirect('profile');
-            });
+            Models.user.findOneAndUpdate({email : req.session.name},
+                { $push :{images: encImg}},
+                function(err, result){
+                    if (err) { console.log(err); };
+                        res.redirect('profile');
+                });
         };
     });
 });

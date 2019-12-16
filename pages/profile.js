@@ -10,11 +10,14 @@ router.get('/', function(req, res){
                               surname:doc.surname,
                               email:doc.email,
                               username: doc.username,
-                              image0 :doc.images.image0,
-                              image1 :doc.images.image1,
-                              image2 :doc.images.image2,
-                              image3 :doc.images.image3,
-                              image4 :doc.images.image4,
+                              
+                              main :doc.images[0],
+                              one :doc.images[0],
+                              two :doc.images[0],
+                              three :doc.images[0],
+                              four :doc.images[0],
+                              five:doc.images[0],
+
                               views : doc.notifications.length,
                               liked: doc.likes.length, // i need an array of the people ive liked
                               likes: count.length, // i need an array of the people who've liked me
@@ -25,9 +28,9 @@ router.get('/', function(req, res){
                               count: doc.notifications.length,
                               tags: doc.tags,
                               location: doc.location,
-                              image0: doc.images[0],
                               bio: doc.bio});
-      });
+                           });
+
    });
 });
 
