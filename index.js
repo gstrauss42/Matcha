@@ -15,8 +15,8 @@ var multer = require('multer');
 /*
 * App Variables
 */
-const app = express();
-const port = process.env.PORT || "8081";
+const app = require('express')();
+var io = require('socket.io')(http);
 
 
 
@@ -30,17 +30,12 @@ app.use(express.static('public'));
 app.use('/js', express.static('views/js'));
 app.use(express.static(path.join(__dirname, "public")));
 require('dotenv').config()
-
 mongoose.connect('mongodb+srv://gstrauss:' + process.env.password +'@matcha-ch0yb.gcp.mongodb.net/test?retryWrites=true&w=majority');
 app.use(session({secret: process.env.secret}));
 
 // app.use(multer({dest:'./uploads/'}));
 
-var http = require('http');
-const server = http.createServer(app);
-
-module.exports = server;
-
+var http = require('http').createServer(app);
 
 /*
  * Routes Definitions
@@ -80,9 +75,9 @@ app.use('/login', login);
 var create = require('./pages/create.js');
 app.use('/create', create);
 
-// chat
-var chat = require('./pages/chat.js');
-app.use('/chat', chat);
+// // chat
+// var chat = require('./pages/chat.js');
+// app.use('/chat', chat);
 
 // forgot_password
 var forgot_password = require('./pages/forgot_password.js');
@@ -124,6 +119,10 @@ app.use('/bio_change', bio_update);
 var reset_password = require('./pages/reset_password.js');
 app.use('/reset_password', reset_password);
 
+// upload_picture
+var upload_picture = require('./pages/upload_picture.js');
+app.use('/upload_picture', upload_picture);
+
 // testing
 var test = require('./pages/test.js');
 app.use('/test', test);
@@ -132,21 +131,27 @@ app.use('/test', test);
 var email_update = require('./pages/email_update.js')
 app.use('/check/:var_words', email_update);
 
+// app.get('/', function(req, res){
+//   res.sendFile(__dirname + '/index.html');
+// });
+
 // not the webpage youre looking for
 var user_confirm = require('./pages/user_confirm.js')
 app.use('/:var_words', user_confirm);
 
 
-// app.get('/:var_words', function(req, res){
-//    res.send('these are not the ' + req.params.var_words + '\'s you are looking for');
-// });
+
+io.on('connection', function(socket){
+  console.log("\nconnected\n");
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
 
 /*
  * Server Activation
  */
 
-console.log("\n" + process.env.port + "\n");
-
-server.listen(process.env.port, () => {
-  console.log(`Listening to requests on http://localhost:${process.env.port}/`);
+http.listen(process.env.port, function(){
+  console.log(`Listening to requests on http://localhost:${process.env.port}`);
 });

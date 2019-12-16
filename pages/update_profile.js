@@ -10,48 +10,7 @@ const upload = multer({ dest: './uploads/' })
 
 
 
-// var stream = require('stream');
-
-// var busboy = require('connect-busboy');
-
-// var {Base64Encode} = require('base64-stream');
-
-// const fs = require('fs')
-
 router.post('/', bodyParser.urlencoded(), function(req, res){
-    
-    // req.pipe(req.busboy)
-    // req.busboy.on("file", function (fieldname, file, filename) {
-    //     console.log("Uploading: " + filename);
-
-    //     var output = new stream.PassThrough();
-
-    //     fstream = fs.createWriteStream('./uploads/' + filename);
-    //     file.pipe(new Base64Encode()).pipe(output);
-
-    //     var house = ""
-    //     output.on('data', function (data) {
-    //         console.log(data);
-    //     });
-
-    //     fstream.on('close', function () {    
-    //         console.log(base64)
-    //     });
-
-    // })
-
-
-
-    if(req.body.image1)
-    {
-        console.log("file 1" + req.files)
-        Models.user.findOneAndUpdate({ email : req.session.name },
-            { "images.image1" : req.body.image1 }
-            , function(err, _update) {
-                console.log("updated image1");
-        });
-    }
-
     console.log(req.body.location_status); // for jadons debugging
 
     if(req.body.location_status)

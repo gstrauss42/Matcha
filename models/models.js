@@ -34,11 +34,7 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
    }],
    location_status: String,
    images: [{
-      image0: { data: Buffer, contentType: String },
-      image1: { data: Buffer, contentType: String },
-      image2: { data: Buffer, contentType: String },
-      image3: { data: Buffer, contentType: String },
-      image4: { data: Buffer, contentType: String }
+      type: Buffer
    }],
    connected: String,
    liked: String

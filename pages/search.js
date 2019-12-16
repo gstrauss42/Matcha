@@ -66,7 +66,8 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                     i++;
                 }
             }
-            console.log(req.body);
+            if(req.body.check)
+                console.log(req.body.check[0]);
             res.render('search', {
                         "tags" : doc.tags,
                         "count" : doc.notifications.length,

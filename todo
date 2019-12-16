@@ -3,11 +3,13 @@ work...
 
 Gabriel: (extras = ...)
 
-    - !!!!!!!!!!!!! got to be able to send the following info with each notification to the notification page --> username(who sent it), the time the notification happened, the notification message itself
+    - !!! got to be able to send the following info with each notification to the notification page --> username(who sent it), the time the notification happened, the notification message itself
 
-    - get location to work
+    - update location to work with postal codes or something like that
 
     - make fields secure
+
+    - check to make sure that report user functions like block user, maybe?
 
     - handle errors
 
