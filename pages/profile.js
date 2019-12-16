@@ -30,7 +30,6 @@ router.get('/', function(req, res){
                               location: doc.location,
                               bio: doc.bio});
                            });
-
    });
 });
 

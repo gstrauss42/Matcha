@@ -29,3 +29,9 @@ Jadon:
     - get popups working
 
     - create an error page ({404 not found}, {oops something went wrong} and potentially {please try that again})
+
+    - stats not displaying liked and likes count (dont know if youre wanting that to be strings)
+
+    - no image restrict still applies even when an image is added and the variables are populated
+
+    - new variable for notifications called old_notifications, used for variables under the seen section
