@@ -27,8 +27,6 @@ router.get('/', function(req, res){
                               location: doc.location,
                               image0: doc.images[0],
                               bio: doc.bio});
-         console.log(doc.images[0]);
-
       });
    });
 });

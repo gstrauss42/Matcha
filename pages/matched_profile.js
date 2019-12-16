@@ -4,8 +4,6 @@ var Models = require("../models/models");
 const bodyParser = require('body-parser');
 
 router.post('/', bodyParser.urlencoded(), function(req, res){
-   console.log('test');
-   console.log(req.body);
    if(req.body.unique != '1')
    {
       if(req.body.like == '')
@@ -38,7 +36,6 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
       }
       else if(req.body.unlike == '')
       {
-         console.log(req.session.name);
          Models.user.findOne({"_id": req.body._id}, function(err, doc){
             Models.user.findOneAndUpdate(
                {email : req.session.name},

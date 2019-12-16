@@ -6,8 +6,11 @@ var Model = require("../models/models");
 var crypto = require('crypto');
 var randomstring = require("randomstring");
 
-router.post('/', bodyParser.urlencoded(), function(req, res){
+router.get("/", (req,res) => {
+   res.render("forgot_password");
+})
 
+router.post('/', bodyParser.urlencoded(), function(req, res){
    Model.user.findOne({ email: req.body.email }, function(err, user) {
       if(user)
       {

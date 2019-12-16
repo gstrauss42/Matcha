@@ -32,6 +32,9 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
    notifications:[{
       type: String
    }],
+   old_notifications: [{
+      type: String
+   }],
    location_status: String,
    images: [{
       type: Buffer

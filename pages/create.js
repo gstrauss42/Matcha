@@ -8,6 +8,10 @@ var crypto = require('crypto');
 var randomstring = require("randomstring");
 var nodeMailer = require('nodemailer');
 
+router.get('/', function (req, res) {
+   res.render('create');
+})
+
 router.post('/create', bodyParser.urlencoded(), function(req, res, next){
    Model.user.findOne({ email: req.body.email }, function(err, user) {
       if(err) {

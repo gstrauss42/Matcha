@@ -7,6 +7,11 @@ var Models = require("../models/models");
 var crypto = require('crypto');
 const requestIp = require('request-ip');
 
+router.get("/", (req,res) => {
+   res.render("login");
+})
+ 
+
 router.post('/', bodyParser.urlencoded(), function(req, res){
    Models.user.findOne({ email: req.body.email }, function(err, user) {
       if(user)
