@@ -205,8 +205,8 @@ html(lang="en")
                     .container-fluid.mb-5
                         .row.mr-0.ml-0.custom-margin-pfp
                             .col-md-0
-                                if main
-                                    img#main-profile-img.rounded-circle.img-main.mt-3(src= main, alt="main-profile", data-toggle="modal", data-target="#modalMain")
+                                if one
+                                    img#main-profile-img.rounded-circle.img-main.mt-3(src= `data:image/*;base64,${one}`, alt="main-profile", data-toggle="modal", data-target="#modalMain")
                                 else
                                     img#main-profile-img.rounded-circle.img-main.mt-3(src="user.jpg", alt="main-profile", data-toggle="modal", data-target="#modalMain")
                             .col-md-0.mt-4.custom-margin-bio
@@ -224,23 +224,23 @@ html(lang="en")
                     .container-fluid.mb-5
                         .row.mr-0.ml-0
                             .col-md-0
-                                if two
-                                    img#profile-img-two.img-fluid.rounded-circle.img-prof.mr-2(src= two, alt="user_img2", data-toggle="modal", data-target="#modalTwo")
+                                if image1
+                                    img#profile-img-two.img-fluid.rounded-circle.img-prof.mr-2(src= `data:image/*;base64,${two}`, alt="user_img2", data-toggle="modal", data-target="#modalTwo")
                                 else
                                     img#profile-img-two.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img2", data-toggle="modal", data-target="#modalTwo")
                             .col-md-0
-                                if two && three
-                                    img#profile-img-three.img-fluid.rounded-circle.img-prof.mr-2(src= three, alt="user_img3", data-toggle="modal", data-target="#modalThree")
+                                if image2
+                                    img#profile-img-three.img-fluid.rounded-circle.img-prof.mr-2(src= `data:image/*;base64,${three}`, alt="user_img3", data-toggle="modal", data-target="#modalThree")
                                 else
                                     img#profile-img-three.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img3", data-toggle="modal", data-target="#modalThree")
                             .col-md-0
-                                if two && three && four
-                                    img#profile-img-four.img-fluid.rounded-circle.img-prof.mr-2(src= four, alt="user_img4", data-toggle="modal", data-target="#modalFour")
+                                if image3
+                                    img#profile-img-four.img-fluid.rounded-circle.img-prof.mr-2(src= `data:image/*;base64,${four}`, alt="user_img4", data-toggle="modal", data-target="#modalFour")
                                 else
                                     img#profile-img-four.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img4", data-toggle="modal", data-target="#modalFour")
                             .col-md-0
-                                if two && three && four && five
-                                    img#profile-img-five.img-fluid.rounded-circle.img-prof.mr-2(src= five, alt="user_img5", data-toggle="modal", data-target="#modalFive")
+                                if image4
+                                    img#profile-img-five.img-fluid.rounded-circle.img-prof.mr-2(src= `data:image/*;base64,${five}`, alt="user_img5", data-toggle="modal", data-target="#modalFive")
                                 else
                                     img#profile-img-five.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img5", data-toggle="modal", data-target="#modalFive")
 
