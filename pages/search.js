@@ -58,6 +58,15 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                         val.splice(i, 1);
                         break;
                     }
+                    
+                    //find a way to match the blocks to who is blocked for filtering 
+                    // if(req.body.reports)
+                    // {
+                        // val.splice(i, 1);
+                        // break;
+                    // }
+
+
                     // if(req.body.p)
                     // if(req.body.)
                     // {
