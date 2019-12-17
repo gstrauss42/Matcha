@@ -15,7 +15,11 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
       if(req.body.dismiss == '')
       {
          var dismissed = doc.notifications.splice(req.body.indentifier, 1);
-         // doc.old_notifications.unshift(dismissed);
+         Models.user.findOneAndUpdate(
+            {email : req.session.name},
+            {$push : {old_notifications : dismissed}}, function(err, temp){
+               console.log("moved to the other section")
+            });
          doc.save(console.log("dismissed"));
          res.render('notifications', {"notifications" : doc.notifications, "old_notifications" : doc.old_notifications});
          // update to move dismissed notifications to the seen section
