@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var Models = require("../models/models");
-const bodyParser = require('body-parser');
 
 router.get('/', function(req, res){
    Models.user.find({"likes" : req.session.name}, function(err, count){

@@ -6,9 +6,6 @@ var crypto = require('crypto');
 var randomstring = require("randomstring");
 var nodeMailer = require('nodemailer');
 var multer = require('multer');
-const upload = multer({ dest: './uploads/' })
-
-
 
 router.post('/', bodyParser.urlencoded(), function(req, res){
     console.log(req.body.location_status); // for jadons debugging

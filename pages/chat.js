@@ -3,8 +3,9 @@ var http = require('../index');
 var router = express.Router();
 var io = require('socket.io')(http);
 
-router.get('/', function(req, res){
+router.get('/', function(req, res, next){
   res.render('chat');
+
 });
 
 io.on('connection', function(socket){
@@ -13,5 +14,6 @@ io.on('connection', function(socket){
     io.emit('chat message', msg);
   });
 });
+
 
 module.exports = router;
