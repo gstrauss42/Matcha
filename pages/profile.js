@@ -14,9 +14,9 @@ router.get('/', function(req, res){
                               three :doc.images[2],
                               four :doc.images[3],
                               five :doc.images[4],
-                              views : doc.notifications.length,
-                              liked: doc.likes.length, // i need an array of the people ive liked
-                              likes: count.length, // i need an array of the people who've liked me
+                              views : doc.notifications.length,// i need an ARRAY OF PEOPLE who I have viewed and who have viewed me...
+                              liked: doc.likes.length,         // i need an ARRAY OF THE PEOPLE I have liked
+                              likes: count.length,             // i need an ARRAY OF THE PEOPLE who've liked me
                               rating: doc.rating,
                               gender: doc.gender,
                               prefferances: doc.prefferances,

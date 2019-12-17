@@ -5,6 +5,14 @@ Gabriel: (extras = ...)
 
     - !!! got to be able to send the following info with each notification to the notification page --> username(who sent it), the time the notification happened, the notification message itself
 
+    - !!!!!!  STATS:
+                I need an ARRAY OF PEOPLE who I have viewed 
+                I need an ARRAY OF PEOPLE who have viewed me
+                I need an ARRAY OF THE PEOPLE I have liked
+                I need an ARRAY OF THE PEOPLE who have liked me
+
+    - when putting a non-existant page name into the url it takes us to the reset password page --- it should be the login page 
+
     - update location to work with postal codes or something like that
 
     - make fields secure
@@ -23,11 +31,6 @@ Gabriel: (extras = ...)
 
     ... - set email port to be dynamic in emails
 
-
 Jadon:
 
-    - get popups working
-
-    - create an error page ({404 not found}, {oops something went wrong} and potentially {please try that again})
-
-    - stats not displaying liked and likes count (dont know if youre wanting that to be strings)
+    - get popups working (WHAT POPUPS???)
