@@ -45,7 +45,6 @@ var search          = require('./pages/search.js');
 var matched_profile = require('./pages/matched_profile.js');
 var chat            = require('./pages/chat.js');
 var test            = require('./pages/test.js');
-var error           = require('./pages/error.js');
 
 // mini-app calls
 app.use('/', index)
@@ -67,7 +66,6 @@ app.use('/upload_picture', upload_picture);
 app.use('/test', test);
 app.use('/check/:var_words', email_update);
 app.use('/:var_words', user_confirm);
-app.use('/error', error);
 
 /*
  * Server Activation

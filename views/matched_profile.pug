@@ -161,7 +161,7 @@ html(lang="en")
                             small.text-muted.status-on online now
 
                     .container-fluid.mb-4
-                        if connected == 0 && (image0 || image1 || image2 || image3 || image4) 
+                        if connected == 0 && (image0 || image1 || image2 || image3 || image4)
                             .jumbotron.remove-padd
                                 h4.display-4.connect-heading You two are not connected!
                                 p.lead Like this user and receive a like from them to start a connection.
@@ -178,21 +178,22 @@ html(lang="en")
                                 h4.display-4.connect-heading You two are not connected!
                                 p.lead This user requires at least one image for you to be able to connect with them!
                             
-
                     .container-fluid.mb-4
-                        .row.ml-0.mr-0
-                            .col-sm-3.col-md-3.pl-0.pr-1
-                                if two
-                                    img#two.friends-images(src= `data:image/*;base64,${two}`, alt="img-two", data-toggle="modal", data-target="#twoMod")
-                            .col-sm-3.col-md-3.pl-0.pr-1
-                                if three
-                                    img#three.friends-images(src= `data:image/*;base64,${three}`, alt="img-three", data-toggle="modal", data-target="#threeMod")
-                            .col-sm-3.col-md-3.pl-0.pr-1
-                                if four
-                                    img#four.friends-images(src= `data:image/*;base64,${four}`, alt="img-four", data-toggle="modal", data-target="#fourMod")
-                            .col-sm-3.col-md-3.pl-0.pr-1
-                                if five
-                                    img#five.friends-images(src= `data:image/*;base64,${five}`, alt="img-five", data-toggle="modal", data-target="#fiveMod")
+                        if two || three || four || five
+                            h4= name + "'" + "s images"
+                            .row.ml-0.mr-0
+                                .col-sm-3.col-md-3.pl-0.pr-1
+                                    if two
+                                        img#two.friends-images(src= `data:image/*;base64,${two}`, alt="img-two", data-toggle="modal", data-target="#twoMod")
+                                .col-sm-3.col-md-3.pl-0.pr-1
+                                    if three
+                                        img#three.friends-images(src= `data:image/*;base64,${three}`, alt="img-three", data-toggle="modal", data-target="#threeMod")
+                                .col-sm-3.col-md-3.pl-0.pr-1
+                                    if four
+                                        img#four.friends-images(src= `data:image/*;base64,${four}`, alt="img-four", data-toggle="modal", data-target="#fourMod")
+                                .col-sm-3.col-md-3.pl-0.pr-1
+                                    if five
+                                        img#five.friends-images(src= `data:image/*;base64,${five}`, alt="img-five", data-toggle="modal", data-target="#fiveMod")
 
                     .container-fluid.mb-4
                         h5.about-heading About Me

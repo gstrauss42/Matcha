@@ -5,6 +5,8 @@ Gabriel: (extras = ...)
 
     - !!! got to be able to send the following info with each notification to the notification page --> username(who sent it), the time the notification happened, the notification message itself
 
+    - !!! SERIOUS ISSUE UPLOADING MORE THAN ONE IMAGE TO PROFILE PAGE. --> does not work if you're not using the first circle with the plus in it to upload
+
     - !!!!!!  STATS:
                 I need an ARRAY OF PEOPLE who I have viewed 
                 I need an ARRAY OF PEOPLE who have viewed me
@@ -24,13 +26,15 @@ Gabriel: (extras = ...)
     - create a viewed history of just names
 
     - upload images
-        - configure chat
-            - updates last_seen variable when a person logs out
+    
+    - configure chat
+    
+    - updates last_seen variable when a person logs out
     
     .. - ajaxify
 
     ... - set email port to be dynamic in emails
 
 Jadon:
-
+    - be able to delete tags somehow
     - get popups working (WHAT POPUPS???)

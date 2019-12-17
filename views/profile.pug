@@ -199,7 +199,7 @@ html(lang="en")
                 if !one && !two && !three && !four && !five
                     #profile-notif.row-md-12.ml-0.mr-0.mb-0
                         p.bg-danger.text-center.pl-2.pr-2.pt-1.pb-1 Please upload at least one profile image for other users to be able to like and connect with your profile.
-            
+
                 //- profile info
                 .container
                     .container-fluid.mb-5
@@ -224,22 +224,22 @@ html(lang="en")
                     .container-fluid.mb-5
                         .row.mr-0.ml-0
                             .col-md-0
-                                if image1
+                                if one && two
                                     img#profile-img-two.img-fluid.rounded-circle.img-prof.mr-2(src= `data:image/*;base64,${two}`, alt="user_img2", data-toggle="modal", data-target="#modalTwo")
                                 else
                                     img#profile-img-two.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img2", data-toggle="modal", data-target="#modalTwo")
                             .col-md-0
-                                if image2
+                                if one && two && three
                                     img#profile-img-three.img-fluid.rounded-circle.img-prof.mr-2(src= `data:image/*;base64,${three}`, alt="user_img3", data-toggle="modal", data-target="#modalThree")
                                 else
                                     img#profile-img-three.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img3", data-toggle="modal", data-target="#modalThree")
                             .col-md-0
-                                if image3
+                                if one && two && three && four
                                     img#profile-img-four.img-fluid.rounded-circle.img-prof.mr-2(src= `data:image/*;base64,${four}`, alt="user_img4", data-toggle="modal", data-target="#modalFour")
                                 else
                                     img#profile-img-four.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img4", data-toggle="modal", data-target="#modalFour")
                             .col-md-0
-                                if image4
+                                if one && two && three && four && five
                                     img#profile-img-five.img-fluid.rounded-circle.img-prof.mr-2(src= `data:image/*;base64,${five}`, alt="user_img5", data-toggle="modal", data-target="#modalFive")
                                 else
                                     img#profile-img-five.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img5", data-toggle="modal", data-target="#modalFive")
