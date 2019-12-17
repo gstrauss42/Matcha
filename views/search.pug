@@ -113,9 +113,9 @@ html(lang="en")
                                 input(type="hidden", name="_id", value= data_one['_id'])
                                 .alert.alert-primary.alert-dismissible.fade.show.ml-4.mr-4(role="alert")
                                     .media
-                                        if data_one['images']['image0']
+                                        if data_one['images'][0]
                                             a(href=`javascript: submitform(${id})`)
-                                                img.rounded.mr-2.search-profile(src= data_one['images']['image0'], alt="profile_image")
+                                                img.rounded.mr-2.search-profile(src= `data:image/*;base64,${data_one['images'][0]}`, alt="profile_image")
                                         else
                                             a(href=`javascript: submitform(${id})`)
                                                 img.rounded.mr-2.search-profile(src="user.jpg", alt="profile_image")
@@ -136,9 +136,9 @@ html(lang="en")
                                 input(type="hidden", name="_id", value= data['_id'])
                                 .alert.alert-primary.alert-dismissible.fade.show.ml-4.mr-4(role="alert")
                                     .media
-                                        if data['images']['image0']
+                                        if data['images'][0]
                                             a(href=`javascript: submitform(${id})`)
-                                                img.rounded.mr-2.search-profile(src= data['images']['image0'], alt="profile_image")
+                                                img.rounded.mr-2.search-profile(src= `data:image/*;base64,${data['images'][0]}`, alt="profile_image")
                                         else
                                             a(href=`javascript: submitform(${id})`)
                                                 img.rounded.mr-2.search-profile(src="user.jpg", alt="profile_image")
