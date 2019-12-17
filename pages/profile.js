@@ -10,13 +10,12 @@ router.get('/', function(req, res){
                               surname:doc.surname,
                               email:doc.email,
                               username: doc.username,
-                              
-                              main :doc.images[0],
+
                               one :doc.images[0],
-                              two :doc.images[0],
-                              three :doc.images[0],
-                              four :doc.images[0],
-                              five:doc.images[0],
+                              two :doc.images[1],
+                              three :doc.images[2],
+                              four :doc.images[3],
+                              five :doc.images[4],
 
                               views : doc.notifications.length,
                               liked: doc.likes.length, // i need an array of the people ive liked

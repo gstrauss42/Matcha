@@ -8,7 +8,7 @@ fs = require('fs-extra')
 // Your mongodb or mLabs connection string
 multer = require('multer')
 util = require('util')
-upload = multer({limits: {fileSize: 2000000 },dest:'/goinfre/gstrauss/Documents/matcha/uploads'})
+upload = multer({limits: {fileSize: 2000000 },dest:'/goinfre/jhansen/Documents/matcha/uploads'})
 
 router.post('/', upload.single('picture'), function (req, res)
 {
