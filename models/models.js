@@ -36,9 +36,11 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
       type: String
    }],
    location_status: String,
-   images: [{
-      type: String
-   }],
+   main_image: String,
+   image_one: String, 
+   image_two: String,
+   image_three: String,
+   image_four: String,
    connected: String,
    liked: String
 });

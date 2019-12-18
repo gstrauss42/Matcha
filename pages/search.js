@@ -20,6 +20,7 @@ router.get('/', function(req, res){
 router.post('/', bodyParser.urlencoded(), function(req, res){
     Models.user.findOne({email: req.session.name}, function(err, doc)
     {
+        console.log(req.body);
         var p = 0;
         Models.user.find({$and: [{gender: doc.prefferances}, {prefferances: doc.gender}]} , function(err, val){
             let i = 0;
@@ -59,12 +60,13 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                         break;
                     }
                     
-                    //find a way to match the blocks to who is blocked for filtering 
-                    // if(req.body.reports)
-                    // {
-                        // val.splice(i, 1);
-                        // break;
-                    // }
+                    //find a way to match the blocks to who is blocked for filtering
+                    if(doc.reported && doc.reported.contains(val[i].email))
+                    {
+                        console.log("a user was filtered due to blocking");
+                        val.splice(i, 1);
+                        break;
+                    }
 
 
                     // if(req.body.p)

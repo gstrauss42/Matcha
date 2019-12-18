@@ -9,11 +9,11 @@ router.get('/', function(req, res){
                               surname:doc.surname,
                               email:doc.email,
                               username: doc.username,
-                              one :doc.images[0],
-                              two :doc.images[1],
-                              three :doc.images[2],
-                              four :doc.images[3],
-                              five :doc.images[4],
+                              one :doc.main_image,
+                              two :doc.image_one,
+                              three :doc.image_two,
+                              four :doc.image_three,
+                              five :doc.image_four,
                               views : doc.notifications.length,// i need an ARRAY OF PEOPLE who I have viewed and who have viewed me...
                               liked: doc.likes.length,         // i need an ARRAY OF THE PEOPLE I have liked
                               likes: count.length,             // i need an ARRAY OF THE PEOPLE who've liked me

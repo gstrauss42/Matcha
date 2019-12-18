@@ -71,8 +71,8 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
       // get the back end for these next 2 working
       else if(req.body.fake == '')
       {
-         Models.user.findOne({email : req.session.name}, function(err, check){
-            Models.user.findOneAndUpdate({"_id" : req.body._id}, {$push : {reports: req.session.name + " reported:\n" + req.body.details}}, function(err, doc){
+         Models.user.findOneAndUpdate({"_id" : req.body._id}, {$push : {reports: "report info:\n" + req.body.details}}, function(err, doc){
+            Models.user.findOneAndUpdate({email : req.session.name}, {$push : {blocked: doc.email}}, function(err, check){
                connected = '0';
                liked = '0';
                if(check.likes)

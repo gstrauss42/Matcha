@@ -1,7 +1,7 @@
 ummm
 work...
 
-Gabriel: (extras = ...)
+Gabriel: (extras = ...) (from jadon = !!!+)
 
     - !!! got to be able to send the following info with each notification to the notification page --> username(who sent it), the time the notification happened, the notification message itself
 
@@ -13,23 +13,14 @@ Gabriel: (extras = ...)
                 I need an ARRAY OF THE PEOPLE I have liked
                 I need an ARRAY OF THE PEOPLE who have liked me
 
-    - when putting a non-existant page name into the url it takes us to the reset password page --- it should be the login page 
-
     - update location to work with postal codes or something like that
 
     - make fields secure
 
-    - check to make sure that report user functions like block user, maybe?
-
     - handle errors
 
-    - create a viewed history of just names
-
-    - upload images
-    
-    - configure chat
-    
-    - updates last_seen variable when a person logs out
+    - configure chat    
+        - updates last_seen variable when a person logs out
     
     .. - ajaxify
 
@@ -38,3 +29,6 @@ Gabriel: (extras = ...)
 Jadon:
     - be able to delete tags somehow
     - get popups working (WHAT POPUPS???)
+
+
+    - the old notifications dont display correctly, first dismiss doesnt display second does then on first delete the first dismissed displayed under old notifications which can then be deleted

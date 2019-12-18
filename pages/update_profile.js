@@ -9,21 +9,19 @@ var multer = require('multer');
 
 router.post('/', bodyParser.urlencoded(), function(req, res){
     console.log(req.body.location_status); // for jadons debugging
-
-    if(req.body.location_status)
-    {
-        Models.user.findOneAndUpdate({email: req.session.name},
-            {"location_status": req.body.location_status},
-            // needs the passing of the correct path
-            function(err, doc){
-                doc.images.data = fs.readFileSync(imgPath);
-                doc.images.contentType = 'image/png';
-                doc.save(function(err, info){
-                    console.log(info);
-                });
-                console.log("updated  location status");
-        });
-    }
+    console.log(req.body)
+    // if(req.body.location_status)
+    // {
+    //     Models.user.findOneAndUpdate({email: req.session.name},
+    //         {"location_status": req.body.location_status},
+    //         // needs the passing of the correct path
+    //         function(err, doc){
+                
+            
+    //             });
+    //             console.log("updated  location status");
+    //     });
+    // }                                                                configure this to work
     if(req.body.bio)
     {
         Models.user.findOneAndUpdate({ email : req.session.name },
