@@ -12,15 +12,16 @@ util = require('util')
 upload = multer({limits: {fileSize: 2000000 },dest:'/goinfre/gstrauss/Documents/matcha/uploads'})  //gabriels dir
 // upload = multer({limits: {fileSize: 2000000 },dest:'/goinfre/jhansen/Documents/matcha/uploads'})  //jadons dir.
 
-router.post('/', upload.single('picture'), function (req, res)
+router.post('/', upload.single('picture'), bodyParser.urlencoded(), function (req, res)
 {
+    console.log(req.body);
+
     if(req.file == null)
     {
         console.log("received no file from the front end")
         return res.redirect ("profile");
     }
     Models.user.findOne({email : req.session.name}, function(err, display){
-
             // reads the img file from tmp in-memory location
             var newImg = fs.readFileSync(req.file.path);
             // encodes the file as a base64 string
@@ -71,6 +72,7 @@ router.post('/', upload.single('picture'), function (req, res)
                 console.log("image_four")
             }
     });
+    res.redirect("profile");
 });
 
 module.exports = router;

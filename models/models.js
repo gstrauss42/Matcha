@@ -45,10 +45,7 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
    liked: String
 });
 
-var tagSchema = new mongoose.Schema({
-   name: String,
-   tag: String
-});
+
 
 db.on("error", console.error.bind(console, "Connection error:"));
 db.once("open", function(callback) {
@@ -56,7 +53,5 @@ db.once("open", function(callback) {
 });
 
 var user = mongoose.model("users", userSchema); //This creates the Bug model.
-var tag = mongoose.model("tags", tagSchema); //This creates the Bug model.
 
 module.exports.user = user; /* Export the Bug model so index.js can access it. */
-module.exports.tag = tag; /* Export the Bug model so index.js can access it. */

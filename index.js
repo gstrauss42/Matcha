@@ -63,7 +63,6 @@ app.use('/update_profile', update_profile);
 app.use('/bio_change', bio_update);
 app.use('/reset_password', reset_password);
 app.use('/upload_picture', upload_picture);
-app.use('/test', test);
 app.use('/check/:var_words', email_update);
 app.use('/:var_words', user_confirm);
 
