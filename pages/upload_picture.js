@@ -26,53 +26,54 @@ router.post('/', upload.single('picture'), bodyParser.urlencoded(), function (re
             var newImg = fs.readFileSync(req.file.path);
             // encodes the file as a base64 string
             var encImg = newImg.toString('base64');
-            if(req.body.main_image == '')
+//     main_image: String,
+//    image_one: String, 
+//    image_two: String,
+//    image_three: String,
+//    image_four: String,
+                // 
+            if(req.body.main_save == '')
             {
-                if(display.main_image)
-                {
-                    display.main_img == encImg;
-                    display.save;
-                }
-                console.log("main_image")
+                console.log("big test");
+                Models.user.findOneAndUpdate({email: req.session.name}, {main_image: encImg}, function(err, val){
+                    console.log("saved main image");
+                    console.log(val)
+                });
             }
-            if(req.body.image_one == '')
+            if(req.body.two_save == '')
             {
-                if(display.image_one)
-                {
-                    display.image_one == encImg;
-                    display.save;
-                }
-                console.log("image_one")
-            }            
-            if(req.body.image_two == '')
-            {
-                if(display.image_two)
-                {
-                    display.image_two == encImg;
-                    display.save;
-                }
-                console.log("image_two")
+                console.log("big test");
+                Models.user.findOneAndUpdate({email: req.session.name}, {image_one: encImg}, function(err, val){
+                    console.log("saved first image");
+                    console.log(val)
+                });
             }
-            if(req.body.image_three == '')
+            if(req.body.three_save = '')
             {
-                if(display.image_three)
-                {
-                    display.image_three == encImg;
-                    display.save;
-                }
-                console.log("image_three")
+                console.log("big test");
+                Models.user.findOneAndUpdate({email: req.session.name}, {image_two: encImg}, function(err, val){
+                    console.log("saved second image");
+                    console.log(val)
+                });
+            }         
+            if(req.body.four_save == '')
+            {
+                console.log("big test");
+                Models.user.findOneAndUpdate({email: req.session.name}, {image_three: encImg}, function(err, val){
+                    console.log("saved third image");
+                    console.log(val)
+                });
             }
-            if(req.body.image_four == '')
+            if(req.body.five_save == '')
             {
-                if(display.image_four)
-                {
-                    display.image_four == encImg;
-                    display.save;
-                }
-                console.log("image_four")
+                console.log("big test");
+                Models.user.findOneAndUpdate({email: req.session.name}, {image_four: encImg}, function(err, val){
+                    console.log("saved fourth image");
+                    console.log(val)
+                });
             }
     });
-    res.redirect("profile");
+    return res.redirect("profile");
 });
 
 module.exports = router;

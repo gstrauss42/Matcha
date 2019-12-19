@@ -94,9 +94,9 @@ html(lang="en")
                         button.close(type="button", data-dismiss="modal", aria-label="Close")
                             span(aria-hidden="true") &times;
                     .modal-body
-                            form(action="upload_picture", method="post")
+                            form(action="upload_picture", method="post", enctype="multipart/form-data")
                                 .form-group
-                                    input#main_img(type="file", name="image0", accept="image/*")
+                                    input#main_img(type="file", name="picture", accept="image/*")
                                 .form-group
                                     button.btn.btn-primary(type="submit", name="main_save") Save Changes	
                     .modal-footer
@@ -128,9 +128,9 @@ html(lang="en")
                         button.close(type="button", data-dismiss="modal", aria-label="Close")
                             span(aria-hidden="true") &times;
                     .modal-body
-                            form(action="upload_picture", method="post")
+                            form(action="upload_picture", method="post", enctype="multipart/form-data")
                                 .form-group
-                                    input#three_img(type="file", name="image2")
+                                    input#three_img(type="file", name="picture")
                                 .form-group
                                     button.btn.btn-primary(type="submit", name="three_save", accept="image/*") Save Changes	
                     .modal-footer
@@ -145,9 +145,9 @@ html(lang="en")
                         button.close(type="button", data-dismiss="modal", aria-label="Close")
                             span(aria-hidden="true") &times;
                     .modal-body
-                            form(action="upload_picture", method="post")
+                            form(action="upload_picture", method="post", enctype="multipart/form-data")
                                 .form-group
-                                    input#four_img(type="file", name="image3")
+                                    input#four_img(type="file", name="picture")
                                 .form-group
                                     button.btn.btn-primary(type="submit", name="four_save", accept="image/*") Save Changes	
                     .modal-footer
@@ -162,9 +162,9 @@ html(lang="en")
                         button.close(type="button", data-dismiss="modal", aria-label="Close")
                             span(aria-hidden="true") &times;
                     .modal-body
-                            form(action="upload_picture", method="post")
+                            form(action="upload_picture", method="post", enctype="multipart/form-data")
                                 .form-group
-                                    input#five_img(type="file", name="image4", accept="image/*")
+                                    input#five_img(type="file", name="picture", accept="image/*")
                                 .form-group
                                     button.btn.btn-primary(type="submit", name="five_save") Save Changes	
                     .modal-footer
