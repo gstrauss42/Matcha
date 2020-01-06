@@ -29,6 +29,7 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
    blocked: [{
       type: String
    }],
+   fame: Number,
    notifications:[{
       type: String
    }],

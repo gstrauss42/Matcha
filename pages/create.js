@@ -39,6 +39,7 @@ router.post('/create', bodyParser.urlencoded(), function(req, res, next){
             gender: req.body.gender,
             prefferances: req.body.preferences,
             verif: safe,
+            fame: 0,
             blocked : "",
             notifications: "Welcome to Matcha"
          });

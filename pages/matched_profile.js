@@ -9,6 +9,10 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
       if(req.body.like == '')
       {
          Models.user.findOneAndUpdate({"_id": req.body._id}, {$push: {notifications: req.session.name + " liked you"}}, function(err, doc){
+            rating = doc.fame + 1;
+            Models.user.findOneAndUpdate({"_id": req.body._id}, {fame: rating}, function(err, temp){
+               console.log("incremented fame rating");
+            });
             Models.user.findOneAndUpdate(
                {email : req.session.name},
                {$push :{likes: doc.email}},
