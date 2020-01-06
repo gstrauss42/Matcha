@@ -136,9 +136,9 @@ html(lang="en")
                                 input(type="hidden", name="_id", value= data['_id'])
                                 .alert.alert-primary.alert-dismissible.fade.show.ml-4.mr-4(role="alert")
                                     .media
-                                        if data['images'][0]
+                                        if data['main_imag']
                                             a(href=`javascript: submitform(${id})`)
-                                                img.rounded.mr-2.search-profile(src= `data:image/*;base64,${data['images'][0]}`, alt="profile_image")
+                                                img.rounded.mr-2.search-profile(src= `data:image/*;base64,${data['main_image']}`, alt="profile_image")
                                         else
                                             a(href=`javascript: submitform(${id})`)
                                                 img.rounded.mr-2.search-profile(src="user.jpg", alt="profile_image")

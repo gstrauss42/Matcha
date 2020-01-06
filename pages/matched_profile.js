@@ -27,11 +27,11 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                                                 tags: doc.tags,
                                                 location: doc.location,
                                                 _id: doc._id,
-                                                one :doc.images[0],
-                                                two :doc.images[1],
-                                                three :doc.images[2],
-                                                four :doc.images[3],
-                                                five :doc.images[4],
+                                                one :doc.main_image,
+                                                two :doc.image_one,
+                                                three :doc.image_two,
+                                                four :doc.image_three,
+                                                five :doc.image_four,
                                                 count : ret.notifications.length,
                                                 liked: "1",
                                                 "connected": connected,
@@ -55,11 +55,11 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                                                 age: doc.age,
                                                 count : ret.notifications.length,
                                                 tags: doc.tags,
-                                                one :doc.images[0],
-                                                two :doc.images[1],
-                                                three :doc.images[2],
-                                                four :doc.images[3],
-                                                five :doc.images[4],
+                                                one :doc.main_image,
+                                                two :doc.image_one,
+                                                three :doc.image_two,
+                                                four :doc.image_three,
+                                                five :doc.image_four,
                                                 location: doc.location,
                                                 _id: doc._id,
                                                 liked: "0",
@@ -91,11 +91,11 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                                              prefferances: doc.prefferances,
                                              count : check.notifications.length,
                                              age: doc.age,
-                                             one :doc.images[0],
-                                             two :doc.images[1],
-                                             three :doc.images[2],
-                                             four :doc.images[3],
-                                             five :doc.images[4],
+                                             one :doc.main_image,
+                                             two :doc.image_one,
+                                             three :doc.image_two,
+                                             four :doc.image_three,
+                                             five :doc.image_four,
                                              tags: doc.tags,
                                              location: doc.location,
                                              _id: doc._id,
@@ -128,11 +128,11 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                                              prefferances: doc.prefferances,
                                              age: doc.age,
                                              tags: doc.tags,
-                                             one :doc.images[0],
-                                             two :doc.images[1],
-                                             three :doc.images[2],
-                                             four :doc.images[3],
-                                             five :doc.images[4],
+                                             one :doc.main_image,
+                                             two :doc.image_one,
+                                             three :doc.image_two,
+                                             four :doc.image_three,
+                                             five :doc.image_four,
                                              location: doc.location,
                                              count : check.notifications.length,
                                              _id: doc._id,
@@ -145,6 +145,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
       }
       else
       {
+         console.log("this is the one");
          Models.user.findOne({email : req.session.name}, function(err, check){
             Models.user.findOne({"_id" : req.body._id}, function(err, doc){
                connected = '0';
@@ -164,11 +165,11 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                                           gender: doc.gender,
                                           prefferances: doc.prefferances,
                                           age: doc.age,
-                                          one :doc.images[0],
-                                          two :doc.images[1],
-                                          three :doc.images[2],
-                                          four :doc.images[3],
-                                          five :doc.images[4],
+                                          one :doc.main_image,
+                                          two :doc.image_one,
+                                          three :doc.image_two,
+                                          four :doc.image_three,
+                                          five :doc.image_four,
                                           count : check.notifications.length,
                                           tags: doc.tags,
                                           location: doc.location,
@@ -182,7 +183,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
    }
    // start of the psuedo get
    else{
-
+      console.log(req.body);
       Models.user.findOne({email : req.session.name}, function(err, check){
          Models.user.findOneAndUpdate({"_id" : req.body._id}, {$push : {"notifications" : check.username + " viewed your profile"}}, function(err, doc){
             connected = '0';
@@ -202,11 +203,11 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                                           gender: doc.gender,
                                           prefferances: doc.prefferances,
                                           age: doc.age,
-                                          one :doc.images[0],
-                                          two :doc.images[1],
-                                          three :doc.images[2],
-                                          four :doc.images[3],
-                                          five :doc.images[4],
+                                          one :doc.main_image,
+                                          two :doc.image_one,
+                                          three :doc.image_two,
+                                          four :doc.image_three,
+                                          five :doc.image_four,
                                           tags: doc.tags,
                                           count : check.notifications.length,
                                           location: doc.location,

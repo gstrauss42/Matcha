@@ -31,4 +31,15 @@ Jadon:
     - get popups working (WHAT POPUPS???)
 
 
+
+
+    - I changed the image storage from an array to individual images, pls check your front end aligns ive fixed it in 3 places not sure if i got all
+    - images dont display properly in the profile page
+    - please make chat a post request passing the id of the person I am chatting with, the get request doesnt work because I cant convert the url id to the correct mongodb object also if the id length changes our site is broken with my method, thanks bro (sorry for the work)
+
+
+
+
+
+
     - the old notifications dont display correctly, first dismiss doesnt display second does then on first delete the first dismissed displayed under old notifications which can then be deleted

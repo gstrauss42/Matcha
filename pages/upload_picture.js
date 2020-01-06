@@ -34,15 +34,12 @@ router.post('/', upload.single('picture'), bodyParser.urlencoded(), function (re
                 // 
             if(req.body.main_save == '')
             {
-                console.log("big test");
                 Models.user.findOneAndUpdate({email: req.session.name}, {main_image: encImg}, function(err, val){
                     console.log("saved main image");
-                    console.log(val)
                 });
             }
             if(req.body.two_save == '')
             {
-                console.log("big test");
                 Models.user.findOneAndUpdate({email: req.session.name}, {image_one: encImg}, function(err, val){
                     console.log("saved first image");
                     console.log(val)
@@ -50,7 +47,6 @@ router.post('/', upload.single('picture'), bodyParser.urlencoded(), function (re
             }
             if(req.body.three_save = '')
             {
-                console.log("big test");
                 Models.user.findOneAndUpdate({email: req.session.name}, {image_two: encImg}, function(err, val){
                     console.log("saved second image");
                     console.log(val)
