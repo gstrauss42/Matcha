@@ -31,6 +31,7 @@ Jadon:
     - be able to delete tags somehow
     - get popups working (WHAT POPUPS???)
 
+    --- thought --- if were allowed to remove seen notifications lets do that cause it will safe both of us work ie where the notifications move after you first delete them
 
     - change tags to be an array
     - I changed the image storage from an array to individual images, pls check your front end aligns ive fixed it in 3 places not sure if i got all
