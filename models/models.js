@@ -15,6 +15,12 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
    fame_rating: String,
    location: String,
    password: String,
+   viewed: [{
+      type: String
+   }],
+   views: [{
+      type: String
+   }],
    verif: String,
    reports: [{
       type: String
@@ -30,9 +36,6 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
       type: String
    }],
    fame: Number,
-   notifications:[{
-      type: String
-   }],
    old_notifications: [{
       type: String
    }],
@@ -46,7 +49,12 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
    liked: String
 });
 
-
+var notificationsSchema = new mongoose.Schema({
+   email: String,
+   name:String,
+   content: String,
+   time: Number
+})
 
 db.on("error", console.error.bind(console, "Connection error:"));
 db.once("open", function(callback) {
@@ -54,5 +62,7 @@ db.once("open", function(callback) {
 });
 
 var user = mongoose.model("users", userSchema); //This creates the Bug model.
+var notifications = mongoose.model("notifications", notificationsSchema);
 
 module.exports.user = user; /* Export the Bug model so index.js can access it. */
+module.exports.notifications = notifications;

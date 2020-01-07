@@ -1,17 +1,18 @@
 ummm
 work...
 
+
+continue working on the notifications with the new schema section
+
+
+
 Gabriel: (extras = ...) (from jadon = !!!+)
 
     - !!! got to be able to send the following info with each notification to the notification page --> username(who sent it), the time the notification happened, the notification message itself
 
     - !!! SERIOUS ISSUE UPLOADING MORE THAN ONE IMAGE TO PROFILE PAGE. --> does not work if you're not using the first circle with the plus in it to upload
 
-    - !!!!!!  STATS:
-                I need an ARRAY OF PEOPLE who I have viewed 
-                I need an ARRAY OF PEOPLE who have viewed me
-                I need an ARRAY OF THE PEOPLE I have liked
-                I need an ARRAY OF THE PEOPLE who have liked me
+
 
     - update location to work with postal codes or something like that
 
@@ -35,7 +36,7 @@ Jadon:
     - I changed the image storage from an array to individual images, pls check your front end aligns ive fixed it in 3 places not sure if i got all
     - images dont display properly in the profile page
     - please make chat a post request passing the id of the person I am chatting with, the get request doesnt work because I cant convert the url id to the correct mongodb object also if the id length changes our site is broken with my method, thanks bro (sorry for the work)
-
+    - for the stats (you have liked), I am passing you an array of all profiles if you could loop through that array but display the email of each as apposed to just the regular index variables (email index of each array index)
 
 
 

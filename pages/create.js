@@ -40,10 +40,23 @@ router.post('/create', bodyParser.urlencoded(), function(req, res, next){
             prefferances: req.body.preferences,
             verif: safe,
             fame: 0,
-            blocked : "",
-            notifications: "Welcome to Matcha"
+            blocked : ""
          });
 
+         var present_time = Math.floor(Date.now() / 1000);
+         var _notif = new Model.notifications ({
+            email: req.body.email,
+            name: "Welcome",
+            content: "Welcome to matcha, may the love be with you",
+            time: present_time
+         })
+         _notif.save(function(err){
+            if(err)
+               console.log(err);
+            else
+               console.log("updated notifications");
+         })
+         
          _user.save(function(err){
             if(err)
                console.error(error);

@@ -4,8 +4,8 @@ var Models = require("../models/models");
 const bodyParser = require('body-parser');
 
 router.get('/', function(req, res){
-   Models.user.findOne({email: req.session.name}, function(err, doc){
-      res.render('notifications', {"notifications" : doc.notifications});
+   Models.notifications.findOne({email: req.session.name}, function(err, doc){
+      res.render('notifications', {"notifications" : doc});
    });
 });
 
