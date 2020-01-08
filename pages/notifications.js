@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 
 router.get('/', function(req, res){
    Models.notifications.findOne({email: req.session.name}, function(err, doc){
+      console.log(doc);
       res.render('notifications', {"notifications" : doc});
    });
 });

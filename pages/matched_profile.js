@@ -9,28 +9,14 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
       {
          if(req.body.like == '')
          {
-            Models.user.findOneAndUpdate({"_id": req.body._id}, {$push: {notifications: req.session.name + " liked you"}}, function(err, doc){
-               // like notification
-               var present_time = Math.floor(Date.now() / 1000);
-               var _notif = new Models.notifications ({
-                  email: doc.email,
-                  name: "liked",
-                  content: "you where just liked by " + doc.email,
-                  time: present_time
-               })
-               _notif.save(function(err){
-                  if(err)
-                     console.log(err);
-                  else
-                     console.log("updated notifications");
-               })
+            Models.user.findOne({"_id": req.body._id}, function(err, doc){
                // fame increment
                rating = doc.fame + 1;
                Models.user.findOneAndUpdate({"_id": req.body._id}, {fame: rating}, function(err, temp){
                   console.log("incremented fame rating");
                });
                // render and render checks
-               Models.user.findOne({email : req.session.name}, function(err, ret){
+               Models.user.findOneAndUpdate({email : req.session.name}, {$push : {likes: doc.email}}, function(err, ret){
                   
                      connected = '0';
                      if(doc.likes.includes(ret.email)){
@@ -56,6 +42,21 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                                                    "connected": connected,
                                                    bio: doc.bio});
                });
+               console.log("\n" + connected + "\n");
+                              // like notification
+               var present_time = Math.floor(Date.now() / 1000);
+               var _notif = new Models.notifications ({
+                  email: doc.email,
+                  name: "liked",
+                  content: "you where just liked by " + doc.email,
+                  time: present_time
+               })
+               _notif.save(function(err){
+                  if(err)
+                     console.log(err);
+                  else
+                     console.log("updated notifications");
+               })
             });
          }
          else if(req.body.unlike == '')

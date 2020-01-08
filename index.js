@@ -1,3 +1,7 @@
+// routing for socket has been disabled and instead I had included its handling directly in the html
+
+
+
 /*
 * App Variables
 */
@@ -7,6 +11,8 @@ var   mongoose  = require('mongoose');
 const path      = require("path");
 var   session   = require('express-session');
 var   http      = require('http').createServer(app);
+var   server    = require('http').Server(app);
+var   io        = require('socket.io')(server);
 
 require('dotenv').config()
 
@@ -22,8 +28,31 @@ app.use(session({secret: process.env.secret}));
 mongoose.connect('mongodb+srv://gstrauss:' + process.env.password +'@matcha-ch0yb.gcp.mongodb.net/test?retryWrites=true&w=majority');
 
 /*
+ * Server Activation
+ */
+
+http.listen(process.env.port, function(){
+  console.log(`Listening to requests on http://localhost:${process.env.port}`);
+});
+
+/*
 * Page Handling
 */
+
+
+// 
+io.sockets.on('connection', function(socket) {
+  console.log("\nworks\n")
+  // socket.emit('announcements', { message: '\nA new user has joined!\n' });
+});
+
+app.get('/chat', function (req, res) {
+  res.render('/goinfre/gstrauss/matcha/views/chat.pug');
+});
+
+
+
+// 
 
 // var declarations
 var index           = require('./pages/index.js')
@@ -51,7 +80,7 @@ app.use('/', index)
 app.use('/home', home)
 app.use('/login', login);
 app.use('/create', create);
-app.use('/chat', chat);
+// app.use('/chat', chat);
 app.use('/forgot_password', forgot_password);
 app.use('/matched_profile', matched_profile);
 app.use('/notifications', notifications);
@@ -66,10 +95,5 @@ app.use('/upload_picture', upload_picture);
 app.use('/check/:var_words', email_update);
 app.use('/:var_words', user_confirm);
 
-/*
- * Server Activation
- */
 
-http.listen(process.env.port, function(){
-  console.log(`Listening to requests on http://localhost:${process.env.port}`);
-});
+
