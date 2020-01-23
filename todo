@@ -1,26 +1,32 @@
 Gabriel:
-    CREATE ACCOUNT PAGE:
-        - Check that the email isn't already in use
-
-    NOTIFICATION PAGE:  (next level fucked up mate)
-        - continue working on the notifications with the new schema section
-        - !!! send the following info (IN AN ARRAY) with EACH notification to the notification page --> username(who sent it), the time the notification happened, the notification message itself
 
     PROFILE PAGE:
+        - ADD A 'remove_tag.js' to remove the selected tag (check in the profile page. Each x button has a corrct hidden input with the tags name)
         - !!! Profile images: only the first TWO profile add options to upload work.
-        - have to refresh th epage again to see an actual change in the images
+        - have to refresh the page again to see an actual change in the images
         - ADD A 'LIKED' ARRAY TO THE USER SCHEMA (contains all profiles you have liked)
         - ADD A 'STATUS' TO THE USER SCHEMA (will either be e.g. --> offline: 'last seen 12:45pm' OR 'online')
         - get location to update
-
+    
     SEARCH PAGE:
+        - Tags ... does it send as an array? Can you see the individual id and name of each checkbox??
         - Bi-Sexual people must be able to match and view with everyone AND --> males must be able to see female Bi's
                                                                             --> females must be able to see male Bi's   (I have created a user who is bi. Name is: "Mrs")
         - Get an advanced_matches .req working for when people advance search with age, location, tags etc
-
+    
+    NOTIFICATION PAGE:  (next level fucked up mate)
+        - continue working on the notifications with the new schema section
+        - !!! send the following info (IN AN ARRAY) with EACH notification to the notification page --> username(who sent it), the time the notification happened, the notification message itself
+    
     CHAT PAGE:
         - configure chat    
         - updates last_seen variable when a person logs out
+    
+    CREATE ACCOUNT PAGE:
+        - Check that the email isn't already in use
+
+
+
 
     EXTRA:
         - handle errors (error message appears)
@@ -31,8 +37,9 @@ Gabriel:
         - ajaxify
         - set email port to be dynamic in emails
 
+
+
 Jadon:
-    - !!! be able to delete tags
-    - !!! change tags to be an array
+
     - sort out create account screen resizing
     - make chat a post request passing the id of the person I am chatting with

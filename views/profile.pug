@@ -363,7 +363,12 @@ html(lang="en")
                         if tags
                             p.d-inline= "Current tags: "
                             for gold in tags
-                                p.d-inline= '#' + gold + " "
+                                form(action="remove_tag", method="post")
+                                    input(type="hidden", name="tag", value= gold)
+                                    p.d-inline.mr-0= '#' + gold + " "
+                                        button.close.d-inline(type="submit", name="delete_tag", aria-label="Close")
+                                            span(aria-hidden="true") &times;
+
                         else
                             p Current tags: You have no tags related to your profile.
 
