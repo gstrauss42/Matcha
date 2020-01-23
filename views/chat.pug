@@ -14,12 +14,11 @@ html(lang="en")
         script(src="https://code.jquery.com/jquery-1.11.1.js") 
         script(src="./js/chat.js")
         script(src="../socket.io/socket.io.js")
+
         script.
             function submitlink() {
                 document.getElementById("link").submit();
             }
-
-
 
     body
         .page-container.ml-0.mr-0
@@ -65,7 +64,8 @@ html(lang="en")
                     .container-fluid.pl-0.pr-0.mb-3
 
                         //- this is in the socket io example
-                        form#messages(action="")
+                        form#messages(action="post")
+                            input(type="hidden", name="_id", value=_id)
                             input#m(autocomplete="off")
                             button Send
 

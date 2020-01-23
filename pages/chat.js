@@ -20,7 +20,7 @@ router.get('/', function(req, res) {
 //   // models.user.findOne({ "_id" : req.body._id}, function(err, doc){
 //   //   console.log(doc);
 //   //   res.render('chat', {name : doc.name,
-//   //                       surname : doc.surname});
+//   //                       surname : doc.surname});      //SEND ID AS WELL WITH THE VAR NAME = _id
 //   // });
 //   res.render('chat.pug')
 // });
