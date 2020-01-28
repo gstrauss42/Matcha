@@ -3,7 +3,7 @@ var models = require("../models/models");
 
 var app = require('express')();
 var server = require('http').Server(router);
-var io = require('socket.io')(server);
+var io = require('socket.io').listen(server);
 
 var express = require('express');
 var http = require('../index');
@@ -20,16 +20,30 @@ router.get('/', function(req, res) {
 //   // models.user.findOne({ "_id" : req.body._id}, function(err, doc){
 //   //   console.log(doc);
 //   //   res.render('chat', {name : doc.name,
-//   //                       surname : doc.surname});      //SEND ID AS WELL WITH THE VAR NAME = _id
+//   //                       surname : doc.surname,
+//   //                       _id : doc._id });
 //   // });
 //   res.render('chat.pug')
 // });
 
-io.on('connection', function(socket){
-  console.log("connected:\nit worked!\n");
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+
+// on connect
+io.sockets.on('connection', function(socket){
+  connections.push(socket);
+  console.log('Connected: %s sockets connected', connections.length);
+
+  // on disconnect
+  socket.on('disconnect', function(data) {
+    connections.splice(connections.indexOf(socket), 1);
+    console.log('Disconnected: %s sockets connected', connections.length);
   });
+
+  // on send message
+  socket.on('send message', function(data) {
+    console.log(data);
+    io.sockets.emit('new message', {msg: data});
+  });
+
 });
 
 module.exports = router;

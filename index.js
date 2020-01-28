@@ -1,7 +1,5 @@
 // routing for socket has been disabled and instead I had included its handling directly in the html
 
-
-
 /*
 * App Variables
 */
@@ -47,7 +45,8 @@ io.sockets.on('connection', function(socket) {
 });
 
 app.get('/chat', function (req, res) {
-  res.render('/goinfre/gstrauss/matcha/views/chat.pug');
+  // res.render('/goinfre/gstrauss/matcha/views/chat.pug');
+  res.render('/homes/jhansen/Documents/matcha/views/chat.pug');   //jadons dir
 });
 
 
