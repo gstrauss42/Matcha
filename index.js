@@ -94,6 +94,3 @@ app.use('/reset_password', reset_password);
 app.use('/upload_picture', upload_picture);
 app.use('/check/:var_words', email_update);
 app.use('/:var_words', user_confirm);
-
-
-
