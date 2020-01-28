@@ -170,7 +170,7 @@ html(lang="en")
                                 h4.display-4.connect-heading You two are connected!
                                 hr.my-4
                                 p.connect-paragraph Open or start your chat :)
-                                form#viewChat(action="chat", method="get")
+                                form#viewChat(action="chat", method="post")
                                     input(type="hidden", name="id", value= _id)
                                     input.btn.btn-primary.btn-resize(type="submit", name="chat" , value="Chat")
                         else
