@@ -37,22 +37,6 @@ http.listen(process.env.port, function(){
 * Page Handling
 */
 
-
-// 
-io.sockets.on('connection', function(socket) {
-  console.log("\nworks\n")
-  // socket.emit('announcements', { message: '\nA new user has joined!\n' });
-});
-
-app.get('/chat', function (req, res) {
-  // res.render('/goinfre/gstrauss/matcha/views/chat.pug');
-  res.render('/homes/jhansen/Documents/matcha/views/chat.pug');   //jadons dir
-});
-
-
-
-// 
-
 // var declarations
 var index           = require('./pages/index.js')
 var home            = require('./pages/home.js')
@@ -79,7 +63,7 @@ app.use('/', index)
 app.use('/home', home)
 app.use('/login', login);
 app.use('/create', create);
-// app.use('/chat', chat);
+app.use('/chat', chat);
 app.use('/forgot_password', forgot_password);
 app.use('/matched_profile', matched_profile);
 app.use('/notifications', notifications);
