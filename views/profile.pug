@@ -72,7 +72,7 @@ html(lang="en")
                                 p.statfont You have liked:
                                     if liked
                                         for paper in liked
-                                            p.statsmall.ml-2= paper
+                                            p.statsmall.ml-2= paper['username']
                                     else
                                         p.statsmall.ml-2 None
                             .col
