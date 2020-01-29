@@ -26,7 +26,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
       }
       else
       {
-         console.log("\n\nCRITICAL ERROR CHECK NOTIFICATIONS FINAL ELSE, CAUSE WATAFAK\n\n");
+         console.log("\n\nCRITICAL ERROR CHECK NOTIFICATIONS FINAL\n\n");
          res.redirect('notifications');
       }
 });
