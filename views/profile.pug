@@ -341,12 +341,12 @@ html(lang="en")
                                 form#lock(action="update_profile", method="post")
                                     .form-group
                                         .custom-control.custom-switch.ml-1
-                                            - one = "1";
-                                            - two = "2";
-                                            if location
-                                                input#locat.custom-control-input(type="checkbox", name="location_status", value=one, checked, onChange="this.form.submit();")
+                                            if location_status
+                                                input(type="hidden", name="location_status", value=location)
+                                                input#locat.custom-control-input(type="checkbox", name="location_status_check", value=0, checked, onChange="this.form.submit();")
                                             else
-                                                input#locat.custom-control-input(type="checkbox", name="location_status", value=two, onChange="this.form.submit();")
+                                                input(type="hidden", name="location_status", value=location)
+                                                input#locat.custom-control-input(type="checkbox", name="location_status_check", value=1, onChange="this.form.submit();")
                                             label.custom-control-label.mt-2(for="locat") Use location to match with users
 
                     //- add interest tags
