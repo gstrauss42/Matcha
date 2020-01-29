@@ -130,9 +130,9 @@ html(lang="en")
                     .modal-body
                             form(action="upload_picture", method="post", enctype="multipart/form-data")
                                 .form-group
-                                    input#three_img(type="file", name="picture")
+                                    input#three_img(type="file", name="picture", accept="image/*")
                                 .form-group
-                                    button.btn.btn-primary(type="submit", name="three_save", accept="image/*") Save Changes	
+                                    button.btn.btn-primary(type="submit", name="three_save") Save Changes	
                     .modal-footer
                         button.btn.btn-secondary(type="button", data-dismiss="modal") Close
 
@@ -147,9 +147,9 @@ html(lang="en")
                     .modal-body
                             form(action="upload_picture", method="post", enctype="multipart/form-data")
                                 .form-group
-                                    input#four_img(type="file", name="picture")
+                                    input#four_img(type="file", name="picture", accept="image/*")
                                 .form-group
-                                    button.btn.btn-primary(type="submit", name="four_save", accept="image/*") Save Changes	
+                                    button.btn.btn-primary(type="submit", name="four_save") Save Changes	
                     .modal-footer
                         button.btn.btn-secondary(type="button", data-dismiss="modal") Close
 

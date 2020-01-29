@@ -35,6 +35,4 @@ Gabriel:
 
 
 Jadon:
-
     - sort out create account screen resizing
-    - make chat a post request passing the id of the person I am chatting with
