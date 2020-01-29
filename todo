@@ -5,12 +5,11 @@ Gabriel:
         - ADD A 'STATUS' TO THE USER SCHEMA (will either be e.g. --> offline: 'last seen 12:45pm' OR 'online')
 
     SEARCH PAGE:
-        - Tags ... does it send as an array? Can you see the individual id and name of each checkbox??
         - Bi-Sexual people must be able to match and view with everyone AND --> males must be able to see female Bi's
                                                                             --> females must be able to see male Bi's   (I have created a user who is bi. Name is: "Mrs")
         - Get an advanced_matches .req working for when people advance search with age, location, tags etc
 
-    NOTIFICATION PAGE:  (next level fucked up mate)
+    NOTIFICATION PAGE:
         - continue working on the notifications with the new schema section
         - !!! send the following info (IN AN ARRAY) with EACH notification to the notification page --> username(who sent it), the time the notification happened, the notification message itself
     
