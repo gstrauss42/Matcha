@@ -1,7 +1,6 @@
 Gabriel:
 
     PROFILE PAGE:
-        - ADD A 'remove_tag.js' to remove the selected tag (check in the profile page. Each x button has a corrct hidden input with the tags name)
         - !!! Profile images: only the first TWO profile add options to upload work.
         - have to refresh the page again to see an actual change in the images
         - ADD A 'LIKED' ARRAY TO THE USER SCHEMA (contains all profiles you have liked)
@@ -18,12 +17,8 @@ Gabriel:
         - continue working on the notifications with the new schema section
         - !!! send the following info (IN AN ARRAY) with EACH notification to the notification page --> username(who sent it), the time the notification happened, the notification message itself
     
-    CHAT PAGE:
-        - configure chat    
+    CHAT PAGE:  
         - updates last_seen variable when a person logs out
-    
-    CREATE ACCOUNT PAGE:
-        - Check that the email isn't already in use
 
 
 

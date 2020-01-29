@@ -57,7 +57,7 @@ var search          = require('./pages/search.js');
 var matched_profile = require('./pages/matched_profile.js');
 var chat            = require('./pages/chat.js');
 var test            = require('./pages/test.js');
-var remove_tag      = require('./pages/remove_tag.js');
+// var remove_tag      = require('./pages/remove_tag.js');
 
 
 // mini-app calls
@@ -79,4 +79,4 @@ app.use('/reset_password', reset_password);
 app.use('/upload_picture', upload_picture);
 app.use('/check/:var_words', email_update);
 app.use('/:var_words', user_confirm);
-app.use('/remove_tag', remove_tag);
+// app.use('/remove_tag', remove_tag);
