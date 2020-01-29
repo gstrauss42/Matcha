@@ -1,4 +1,8 @@
 Gabriel:
+    CHAT PAGE:
+        - DO SOME DB STUFF THERE (CHECK COMMENTS). If you get it to work then well done, if not then 
+                tell me and ill ask my friend. I just need your db fetching code there still.
+        - updates last_seen variable when a person logs out
 
     PROFILE PAGE:
         - have to refresh the page again to see an actual change in the images
@@ -10,11 +14,7 @@ Gabriel:
         - Get an advanced_matches .req working for when people advance search with age, location, tags etc
 
     NOTIFICATION PAGE:
-        - continue working on the notifications with the new schema sectiontion happened
-
-    CHAT PAGE:  
-        - updates last_seen variable when a person logs out
-
+        - continue working on the notifications with the new schema section happened
 
 
 

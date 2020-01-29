@@ -12,7 +12,7 @@ html(lang="en")
         script(src="https://kit.fontawesome.com/17df3da6b8.js", crossorigin="anonymous")
         link(rel="stylesheet", href="main.css")
         script(src="https://code.jquery.com/jquery-1.11.1.js") 
-        //- script(src="./js/chat.js")
+        script(src="../pages/chat.js")
         script(src="../socket.io/socket.io.js")
 
         script.
@@ -55,18 +55,17 @@ html(lang="en")
                 .container
                     .container-fluid.task-box
                         p.pt-1.pb-1= "Chatting with "
-                            a(href="matched_profile")= name + " " + surname
+                            a(href="matched_profile")= username
                     .container-fluid.chat-box.pt-2.mb-3
 
-                        ul#chat
-                            p sdfg
-                            p sdfg
+                        ul#messages
+                            p.chat-message example output
 
                     .container-fluid.pl-0.pr-0.mb-3
 
                         form#messageForm
-                            input#message(type="text", autocomplete="off")
-                            button(type="submit", value="Send Message") Send
+                            input#messageText(type="text", autocomplete="off")
+                            button#sendMsg(type="submit", value="Send Message") Send
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark
@@ -97,20 +96,53 @@ html(lang="en")
                             a.text-info.github-link(href='https://gstrauss42')
                                 strong @gstrauss
 
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js")
+
     script.
-        $(function(){
-            var socket = io.connect();
-            var $messageForm = $('messageForm');
-            var $message = $('message');
+        (function(){
+            var element = function(id){
+                return document.getElementById(id);
+            }
 
-            $messageForm.submit(function(e){
-                e.preventDefault();
-                socket.emit('send message', $message.val());
-                $message.val('');
-            });
+            // get elements
+            var messages = element('messages');
+            var messageText = element('messageText');
+            var sendMsg = element('sendMsg');
 
-            socket.on('new message', function(data){
-                $chat.append('."well" strong : ' + data.user + data.msg);
-            });
+            // connect to socket.io
+            var socket = io.connect('localhost:777/chat');
 
-        });
+            // check for connection
+            if (socket !== undefined) {
+                console.log('Connected to socket...');
+
+                // handles output
+                socket.on('output', function(data) {
+                    console.log(data);
+                    if (data.length) {
+                        for (var x = 0; x < data.length; x++) {
+                            // build out message output
+                            var message = document.createElement('div');
+                            message.setAttribute('class', 'chat-message');
+                            message.textContent = data[x].name + ": " + data[x].message;
+                            messages.appendChild(message);
+                            messages.insertBefore(message, messages.firstChild);
+                        }
+                    }
+                });
+
+                // handles input
+                sendMsg.addEventListener('click', function(event) {
+                        // emit to server input
+                        if (messageText.value !== '') {
+                            socket.emit('input', {
+                                message:messageText.value
+                            });
+                            event.preventDefault();
+                        } else {
+                            console.log('Error: no message');
+                        }
+                });
+            }
+
+        })();
