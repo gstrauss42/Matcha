@@ -65,16 +65,16 @@ html(lang="en")
                                     input.btn.btn-dark(type="submit", name="advanced_search", value="Match!")
                             .col
                                 h6 Include various tags
-                                //- each id for the checkboxes must be different
+                                //- iterating through each tag and creating a new array of all tags
                                 .form-group.mb-0
                                     if tags
+                                        - var array = [];
                                         for gold, k in tags
                                             .custom-control.custom-checkbox
-                                                //- giving all checkboxes one name so that it will be put into an array for backend
                                                 input.custom-control-input(type="checkbox", name= gold, id= gold)
-                                                - amount = k;
                                                 label.label-text.custom-control-label(for= gold)= gold
-                                    input(type="hidden", name="tag_amount", value= amount)
+                                                - array[k] = gold;
+                                    input(type="hidden", name="tag_array", value= array)
                                 small.form-text.text-muted
                                     | To add/see more tags appear here make sure you have added them to your 
                                     a(href="profile") profile 
