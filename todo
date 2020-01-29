@@ -10,9 +10,8 @@ Gabriel:
         - Get an advanced_matches .req working for when people advance search with age, location, tags etc
 
     NOTIFICATION PAGE:
-        - continue working on the notifications with the new schema section
-        - !!! send the following info (IN AN ARRAY) with EACH notification to the notification page --> username(who sent it), the time the notification happened, the notification message itself
-    
+        - continue working on the notifications with the new schema sectiontion happened
+
     CHAT PAGE:  
         - updates last_seen variable when a person logs out
 
