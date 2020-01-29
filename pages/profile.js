@@ -25,13 +25,12 @@ router.get('/', function(req, res){
                                  age: doc.age,
                                  count: notif.length,
                                  tags: doc.tags,
+                                 location_status: doc.location_status,
                                  location: doc.location,    //is this sent to me as a 0 or a 1 (not as true or false)??
                                  bio: doc.bio});
                               });
       });
    });
-
 });
 
-//export this router to use in our index.js
 module.exports = router;

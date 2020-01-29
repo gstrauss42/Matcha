@@ -2,7 +2,6 @@ Gabriel:
 
     PROFILE PAGE:
         - have to refresh the page again to see an actual change in the images
-        - ADD A 'LIKED' ARRAY TO THE USER SCHEMA (contains all profiles you have liked)
         - ADD A 'STATUS' TO THE USER SCHEMA (will either be e.g. --> offline: 'last seen 12:45pm' OR 'online')
         - get location to update
     

@@ -5,23 +5,18 @@ const bodyParser = require('body-parser');
 var crypto = require('crypto');
 var randomstring = require("randomstring");
 var nodeMailer = require('nodemailer');
-var multer = require('multer');
 
 router.post('/', bodyParser.urlencoded(), function(req, res){
-    console.log(req.body.location_status); // for jadons debugging
     console.log(req.body)
-    // if(req.body.location_status)
-    // {
-    //     Models.user.findOneAndUpdate({email: req.session.name},
-    //         {"location_status": req.body.location_status},
-    //         // needs the passing of the correct path
-    //         function(err, doc){
-                
-            
-    //             });
-    //             console.log("updated  location status");
-    //     });
-    // }                                                                configure this to work
+    if(req.body.location_status)
+    {
+        Models.user.findOneAndUpdate({email: req.session.name},
+            {"location_status": req.body.location_status},
+            // needs the passing of the correct path
+            function(err, doc){
+                console.log("updated location tracking policy");    
+            });
+    }                             
     if(req.body.bio)
     {
         Models.user.findOneAndUpdate({ email : req.session.name },
