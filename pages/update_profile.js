@@ -10,13 +10,23 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
     console.log(req.body)
     if(req.body.location_status)
     {
-        Models.user.findOneAndUpdate({email: req.session.name},
-            {"location_status": req.body.location_status},
-            // needs the passing of the correct path
-            function(err, doc){
-                console.log("updated location tracking policy");    
-            });
-    }                             
+        if(req.body.location_status == "0")
+        {
+            Models.user.findOneAndUpdate({email: req.session.name},
+                {"location_status": "1"},
+                function(err, doc){
+                    console.log("updated location tracking policy");    
+                });
+        }
+        else
+        {
+            Models.user.findOneAndUpdate({email: req.session.name},
+                {"location_status": "0"},
+                function(err, doc){
+                    console.log("updated location tracking policy");    
+                });
+        }
+    }
     if(req.body.bio)
     {
         Models.user.findOneAndUpdate({ email : req.session.name },
