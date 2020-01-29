@@ -5,11 +5,9 @@ const bodyParser = require('body-parser');
 
 ObjectId = require('mongodb').ObjectId
 fs = require('fs-extra')
-// Your mongodb or mLabs connection string
 
 multer = require('multer')
 util = require('util')
-// upload = multer({limits: {fileSize: 2000000 },dest:'/goinfre/gstrauss/Documents/matcha/uploads'})  //gabriels dir
 upload = multer({limits: {fileSize: 2000000 },dest:'/goinfre/jhansen/Documents/matcha/uploads'})  //jadons dir.
 
 router.post('/', upload.single('picture'), bodyParser.urlencoded(), function (req, res)
@@ -26,12 +24,6 @@ router.post('/', upload.single('picture'), bodyParser.urlencoded(), function (re
             var newImg = fs.readFileSync(req.file.path);
             // encodes the file as a base64 string
             var encImg = newImg.toString('base64');
-//     main_image: String,
-//    image_one: String, 
-//    image_two: String,
-//    image_three: String,
-//    image_four: String,
-                // 
             if(req.body.main_save == '')
             {
                 Models.user.findOneAndUpdate({email: req.session.name}, {main_image: encImg}, function(err, val){
@@ -45,7 +37,7 @@ router.post('/', upload.single('picture'), bodyParser.urlencoded(), function (re
                     console.log(val)
                 });
             }
-            if(req.body.three_save = '')
+            if(req.body.three_save == '')
             {
                 Models.user.findOneAndUpdate({email: req.session.name}, {image_two: encImg}, function(err, val){
                     console.log("saved second image");
