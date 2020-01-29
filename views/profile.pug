@@ -342,10 +342,10 @@ html(lang="en")
                                     .form-group
                                         .custom-control.custom-switch.ml-1
                                             if location_status
-                                                input(type="hidden", name="location_status", value=location)
+                                                input(type="hidden", name="location_status", value=location_status)
                                                 input#locat.custom-control-input(type="checkbox", name="location_status_check", value=0, checked, onChange="this.form.submit();")
                                             else
-                                                input(type="hidden", name="location_status", value=location)
+                                                input(type="hidden", name="location_status", value=location_status)
                                                 input#locat.custom-control-input(type="checkbox", name="location_status_check", value=1, onChange="this.form.submit();")
                                             label.custom-control-label.mt-2(for="locat") Use location to match with users
 
