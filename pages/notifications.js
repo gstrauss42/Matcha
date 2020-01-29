@@ -4,7 +4,7 @@ var Models = require("../models/models");
 const bodyParser = require('body-parser');
 
 router.get('/', function(req, res){
-   Models.notifications.findOne({email: req.session.name}, function(err, doc){
+   Models.notifications.find({email: req.session.name}, function(err, doc){
       console.log(doc);
       res.render('notifications', {"notifications" : doc});
    });
@@ -15,22 +15,14 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
    Models.user.findOne({email: req.session.name}, function(err, doc){
       if(req.body.dismiss == '')
       {
-         var dismissed = doc.notifications.splice(req.body.indentifier, 1);
-         Models.user.findOneAndUpdate(
-            {email : req.session.name},
-            {$push : {old_notifications : dismissed}}, function(err, temp){
-               console.log("moved to the other section")
+         // var dismissed = doc.notifications.splice(req.body.indentifier, 1);
+         Models.notifications.findOneAndRemove(
+            {_id: req.body._id},
+            function(err, temp){
+               console.log("deleted")
             });
-         doc.save(console.log("dismissed"));
-         res.render('notifications', {"notifications" : doc.notifications, "old_notifications" : doc.old_notifications});
+         res.render('notifications', {"notifications" : doc.notifications});
          // update to move dismissed notifications to the seen section
-      }
-      else if(req.body.delete == '')
-      {
-         doc.old_notifications.splice(req.body.indentifier, 1);
-         doc.save(console.log("deleted"));
-         res.render('notifications', {"notifications" : doc.notifications, "old_notifications" : doc.old_notifications});
-         // give delete functionality, waiting for a unique section to delete from
       }
       else
       {

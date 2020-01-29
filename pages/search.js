@@ -39,8 +39,9 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                         }
                         if(req.body.rating)
                         {
+                            console.log(val[i].fame + "\n" + doc.fame);
                             // get personal fame rating to compare againts results then do some sort of averaging or range
-                            if(val[i].rating != doc.rating)
+                            if(val[i].fame != doc.fame)
                             {
                                 val.splice(i, 1);
                                 break;
@@ -68,8 +69,6 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                             val.splice(i, 1);
                             break;
                         }
-    
-                        // if(req.body.p)
                         // if(req.body.)
                         // {
                         //     // input sort once arrray of tags has been given
@@ -79,6 +78,25 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                 }
                 if(req.body.check)
                     console.log(req.body.check[0]);
+                if(req.body.filter_all)
+                {
+                    if(req.body.age)
+                    {
+
+                    }
+                    else if(req.body.location)
+                    {
+
+                    }
+                    else if(req.body.rating)
+                    {
+
+                    }
+                    else if(req.body.common_tags)
+                    {
+
+                    }
+                }
                 res.render('search', {
                             "tags" : doc.tags,
                             "count" : notif.length,
