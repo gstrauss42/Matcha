@@ -4,7 +4,7 @@ Gabriel:
         - have to refresh the page again to see an actual change in the images
         - ADD A 'STATUS' TO THE USER SCHEMA (will either be e.g. --> offline: 'last seen 12:45pm' OR 'online')
         - get location to update
-    
+
     SEARCH PAGE:
         - Tags ... does it send as an array? Can you see the individual id and name of each checkbox??
         - Bi-Sexual people must be able to match and view with everyone AND --> males must be able to see female Bi's
