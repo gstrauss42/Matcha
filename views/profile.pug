@@ -341,7 +341,7 @@ html(lang="en")
                                 form#lock(action="update_profile", method="post")
                                     .form-group
                                         .custom-control.custom-switch.ml-1
-                                            if location_status
+                                            if location_status == 1
                                                 input(type="hidden", name="location_status", value=location_status)
                                                 input#locat.custom-control-input(type="checkbox", name="location_status_check", value=0, checked, onChange="this.form.submit();")
                                             else
