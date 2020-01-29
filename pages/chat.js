@@ -10,10 +10,11 @@ var http = require('../index');
 var router = express.Router();
 // var io = require('socket.io')(http);
 
-router.get('/', function(req, res) {
+router.post('/', function(req, res) {
   var io = require('socket.io')(http);
   res.render('chat.pug');
 });
+
 
 // router.get('/', bodyParser.urlencoded(), function(req, res){
 
