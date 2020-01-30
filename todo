@@ -26,7 +26,7 @@ Gabriel:
 		- block gives a double header setting warning in the terminal
 
     EXTRA:
-        - location usage MUST deafult be set to 1. According to pdf
+        - location usage MUST default be set to 1. According to pdf
         - handle errors (error message appears)
         - make fields secure
         - update location to work with postal codes or something like that
@@ -37,5 +37,4 @@ Gabriel:
 
 Jadon:
     - sort out create account screen resizing
-    - make the you two are connected thing more pretty under matched profile for starting chat
-    - on block make a banner appear stating that the user has been blocked has perhaps a button to then take them where they want to go away or to unblock them
+    - once Gabriel has configured the blocked user thingy then I need to change interface accordingly
