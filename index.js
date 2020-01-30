@@ -58,6 +58,7 @@ var matched_profile = require('./pages/matched_profile.js');
 var chat            = require('./pages/chat.js');
 var test            = require('./pages/test.js');
 var remove_tag      = require('./pages/remove_tag.js');
+var oops            = require('./pages/oops.js');
 
 // app calls
 app.use('/', index)
@@ -79,3 +80,4 @@ app.use('/upload_picture', upload_picture);
 app.use('/check/:var_words', email_update);
 app.use('/:var_words', user_confirm);
 app.use('/remove_tag', remove_tag);
+app.use('/oops', oops);
