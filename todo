@@ -2,12 +2,12 @@ Gabriel:
     CHAT PAGE:
         - DO SOME DB STUFF THERE (CHECK COMMENTS). If you get it to work with the db stuff added then wall is good, if not then 
                 tell me and ill ask my friend. I just need your db fetching code there still.
-        - updates last_seen variable when a person logs out
 
     PROFILE PAGE:
 		- pass me the USERNAME of the people who have liked me, viewed me, and who I have viewed (so save the username instead of the email to the db when doing notifications/viewing/liking etc)
         - have to refresh the page again to see an actual change in the images
-        - ADD A 'STATUS' TO THE USER SCHEMA (will either be e.g. --> offline: 'last seen 12:45pm' OR 'online')
+        - i have added a 'status' to the user schema already (will either be e.g. --> offline: "offline-12:45pm" OR "online")
+                so you just need to use that db variable now and change it on login and logoff. 
 
     SEARCH PAGE:
         - Bi-Sexual people must be able to match and view with everyone AND --> males must be able to see female Bi's
@@ -16,9 +16,6 @@ Gabriel:
 
     NOTIFICATION PAGE:
         - make notifications appear live
-
-    CHAT PAGE:  
-        - updates last_seen variable when a person logs out
 
 	MATCHED PAGE:
 		- check block functionality

@@ -404,14 +404,6 @@ textarea {
 
 /* Other user page */
 
-.status-off {
-    margin-left: 0.5rem;
-}
-
-.status-on {
-    margin-left: 3.5rem;
-}
-
 .friends-images {
     width: 100%;
     height: 165px;
@@ -452,12 +444,6 @@ textarea {
     .btn-resize {
         font-size: 11px;
         margin-right: 1rem;
-    }
-    .status-off {
-        font-size: 10px;
-    }
-    .status-on {
-        font-size: 10px;
     }
     .para-re {
         font-size: 14px;

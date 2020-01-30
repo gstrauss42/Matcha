@@ -39,6 +39,7 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
    old_notifications: [{
       type: String
    }],
+   status: String,               //this is for if theyre online or offline. Will contain text "online" OR "offline-12:30"
    location_status: String,
    main_image: String,
    image_one: String, 

@@ -128,7 +128,7 @@ html(lang="en")
 
                 //- profile info
                 .container
-                    .container-fluid.mb-3
+                    .container-fluid.mb-5
                         .row.mr-0.ml-0.custom-margin-pfp
                             .col-md-2
                                 if one
@@ -136,29 +136,30 @@ html(lang="en")
                                 else
                                     img#main-profile-img.rounded-circle.img-main.mt-3(src="user.jpg", alt="main-profile")
                             .col-md-9.mt-4.mr-2.custom-margin-bio
-                                .d-inline
-                                    strong
-                                        h3.custom-text-name= username
-                                    if liked == 0 && one
-                                        form(action="matched_profile", method="post")
-                                            input(type="hidden", name="_id", value= _id)
-                                            .form-group
-                                                button.btn.btn-primary.btn-resize(type="submit", name="like") Like
-                                    else if liked == 1
-                                        form(action="matched_profile", method="post")
-                                            input(type="hidden", name="_id", value= _id)
-                                            .form-group
-                                                button.btn.btn-primary.btn-resize(type="submit", name="unlike") Unlike
-                                    button#options.btn.btn-primary.btn-resize(data-toggle="modal", data-target="#modalOptions") More
-                                h6.custom-text-rating= 'Rating ' + rating
+                                .row.mb-2.ml-0.mr-0.pl-0.pr-0
+                                    .col-md-0.mr-3
+                                            strong
+                                                h3.mb-0.pb-0.custom-text-name= username
+                                            if status === "offline:time"
+                                                small.text-muted.pt-0.mt-0= 'last seen: ' + time
+                                            else
+                                                small.text-muted.pt-0.mt-0 online now
+                                    .col-md-0.mr-1
+                                        if liked == 0 && one
+                                                form(action="matched_profile", method="post")
+                                                    input(type="hidden", name="_id", value= _id)
+                                                    .form-group
+                                                        button.btn.btn-primary.btn-resize(type="submit", name="like") Like
+                                        else if liked == 1
+                                                form(action="matched_profile", method="post")
+                                                    input(type="hidden", name="_id", value= _id)
+                                                    .form-group
+                                                        button.btn.btn-primary.btn-resize(type="submit", name="unlike") Unlike
+                                    .col-md-0
+                                            button#options.btn.btn-primary.btn-resize(data-toggle="modal", data-target="#modalOptions") More
+                                h6.custom-text-rating= rating + ' popularity rating'
                                 .bio-pre
                                     span.custom-text-bio= bio
-
-                    .container-fluid.mb-4
-                        if status == "offline"
-                            small.text-muted.status-off= 'last seen: ' + last_seen
-                        else if status == "online"
-                            small.text-muted.status-on online now
 
                     .container-fluid.mb-4
                         if connected == 0 && one

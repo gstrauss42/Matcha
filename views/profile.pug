@@ -212,7 +212,7 @@ html(lang="en")
                             .col-md-9.mt-4.custom-margin-bio
                                 strong
                                     h3.custom-text-name= username
-                                h6.custom-text-rating= "Rating " + rating 
+                                h6.custom-text-rating= rating + ' popularity rating' 
                                 i#alter-bio.fas.fa-cog.mr-2(data-toggle="modal", data-target="#modalBio")
                                 button#stats.badge.badge-light.pt-0.pb-0.mb-1(name="stats", data-toggle="modal", data-target="#modalStats") View stats
                                 if bio
