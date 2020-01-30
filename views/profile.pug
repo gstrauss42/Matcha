@@ -55,14 +55,14 @@ html(lang="en")
                                 p.statfont You have viewed:
                                     if viewed
                                         for data in viewed
-                                            p.statsmall.ml-2= data
+                                            p.statsmall.ml-2= data['username']
                                     else
                                         p.statsmall.ml-2 None
                             .col
                                 p.statfont Your profile was viewed by:
                                     if views
                                         for info in views
-                                            p.statsmall.ml-2= info
+                                            p.statsmall.ml-2= info['username']
                                     else
                                         p.statsmall.ml-2 No views
                         u
@@ -79,7 +79,7 @@ html(lang="en")
                                 p.statfont Your profile was liked by:
                                     if likes
                                         for fax in likes
-                                            p.statsmall.ml-2= fax
+                                            p.statsmall.ml-2= fax['username']
                                     else
                                         p.statsmall.ml-2 No likes
                     .modal-footer
@@ -204,19 +204,20 @@ html(lang="en")
                 .container
                     .container-fluid.mb-5
                         .row.mr-0.ml-0.custom-margin-pfp
-                            .col-md-0
+                            .col-md-2
                                 if one
                                     img#main-profile-img.rounded-circle.img-main.mt-3(src= `data:image/*;base64,${one}`, alt="main-profile", data-toggle="modal", data-target="#modalMain")
                                 else
                                     img#main-profile-img.rounded-circle.img-main.mt-3(src="user.jpg", alt="main-profile", data-toggle="modal", data-target="#modalMain")
-                            .col-md-0.mt-4.custom-margin-bio
+                            .col-md-9.mt-4.custom-margin-bio
                                 strong
                                     h3.custom-text-name= username
                                 h6.custom-text-rating= "Rating " + rating 
                                 i#alter-bio.fas.fa-cog.mr-2(data-toggle="modal", data-target="#modalBio")
                                 button#stats.badge.badge-light.pt-0.pb-0.mb-1(name="stats", data-toggle="modal", data-target="#modalStats") View stats
                                 if bio
-                                    p.custom-text-bio= bio
+                                    .bio-pre
+                                        span.custom-text-bio= bio
                                 else
                                     p.custom-text-bio Create a bio by clicking on the gear icon
 
@@ -264,7 +265,7 @@ html(lang="en")
                                 p.ml-1= "Email: " + email
                                 p.ml-1= "Gender: " + gender
                                 p.ml-1= "Preference: " + prefferances
-                                if location
+                                if location_status == 1
                                     p.ml-1 Location usage: Yes
                                 else
                                     p.ml-1 Location usage: No

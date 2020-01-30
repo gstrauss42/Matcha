@@ -15,10 +15,10 @@ router.get('/', function(req, res){
                                  three :doc.image_two,
                                  four :doc.image_three,
                                  five :doc.image_four,
-                                 views : doc.views,         //i need an ARRAY OF THE PEOPLE who have viewed me    --- //are you passing me this????????
+                                 views : doc.views,
                                  viewed : doc.viewed,       
-                                 likes: doc.likes,         // i need an ARRAY OF THE PEOPLE I have liked    --- //are you passing me this???????
-                                 liked: count,             // i need an ARRAY OF THE PEOPLE who've liked me    --- //are you passing me this???????
+                                 likes: doc.likes,
+                                 liked: count,
                                  rating: doc.fame,
                                  gender: doc.gender,
                                  prefferances: doc.prefferances,
@@ -26,7 +26,7 @@ router.get('/', function(req, res){
                                  count: notif.length,
                                  tags: doc.tags,
                                  location_status: doc.location_status,
-                                 location: doc.location,    //is this sent to me as a 0 or a 1 (not as true or false)??
+                                 location: doc.location,
                                  bio: doc.bio});
                               });
       });

@@ -59,7 +59,7 @@ var chat            = require('./pages/chat.js');
 var test            = require('./pages/test.js');
 var remove_tag      = require('./pages/remove_tag.js');
 
-// mini-app calls
+// app calls
 app.use('/', index)
 app.use('/home', home)
 app.use('/login', login);

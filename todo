@@ -5,6 +5,7 @@ Gabriel:
         - updates last_seen variable when a person logs out
 
     PROFILE PAGE:
+		- pass me the USERNAME of the people who have liked me, viewed me, and who I have viewed (so save the username instead of the email to the db when doing notifications/viewing/liking etc)
         - have to refresh the page again to see an actual change in the images
         - ADD A 'STATUS' TO THE USER SCHEMA (will either be e.g. --> offline: 'last seen 12:45pm' OR 'online')
 

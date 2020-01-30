@@ -130,17 +130,14 @@ html(lang="en")
                 .container
                     .container-fluid.mb-3
                         .row.mr-0.ml-0.custom-margin-pfp
-                            .col-md-0
+                            .col-md-2
                                 if one
                                     img#main-profile-img.rounded-circle.img-main.mt-3(src= `data:image/*;base64,${one}`, alt="main-profile", data-toggle="modal", data-target="#main")
                                 else
                                     img#main-profile-img.rounded-circle.img-main.mt-3(src="user.jpg", alt="main-profile")
-                            .col-md-0.mt-4.mr-2.custom-margin-bio
+                            .col-md-9.mt-4.mr-2.custom-margin-bio
                                 strong
                                     h3.custom-text-name= username
-                                h6.custom-text-rating= 'Rating ' + rating
-                                p.custom-text-bio= bio
-                            .col-md-0.pt-4.mr-1
                                 if liked == 0 && one
                                     form(action="matched_profile", method="post")
                                         input(type="hidden", name="_id", value= _id)
@@ -150,9 +147,11 @@ html(lang="en")
                                     form(action="matched_profile", method="post")
                                         input(type="hidden", name="_id", value= _id)
                                         .form-group
-                                            button.btn.btn-primary(type="submit", name="unlike") Unlike
-                            .col-md-0.pt-4
+                                            button.btn.btn-primary.btn-resize(type="submit", name="unlike") Unlike
                                 button#options.btn.btn-primary.btn-resize(data-toggle="modal", data-target="#modalOptions") More
+                                h6.custom-text-rating= 'Rating ' + rating
+                                .bio-pre
+                                    span.custom-text-bio= bio
 
                     .container-fluid.mb-4
                         if status == "offline"
@@ -211,7 +210,7 @@ html(lang="en")
                                 p.d-inline= '#' + gold + " "
                         else
                             p.d-inline= "None"
-                        if location
+                        if location_status == 1
                             p.mb-1.pl-2.para-re Location usage: Yes
                         else
                             p.mb-1.pl-2.para-re Location usage: No

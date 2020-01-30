@@ -227,6 +227,12 @@ footer {
     font-size: 14px;;
 }
 
+.bio-pre {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	hyphens: auto;
+}
+
 @media only screen and (max-width:  1050px) {
     .img-main {
         height: 180px;
