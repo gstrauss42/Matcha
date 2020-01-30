@@ -8,7 +8,8 @@ fs = require('fs-extra')
 
 multer = require('multer')
 util = require('util')
-upload = multer({limits: {fileSize: 2000000 },dest:'/goinfre/jhansen/Documents/matcha/uploads'})  //jadons dir.
+// upload = multer({limits: {fileSize: 2000000 },dest:'/goinfre/jhansen/Documents/matcha/uploads'})  //jadons dir.
+upload = multer({limits: {fileSize: 2000000 },dest:'/Users/Jadon/Documents/WTC PROJECTS/Semester 2/matcha-collab/uploads'})  //jadons laptop dir.
 
 router.post('/', upload.single('picture'), bodyParser.urlencoded(), function (req, res)
 {

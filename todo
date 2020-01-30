@@ -19,6 +19,9 @@ Gabriel:
     CHAT PAGE:  
         - updates last_seen variable when a person logs out
 
+	MATCHED PAGE:
+		- check block functionality
+		- check report functionality
 
     EXTRA:
         - handle errors (error message appears)

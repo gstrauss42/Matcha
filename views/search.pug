@@ -68,12 +68,10 @@ html(lang="en")
                                 //- iterating through each tag and creating a new array of all tags
                                 .form-group.mb-0
                                     if tags
-                                        - var array = [];
-                                        for gold, k in tags
+                                        for gold in tags
                                             .custom-control.custom-checkbox
-                                                input.custom-control-input(type="checkbox", name= gold, id= gold)
-                                                label.label-text.custom-control-label(for= gold)= gold
-                                                - array[k] = gold;
+                                                input.custom-control-input(type="checkbox", name="color[]", id=gold, value= gold)
+                                                label.label-text.custom-control-label(for=gold)= gold
                                     input(type="hidden", name="tag_array", value= array)
                                 small.form-text.text-muted
                                     | To add/see more tags appear here make sure you have added them to your 
