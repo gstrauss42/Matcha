@@ -29,7 +29,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
             // should be replaced with real recipient's account
             to: req.body.email,
             subject: 'Dont be like that',
-            text: 'Your reset password verification link, localhost:8081/' + safe
+            text: 'Your reset password verification link, localhost:' + process.env.port + '/' + safe
          };
          transporter.sendMail(mailOptions, (error, info) => {
             if (error) {

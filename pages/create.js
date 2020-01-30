@@ -79,7 +79,7 @@ router.post('/create', bodyParser.urlencoded(), function(req, res, next){
                   // should be replaced with real recipient's account
                   to: req.body.email,
                   subject: 'Email Confirmation',
-                  text: 'please follow this link to validate your account localhost:8081/' + safe
+                  text: 'please follow this link to validate your account localhost:' + process.env.port + '/' + safe
                };
 
                transporter.sendMail(mailOptions, (error, info) => {

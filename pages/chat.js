@@ -1,12 +1,10 @@
 const bodyParser = require('body-parser');
 var models = require("../models/models");
 
-var app = require('express')();
 var server = require('http').Server(router);
 var io = require('socket.io').listen(server).sockets;
 
 var express = require('express');
-var http = require('../index');
 var router = express.Router();
 // var io = require('socket.io')(http);
 
@@ -14,22 +12,25 @@ var router = express.Router();
 
 
 // rendering chat page
-router.post('/', function(req, res) {
-  // var io = require('socket.io')(http);
-  res.render('chat.pug');
-});
-
-
-
-
-
-          // GABRIEL: fix this up to render the username(of current user) !!!!!!!!!!!
-router.get('/', bodyParser.urlencoded(), function(req, res){
-  models.user.findOne({ "_id" : req.body._id}, function(err, doc){
-    res.render('chat', { username : doc.username});
+router.post('/', bodyParser.urlencoded(), function(req, res) {
+  models.user.findOne({ "_id" : req.body.email}, function(err, doc){
+    console.log(doc);
+    res.render('chat.pug'/*, {"username" : doc.username}*/);
   });
-  res.render('chat.pug')
 });
+
+
+
+
+
+//           // GABRIEL: fix this up to render the username(of current user) !!!!!!!!!!!
+// router.get('/', bodyParser.urlencoded(), function(req, res){
+//   models.user.findOne({ "_id" : req.body._id}, function(err, doc){
+//     // HTMLFormControlsCollection.log(doc.username)
+//     res.render('chat', {"username" : doc.username});
+//   });
+//   res.render('chat.pug')
+// });
 
 
 

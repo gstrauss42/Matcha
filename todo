@@ -10,16 +10,13 @@ Gabriel:
                 so you just need to use that db variable now and change it on login and logoff. 
 
     SEARCH PAGE:
-        - Bi-Sexual people must be able to match and view with everyone AND --> males must be able to see female Bi's
-                                                                            --> females must be able to see male Bi's   (I have created a user who is bi. Name is: "Mrs")
-        - Get an advanced_matches .req working for when people advance search with age, location, tags etc
+        - tag searching and filtering
 
     NOTIFICATION PAGE:
         - make notifications appear live
 
 	MATCHED PAGE:
-		- check block functionality
-		- check report functionality
+		- block gives a double header setting warning in the terminal
 
     EXTRA:
         - handle errors (error message appears)
@@ -28,9 +25,12 @@ Gabriel:
 
     BONUS:
         - ajaxify
-        - set email port to be dynamic in emails
 
 
 
 Jadon:
     - sort out create account screen resizing
+    - make the you two are connected thing more pretty under matched profile for starting chat
+    - on block make a banner appear stating that the user has been blocked has perhaps a button to then take them where they want to go away or to unblock them
+    - for the chat page please send me the email as a hidden input form named email, were already posting so we just need to add the email info
+        - my code needs to be uncommented to work once you pass email

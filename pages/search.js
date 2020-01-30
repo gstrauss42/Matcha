@@ -4,9 +4,11 @@ var Models = require("../models/models");
 const bodyParser = require('body-parser');
 
 router.get('/', function(req, res){
+    console.log("watafak");
     Models.user.findOne({email: req.session.name}, function(err, doc)
     {
-        Models.user.find({$and: [{gender: doc.prefferances}, {prefferances: doc.gender}]} , function(err, val){
+        Models.user.find( {$and: [{gender: doc.prefferances}, {$or:[{prefferances: doc.gender}, {prefferances: "Bi-Sexual"}]}]} , function(err, val){
+            console.log(val + "\n");
             var tags = Array.from(doc.tags);
             res.render('search', {
                         "tags" : tags,
@@ -20,10 +22,9 @@ router.get('/', function(req, res){
 router.post('/', bodyParser.urlencoded(), function(req, res){
     Models.user.findOne({email: req.session.name}, function(err, doc)
     {
-        console.log(req.body);
         var p = 0;
         Models.notifications.find({"email": req.session.name}, function(err, notif){
-            Models.user.find({$and: [{gender: doc.prefferances}, {prefferances: doc.gender}]} , function(err, val){
+            Models.user.find({$and: [{gender: doc.prefferances}, {$or:[{prefferances: doc.gender}, {prefferances: "Bi-Sexual"}]}]}, function(err, val){
                 let i = 0;
                 while(val[i])
                 {
@@ -39,7 +40,6 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                         }
                         if(req.body.rating)
                         {
-                            console.log(val[i].fame + "\n" + doc.fame);
                             // get personal fame rating to compare againts results then do some sort of averaging or range
                             if(val[i].fame != doc.fame)
                             {
@@ -76,15 +76,12 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                         i++;
                     }
                 }
-                if(req.body.check)
-                    console.log(req.body.check[0]);
-                
+                // ordered filtering 
                 i = 0;
                 var p = 0;
                 var temp;
                 var count = 0;
                 var ret = Array.from(val);
-                // filtering if applicable
                 if(req.body.filter_all == "Go!")
                 {
                     if(req.body.filter == "age")

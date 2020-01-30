@@ -24,6 +24,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                      }
                      console.log("liked user\nupdated notifications");
                      res.render("matched_profile", {name : doc.name,
+                                                   email : doc.email,
                                                    surname:doc.surname,
                                                    username: doc.username,
                                                    status: doc.status,
@@ -73,6 +74,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                                                    surname:doc.surname,
                                                    username: doc.username,
                                                    status: doc.status,
+                                                   email : doc.email,
                                                    rating: doc.fame,
                                                    gender: doc.gender,
                                                    prefferances: doc.prefferances,
@@ -113,6 +115,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                                                 username: doc.username,
                                                 status: doc.status,
                                                 rating: doc.fame,
+                                                email : doc.email,
                                                 gender: doc.gender,
                                                 prefferances: doc.prefferances,
                                                 count : notif.length,
@@ -152,6 +155,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                                                 username: doc.username,
                                                 status: doc.status,
                                                 rating: doc.fame,
+                                                email : doc.email,
                                                 gender: doc.gender,
                                                 prefferances: doc.prefferances,
                                                 age: doc.age,
@@ -200,6 +204,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                                              three :doc.image_two,
                                              four :doc.image_three,
                                              five :doc.image_four,
+                                             email : doc.email,
                                              count : notif.length,
                                              tags: doc.tags,
                                              location: doc.location,
@@ -235,6 +240,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                }
                res.render("matched_profile", {name : doc.name,
                                              surname:doc.surname,
+                                             email : doc.email,
                                              username: doc.username,
                                              status: doc.status,
                                              rating: doc.fame,

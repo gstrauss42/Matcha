@@ -118,7 +118,7 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                 var mailOptions = {
                     to: req.body.email,
                     subject: 'Update Email',
-                    text: 'please follow this link to validate your account localhost:8081/check/' + safe
+                    text: 'please follow this link to validate your account localhost:' + process.env.port + '/check/' + safe
                 };
                 transporter.sendMail(mailOptions, (error, info) => {
                     if (error) {
