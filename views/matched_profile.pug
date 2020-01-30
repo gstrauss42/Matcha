@@ -142,13 +142,16 @@ html(lang="en")
                                     form(action="matched_profile", method="post")
                                         input(type="hidden", name="_id", value= _id)
                                         .form-group
-                                            button.btn.btn-primary.btn-resize(type="submit", name="like") Like
+                                            .d-inline-flex
+                                                button.btn.btn-primary.btn-resize(type="submit", name="like") Like
                                 else if liked == 1
                                     form(action="matched_profile", method="post")
                                         input(type="hidden", name="_id", value= _id)
                                         .form-group
-                                            button.btn.btn-primary.btn-resize(type="submit", name="unlike") Unlike
-                                button#options.btn.btn-primary.btn-resize(data-toggle="modal", data-target="#modalOptions") More
+                                            .d-inline-flex
+                                                button.btn.btn-primary.btn-resize(type="submit", name="unlike") Unlike
+                                .d-inline-flex
+                                    button#options.btn.btn-primary.btn-resize(data-toggle="modal", data-target="#modalOptions") More
                                 h6.custom-text-rating= 'Rating ' + rating
                                 .bio-pre
                                     span.custom-text-bio= bio
