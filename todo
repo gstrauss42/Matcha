@@ -32,5 +32,3 @@ Jadon:
     - sort out create account screen resizing
     - make the you two are connected thing more pretty under matched profile for starting chat
     - on block make a banner appear stating that the user has been blocked has perhaps a button to then take them where they want to go away or to unblock them
-    - for the chat page please send me the email as a hidden input form named email, were already posting so we just need to add the email info
-        - my code needs to be uncommented to work once you pass email
