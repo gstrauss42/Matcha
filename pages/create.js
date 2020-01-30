@@ -40,7 +40,8 @@ router.post('/create', bodyParser.urlencoded(), function(req, res, next){
             prefferances: req.body.preferences,
             verif: safe,
             fame: 0,
-            blocked : ""
+            blocked : "",
+            location_status : '0'
          });
 
          var present_time = Math.floor(Date.now() / 1000);

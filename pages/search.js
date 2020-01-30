@@ -39,8 +39,9 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                         }
                         if(req.body.rating)
                         {
+                            console.log(val[i].fame + "\n" + doc.fame);
                             // get personal fame rating to compare againts results then do some sort of averaging or range
-                            if(val[i].rating != doc.rating)
+                            if(val[i].fame != doc.fame)
                             {
                                 val.splice(i, 1);
                                 break;
@@ -68,8 +69,6 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                             val.splice(i, 1);
                             break;
                         }
-    
-                        // if(req.body.p)
                         // if(req.body.)
                         // {
                         //     // input sort once arrray of tags has been given
@@ -79,10 +78,79 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                 }
                 if(req.body.check)
                     console.log(req.body.check[0]);
+                
+                i = 0;
+                var p = 0;
+                var temp;
+                var count = 0;
+                var ret = Array.from(val);
+                // filtering if applicable
+                if(req.body.filter_all == "Go!")
+                {
+                    if(req.body.filter == "age")
+                    {
+                        if(req.body.order == "ascending")
+                        {
+                            // refine the below algorithm
+
+                            // p = ret[i];
+                            // while(ret[0])
+                            // {
+                            //     while(ret[i])
+                            //     {
+                            //         if(ret[i] < p)
+                            //         {
+                            //             p = ret[i];
+                            //         }
+                            //         i++;
+                            //     }
+                            //     temp[count] = p;        
+                            //     count++;
+                            // }
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else if(req.body.filter == "location")
+                    {
+                        if(req.body.order == "ascending")
+                        {
+
+                        }
+                        else
+                        {
+                            
+                        }
+                    }
+                    else if(req.body.filter == "rating")
+                    {
+                        if(req.body.order == "ascending")
+                        {
+
+                        }
+                        else
+                        {
+                            
+                        }
+                    }
+                    else if(req.body.filter == "common_tags")
+                    {
+                        if(req.body.order == "ascending")
+                        {
+
+                        }
+                        else
+                        {
+                            
+                        }
+                    }
+                }
                 res.render('search', {
                             "tags" : doc.tags,
                             "count" : notif.length,
-                            "basic_matches": Array.from(val)
+                            "basic_matches": ret
                 });
             });
         });

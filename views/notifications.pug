@@ -47,40 +47,23 @@ html(lang="en")
                     .row.ml-0.mr-0
                         .col
 
-                            //- new notifications
+                            //- notifications
                             if notifications
                                 .d-flex.justify-content-center.align-items-center(aria-live="polite" aria-atomic="true")
-                                    strong.notif-heading.mb-2 New notifications
+                                    strong.notif-heading.mb-2 Notifications
                                 for data, i in notifications
                                     .d-flex.justify-content-center.align-items-center.mb-3(aria-live="polite" aria-atomic="true")
                                         .toast.notification-box(role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false")
                                             .toast-header.notif-bg.notif
-                                                strong.mr-auto.notif-color type of notif
-                                                small.ml-4 time ago
+                                                strong.mr-auto.notif-color= data['name']
+                                                small.ml-4= data['time']
                                                 form(action="notifications", method="post")
                                                     input(type="hidden", name="identifier", value= i)
                                                     button.ml-2.mb-1.close.mt-2(type='submit', name="dismiss", data-dismiss="toast", aria-label="Close")
                                                         span(aria-hidden="true") &times;
                                             .toast-body
-                                                p= data
+                                                p= data['content']
                                 hr.mb-4
-
-                            //- old notifications
-                            if old_notifications
-                                .d-flex.justify-content-center.align-items-center(aria-live="polite" aria-atomic="true")
-                                    strong.notif-heading.mb-2 Old notifications
-                                for data, i in old_notifications
-                                    .d-flex.justify-content-center.align-items-center.mb-3(aria-live="polite" aria-atomic="true")
-                                        .toast.notification-box(role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false")
-                                            .toast-header.notif
-                                                strong.mr-auto type of notif
-                                                small.ml-4 time ago
-                                                form(action="notifications", method="post")
-                                                    input(type="hidden", name="identifier", value= i)
-                                                    button.ml-2.mb-1.close.mt-2(type='submit', name="delete", data-dismiss="toast", aria-label="Close")
-                                                        span(aria-hidden="true") &times;
-                                            .toast-body
-                                                p= data
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark

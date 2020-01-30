@@ -1,46 +1,35 @@
-ummm
-work...
-
-
-continue working on the notifications with the new schema section
-
-
-
-Gabriel: (extras = ...) (from jadon = !!!+)
-
-    - !!! got to be able to send the following info with each notification to the notification page --> username(who sent it), the time the notification happened, the notification message itself
-
-    - !!! SERIOUS ISSUE UPLOADING MORE THAN ONE IMAGE TO PROFILE PAGE. --> does not work if you're not using the first circle with the plus in it to upload
-
-
-
-    - update location to work with postal codes or something like that
-
-    - make fields secure
-
-    - handle errors
-
-    - configure chat    
+Gabriel:
+    CHAT PAGE:
+        - DO SOME DB STUFF THERE (CHECK COMMENTS). If you get it to work then well done, if not then 
+                tell me and ill ask my friend. I just need your db fetching code there still.
         - updates last_seen variable when a person logs out
-    
-    .. - ajaxify
 
-    ... - set email port to be dynamic in emails
+    PROFILE PAGE:
+        - have to refresh the page again to see an actual change in the images
+        - ADD A 'STATUS' TO THE USER SCHEMA (will either be e.g. --> offline: 'last seen 12:45pm' OR 'online')
+
+    SEARCH PAGE:
+        - Bi-Sexual people must be able to match and view with everyone AND --> males must be able to see female Bi's
+                                                                            --> females must be able to see male Bi's   (I have created a user who is bi. Name is: "Mrs")
+        - Get an advanced_matches .req working for when people advance search with age, location, tags etc
+
+    NOTIFICATION PAGE:
+        - make notifications appear live
+
+    CHAT PAGE:  
+        - updates last_seen variable when a person logs out
+
+
+    EXTRA:
+        - handle errors (error message appears)
+        - make fields secure
+        - update location to work with postal codes or something like that
+
+    BONUS:
+        - ajaxify
+        - set email port to be dynamic in emails
+
+
 
 Jadon:
-    - be able to delete tags somehow
-    - get popups working (WHAT POPUPS???)
-
-    --- thought --- if were allowed to remove seen notifications lets do that cause it will safe both of us work ie where the notifications move after you first delete them
-
-    - change tags to be an array
-    - I changed the image storage from an array to individual images, pls check your front end aligns ive fixed it in 3 places not sure if i got all
-    - images dont display properly in the profile page
-    - please make chat a post request passing the id of the person I am chatting with, the get request doesnt work because I cant convert the url id to the correct mongodb object also if the id length changes our site is broken with my method, thanks bro (sorry for the work)
-    - for the stats (you have liked), I am passing you an array of all profiles if you could loop through that array but display the email of each as apposed to just the regular index variables (email index of each array index)
-
-
-
-
-
-    - the old notifications dont display correctly, first dismiss doesnt display second does then on first delete the first dismissed displayed under old notifications which can then be deleted
+    - sort out create account screen resizing

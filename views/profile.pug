@@ -72,7 +72,7 @@ html(lang="en")
                                 p.statfont You have liked:
                                     if liked
                                         for paper in liked
-                                            p.statsmall.ml-2= paper
+                                            p.statsmall.ml-2= paper['username']
                                     else
                                         p.statsmall.ml-2 None
                             .col
@@ -130,9 +130,9 @@ html(lang="en")
                     .modal-body
                             form(action="upload_picture", method="post", enctype="multipart/form-data")
                                 .form-group
-                                    input#three_img(type="file", name="picture")
+                                    input#three_img(type="file", name="picture", accept="image/*")
                                 .form-group
-                                    button.btn.btn-primary(type="submit", name="three_save", accept="image/*") Save Changes	
+                                    button.btn.btn-primary(type="submit", name="three_save") Save Changes	
                     .modal-footer
                         button.btn.btn-secondary(type="button", data-dismiss="modal") Close
 
@@ -147,9 +147,9 @@ html(lang="en")
                     .modal-body
                             form(action="upload_picture", method="post", enctype="multipart/form-data")
                                 .form-group
-                                    input#four_img(type="file", name="picture")
+                                    input#four_img(type="file", name="picture", accept="image/*")
                                 .form-group
-                                    button.btn.btn-primary(type="submit", name="four_save", accept="image/*") Save Changes	
+                                    button.btn.btn-primary(type="submit", name="four_save") Save Changes	
                     .modal-footer
                         button.btn.btn-secondary(type="button", data-dismiss="modal") Close
 
@@ -196,7 +196,7 @@ html(lang="en")
                                 li.nav-item
                                     a.nav-link(href="home") Home
 
-                if !one && !two && !three && !four && !five
+                if !one
                     #profile-notif.row-md-12.ml-0.mr-0.mb-0
                         p.bg-danger.text-center.pl-2.pr-2.pt-1.pb-1 Please upload at least one profile image for other users to be able to like and connect with your profile.
 
@@ -224,25 +224,29 @@ html(lang="en")
                     .container-fluid.mb-5
                         .row.mr-0.ml-0
                             .col-md-0
+                                if one
+                                    if two
+                                        img#profile-img-two.img-fluid.rounded-circle.img-prof.mr-2(src= `data:image/*;base64,${two}`, alt="user_img2", data-toggle="modal", data-target="#modalTwo")
+                                    else
+                                        img#profile-img-two.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img2", data-toggle="modal", data-target="#modalTwo")
+                            .col-md-0
                                 if one && two
-                                    img#profile-img-two.img-fluid.rounded-circle.img-prof.mr-2(src= `data:image/*;base64,${two}`, alt="user_img2", data-toggle="modal", data-target="#modalTwo")
-                                else
-                                    img#profile-img-two.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img2", data-toggle="modal", data-target="#modalTwo")
+                                    if three
+                                        img#profile-img-three.img-fluid.rounded-circle.img-prof.mr-2(src= `data:image/*;base64,${three}`, alt="user_img3", data-toggle="modal", data-target="#modalThree")
+                                    else
+                                        img#profile-img-three.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img3", data-toggle="modal", data-target="#modalThree")
                             .col-md-0
                                 if one && two && three
-                                    img#profile-img-three.img-fluid.rounded-circle.img-prof.mr-2(src= `data:image/*;base64,${three}`, alt="user_img3", data-toggle="modal", data-target="#modalThree")
-                                else
-                                    img#profile-img-three.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img3", data-toggle="modal", data-target="#modalThree")
+                                    if four
+                                        img#profile-img-four.img-fluid.rounded-circle.img-prof.mr-2(src= `data:image/*;base64,${four}`, alt="user_img4", data-toggle="modal", data-target="#modalFour")
+                                    else
+                                        img#profile-img-four.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img4", data-toggle="modal", data-target="#modalFour")
                             .col-md-0
                                 if one && two && three && four
-                                    img#profile-img-four.img-fluid.rounded-circle.img-prof.mr-2(src= `data:image/*;base64,${four}`, alt="user_img4", data-toggle="modal", data-target="#modalFour")
-                                else
-                                    img#profile-img-four.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img4", data-toggle="modal", data-target="#modalFour")
-                            .col-md-0
-                                if one && two && three && four && five
-                                    img#profile-img-five.img-fluid.rounded-circle.img-prof.mr-2(src= `data:image/*;base64,${five}`, alt="user_img5", data-toggle="modal", data-target="#modalFive")
-                                else
-                                    img#profile-img-five.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img5", data-toggle="modal", data-target="#modalFive")
+                                    if five
+                                        img#profile-img-five.img-fluid.rounded-circle.img-prof.mr-2(src= `data:image/*;base64,${five}`, alt="user_img5", data-toggle="modal", data-target="#modalFive")
+                                    else
+                                        img#profile-img-five.img-fluid.rounded-circle.img-prof.mr-2(src="temp.png", alt="user_img5", data-toggle="modal", data-target="#modalFive")
 
                     //- more options, tab view
                     .container-fluid.mb-5
@@ -337,10 +341,12 @@ html(lang="en")
                                 form#lock(action="update_profile", method="post")
                                     .form-group
                                         .custom-control.custom-switch.ml-1
-                                            if location
-                                                input#locat.custom-control-input(type="checkbox", name="location_status", value="0", checked, onChange="this.form.submit();")
+                                            if location_status == 1
+                                                input(type="hidden", name="location_status", value=location_status)
+                                                input#locat.custom-control-input(type="checkbox", name="location_status_check", value=0, checked, onChange="this.form.submit();")
                                             else
-                                                input#locat.custom-control-input(type="checkbox", name="location_status", value="1", onChange="this.form.submit();")
+                                                input(type="hidden", name="location_status", value=location_status)
+                                                input#locat.custom-control-input(type="checkbox", name="location_status_check", value=1, onChange="this.form.submit();")
                                             label.custom-control-label.mt-2(for="locat") Use location to match with users
 
                     //- add interest tags
@@ -359,7 +365,12 @@ html(lang="en")
                         if tags
                             p.d-inline= "Current tags: "
                             for gold in tags
-                                p.d-inline= '#' + gold + " "
+                                form(action="remove_tag", method="post")
+                                    input(type="hidden", name="tag", value= gold)
+                                    p.d-inline.mr-0= '#' + gold + " "
+                                        button.close.d-inline(type="submit", name="delete_tag", aria-label="Close")
+                                            span(aria-hidden="true") &times;
+
                         else
                             p Current tags: You have no tags related to your profile.
 

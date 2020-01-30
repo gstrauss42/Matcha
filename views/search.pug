@@ -65,16 +65,16 @@ html(lang="en")
                                     input.btn.btn-dark(type="submit", name="advanced_search", value="Match!")
                             .col
                                 h6 Include various tags
-                                //- each id for the checkboxes must be different
+                                //- iterating through each tag and creating a new array of all tags
                                 .form-group.mb-0
                                     if tags
+                                        - var array = [];
                                         for gold, k in tags
                                             .custom-control.custom-checkbox
-                                                //- giving all checkboxes one name so that it will be put into an array for backend
                                                 input.custom-control-input(type="checkbox", name= gold, id= gold)
-                                                - awe = k;
                                                 label.label-text.custom-control-label(for= gold)= gold
-                                    input(type="hidden", name="tag_amount", value= awe)
+                                                - array[k] = gold;
+                                    input(type="hidden", name="tag_array", value= array)
                                 small.form-text.text-muted
                                     | To add/see more tags appear here make sure you have added them to your 
                                     a(href="profile") profile 
@@ -113,15 +113,15 @@ html(lang="en")
                                 input(type="hidden", name="_id", value= data_one['_id'])
                                 .alert.alert-primary.alert-dismissible.fade.show.ml-4.mr-4(role="alert")
                                     .media
-                                        if data_one['images'][0]
+                                        if data_one['main_image']
                                             a(href=`javascript: submitform(${id})`)
-                                                img.rounded.mr-2.search-profile(src= `data:image/*;base64,${data_one['images'][0]}`, alt="profile_image")
+                                                img.rounded.mr-2.search-profile(src= `data:image/*;base64,${data_one['main_image']}`, alt="profile_image")
                                         else
                                             a(href=`javascript: submitform(${id})`)
                                                 img.rounded.mr-2.search-profile(src="user.jpg", alt="profile_image")
                                         .media-body
                                             a(href=`javascript: submitform(${id})`)
-                                                strong.custom-username= data_one['name'] + " " + data_one['surname']
+                                                strong.custom-username= data_one['username']
                                             p.search-profile-descrip.mb-0= data_one['bio']
                                     button.close(type="button" data-dismiss="alert" aria-label="Close")
                                         span(aria-hidden="true") &times;
@@ -136,7 +136,7 @@ html(lang="en")
                                 input(type="hidden", name="_id", value= data['_id'])
                                 .alert.alert-primary.alert-dismissible.fade.show.ml-4.mr-4(role="alert")
                                     .media
-                                        if data['main_imag']
+                                        if data['main_image']
                                             a(href=`javascript: submitform(${id})`)
                                                 img.rounded.mr-2.search-profile(src= `data:image/*;base64,${data['main_image']}`, alt="profile_image")
                                         else
@@ -144,11 +144,11 @@ html(lang="en")
                                                 img.rounded.mr-2.search-profile(src="user.jpg", alt="profile_image")
                                         .media-body
                                             a(href=`javascript: submitform(${id})`)
-                                                strong.custom-username= data['name'] + " " + data['surname']
+                                                strong.custom-username= data['username']
                                             p.search-profile-descrip.mb-0= data['bio']
                                     button.close(type="button" data-dismiss="alert" aria-label="Close")
                                         span(aria-hidden="true") &times;
-                
+
                 //- no suggestions
                 else
                     h5.ml-4 No suggestions at this moment! Try an advanced search.

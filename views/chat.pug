@@ -3,7 +3,7 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
-        title Matcha | Notifications
+        title Matcha | Chat
         script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
         script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
@@ -12,14 +12,13 @@ html(lang="en")
         script(src="https://kit.fontawesome.com/17df3da6b8.js", crossorigin="anonymous")
         link(rel="stylesheet", href="main.css")
         script(src="https://code.jquery.com/jquery-1.11.1.js") 
-        script(src="./js/chat.js")
+        script(src="../pages/chat.js")
         script(src="../socket.io/socket.io.js")
+
         script.
             function submitlink() {
                 document.getElementById("link").submit();
             }
-
-
 
     body
         .page-container.ml-0.mr-0
@@ -56,18 +55,17 @@ html(lang="en")
                 .container
                     .container-fluid.task-box
                         p.pt-1.pb-1= "Chatting with "
-                            a(href="matched_profile")= name + " " + surname
+                            a(href="matched_profile")= username
                     .container-fluid.chat-box.pt-2.mb-3
 
-                        //- this in the socket io example
                         ul#messages
+                            p.chat-message example output
 
                     .container-fluid.pl-0.pr-0.mb-3
 
-                        //- this is in the socket io example
-                        form#messages(action="")
-                            input#m(autocomplete="off")
-                            button Send
+                        form#messageForm
+                            input#messageText(type="text", autocomplete="off")
+                            button#sendMsg(type="submit", value="Send Message") Send
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark
@@ -97,3 +95,54 @@ html(lang="en")
                                 strong @jadonhansen
                             a.text-info.github-link(href='https://gstrauss42')
                                 strong @gstrauss
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js")
+
+    script.
+        (function(){
+            var element = function(id){
+                return document.getElementById(id);
+            }
+
+            // get elements
+            var messages = element('messages');
+            var messageText = element('messageText');
+            var sendMsg = element('sendMsg');
+
+            // connect to socket.io
+            var socket = io.connect('localhost:777/chat');
+
+            // check for connection
+            if (socket !== undefined) {
+                console.log('Connected to socket...');
+
+                // handles output
+                socket.on('output', function(data) {
+                    console.log(data);
+                    if (data.length) {
+                        for (var x = 0; x < data.length; x++) {
+                            // build out message output
+                            var message = document.createElement('div');
+                            message.setAttribute('class', 'chat-message');
+                            message.textContent = data[x].name + ": " + data[x].message;
+                            messages.appendChild(message);
+                            messages.insertBefore(message, messages.firstChild);
+                        }
+                    }
+                });
+
+                // handles input
+                sendMsg.addEventListener('click', function(event) {
+                        // emit to server input
+                        if (messageText.value !== '') {
+                            socket.emit('input', {
+                                message:messageText.value
+                            });
+                            event.preventDefault();
+                        } else {
+                            console.log('Error: no message');
+                        }
+                });
+            }
+
+        })();

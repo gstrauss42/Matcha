@@ -25,7 +25,8 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                      console.log("liked user\nupdated notifications");
                      res.render("matched_profile", {name : doc.name,
                                                    surname:doc.surname,
-                                                   rating: doc.rating,
+                                                   username: doc.username,
+                                                   rating: doc.fame,
                                                    gender: doc.gender,
                                                    prefferances: doc.prefferances,
                                                    age: doc.age,
@@ -69,7 +70,8 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                      console.log("unliked user");
                      res.render("matched_profile", {name : doc.name,
                                                    surname:doc.surname,
-                                                   rating: doc.rating,
+                                                   username: doc.username,
+                                                   rating: doc.fame,
                                                    gender: doc.gender,
                                                    prefferances: doc.prefferances,
                                                    age: doc.age,
@@ -106,7 +108,8 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                   }
                   res.render("matched_profile", {name : doc.name,
                                                 surname:doc.surname,
-                                                rating: doc.rating,
+                                                username: doc.username,
+                                                rating: doc.fame,
                                                 gender: doc.gender,
                                                 prefferances: doc.prefferances,
                                                 count : notif.length,
@@ -143,7 +146,8 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                   }
                   res.render("matched_profile", {name : doc.name,
                                                 surname:doc.surname,
-                                                rating: doc.rating,
+                                                username: doc.username,
+                                                rating: doc.fame,
                                                 gender: doc.gender,
                                                 prefferances: doc.prefferances,
                                                 age: doc.age,
@@ -181,7 +185,8 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                   }
                res.render("matched_profile", {name : doc.name,
                                              surname:doc.surname,
-                                             rating: doc.rating,
+                                             username: doc.username,
+                                             rating: doc.fame,
                                              gender: doc.gender,
                                              prefferances: doc.prefferances,
                                              age: doc.age,
@@ -225,7 +230,8 @@ router.post('/', bodyParser.urlencoded(), function(req, res){
                }
                res.render("matched_profile", {name : doc.name,
                                              surname:doc.surname,
-                                             rating: doc.rating,
+                                             username: doc.username,
+                                             rating: doc.fame,
                                              gender: doc.gender,
                                              prefferances: doc.prefferances,
                                              age: doc.age,
