@@ -136,21 +136,19 @@ html(lang="en")
                                 else
                                     img#main-profile-img.rounded-circle.img-main.mt-3(src="user.jpg", alt="main-profile")
                             .col-md-9.mt-4.mr-2.custom-margin-bio
-                                strong
-                                    h3.custom-text-name= username
-                                if liked == 0 && one
-                                    form(action="matched_profile", method="post")
-                                        input(type="hidden", name="_id", value= _id)
-                                        .form-group
-                                            .d-inline-flex
+                                .d-inline
+                                    strong
+                                        h3.custom-text-name= username
+                                    if liked == 0 && one
+                                        form(action="matched_profile", method="post")
+                                            input(type="hidden", name="_id", value= _id)
+                                            .form-group
                                                 button.btn.btn-primary.btn-resize(type="submit", name="like") Like
-                                else if liked == 1
-                                    form(action="matched_profile", method="post")
-                                        input(type="hidden", name="_id", value= _id)
-                                        .form-group
-                                            .d-inline-flex
+                                    else if liked == 1
+                                        form(action="matched_profile", method="post")
+                                            input(type="hidden", name="_id", value= _id)
+                                            .form-group
                                                 button.btn.btn-primary.btn-resize(type="submit", name="unlike") Unlike
-                                .d-inline-flex
                                     button#options.btn.btn-primary.btn-resize(data-toggle="modal", data-target="#modalOptions") More
                                 h6.custom-text-rating= 'Rating ' + rating
                                 .bio-pre
