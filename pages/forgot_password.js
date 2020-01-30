@@ -10,7 +10,7 @@ router.get("/", (req,res) => {
    res.render("forgot_password");
 })
 
-router.post('/', bodyParser.urlencoded(), function(req, res){
+router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
    Model.user.findOne({ email: req.body.email }, function(err, user) {
       if(user)
       {

@@ -11,7 +11,7 @@ util = require('util')
 upload = multer({limits: {fileSize: 2000000 },dest:'/goinfre/gstrauss/Documents/matcha/uploads'})  //jadons dir.
 // upload = multer({limits: {fileSize: 2000000 },dest:'/Users/Gabriel/Documents/WTC PROJECTS/Semester 2/matcha-collab/uploads'})  //jadons laptop dir.
 
-router.post('/', upload.single('picture'), bodyParser.urlencoded(), function (req, res)
+router.post('/', upload.single('picture'), bodyParser.urlencoded({extended: true}), function (req, res)
 {
     console.log(req.body);
 

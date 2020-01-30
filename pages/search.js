@@ -19,7 +19,8 @@ router.get('/', function(req, res){
     });
 });
 
-router.post('/', bodyParser.urlencoded(), function(req, res){
+router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
+    console.log("\n"+req.body+"\n");
     Models.user.findOne({email: req.session.name}, function(err, doc)
     {
         var p = 0;

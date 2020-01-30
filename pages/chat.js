@@ -12,7 +12,7 @@ var router = express.Router();
 
 
 // rendering chat page
-router.post('/', bodyParser.urlencoded(), function(req, res) {
+router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
   models.user.findOne({ "_id" : req.body.email}, function(err, doc){
     console.log(doc);
     res.render('chat.pug'/*, {"username" : doc.username}*/);

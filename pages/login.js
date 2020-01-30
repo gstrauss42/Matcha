@@ -12,7 +12,7 @@ router.get("/", (req,res) => {
 })
  
 
-router.post('/', bodyParser.urlencoded(), function(req, res){
+router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
    Models.user.findOne({ email: req.body.email }, function(err, user) {
       if(user)
       {

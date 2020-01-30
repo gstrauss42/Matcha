@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 var Models = require("../models/models");
 
-router.post('/', bodyParser.urlencoded(), function(req, res){
+router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
 
     Models.user.findOneAndUpdate(
         { email : req.session.name },
