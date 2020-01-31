@@ -1,5 +1,6 @@
 Gabriel:
     SEARCH PAGE:
+        - just made a new profile and on purpose didnt verify it but it appeared in searches results. Make sure non verified accounts dont appear in search results
         - tag searching and filtering (needa re-implement body parser)
 
     NOTIFICATION PAGE:
@@ -11,11 +12,27 @@ Gabriel:
         - make fields secure
         - update location to work with postal codes or something like that
 
+    - send me a number '4' to the oops page when i type in my email in the FORGOT PASSWORD page so that it notifies the user to check their email for the link
+    - send me a number '5' to the oops page when i use an already existing email in create account page
+    - send me a number '6' to the oops page when login has failed because my account isnt verified
+    - send me a number '7' to the oops page to notify that i should check my email to verify my account once i have 'created account'
+
+    - not recieving email from create account page to verify my account
+    - when i use the link sent to my email (sent to me from 'forgot password') it just takes me to the login page
+    - store the usernames in the notifications and in the views, viewed, likes array (only those three arrays)
+
+
+
 Jadon:
     - sort out create account screen resizing
     - once Gabriel has configured the blocked user thingy then I need to change interface accordingly
         - according to the PDF the blocked users are not supposed to appear in search so I wont be changing it as far as I can see
-    
+
+    DONE:
     - err 1: try again (incorrect login details or some such)
     - err 2: access is denied please login first
     - err 3: umm please try to be less cause this error isnt supposed to happen ;) (ie whatever you feel like making the generic error)
+    - err 4: check email for password reset link
+    - err 5: email already exists
+    - err 6: account isnt verified
+    - err 7: check email for verification link
