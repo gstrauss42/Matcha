@@ -1,26 +1,21 @@
 Gabriel:
-    PROFILE PAGE:
-		- pass me the USERNAME of the people who have liked me, viewed me, and who I have viewed (so save the username instead of the email to the db when doing notifications/viewing/liking etc)
-        - have to refresh the page again to see an actual change in the images
-
     SEARCH PAGE:
-        - tag searching and filtering
+        - tag searching and filtering (needa re-implement body parser)
 
     NOTIFICATION PAGE:
         - make notifications appear live
-
-	MATCHED PAGE:
-		- block gives a double header setting warning in the terminal
+            - is an ajax fix, if jquery works for the chat then we can just do that for this  too client side
 
     EXTRA:
         - handle errors (error message appears)
         - make fields secure
         - update location to work with postal codes or something like that
 
-    BONUS:
-        - ajaxify
-
 Jadon:
     - sort out create account screen resizing
     - once Gabriel has configured the blocked user thingy then I need to change interface accordingly
         - according to the PDF the blocked users are not supposed to appear in search so I wont be changing it as far as I can see
+    
+    - err 1: try again (incorrect login details or some such)
+    - err 2: access is denied please login first
+    - err 3: umm please try to be less cause this error isnt supposed to happen ;) (ie whatever you feel like making the generic error)
