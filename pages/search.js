@@ -3,21 +3,24 @@ var router = express.Router();
 var Models = require("../models/models");
 const bodyParser = require('body-parser');
 
-router.get('/', function(req, res){
-    console.log("watafak");
-    Models.user.findOne({email: req.session.name}, function(err, doc)
-    {
-        Models.user.find( {$and: [{gender: doc.prefferances}, {$or:[{prefferances: doc.gender}, {prefferances: "Bi-Sexual"}]}]} , function(err, val){
-            console.log(val + "\n");
-            var tags = Array.from(doc.tags);
-            res.render('search', {
-                        "tags" : tags,
-                        "count" : doc.notifications.length,
-                        "basic_matches": Array.from(val)
-            });
-        });
-    });
-});
+var app = express();
+app.use(bodyParser.json());
+
+// router.get('/', function(req, res){
+//     console.log("watafak");
+//     Models.user.findOne({email: req.session.name}, function(err, doc)
+//     {
+//         Models.user.find( {$and: [{gender: doc.prefferances}, {$or:[{prefferances: doc.gender}, {prefferances: "Bi-Sexual"}]}]} , function(err, val){
+//             console.log(val + "\n");
+//             var tags = Array.from(doc.tags);
+//             res.render('search', {
+//                         "tags" : tags,
+//                         "count" : doc.notifications.length,
+//                         "basic_matches": Array.from(val)
+//             });
+//         });
+//     });
+// });
 
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
     console.log("\n"+req.body+"\n");

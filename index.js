@@ -19,10 +19,10 @@ require('dotenv').config()
 */
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
+app.use(session({secret: process.env.secret}));
 app.use(express.static('public'));
 app.use('/js', express.static('views/js'));
 app.use(express.static(path.join(__dirname, "public")));
-app.use(session({secret: process.env.secret}));
 mongoose.connect('mongodb+srv://gstrauss:' + process.env.password +'@matcha-ch0yb.gcp.mongodb.net/test?retryWrites=true&w=majority');
 
 /*

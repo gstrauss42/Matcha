@@ -41,7 +41,7 @@ router.post('/create', bodyParser.urlencoded({extended: true}), function(req, re
             verif: safe,
             fame: 0,
             blocked : "",
-            location_status : '0'
+            location_status : '1'
          });
 
          var present_time = Math.floor(Date.now() / 1000);

@@ -1,16 +1,7 @@
 Gabriel:
-    Popularity rating:
-        make sure its being updated by 1 each time a profile is viewed or liked 
-
-    CHAT PAGE:
-        - DO SOME DB STUFF THERE (CHECK COMMENTS). If you get it to work with the db stuff added then all is good, if not then 
-                tell me and ill ask my friend. I just need your db fetching code there still.
-
     PROFILE PAGE:
 		- pass me the USERNAME of the people who have liked me, viewed me, and who I have viewed (so save the username instead of the email to the db when doing notifications/viewing/liking etc)
         - have to refresh the page again to see an actual change in the images
-        - i have added a 'status' to the user schema already (will either be e.g. --> offline: "offline-12:45pm" OR "online")
-                so you just need to use that db variable now and change it on login and logoff. 
 
     SEARCH PAGE:
         - tag searching and filtering
@@ -19,14 +10,9 @@ Gabriel:
         - make notifications appear live
 
 	MATCHED PAGE:
-        - ||||||||--  if someone is blocked then they should be added to the users blocked list, and when 
-            fetching that users page again: then you need to determine if that person is blocked using 
-                their ID and then send me the variable named "blocked" which will be a 0 or 1. Then i can change
-                     the layout based on that outcome  --|||||||||||||||
 		- block gives a double header setting warning in the terminal
 
     EXTRA:
-        - location usage MUST default be set to 1. According to pdf
         - handle errors (error message appears)
         - make fields secure
         - update location to work with postal codes or something like that
@@ -34,7 +20,7 @@ Gabriel:
     BONUS:
         - ajaxify
 
-
 Jadon:
     - sort out create account screen resizing
     - once Gabriel has configured the blocked user thingy then I need to change interface accordingly
+        - according to the PDF the blocked users are not supposed to appear in search so I wont be changing it as far as I can see

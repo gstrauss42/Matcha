@@ -23,10 +23,15 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                const clientIp = requestIp.getClientIp(req);
                // ip tracking
                Models.user.findOneAndUpdate({ email : req.body.email },
-                  { "location" : clientIp }
-                  , function(err, _update) {
+               { "location" : clientIp },
+               function(err, _update){
                       console.log("updated Ip Location");
-              });
+               });
+               Models.user.findOneAndUpdate({ email : req.body.email },
+               { "status" : "online" },
+               function(err, _update){
+                   console.log("user set to online");
+               });
               //setting session
                Models.user.findOne({email:req.body.email})
                req.session.name = req.body.email;
