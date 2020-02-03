@@ -21,7 +21,7 @@ require('dotenv').config()
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
-app.use(session({secret: process.env.secret}));
+app.use(session({secret: process.env.secret, resave: true, saveUninitialized: true}));
 app.use(express.static('public'));
 app.use('/js', express.static('views/js'));
 app.use(express.static(path.join(__dirname, "public")));
