@@ -19,7 +19,7 @@ Gabriel:
 
     NOTIFICATION PAGE:
         - make notifications appear live
-            - is an ajax fix, if jquery works for the chat then we can just do that for this  too client side
+            - is an ajax fix, if jquery works for the chat then we can just do that for this too client side
 
     EXTRA:
         - handle errors (error message appears)
