@@ -48,3 +48,9 @@ Jadon:
     - err 5: email already exists
     - err 6: account isnt verified
     - err 7: check email for verification link
+
+
+
+    modify gps position
+
+    change emails appearing in text to be usernames
