@@ -4,9 +4,16 @@ var Models = require("../models/models");
 const bodyParser = require('body-parser');
 
 router.get('/', function(req, res){
-   Models.notifications.find({email: req.session.name}, function(err, doc){
-      res.render('notifications', {"notifications" : doc});
-   });
+   if(!req.session.name)
+   {
+      return(res.render("oops"));
+   }
+   else
+   {
+      Models.notifications.find({email: req.session.name}, function(err, doc){
+         res.render('notifications', {"notifications" : doc});
+      });
+   }
 });
 
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
@@ -14,11 +21,10 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
    if(req.body.dismiss == '')
       {
          Models.notifications.find({email: req.session.name}, function(err, doc){
-            console.log(doc[req.body.identifier]._id)
             Models.notifications.findOneAndDelete(
                {_id: doc[req.body.identifier]._id},
                function(err, temp){
-                  console.log("deleted")
+                  console.log("notification deleted")
                });
             res.redirect('/notifications');
             // update to move dismissed notifications to the seen section
