@@ -1,23 +1,12 @@
 Gabriel:
+
+    might need to change login from email to username
+
     SEARCH PAGE:
-        - Options: (results are based on the CURRENT logged in users gender and preference, NOT other users in db)
-            
-            > Male interested in female: should be able to see all females, and all bisexual females
-            > Male interested in male: should be able to see all males, and all bisexual males
-            > Male interested in both: should be able to see everyone
-            
-            > Female interested in male: should be able to see all males, and all bisexual males
-            > Female interested in female: should be able to see all females, and all bisexual females
-            > Female interested in both: should be able to see everyone
-
-            > Other interested in male: should be able to see all males, and all bisexual males
-            > Other interedted in females: should be able to see all females, and all bisexual females
-            > Other interested in both: should be able to see everyone
-
-        - just made a new profile and on purpose didnt verify it but it appeared in searches results. Make sure non verified accounts dont appear in search results
         - tag searching and filtering (needa re-implement body parser)
 
     NOTIFICATION PAGE:
+        - clearing notifications can be glitchy where they are removed then reappear but are actually gone
         - make notifications appear live
             - is an ajax fix, if jquery works for the chat then we can just do that for this too client side
 

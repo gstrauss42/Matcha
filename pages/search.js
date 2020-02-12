@@ -34,12 +34,58 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
         {
             var p = 0;
             Models.notifications.find({"email": req.session.name}, function(err, notif){
-                Models.user.find({$and: [{gender: doc.prefferances}, {$or:[{prefferances: doc.gender}, {prefferances: "Bi-Sexual"}]}]}, function(err, val){
+                Models.user.find({"isverified": "true"}, function(err, val){
                     let i = 0;
+                    var min_fame = doc.fame - 5;
                     while(val[i])
                     {
                         while(val[i])
                         {
+                            if(doc.prefferances == 'Female')
+                            {
+                                if(val[i].gender != 'Female')
+                                {
+                                    val.splice(i, 1);
+                                    break;
+                                }
+                            }
+                            if(doc.prefferances == 'Male')
+                            {
+                                if(val[i].gender != 'Male')
+                                {
+                                    val.splice(i, 1);
+                                    break;
+                                }
+                            }
+                            if(doc.gender == 'Other')
+                            {
+                                if(val[i].prefferances != 'Bi-Sexual')
+                                {
+                                    val.splice(i, 1);
+                                    break;
+                                }
+                            }
+                            if(val[i].prefferances == "Male")
+                            {
+                                if(doc.gender != "Male")
+                                {
+                                    val.splice(i, 1);
+                                    break;
+                                }
+                            }
+                            if(val[i].prefferances == "Female")
+                            {
+                                if(doc.gender != "Female")
+                                {
+                                    val.splice(i, 1);
+                                    break;
+                                }
+                            }
+                            if(val[i].email == req.session.name)
+                            {
+                                val.splice(i, 1);
+                                break;
+                            }
                             if(req.body.age)
                             {
                                 if(val[i].age != req.body.age)
@@ -50,8 +96,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                             }
                             if(req.body.rating)
                             {
-                                // get personal fame rating to compare againts results then do some sort of averaging or range
-                                if(val[i].fame != doc.fame)
+                                if(val[i].fame < min_fame || val[i].fame > min_fame + 10)
                                 {
                                     val.splice(i, 1);
                                     break;
@@ -70,12 +115,9 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                             {
                                 val.splice(i, 1);
                                 break;
-                            }
-                            
-                            //find a way to match the blocks to who is blocked for filtering
+                            }                            
                             if(doc.reported && doc.reported.contains(val[i].email))
                             {
-                                console.log("a user was filtered due to blocking");
                                 val.splice(i, 1);
                                 break;
                             }
@@ -160,7 +202,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                                 "basic_matches": ret
                     });
                 });
-            });       
+            });
         });
     }
 });

@@ -22,7 +22,7 @@ router.get('/', function(req, res){
                                     four :doc.image_three,
                                     five :doc.image_four,
                                     views : doc.views,
-                                    viewed : doc.viewed,       
+                                    viewed : doc.viewed,
                                     likes: doc.likes,
                                     liked: count,
                                     rating: doc.fame,

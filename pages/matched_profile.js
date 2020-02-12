@@ -228,8 +228,11 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
          else{
             console.log(req.body);
             Models.user.findOne({email : req.session.name}, function(err, check){
+               // !!! 
+               // update notifications to save to the notifcations colection and not the notifications under the user collection
+               // !!!
                Models.user.findOneAndUpdate({"_id" : req.body._id}, {$push : {"notifications" : check.username + " viewed your profile"},views : req.session.name  }, function(err, doc){
-                  Models.user.findOneAndUpdate({"email" : req.session.name}, {"viewed": doc.email}, function(err, temp){
+                  Models.user.findOneAndUpdate({"email" : req.session.name}, {"viewed": doc.username}, function(err, temp){
                      console.log("updated the view history")
                      // add a check to exclude adding people multiple times
                   });
