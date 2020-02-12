@@ -222,16 +222,29 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                });
             }
          }
-      
-         
          // start of the psuedo get
          else{
-            console.log(req.body);
             Models.user.findOne({email : req.session.name}, function(err, check){
-               // !!! 
-               // update notifications to save to the notifcations colection and not the notifications under the user collection
                // !!!
-               Models.user.findOneAndUpdate({"_id" : req.body._id}, {$push : {"notifications" : check.username + " viewed your profile"},views : req.session.name  }, function(err, doc){
+
+               // update notifications to save to the notifcations colection and not the notifications under the user collection
+               
+               // !!!
+               Models.user.findOneAndUpdate({"_id" : req.body._id}, {$addToSet : {views : check.username }}, function(err, doc){
+                  // notification of viewed profile
+                  var present_time = Math.floor(Date.now() / 1000);
+                  var _notif = new Models.notifications ({
+                     email: doc.email,
+                     name: "profile view",
+                     content: check.username + ' viewed your profile!',
+                     time: present_time
+                  })
+                  _notif.save(function(err){
+                     if(err)
+                        console.log(err);
+                     else
+                        console.log("updated notifications");
+                  })
                   Models.user.findOneAndUpdate({"email" : req.session.name}, {"viewed": doc.username}, function(err, temp){
                      console.log("updated the view history")
                      // add a check to exclude adding people multiple times
