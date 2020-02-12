@@ -20,5 +20,4 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
   })
 });
 
-
 module.exports = router;

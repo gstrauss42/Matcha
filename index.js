@@ -32,7 +32,7 @@ mongoose.connect('mongodb+srv://gstrauss:' + process.env.password +'@matcha-ch0y
  */
 
 http.listen(process.env.port, function(){
-  console.log(`Listening to requests on http://localhost:${process.env.port}`);
+  console.log(`listening on port: ${process.env.port}`);
 });
 
 /*
