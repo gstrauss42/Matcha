@@ -25,7 +25,6 @@ router.post('/create', bodyParser.urlencoded({extended: true}), function(req, re
       } 
       else
       {
-         console.log(req.body);
          var safe = crypto.pbkdf2Sync(randomstring.generate(), '100' ,1000, 64, `sha512`).toString(`hex`);
          var pass = crypto.pbkdf2Sync(req.body.password, '100' ,1000, 64, `sha512`).toString(`hex`);
       

@@ -17,7 +17,6 @@ router.get('/', function(req, res){
 });
 
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
-   console.log(req.body);   
    if(req.body.dismiss == '')
       {
          Models.notifications.find({email: req.session.name}, function(err, doc){

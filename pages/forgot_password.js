@@ -44,5 +44,4 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
    res.redirect('/login');
 });
 
-//export this router to use in our index.js
 module.exports = router;

@@ -14,7 +14,6 @@ upload = multer({limits: {fileSize: 2000000 },dest:'/Users/Dr.Strange/Documents/
 
 router.post('/', upload.single('picture'), bodyParser.urlencoded({extended: true}), function (req, res)
 {
-    console.log(req.body);
 
     if(req.file == null)
     {

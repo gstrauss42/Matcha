@@ -7,7 +7,6 @@ var randomstring = require("randomstring");
 var nodeMailer = require('nodemailer');
 
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
-    console.log(req.body)
     if(req.body.location_status)
     {
         if(req.body.location_status == "0")
