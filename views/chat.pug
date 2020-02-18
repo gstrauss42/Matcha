@@ -63,8 +63,9 @@ html(lang="en")
 
                     .container-fluid.pl-0.pr-0.mb-3
 
-                        form#messageForm
-                            input#messageText(type="text", autocomplete="off")
+                        form#messageForm(action="chat", method="post")
+                            input#messageText(type="text", autocomplete="off", name="message")
+                            input(type="hidden", name="id", value= id)
                             input(type="hidden", name="email", value= email)
                             button#sendMsg(type="submit", value="Send Message") Send
 

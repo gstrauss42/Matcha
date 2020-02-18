@@ -25,7 +25,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
       }
       models.messages.find({$and: {"to": chatter.email, "from": doc.email}}, function(err, messages){
         models.messages.find({$and: {"to": doc.email, "from": chatter.email}}, function(err, messages_from){
-          res.render('chat.pug', {"username" : doc.username, "messages": messages, "messages_from" : messages_from});
+          res.render('chat.pug', {"username" : doc.username, "messages": messages, "messages_from" : messages_from, "id" : req.body.id});
         });
       });
     });
