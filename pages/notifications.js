@@ -17,23 +17,25 @@ router.get('/', function(req, res){
 });
 
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
-   if(req.body.dismiss == '')
-      {
+   // if(req.body.dismiss == '')
+      // {
          Models.notifications.find({email: req.session.name}, function(err, doc){
-            Models.notifications.findOneAndDelete(
-               {_id: doc[req.body.identifier]._id},
-               function(err, temp){
-                  console.log("notification deleted")
-               });
+            if(doc[req.body.identifier])
+            {
+               Models.notifications.deleteOne(
+                  {_id: doc[req.body.identifier]._id},
+                  function(err, temp){
+                     console.log("notification deleted" + temp)
+                  });
+            }
             res.redirect('/notifications');
-            // update to move dismissed notifications to the seen section
          });
-      }
-      else
-      {
-         console.log("\n\nCRITICAL ERROR CHECK NOTIFICATIONS FINAL\n\n");
-         res.redirect('notifications');
-      }
+      // }
+      // else
+      // {
+      //    console.log("\n\nCRITICAL ERROR CHECK NOTIFICATIONS FINAL\n\n");
+      //    res.redirect('notifications');
+      // }
 });
 
 //export this router to use in our index.js
