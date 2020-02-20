@@ -10,7 +10,6 @@ const requestIp = require('request-ip');
 router.get("/", (req,res) => {
    res.render("login");
 })
- 
 
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
    Models.user.findOne({ email: req.body.email }, function(err, user) {

@@ -1,9 +1,6 @@
-// routing for socket has been disabled and instead I had included its handling directly in the html
-
 /*
 * App Variables
 */
-
 const express   = require("express");
 const app       = require('express')();
 var   mongoose  = require('mongoose');
@@ -13,12 +10,10 @@ var   http      = require('http').createServer(app);
 var   server    = require('http').Server(app);
 var   io        = require('socket.io')(server);
 
-require('dotenv').config()
-
 /*
 *  App Configuration
 */
-
+require('dotenv').config()
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 app.use(session({secret: process.env.secret, resave: true, saveUninitialized: true}));
@@ -30,16 +25,13 @@ mongoose.connect('mongodb+srv://gstrauss:' + process.env.password +'@matcha-ch0y
 /*
  * Server Activation
  */
-
 http.listen(process.env.port, function(){
   console.log(`listening on port: ${process.env.port}`);
 });
 
 /*
-* Page Handling
+* Page Variables
 */
-
-// var declarations
 var index           = require('./pages/index.js')
 var home            = require('./pages/home.js')
 var login           = require('./pages/login.js');
@@ -58,11 +50,12 @@ var notifications   = require('./pages/notifications.js');
 var search          = require('./pages/search.js');
 var matched_profile = require('./pages/matched_profile.js');
 var chat            = require('./pages/chat.js');
-var test            = require('./pages/test.js');
 var remove_tag      = require('./pages/remove_tag.js');
 var oops            = require('./pages/oops.js');
 
-// app calls
+/*
+* Page Routing
+*/
 app.use('/', index)
 app.use('/home', home)
 app.use('/login', login);

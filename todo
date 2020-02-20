@@ -3,7 +3,7 @@ Gabriel:
     might need to change login from email to username
 
     SEARCH PAGE:
-        - tag searching and filtering (needa re-implement body parser)
+        - ordering
 
     NOTIFICATION PAGE:
         - clearing notifications can be glitchy where they are removed then reappear but are actually gone
@@ -14,11 +14,6 @@ Gabriel:
         - handle errors (error message appears)
         - make fields secure
         - update location to work with postal codes or something like that
-
-    - send me a number '4' to the oops page when i type in my email in the FORGOT PASSWORD page so that it notifies the user to check their email for the link
-    - send me a number '5' to the oops page when i use an already existing email in create account page
-    - send me a number '6' to the oops page when login has failed because my account isnt verified
-    - send me a number '7' to the oops page to notify that i should check my email to verify my account once i have 'created account'
 
     - when i use the link sent to my email (sent to me from 'forgot password') it just takes me to the login page
     - store the usernames in the notifications and in the views, viewed, likes array (only those three arrays)
