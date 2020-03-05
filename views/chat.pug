@@ -1,3 +1,8 @@
+
+    //- input#messageText(type="text", autocomplete="off", name="message")
+    //- input(type="hidden", name="id", value= id)
+    //- button#sendMsg(type="submit", name="sendMsg", value="sendMessage") Send
+
 html(lang="en")
     head
         meta(charset="UTF-8")
@@ -66,8 +71,7 @@ html(lang="en")
                         form#messageForm(action="chat", method="post")
                             input#messageText(type="text", autocomplete="off", name="message")
                             input(type="hidden", name="id", value= id)
-                            input(type="hidden", name="email", value= email)
-                            button#sendMsg(type="submit", value="Send Message") Send
+                            button#sendMsg(type="submit", name="sendMsg", value="sendMessage") Send
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark
