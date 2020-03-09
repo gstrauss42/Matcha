@@ -15,13 +15,11 @@ router.get('/', function (req, res) {
 router.post('/create', bodyParser.urlencoded({extended: true}), function(req, res, next){
    Model.user.findOne({ email: req.body.email }, function(err, user) {
       if(err) {
-         //handle error here
+         return(res.redirect('/oops'));
       }
       if (user)
       {
-         var err = new Error('A user with that email has already registered. Please use a different email..')
-         err.status = 400;
-         return next(err);
+         return(res.redirect('/oops', {"error": 1}));
       } 
       else
       {

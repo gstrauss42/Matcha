@@ -26,6 +26,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                function(err, _update){
                       console.log("updated Ip Location");
                });
+               // online status
                Models.user.findOneAndUpdate({ email : req.body.email },
                { "status" : "online" },
                function(err, _update){
@@ -37,8 +38,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                res.redirect('/profile');
             }
             else
-            res.send("Somethings wrong, please ensure you verified your account by following the link and that you typed your password in correctly");
-               // res.redirect('/login');
+               res.send("Somethings wrong, please ensure you verified your account by following the link and that you typed your password in correctly");
       }
       else
       {

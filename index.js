@@ -7,8 +7,6 @@ var   mongoose  = require('mongoose');
 const path      = require("path");
 var   session   = require('express-session');
 var   http      = require('http').createServer(app);
-var   server    = require('http').Server(app);
-var   io        = require('socket.io')(server);
 
 /*
 *  App Configuration
@@ -44,7 +42,6 @@ var profile         = require('./pages/profile.js');
 var update_profile  = require('./pages/update_profile.js');
 var email_update    = require('./pages/email_update.js')
 var add_tag         = require('./pages/add_tag.js');
-var bio_update      = require('./pages/bio_update.js');
 var upload_picture  = require('./pages/upload_picture.js');
 var notifications   = require('./pages/notifications.js');
 var search          = require('./pages/search.js');
@@ -69,7 +66,6 @@ app.use('/search', search);
 app.use('/add_tag', add_tag);
 app.use('/logout', logout);
 app.use('/update_profile', update_profile);
-app.use('/bio_change', bio_update);
 app.use('/reset_password', reset_password);
 app.use('/upload_picture', upload_picture);
 app.use('/check/:var_words', email_update);

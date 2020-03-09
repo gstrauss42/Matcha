@@ -14,7 +14,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
    Model.user.findOne({ email: req.body.email }, function(err, user) {
       if(user)
       {
-         // emalier
+         // emailer
          var safe = crypto.pbkdf2Sync(randomstring.generate(), '100' ,1000, 64, `sha512`).toString(`hex`);
          let transporter = nodeMailer.createTransport({
             host: 'smtp.gmail.com',
@@ -26,7 +26,6 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
             }
          });
          var mailOptions = {
-            // should be replaced with real recipient's account
             to: req.body.email,
             subject: 'Dont be like that',
             text: 'Your reset password verification link, localhost:' + process.env.port + '/' + safe
@@ -36,6 +35,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                console.log(error);
             }
          });
+         // updated verification string to ensure user authenticity via email
          Model.user.findOneAndUpdate({email : req.body.email}, {verif : safe}, function(err, doc){
             console.log("updated verif and sent mail verif:" + doc.verif);
          })
