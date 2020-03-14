@@ -31,7 +31,10 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
       // finding all messages and rendering them
       models.messages.find({$and: {"to": chatter.email, "from": doc.email}}, function(err, messages){
         models.messages.find({$and: {"to": doc.email, "from": chatter.email}}, function(err, messages_from){
+
+          // from Jadon: you are sending me the logged in users info not the user who you are chatting to. Please correct
           res.render('chat.pug', {"username" : doc.username, "messages": messages, "messages_from" : messages_from, "id" : req.body.id});
+        
         });
       });
     });
