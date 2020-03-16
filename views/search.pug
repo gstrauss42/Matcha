@@ -17,6 +17,9 @@ html(lang="en")
             function submitform(id) {
                 document.forms[id].submit();
             }
+            function submitlink(param) {
+                document.getElementById(param).submit();
+            }
 
     body
         .page-container
@@ -37,6 +40,9 @@ html(lang="en")
                                         i.fas.fa-bell.mt-1
                                         if count > 0
                                             span.badge.badge-dark= count
+                                li.nav-item
+                                    form#contacts(action="contacts" method="get")
+                                        a.nav-link(href="javascript: submitlink('contacts')") Chats
                                 li.nav-item
                                     a.nav-link(href="profile") Profile
                                 li.nav-item

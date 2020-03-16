@@ -13,8 +13,8 @@ html(lang="en")
         link(rel="stylesheet", href="main.css")
 
         script.
-            function submitlink() {
-                document.getElementById("link").submit();
+            function submitlink(param) {
+                document.getElementById(param).submit();
             }
 
     body
@@ -120,7 +120,10 @@ html(lang="en")
                                         a.dropdown-item(href="profile") Profile
                                         .dropdown-divider
                                         form#link(action="search", method="post")
-                                            a.dropdown-item(href="javascript: submitlink()") Match Me!
+                                            a.dropdown-item(href="javascript: submitlink('link')") Match Me!
+                                        .dropdown-divider
+                                        form#contacts(action="contacts" method="get")
+                                            a.dropdown-item(href="javascript: submitlink('contacts')") Chats
                                 li.nav-item
                                     a.nav-link(href="logout") Logout
                                 li.nav-item
