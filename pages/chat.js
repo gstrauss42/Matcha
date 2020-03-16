@@ -20,8 +20,8 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
         var present_time = Math.floor(Date.now() / 1000);
         var message = new models.messages ({
            message: req.body.message,
-           to: doc.username,
-           from: chatter.username,
+           to: chatter.email,
+           from: doc.email,
            time: present_time
         })
         message.save(function(err){
@@ -34,7 +34,8 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
       // finding all messages and rendering them
       models.messages.find({$and: {"to": chatter.email, "from": doc.email}}, function(err, messages){
         models.messages.find({$and: {"to": doc.email, "from": chatter.email}}, function(err, messages_from){
-
+console.log(messages)
+console.log(messages_from)
           // from Jadon: you are sending me the logged in users info not the user who you are chatting to. Please correct
           res.render('chat.pug', {"username" : chatter.username, "messages": messages, "messages_from" : messages_from, "id" : req.body.id});
         

@@ -1,6 +1,6 @@
 // I have created the routing for the contacts page it is at localhost:777/contacts
 // it will be using the get method and display the relavant users, were only needing a redirect as I can aqquire all the info I need from the session variable
-
+// ive also passed you the messages as messages and messages_from in the chat system please render them
 
 /*
 * App Variables
