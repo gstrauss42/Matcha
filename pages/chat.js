@@ -35,7 +35,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
       }
       // finding all messages and rendering them
       models.messages.find({"to": chatter.email, "from": doc.email}, function(err, messages){
-        models.messages.find({$and: {"to": doc.email, "from": chatter.email}}, function(err, messages_from){
+        models.messages.find({"to": doc.email, "from": chatter.email}, function(err, messages_from){
           console.log("\n"+messages+"____________________________");
           console.log(messages_from);
           res.render('chat.pug', {"username" : chatter.username, "messages": messages, "messages_from" : messages_from, "id" : req.body.id});
