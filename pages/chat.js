@@ -3,6 +3,10 @@ var models = require("../models/models");
 var express = require('express');
 var router = express.Router();
 
+router.get('/', function(req, res){
+  res.render("chat");
+})
+
 // rendering chat page
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
   console.log(req.body);
@@ -11,13 +15,13 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
     // obtaining chatter id
     models.user.findOne({ "_id" : req.body.id}, function(err, chatter){
       // calculations for sending messages
-      if("req.body.send" == '')
+      if(req.body.sendMsg = 'sendMessage')
       {
         var present_time = Math.floor(Date.now() / 1000);
         var message = new models.messages ({
-           message: "temp placeholder",
-           to: "Welcome",
-           from: "Welcome to matcha, may the love be with you",
+           message: req.body.message,
+           to: doc.username,
+           from: chatter.username,
            time: present_time
         })
         message.save(function(err){
