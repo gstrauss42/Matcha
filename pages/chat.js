@@ -10,7 +10,6 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
   models.user.findOne({"email" : req.session.name}, function(err, doc){
     // obtaining chatter id
     models.user.findOne({ "_id" : req.body.id}, function(err, chatter){
-      console.log("logging chatter doc\n"+ chatter);
       // calculations for sending messages
       if("req.body.send" == '')
       {
@@ -33,7 +32,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
         models.messages.find({$and: {"to": doc.email, "from": chatter.email}}, function(err, messages_from){
 
           // from Jadon: you are sending me the logged in users info not the user who you are chatting to. Please correct
-          res.render('chat.pug', {"username" : doc.username, "messages": messages, "messages_from" : messages_from, "id" : req.body.id});
+          res.render('chat.pug', {"username" : chatter.username, "messages": messages, "messages_from" : messages_from, "id" : req.body.id});
         
         });
       });
