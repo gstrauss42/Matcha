@@ -47,10 +47,10 @@ html(lang="en")
                     .row.ml-0.mr-0
                         .col
 
-                            //- notifications
+                            .d-flex.justify-content-center.align-items-center(aria-live="polite" aria-atomic="true")
+                                strong.notif-heading.mb-2 Notifications
+                            hr.mb-4
                             if notifications
-                                .d-flex.justify-content-center.align-items-center(aria-live="polite" aria-atomic="true")
-                                    strong.notif-heading.mb-2 Notifications
                                 for data, i in notifications
                                     .d-flex.justify-content-center.align-items-center.mb-3(aria-live="polite" aria-atomic="true")
                                         .toast.notification-box(role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false")
@@ -64,6 +64,8 @@ html(lang="en")
                                             .toast-body
                                                 p= data['content']
                                 hr.mb-4
+                            else
+                                p No notifications!
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark
