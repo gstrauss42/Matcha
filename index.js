@@ -1,3 +1,7 @@
+// I have created the routing for the contacts page it is at localhost:777/contacts
+// it will be using the get method and display the relavant users, were only needing a redirect as I can aqquire all the info I need from the session variable
+
+
 /*
 * App Variables
 */
@@ -45,6 +49,7 @@ var add_tag         = require('./pages/add_tag.js');
 var upload_picture  = require('./pages/upload_picture.js');
 var notifications   = require('./pages/notifications.js');
 var search          = require('./pages/search.js');
+var contacts        = require('./pages/contacts.js');
 var matched_profile = require('./pages/matched_profile.js');
 var chat            = require('./pages/chat.js');
 var remove_tag      = require('./pages/remove_tag.js');
@@ -59,6 +64,7 @@ app.use('/login', login);
 app.use('/create', create);
 app.use('/chat', chat);
 app.use('/forgot_password', forgot_password);
+app.use('/contacts', contacts);
 app.use('/matched_profile', matched_profile);
 app.use('/notifications', notifications);
 app.use('/profile', profile);
