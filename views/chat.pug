@@ -62,16 +62,20 @@ html(lang="en")
                         p.pt-1.pb-1= "Chatting with "
                             a(href="matched_profile")= username
                     .container-fluid.chat-box.pt-2.mb-3
-
-                        ul#messages
-                            p.chat-message
-
+                        if messages
+                            for data, i in messages
+                                p#text-send.text-right= data[message]
+                            for data, i in messages_from
+                                p#text-receive.text-left= data[message]
+                        else
+                            h6.text-center There are no messsages here! Start a chat
                     .container-fluid.pl-0.pr-0.mb-3
-
                         form#messageForm(action="chat", method="post")
-                            input#messageText(type="text", autocomplete="off", name="message", required)
-                            input(type="hidden", name="id", value= id)
-                            button#sendMsg(type="submit", name="sendMsg", value="sendMessage") Send
+                            .input-group
+                                textarea#messageText.formcontrol(rows="2", name="message", placeholder="Type a message...", required)
+                                input(type="hidden", name="id", value= id)
+                                .input-group-append
+                                    button#sendMsg.btn.btn-secondary(type="submit", name="sendMsg", value="sendMessage") Send
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark

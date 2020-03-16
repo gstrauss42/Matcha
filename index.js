@@ -9,7 +9,6 @@
 // });
 // above is the messages model so you can see the names im passing arrays of these as the 2 previously mentioned chat variables
 
-
 /*
 * App Variables
 */
