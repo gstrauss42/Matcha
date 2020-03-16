@@ -64,9 +64,14 @@ html(lang="en")
                     .container-fluid.chat-box.pt-2.mb-3
                         if messages
                             for data, i in messages
-                                p#text-send.text-right= data[message]
-                            for data, i in messages_from
-                                p#text-receive.text-left= data[message]
+                                #text-send.text-right
+                                    p.mb-0= data.message
+                                    p.msgInfo= "from " + data.from + " at " + data.time
+                        if messages_from
+                            for dataFrom, i in messages_from
+                                #text-receive.text-left
+                                    p.mb-0= dataFrom.message
+                                    p.msgInfo= "from " + dataFrom.from + " at " + dataFrom.time
                         else
                             h6.text-center There are no messsages here! Start a chat
                     .container-fluid.pl-0.pr-0.mb-3

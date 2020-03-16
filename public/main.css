@@ -378,6 +378,10 @@ textarea {
     /* background-color: lightgrey; */
 }
 
+.msgInfo {
+    font-size: small;
+}
+
 @media only screen and (max-width:  510px) {
     .chat-box {
         height: 72vh;
