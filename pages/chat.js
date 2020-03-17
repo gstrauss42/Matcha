@@ -3,19 +3,25 @@ var models = require("../models/models");
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res){
-  res.render("chat");
-})
-
 // rendering chat page
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
-  console.log(req.body);
+  if(!req.session.name)
+    res.render('oops');
+  else
+  {
   // obtaining user info
   models.user.findOne({"email" : req.session.name}, function(err, doc){
-    console.log(doc.username)
     // obtaining chatter id
     models.user.findOne({ "_id" : req.body.id}, function(err, chatter){
-      console.log(chatter.username)
+      //creating new chat contact if not exists
+      console.log(req.body);
+      if(req.body.chat)
+      {
+        console.log("progress___________")
+        models.user.updateOne({"email": req.session.name, $addToSet: {"contacts": chatter.email}}, function(err, contacts){
+          console.log("updated contacts");
+        });
+      }
       // calculations for sending messages
       if(req.body.sendMsg = 'sendMessage')
       {
@@ -36,13 +42,12 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
       // finding all messages and rendering them
       models.messages.find({"to": chatter.email, "from": doc.email}, function(err, messages){
         models.messages.find({"to": doc.email, "from": chatter.email}, function(err, messages_from){
-          console.log("\n"+messages+"____________________________");
-          console.log(messages_from);
           res.render('chat.pug', {"username" : chatter.username, "messages": messages, "messages_from" : messages_from, "id" : req.body.id});
         });
       });
     });
   })
+  }
 });
 
 module.exports = router;

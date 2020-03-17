@@ -15,6 +15,9 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
    fame_rating: String,
    location: String,
    password: String,
+   contacts: [{
+      type: String
+   }],
    viewed: [{
       type: String
    }],
