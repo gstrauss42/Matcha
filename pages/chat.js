@@ -9,6 +9,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
     res.render('oops');
   else
   {
+    console.log(req.body)
   // obtaining user info
   models.user.findOne({"email" : req.session.name}, function(err, doc){
     // obtaining chatter id
@@ -21,7 +22,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
         });
       }
       // calculations for sending messages
-      if(req.body.sendMsg = 'sendMessage')
+      if(req.body.sendMsg == 'sendMessage')
       {
         var present_time = Math.floor(Date.now() / 1000);
         var message = new models.messages ({
