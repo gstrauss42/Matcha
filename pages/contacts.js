@@ -9,6 +9,9 @@ router.post('/', function(req, res){
     else
     {
         models.user.find({"email": req.session.name}, function(err, doc){
+            models.user.find({"email":doc.email},function(err,chatters){
+                console.log("\n\n"+ chatters +"\n\n");
+            });
             res.render("contacts", {"contacts":doc.contacts});
         });
     }

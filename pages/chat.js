@@ -14,10 +14,8 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
     // obtaining chatter id
     models.user.findOne({ "_id" : req.body.id}, function(err, chatter){
       //creating new chat contact if not exists
-      console.log(req.body);
       if(req.body.chat)
       {
-        console.log("progress___________")
         models.user.updateOne({"email": req.session.name, $addToSet: {"contacts": chatter.email}}, function(err, contacts){
           console.log("updated contacts");
         });
@@ -30,7 +28,8 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
            message: req.body.message,
            to: chatter.email,
            from: doc.email,
-           time: present_time
+           time: present_time,
+           read: false
         })
         message.save(function(err){
            if(err)
@@ -42,6 +41,9 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
       // finding all messages and rendering them
       models.messages.find({"to": chatter.email, "from": doc.email}, function(err, messages){
         models.messages.find({"to": doc.email, "from": chatter.email}, function(err, messages_from){
+          messages_from.forEach(element => {
+            element.read = true;
+          });
           res.render('chat.pug', {"username" : chatter.username, "messages": messages, "messages_from" : messages_from, "id" : req.body.id});
         });
       });

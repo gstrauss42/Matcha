@@ -64,7 +64,8 @@ var messagesSchema = new mongoose.Schema({
    message: String,
    to: String,
    from: String,
-   time: String
+   time: String,
+   read: Boolean
 });
 
 db.on("error", console.error.bind(console, "Connection error:"));
