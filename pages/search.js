@@ -19,6 +19,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                 Models.user.find({"isverified": "true"}, function(err, val){
                     let i = 0;
                     var min_fame = doc.fame - 5;
+                    console.log(val)
                     while(val[i])
                     {
                         while(val[i])
@@ -111,77 +112,87 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                         }
                     }
                     // ordered filtering 
-                    i = 0;
-                    var p = 0;
-                    var temp;
-                    var count = 0;
-                    var ret = Array.from(val);
-                    if(req.body.filter_all == "Go!")
-                    {
-                        if(req.body.filter == "age")
-                        {
-                            if(req.body.order == "ascending")
-                            {
+                    // i = 0;
+                    // var p = 0;
+                    // var temp;
+                    // var count = 0;
+                    // var sorted = Array.from(val);
+                    // var ret = Array.from(val);
+                    // if(req.body.filter_all == "Go!")
+                    // {
+                    //     if(req.body.filter == "age")
+                    //     {
+                    //         if(req.body.order == "ascending")
+                    //         {
                                 // refine the below algorithm
-    
-                                // p = ret[i];
-                                // while(ret[0])
-                                // {
-                                //     while(ret[i])
-                                //     {
-                                //         if(ret[i] < p)
-                                //         {
-                                //             p = ret[i];
-                                //         }
-                                //         i++;
-                                //     }
-                                //     temp[count] = p;        
-                                //     count++;
-                                // }
-                            }
-                            else
-                            {
-    
-                            }
-                        }
-                        else if(req.body.filter == "location")
-                        {
-                            if(req.body.order == "ascending")
-                            {
-    
-                            }
-                            else
-                            {
+                    //             p = ret[i];
                                 
-                            }
-                        }
-                        else if(req.body.filter == "rating")
-                        {
-                            if(req.body.order == "ascending")
-                            {
+                    //             ret.forEach(user => {
+                    //                 var position = 0;
+                    //                 while(1 != 2) //not good code red fkag right here
+                    //                 {
+                    //                     sorted[position] = new Models.user;
+                    //                     sorted[position] = user;
+                    //                 }
+                    //             });
+                    //             while(ret[0])
+                    //             {
+                    //                 while(ret[i])
+                    //                 {
+                    //                     if(ret[i] < p)
+                    //                     {
+                    //                         p = ret[i];
+                    //                     }
+                    //                     i++;
+                    //                 }
+                    //                 temp[count] = p;        
+                    //                 count++;
+                    //             }
+                    //         }
+                    //         else
+                    //         {
     
-                            }
-                            else
-                            {
-                                
-                            }
-                        }
-                        else if(req.body.filter == "common_tags")
-                        {
-                            if(req.body.order == "ascending")
-                            {
+                    //         }
+                    //     }
+                    //     else if(req.body.filter == "location")
+                    //     {
+                    //         if(req.body.order == "ascending")
+                    //         {
     
-                            }
-                            else
-                            {
+                    //         }
+                    //         else
+                    //         {
                                 
-                            }
-                        }
-                    }
+                    //         }
+                    //     }
+                    //     else if(req.body.filter == "rating")
+                    //     {
+                    //         if(req.body.order == "ascending")
+                    //         {
+    
+                    //         }
+                    //         else
+                    //         {
+                                
+                    //         }
+                    //     }
+                    //     else if(req.body.filter == "common_tags")
+                    //     {
+                    //         if(req.body.order == "ascending")
+                    //         {
+    
+                    //         }
+                    //         else
+                    //         {
+                                
+                    //         }
+                    //     }
+                    // }
+                    console.log(val)
                     res.render('search', {
                                 "tags" : doc.tags,
                                 "count" : notif.length,
-                                "basic_matches": ret
+                                "basic_matches": val
                     });
                 });
             });

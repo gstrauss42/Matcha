@@ -12,7 +12,8 @@ router.get("/", (req,res) => {
 })
 
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
-   Models.user.findOne({ email: req.body.email }, function(err, user) {
+   console.log(req.body)
+   Models.user.findOne({ 'email': req.body.email }, function(err, user) {
       if(user)
       {
          var safe = crypto.pbkdf2Sync(req.body.password, '100' ,1000, 64, `sha512`).toString(`hex`);
@@ -42,6 +43,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
       }
       else
       {
+         console.log(user);
          res.render("login");
       }
    });
