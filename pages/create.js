@@ -17,9 +17,9 @@ router.post('/create', bodyParser.urlencoded({extended: true}), function(req, re
       if(err) {
          return(res.redirect('/oops'));
       }
-      if (user)
+      else if (user)
       {
-         return(res.redirect('/oops', {"error": 1}));
+         return(res.redirect('/oops'));
       } 
       else
       {
