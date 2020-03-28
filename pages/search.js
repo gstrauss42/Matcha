@@ -166,9 +166,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                     //     {
                     //         if(req.body.order == "ascending")
                     //         {
-                                // refine the below algorithm
-                    //             p = ret[i];
-                                
+                    //             p = ret[i];                                
                     //             ret.forEach(user => {
                     //                 var position = 0;
                     //                 while(1 != 2) //not good code red fkag right here
