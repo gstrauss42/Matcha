@@ -17,6 +17,13 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
             console.log(req.body)
             var p = 0;
             Models.notifications.find({"email": req.session.name}, function(err, notif){
+
+            // below is sorting, requires order to be either 1 or -1, and if no sort is selected then age or something is selected
+
+            // var input = req.body.filter;
+            //  Models.user.find({$query:{"isverified": "true"}, $orderby:{ input : req.body.order}}, function(err,val){
+
+            //  })
                 Models.user.find({"isverified": "true"}, function(err, val){
                     let i = 0;
                     let a = 0;
@@ -153,81 +160,6 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                             i++;
                         }
                     }
-                    // ordered filtering 
-                    // i = 0;
-                    // var p = 0;
-                    // var temp;
-                    // var count = 0;
-                    // var sorted = Array.from(val);
-                    // var ret = Array.from(val);
-                    // if(req.body.filter_all == "Go!")
-                    // {
-                    //     if(req.body.filter == "age")
-                    //     {
-                    //         if(req.body.order == "ascending")
-                    //         {
-                    //             p = ret[i];                                
-                    //             ret.forEach(user => {
-                    //                 var position = 0;
-                    //                 while(1 != 2) //not good code red fkag right here
-                    //                 {
-                    //                     sorted[position] = new Models.user;
-                    //                     sorted[position] = user;
-                    //                 }
-                    //             });
-                    //             while(ret[0])
-                    //             {
-                    //                 while(ret[i])
-                    //                 {
-                    //                     if(ret[i] < p)
-                    //                     {
-                    //                         p = ret[i];
-                    //                     }
-                    //                     i++;
-                    //                 }
-                    //                 temp[count] = p;        
-                    //                 count++;
-                    //             }
-                    //         }
-                    //         else
-                    //         {
-    
-                    //         }
-                    //     }
-                    //     else if(req.body.filter == "location")
-                    //     {
-                    //         if(req.body.order == "ascending")
-                    //         {
-    
-                    //         }
-                    //         else
-                    //         {
-                                
-                    //         }
-                    //     }
-                    //     else if(req.body.filter == "rating")
-                    //     {
-                    //         if(req.body.order == "ascending")
-                    //         {
-    
-                    //         }
-                    //         else
-                    //         {
-                                
-                    //         }
-                    //     }
-                    //     else if(req.body.filter == "common_tags")
-                    //     {
-                    //         if(req.body.order == "ascending")
-                    //         {
-    
-                    //         }
-                    //         else
-                    //         {
-                                
-                    //         }
-                    //     }
-                    // }
                     res.render('search', {
                                 "tags" : doc.tags,
                                 "count" : notif.length,
