@@ -1,6 +1,5 @@
 Gabriel:
 
-    accounts can have the same email fix this
     might need to change login from email to username
 
     SEARCH PAGE:
@@ -16,7 +15,6 @@ Gabriel:
         - make fields secure
         - update location to work with postal codes or something like that
 
-    - when i use the link sent to my email (sent to me from 'forgot password') it just takes me to the login page
     - store the usernames in the notifications and in the views, viewed, likes array (only those three arrays)
 
 
