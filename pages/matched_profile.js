@@ -22,7 +22,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                      console.log("incremented fame rating");
                   });
                   // render and render checks
-                  Models.user.findOneAndUpdate({email : req.session.name}, {$push : {likes: doc.email}}, function(err, ret){
+                  Models.user.findOneAndUpdate({email : req.session.name}, {$push : {likes: doc.username}}, function(err, ret){
                      
                         connected = '0';
                         if(doc.likes.includes(ret.email)){
@@ -73,7 +73,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                Models.user.findOne({"_id": req.body._id}, function(err, doc){
                   Models.user.findOneAndUpdate(
                      {email : req.session.name},
-                     {$pull : {likes: doc.email}},
+                     {$pull : {likes: doc.username}},
                      function(err, ret){
                         console.log("unliked user");
                         res.render("matched_profile", {name : doc.name,

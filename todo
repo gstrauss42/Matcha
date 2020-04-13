@@ -15,9 +15,6 @@ Gabriel:
         - make fields secure
         - update location to work with postal codes or something like that
 
-    - store the usernames in the notifications and in the views, viewed, likes array (only those three arrays)
-
-
 Jadon:
     - sort out create account screen resizing
     - once Gabriel has configured the blocked user thingy then I need to change interface accordingly
