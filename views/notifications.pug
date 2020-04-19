@@ -49,11 +49,18 @@ html(lang="en")
                 .container
                     .row.ml-0.mr-0
                         .col
-
                             .d-flex.justify-content-center.align-items-center(aria-live="polite" aria-atomic="true")
-                                strong.notif-heading.mb-2 Notifications
+                                if notifications.length > 0
+                                    strong.notif-heading.mb-2 
+                                        | You have #{notifications.length} notification
+                                        if notifications.length > 1
+                                            | s:
+                                        else
+                                            | :
+                                else
+                                    strong.notif-heading.mb-2 You have no notifications!
                             hr.mb-4
-                            if notifications
+                            if notifications.length > 0
                                 for data, i in notifications
                                     .d-flex.justify-content-center.align-items-center.mb-3(aria-live="polite" aria-atomic="true")
                                         .toast.notification-box(role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false")
@@ -67,8 +74,6 @@ html(lang="en")
                                             .toast-body
                                                 p= data['content']
                                 hr.mb-4
-                            else
-                                p No notifications!
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark

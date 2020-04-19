@@ -1,12 +1,16 @@
 Gabriel:
 
-    might need to change login from email to username
+    NEW: (19 April 2020)
+        - notification of being liked is showing my own email. Whereas it should be the person who liked my email address
+        - change emails appearing in notifications to be usernames (not sure if this is a frontend fix..?)
+        - profile page: the liked array is not being generated. So the button remains as 'like' and doesn't change to 'unlike'
+        - send me 'advanced_matches' named variable when a filter/advanced search is made on Match Me! page
+        - try delete the uploaded files/images from the upload folder once they are loaded onto the DB
 
     SEARCH PAGE:
         - ordering
 
     NOTIFICATION PAGE:
-        - clearing notifications can be glitchy where they are removed then reappear but are actually gone
         - make notifications appear live
             - is an ajax fix, if jquery works for the chat then we can just do that for this too client side
 
@@ -14,25 +18,19 @@ Gabriel:
         - handle errors (error message appears)
         - make fields secure
         - update location to work with postal codes or something like that
+        - might need to change login from email to username
 
 Jadon:
     - sort out create account screen resizing
-    - once Gabriel has configured the blocked user thingy then I need to change interface accordingly
-        - according to the PDF the blocked users are not supposed to appear in search so I wont be changing it as far as I can see
+    - test alles
+    - oops page
 
+ERROR CODES:
     DONE:
-    - err 1: try again (incorrect login details or some such)
-    - err 2: access is denied please login first
-    - err 3: umm please try to be less cause this error isnt supposed to happen ;) (ie whatever you feel like making the generic error)
-    - err 4: check email for password reset link
-    - err 5: email already exists
-    - err 6: account isnt verified
-    - err 7: check email for verification link
-
-
-
-    modify gps position
-
-    sending me the wrong id for chat page
-
-    change emails appearing in text to be usernames
+        - err 1: try again (incorrect login details or some such)
+        - err 2: access is denied please login first
+        - err 3: umm please try to be less cause this error isnt supposed to happen ;) (ie whatever you feel like making the generic error)
+        - err 4: check email for password reset link
+        - err 5: email already exists
+        - err 6: account isnt verified
+        - err 7: check email for verification link
