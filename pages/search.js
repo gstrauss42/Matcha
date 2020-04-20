@@ -160,11 +160,22 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                             i++;
                         }
                     }
-                    res.render('search', {
-                                "tags" : doc.tags,
-                                "count" : notif.length,
-                                "basic_matches": val
-                    });
+                    if(req.body.advanced_search)
+                    {
+                        res.render('search', {
+                            "tags" : doc.tags,
+                            "count" : notif.length,
+                            "advanced_matches": val
+                        });
+                    }
+                    else
+                    {
+                        res.render('search', {
+                            "tags" : doc.tags,
+                            "count" : notif.length,
+                            "basic_matches": val
+                        });
+                    }
                 });
             });
         });
