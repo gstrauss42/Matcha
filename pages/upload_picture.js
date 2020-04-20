@@ -16,7 +16,6 @@ upload = multer({limits: {fileSize: 2000000 },dest:'/Users/wtc_/Documents/matcha
 
 router.post('/', upload.single('picture'), bodyParser.urlencoded({extended: true}), function (req, res)
 {
-
     if(req.file == null)
     {
         console.log("received no file from the front end")
@@ -64,7 +63,7 @@ router.post('/', upload.single('picture'), bodyParser.urlencoded({extended: true
                 });
             }
     });
-    return res.redirect("profile");
+    res.redirect("profile");
 });
 
 module.exports = router;

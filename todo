@@ -1,11 +1,7 @@
 Gabriel:
 
     NEW: (19 April 2020)
-        - notification of being liked is showing my own email. Whereas it should be the person who liked my email address
-        - change emails appearing in notifications to be usernames (not sure if this is a frontend fix..?)
-        - profile page: the liked array is not being generated. So the button remains as 'like' and doesn't change to 'unlike'
         - send me 'advanced_matches' named variable when a filter/advanced search is made on Match Me! page
-        - try delete the uploaded files/images from the upload folder once they are loaded onto the DB
 
     SEARCH PAGE:
         - ordering

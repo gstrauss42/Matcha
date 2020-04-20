@@ -11,6 +11,11 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
    }
    else
    {
+      fs.readdir(process.env.path, function(err, items){
+         items.forEach(element => {
+             fs.unlink(process.env.path + '/' + element)
+         });
+     })
       Models.notifications.find({"email": req.session.name}, function(err, notif){
          if(req.body.unique != '1')
          {
@@ -57,7 +62,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                      var _notif = new Models.notifications ({
                         email: doc.email,
                         name: "liked",
-                        content: "you where just liked by " + ret.email,
+                        content: "you where just liked by " + ret.username,
                         time: present_time
                      })
                      _notif.save(function(err){
