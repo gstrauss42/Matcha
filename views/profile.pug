@@ -56,14 +56,14 @@ html(lang="en")
                         .row.ml-0.mr-0
                             .col-md-5
                                 p.statfont You have viewed:
-                                    if viewed
+                                    if viewed.length !== 0
                                         for data in viewed
                                             p.statsmall.ml-2= data
                                     else
                                         p.statsmall.ml-2 None
                             .col
                                 p.statfont Your profile was viewed by:
-                                    if views
+                                    if views.length !== 0
                                         for info in views
                                             p.statsmall.ml-2= info
                                     else
@@ -73,16 +73,16 @@ html(lang="en")
                         .row.ml-0.mr-0
                             .col-md-5
                                 p.statfont You have liked:
-                                    if likes
+                                    if likes.length !== 0
                                         for paper in likes
                                             p.statsmall.ml-2= paper
                                     else
                                         p.statsmall.ml-2 None
                             .col
                                 p.statfont Your profile was liked by:
-                                    if liked
+                                    if liked.length !== 0
                                         for fax in liked
-                                            p.statsmall.ml-2= fax['username']
+                                            p.statsmall.ml-2= fax
                                     else
                                         p.statsmall.ml-2 No likes
                     .modal-footer
