@@ -19,6 +19,9 @@ html(lang="en")
             function submitlink(param) {
                 document.getElementById(param).submit();
             }
+            function submitlink(param) {
+                document.getElementById(param).submit();
+            }
 
     body
         .page-container.ml-0.mr-0
@@ -57,8 +60,10 @@ html(lang="en")
                 //- Chat interface
                 .container
                     .container-fluid.task-box
-                        p.pt-1.pb-1= "Chatting with "
-                            a(href="matched_profile")= username
+                        - idStr = "'" + id + "'";
+                        form(action="matched_profile", method="post", id= id)
+                            p.pt-1.pb-1= "Chatting with "
+                                a(href=`javascript: submitform(${idStr})`)= username
                     .container-fluid.chat-box.pt-2.mb-3
                         if messages
                             for data, i in messages

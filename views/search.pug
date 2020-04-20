@@ -101,8 +101,8 @@ html(lang="en")
                                 .form-group
                                     label.label-text(for="selectGender") Order
                                     select#selectGender.form-control(name="order")
-                                        option(value="ascending") Ascending
-                                        option(value="descending") Descending
+                                        option(value="1") Ascending
+                                        option(value="-1") Descending
                             .col-md-2
                                 input.btn.btn-dark.filter-btn(type="submit", name="filter_all", value="Go!")
 
@@ -118,9 +118,9 @@ html(lang="en")
                                 else
                                     | :
                     for user, j in advanced_matches
-                        - id = "'" + data['id'] + "'";
+                        - id = "'" + user['id'] + "'";
                         .container-fluid
-                            form(action="matched_profile", method="post", id= data['_id'])
+                            form(action="matched_profile", method="post", id= user['_id'])
                                 input(type="hidden", name="unique", value="1")
                                 input(type="hidden", name="_id", value= user['_id'])
                                 .alert.alert-primary.alert-dismissible.fade.show.ml-4.mr-4(role="alert")
