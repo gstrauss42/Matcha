@@ -9,7 +9,12 @@ router.get('/', function(req, res){
    }
    else
    {  
-      Models.notifications.findOne({"email": req.session.name}, function(err, notif){
+      Models.notifications.find({"email": req.session.name}, function(err, notif){
+            var counter
+            if(notif)
+               counter = notif.length
+            else
+               counter = 0
             Models.user.findOne({"email":req.session.name}, function(err, doc){
                Models.user.find({"likes" : doc.username}, function(err, count){
                   var ive_liked = new Array;
@@ -34,7 +39,7 @@ router.get('/', function(req, res){
                                        gender: doc.gender,
                                        prefferances: doc.prefferances,
                                        age: doc.age,
-                                       count: notif.length,
+                                       count: counter,
                                        tags: doc.tags,
                                        location_status: doc.location_status,
                                        location: doc.location,

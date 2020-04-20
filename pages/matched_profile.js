@@ -51,22 +51,23 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                                                       liked: "1",
                                                       "connected": connected,
                                                       bio: doc.bio});
-                  });
-                  console.log("\n" + connected + "\n");
-                                 // like notification
-                  var present_time = Math.floor(Date.now() / 1000);
-                  var _notif = new Models.notifications ({
-                     email: doc.email,
-                     name: "liked",
-                     content: "you where just liked by " + doc.email,
-                     time: present_time
-                  })
-                  _notif.save(function(err){
-                     if(err)
-                        console.log(err);
-                     else
-                        console.log("updated notifications");
-                  })
+                     console.log("\n" + connected + "\n");
+                                    // like notification
+                     var present_time = Math.floor(Date.now() / 1000);
+                     var _notif = new Models.notifications ({
+                        email: doc.email,
+                        name: "liked",
+                        content: "you where just liked by " + ret.email,
+                        time: present_time
+                     })
+                     _notif.save(function(err){
+                        if(err)
+                           console.log(err);
+                        else
+                           console.log("updated notifications");
+                     })
+               });
+
                });
             }
             else if(req.body.unlike == '')
