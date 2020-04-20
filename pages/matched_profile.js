@@ -4,6 +4,7 @@ var Models = require("../models/models");
 const bodyParser = require('body-parser');
 
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
+   console.log(req.body)
    if(!req.session.name)
    {
       return(res.redirect("oops"));
@@ -22,10 +23,10 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                      console.log("incremented fame rating");
                   });
                   // render and render checks
-                  Models.user.findOneAndUpdate({email : req.session.name}, {$push : {likes: doc.username}}, function(err, ret){
+                  Models.user.findOneAndUpdate({email : req.session.name}, {$addToSet : {likes: doc.username}}, function(err, ret){
                      
                         connected = '0';
-                        if(doc.likes.includes(ret.email)){
+                        if(doc.likes.includes(ret.username)){
                            connected = '1';
                         }
                         console.log("liked user\nupdated notifications");
@@ -109,10 +110,10 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                      liked = '0';
                      if(check.likes)
                      {
-                        if(check.likes.includes(doc.email))
+                        if(check.likes.includes(doc.username))
                         {
                            liked = '1';
-                           if(doc.likes.includes(check.email))
+                           if(doc.likes.includes(check.username))
                               connected = '1';
                         }
                      }
@@ -149,10 +150,10 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                      liked = '0';
                      if(check.likes)
                      {
-                        if(check.likes.includes(doc.email))
+                        if(check.likes.includes(doc.username))
                         {
                            liked = '1';
-                           if(doc.likes.includes(check.email))
+                           if(doc.likes.includes(check.username))
                               connected = '1';
                         }
                      }
@@ -190,10 +191,10 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                      liked = '0';
                      if(check.likes)
                      {
-                        if(check.likes.includes(doc.email))
+                        if(check.likes.includes(doc.username))
                         {
                            liked = '1';
-                           if(doc.likes.includes(check.email))
+                           if(doc.likes.includes(check.username))
                               connected = '1';
                         }
                      }
@@ -253,10 +254,10 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                   liked = '0';
                   if(check.likes)
                   {
-                     if(check.likes.includes(doc.email))
+                     if(check.likes.includes(doc.username))
                      {
                         liked = '1';
-                        if(doc.likes.includes(check.email))
+                        if(doc.likes.includes(check.username))
                            connected = '1';
                      }
                   }
