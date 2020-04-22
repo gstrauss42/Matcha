@@ -69,6 +69,7 @@ html(lang="en")
                             hr.mb-4
                             if contacts.length !== 0
                                 for person, j in contacts
+                                    - id = "'" + person['id'] + "'";
                                     .container-fluid
                                         form(action="matched_profile", method="post", id= person['_id'])
                                             input(type="hidden", name="unique", value="1")

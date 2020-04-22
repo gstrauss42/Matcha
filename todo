@@ -1,10 +1,17 @@
 Gabriel:
+    STATS:
+        - if a username already exists in liked, likes, viewed, views them do not add it again into the DB.
+
     SEARCH PAGE:
         - ordering
 
     NOTIFICATION PAGE:
-        - make notifications appear live
-            - is an ajax fix, if jquery works for the chat then we can just do that for this too client side
+        - live ajax notifications
+
+    CHAT:
+        - investigate why clicking on person name above the chat produces error in console.
+        - save the username in the message from the person who sent it.
+        - format time
 
     EXTRA:
         - handle errors (error message appears)
