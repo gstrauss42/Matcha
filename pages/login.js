@@ -13,7 +13,7 @@ router.get("/", (req,res) => {
 
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
    console.log(req.body)
-   Models.user.findOne({ 'email': req.body.email }, function(err, user) {
+   Models.user.findOne({ 'username': req.body.username }, function(err, user) {
       if(user)
       {
          var safe = crypto.pbkdf2Sync(req.body.password, '100' ,1000, 64, `sha512`).toString(`hex`);
@@ -38,13 +38,15 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                req.session.name = req.body.email;
                res.redirect('/profile');
             }
+            else if (user.isverified != 1)
+               res.render("oops", {error: '6'})
             else
-               res.send("Somethings wrong, please ensure you verified your account by following the link and that you typed your password in correctly");
+               res.render("oops", {error: '1'});
+
       }
       else
       {
-         console.log(user);
-         res.render("login");
+         res.render("oops", {error: '1'});
       }
    });
 });

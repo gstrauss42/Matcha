@@ -16,7 +16,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
         });
     }
     else
-        res.render('oops', {err: 1})
+        res.render('oops', {error: 1})
 })
 
 module.exports = router;
