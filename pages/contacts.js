@@ -5,7 +5,7 @@ var router = express.Router();
 
 router.get('/', function(req, res){
     if(!req.session.name)
-        res.render('oops');
+        res.render('oops', {error : '2'});
     else
     {
         models.user.findOne({"email": req.session.name}, function(err, doc){

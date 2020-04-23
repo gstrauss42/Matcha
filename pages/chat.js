@@ -6,7 +6,7 @@ var router = express.Router();
 // rendering chat page
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
   if(!req.session.name)
-    res.render('oops');
+    res.render('oops', {error: '2'});
   else
   {
     console.log(req.body)
