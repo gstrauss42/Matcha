@@ -7,7 +7,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
    console.log(req.body)
    if(!req.session.name)
    {
-      return(res.redirect("oops"));
+      return(res.render('oops', {error: '2'}));
    }
    else
    {

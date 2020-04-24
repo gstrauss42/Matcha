@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 router.get('/', function(req, res){
    if(!req.session.name)
    {
-      return(res.render("oops"));
+      return(res.render('oops', {error: '2'}));
    }
    else
    {

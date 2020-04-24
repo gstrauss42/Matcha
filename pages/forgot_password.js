@@ -41,7 +41,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
          })
       }
    });
-   res.redirect('/login');
+   res.render('oops', {error: '4'});
 });
 
 module.exports = router;

@@ -15,11 +15,11 @@ router.get('/', function (req, res) {
 router.post('/create', bodyParser.urlencoded({extended: true}), function(req, res, next){
    Model.user.findOne({ email: req.body.email }, function(err, user) {
       if(err) {
-         return(res.redirect('/oops'));
+         return(res.render('oops', {error: '3'}));
       }
       else if (user)
       {
-         return(res.redirect('/oops'));
+         return(res.render('oops', {error: '5'}));
       } 
       else
       {
@@ -84,7 +84,7 @@ router.post('/create', bodyParser.urlencoded({extended: true}), function(req, re
                       return console.log(error);
                   }
                });
-               res.redirect('/');
+               res.render('oops', {error: '7'})
                console.log("created account");
             }
          });

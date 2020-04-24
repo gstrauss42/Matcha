@@ -14,11 +14,10 @@ router.get('/', function(req, res){
             if(doc && doc.email){
                return res.render("login", {url: check});
             }
-            return res.render("oops")
+            return res.render('oops', {error: '1'});
          });
       }
    });
-
 })
 
 //export this router to use in our index.js

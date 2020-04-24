@@ -5,7 +5,7 @@ var Models = require("../models/models");
 router.get('/', function(req, res){
    if(!req.session.name)
    {
-      return(res.redirect("/oops"));
+      return(res.render('oops', {error: '2'}));
    }
    else
    {  

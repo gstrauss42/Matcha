@@ -20,16 +20,15 @@ Gabriel:
         - might need to change login from email to username
 
 Jadon:
-    - sort out create account screen resizing
     - test alles
-    - oops page
 
 ERROR CODES:
     DONE:
         - err 1: try again (incorrect login details or some such)
         - err 2: access is denied please login first
-        - err 3: umm please try to be less cause this error isnt supposed to happen ;) (ie whatever you feel like making the generic error)
+        - err 3: generic error
         - err 4: check email for password reset link
-        - err 5: email already exists
+        - err 5: user already exists
         - err 6: account isnt verified
         - err 7: check email for verification link
+        - err 8: make sure both passwords are the same

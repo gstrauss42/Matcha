@@ -25,7 +25,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                Models.user.findOneAndUpdate({ email : req.body.email },
                { "location" : clientIp },
                function(err, _update){
-                      console.log("updated Ip Location");
+                     console.log("updated Ip Location");
                });
                // online status
                Models.user.findOneAndUpdate({ email : req.body.email },
@@ -38,7 +38,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                req.session.name = req.body.email;
                res.redirect('/profile');
             }
-            else if (user.isverified != 1)
+            else if (user.isverified !== 1)
                res.render("oops", {error: '6'})
             else
                res.render("oops", {error: '1'});

@@ -8,7 +8,7 @@ var Models = require("../models/models");
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
     // user signed in check
     if(!req.session.name)
-        res.redirect("oops");
+        res.render('oops', {error: '2'});
     // saving tag to db and reloading the page
     else
     {

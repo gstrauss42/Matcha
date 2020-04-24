@@ -22,7 +22,7 @@ html(lang="en")
         else if error == 3
             .jumbotron.remove-padd
                 h4.display-4.connect-heading Oops! Something went wrong...
-                p.lead Please don't do that again :/
+                p.lead Either we are having server downtime or something went wrong client side :/
         else if error == 4
             .jumbotron.remove-padd
                 h4.display-4.connect-heading Password Reset
@@ -30,7 +30,7 @@ html(lang="en")
         else if error == 5
             .jumbotron.remove-padd
                 h4.display-4.connect-heading Oops! Something went wrong...
-                p.lead Please make sure you fill out all inputs and use a unique email address.
+                p.lead Please make sure you fill out all inputs and use a unique email address and username.
         else if error == 6
             .jumbotron.remove-padd
                 h4.display-4.connect-heading Oops! Something went wrong...
@@ -39,3 +39,7 @@ html(lang="en")
             .jumbotron.remove-padd
                 h4.display-4.connect-heading You have mail!
                 p.lead Please use the link in the email sent to you to verify your account.
+        else if error == 8
+            .jumbotron.remove-padd
+                h4.display-4.connect-heading Oops! Something went wrong...
+                p.lead Please make sure both passwords are the same.
