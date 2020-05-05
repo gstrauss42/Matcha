@@ -21,7 +21,6 @@ router.get('/', function(req, res){
                   count.forEach(element => {
                      ive_liked.push(element.username)
                   });
-                  console.log(ive_liked)
                   res.render("profile", {name: doc.name,
                                        surname: doc.surname,
                                        email: doc.email,
