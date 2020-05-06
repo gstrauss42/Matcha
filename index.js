@@ -74,8 +74,7 @@ app.use('/update_profile', update_profile);
 app.use('/reset_password', reset_password);
 app.use('/upload_picture', upload_picture);
 app.use('/check/:var_words', email_update);
+app.use('/data', data);
 app.use('/:var_words', user_confirm);
 app.use('/remove_tag', remove_tag);
 app.use('/oops', oops);
-
-app.use('/data', data);

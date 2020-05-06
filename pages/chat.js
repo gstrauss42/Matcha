@@ -17,9 +17,12 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
       //creating new chat contact if not exists
       if(req.body.chat)
       {
-        models.user.updateOne({"email": req.session.name, $addToSet: {"contacts": chatter.email}}, function(err, contacts){
+        models.user.findOneAndUpdate({"email": req.session.name, $addToSet: {"contacts": chatter.email}}, function(err, contacts){
           console.log("updated contacts");
         });
+        models.user.findOneAndUpdate({"email": chatter.email, $addToSet: {"contacts": req.session.name}}, function(err, temp){
+          console.log("updated chatters contacts");
+        })
       }
       // calculations for sending messages
       if(req.body.sendMsg == 'sendMessage')

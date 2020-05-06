@@ -14,7 +14,10 @@ router.get('/', function(req, res){
             if(doc && doc.email){
                return res.render("login", {url: check});
             }
-            return res.render('oops', {error: '1'});
+            //
+            // this line below might not be the correct render used to be oops, err 1
+            //
+            return res.render('index');
          });
       }
    });

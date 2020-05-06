@@ -9,7 +9,6 @@ router.get('/', function(req, res){
     else
     {
         models.user.findOne({"email": req.session.name}, function(err, doc){
-            // console.log(doc.viewed + "\n\n" + doc.contacts + "\n\n\n" + doc + "\n\n\n"); // doc can be looged but and its elements are present but acessing those elements in doc returns undefined
             models.user.find({"isverified":true},function(err,chatters){
                 var results = new Array;
                 var i=0;
