@@ -51,6 +51,8 @@ var chat            = require('./pages/chat.js');
 var remove_tag      = require('./pages/remove_tag.js');
 var oops            = require('./pages/oops.js');
 
+var data            =require('./pages/data.js');
+
 /*
 * Page Routing
 */
@@ -75,3 +77,5 @@ app.use('/check/:var_words', email_update);
 app.use('/:var_words', user_confirm);
 app.use('/remove_tag', remove_tag);
 app.use('/oops', oops);
+
+app.use('/data', data);
