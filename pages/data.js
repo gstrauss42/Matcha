@@ -2,9 +2,11 @@ var express = require('express');
 var models = require("../models/models");
 var router = express.Router();
 
-router.get("/", (req, res) => {
-    models.user.findOne({"email": req.session.name}, function(err, returned){
-        res.json(returned);
+router.post("/", (req, res) => {
+    models.messages.find({"from": req.session.name, "to": "jadongavhansen@gmail.com"}, function(err, sent){
+        models.messages.find({"to": req.session.name, "from": "jadongavhansen@gmail.com"}, function(err, received){
+          res.json[sent, received];
+        })
     })
 });
 

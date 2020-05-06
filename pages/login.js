@@ -12,9 +12,7 @@ router.get("/", (req,res) => {
 })
 
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
-   console.log(req.body)
    Models.user.findOne({ 'username': req.body.username }, function(err, user) {
-      console.log(user);
       if(user)
       {
          var safe = crypto.pbkdf2Sync(req.body.password, '100' ,1000, 64, `sha512`).toString(`hex`);
