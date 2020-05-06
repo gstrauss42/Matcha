@@ -6,7 +6,7 @@ function load() {
 	let to_messages = new Array;
 	let from_arr = new Array;
 	let to_arr = new Array;
-	let send = 'yf123124124@2523.com'; //hardcoded
+	let send = { email: 'yf123124124@2523.com' }; //hardcoded
 
 	$.ajax({
 		type: 'POST',
