@@ -9,9 +9,11 @@ router.post("/", bodyParser.urlencoded({extended: true}), (req, res) => {
             var thing = new Array;
             thing.splice(0, 0, sent);
             thing.splice(1,0, received);
-          res.json(thing);
-        })
-    })
+            console.log('received: ', received);
+            console.log('sent', sent);
+            res.json(thing);
+        });
+    });
 });
 
 module.exports = router;
