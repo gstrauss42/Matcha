@@ -30,28 +30,28 @@ http.listen(process.env.port, function(){
 /*
 * Page Variables
 */
-var index           = require('./pages/index.js')
-var home            = require('./pages/home.js')
-var login           = require('./pages/login.js');
-var create          = require('./pages/create.js');
-var forgot_password = require('./pages/forgot_password.js');
-var reset_password  = require('./pages/reset_password.js');
-var user_confirm    = require('./pages/user_confirm.js')
-var logout          = require('./pages/logout.js');
-var profile         = require('./pages/profile.js');
-var update_profile  = require('./pages/update_profile.js');
-var email_update    = require('./pages/email_update.js')
-var add_tag         = require('./pages/add_tag.js');
-var upload_picture  = require('./pages/upload_picture.js');
-var notifications   = require('./pages/notifications.js');
-var search          = require('./pages/search.js');
-var contacts        = require('./pages/contacts.js');
-var matched_profile = require('./pages/matched_profile.js');
-var chat            = require('./pages/chat.js');
-var remove_tag      = require('./pages/remove_tag.js');
-var oops            = require('./pages/oops.js');
-
-var data            =require('./pages/data.js');
+var index               = require('./pages/index.js')
+var home                = require('./pages/home.js')
+var login               = require('./pages/login.js');
+var create              = require('./pages/create.js');
+var forgot_password     = require('./pages/forgot_password.js');
+var reset_password      = require('./pages/reset_password.js');
+var user_confirm        = require('./pages/user_confirm.js')
+var logout              = require('./pages/logout.js');
+var profile             = require('./pages/profile.js');
+var update_profile      = require('./pages/update_profile.js');
+var email_update        = require('./pages/email_update.js')
+var add_tag             = require('./pages/add_tag.js');
+var upload_picture      = require('./pages/upload_picture.js');
+var notifications       = require('./pages/notifications.js');
+var search              = require('./pages/search.js');
+var contacts            = require('./pages/contacts.js');
+var matched_profile     = require('./pages/matched_profile.js');
+var chat                = require('./pages/chat.js');
+var remove_tag          = require('./pages/remove_tag.js');
+var oops                = require('./pages/oops.js');
+var data                = require('./pages/data.js');
+var live_notifications  = require('./pages/live_notifications.js')
 
 /*
 * Page Routing
@@ -75,6 +75,7 @@ app.use('/reset_password', reset_password);
 app.use('/upload_picture', upload_picture);
 app.use('/check/:var_words', email_update);
 app.use('/data', data);
+app.use('/live_notifications', live_notifications);
 app.use('/:var_words', user_confirm);
 app.use('/remove_tag', remove_tag);
 app.use('/oops', oops);
