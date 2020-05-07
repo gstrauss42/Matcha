@@ -48,7 +48,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
           messages_from.forEach(element => {
             element.read = true;
           });
-          res.render('chat.pug', {"username" : chatter.username, "messages": messages, "messages_from" : messages_from, "id" : req.body.id});
+          res.render('chat.pug', {"username" : chatter.username, "id" : req.body.id, "email": chatter.email});
         });
       });
     });
