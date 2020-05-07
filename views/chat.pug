@@ -63,7 +63,7 @@ html(lang="en")
                         - idStr = "'" + id + "'";
                         form(action="matched_profile", method="post", id= id)
                             p.pt-1.pb-1= "Chatting with "
-                                a(href=`javascript: submitform(${idStr})`)= username
+                                a.person(id=id href=`javascript: submitform(${idStr})`)= username
                     .container-fluid.chat-box.pt-2.mb-3
                         //- if messages
                             //- for data, i in messages
@@ -76,14 +76,14 @@ html(lang="en")
                                     //- p.mb-0= dataFrom.message
                                     //- p.msgInfo= "from " + dataFrom.from + " at " + dataFrom.time
                         //- else
-                            h6.text-center There are no messsages here! Start a chat
+                        #text-none
                     .container-fluid.pl-0.pr-0.mb-3
-                        form#messageForm(action="chat", method="post")
-                            .input-group
-                                textarea#messageText.formcontrol(rows="2", name="message", placeholder="Type a message...", required)
-                                input(type="hidden", name="id", value= id)
-                                .input-group-append
-                                    button#sendMsg.btn.btn-secondary(type="submit", name="sendMsg", value="sendMessage") Send
+                        //- form#messageForm(action="chat", method="post")
+                        .input-group
+                            textarea#messageText.formcontrol(rows="2", name="message", placeholder="Type a message...", required)
+                            input(type="hidden", name="id", value= id)
+                            .input-group-append
+                                button#sendMsg.btn.btn-secondary(type="submit", name="sendMsg", value="sendMessage") Send
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark
@@ -113,54 +113,3 @@ html(lang="en")
                                 strong @jadonhansen
                             a.text-info.github-link(href='https://gstrauss42')
                                 strong @gstrauss
-
-    //- script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js")
-
-    //- script.
-    //-     (function(){
-    //-         var element = function(id){
-    //-             return document.getElementById(id);
-    //-         }
-
-    //-         // get elements
-    //-         var messages = element('messages');
-    //-         var messageText = element('messageText');
-    //-         var sendMsg = element('sendMsg');
-
-    //-         // connect to socket.io
-    //-         var socket = io.connect('localhost:777/chat');
-
-    //-         // check for connection
-    //-         if (socket !== undefined) {
-    //-             console.log('Connected to socket...');
-
-    //-             // handles output
-    //-             socket.on('output', function(data) {
-    //-                 console.log(data);
-    //-                 if (data.length) {
-    //-                     for (var x = 0; x < data.length; x++) {
-    //-                         // build out message output
-    //-                         var message = document.createElement('div');
-    //-                         message.setAttribute('class', 'chat-message');
-    //-                         message.textContent = data[x].name + ": " + data[x].message;
-    //-                         messages.appendChild(message);
-    //-                         messages.insertBefore(message, messages.firstChild);
-    //-                     }
-    //-                 }
-    //-             });
-
-    //-             // handles input
-    //-             sendMsg.addEventListener('click', function(event) {
-    //-                     // emit to server input
-    //-                     if (messageText.value !== '') {
-    //-                         socket.emit('input', {
-    //-                             message:messageText.value
-    //-                         });
-    //-                         event.preventDefault();
-    //-                     } else {
-    //-                         console.log('Error: no message');
-    //-                     }
-    //-             });
-    //-         }
-
-    //-     })();
