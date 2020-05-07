@@ -9,8 +9,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 function sendMsg() {
 	const msg = document.getElementById('messageText').value;
+	const elemID = document.querySelector('.person').getAttribute('id');
 	if (msg !== '') {
-		const sentMsg = { sendMsg: 'sendMessage', message : msg };
+		const sentMsg = { sendMsg: 'sendMessage', message : msg, id: elemID };
 		document.getElementById('messageText').value = '';
 		$.ajax({
 			type: 'POST',
