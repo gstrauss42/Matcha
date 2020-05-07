@@ -1,8 +1,6 @@
 window.addEventListener('DOMContentLoaded', (event) => {
 	load();
-});
-
-window.addEventListener('DOMContentLoaded', (event) => {
+	document.getElementById('messageText').placeholder = 'Type a message...';
 	const sendBtn = document.getElementById('sendMsg');
 	sendBtn.addEventListener('click', sendMsg);
 });
@@ -11,6 +9,7 @@ function sendMsg() {
 	const msg = document.getElementById('messageText').value;
 	const elemID = document.querySelector('.person').getAttribute('id');
 	if (msg !== '') {
+		document.getElementById('messageText').placeholder = "Sending...";
 		const sentMsg = { sendMsg: 'sendMessage', message : msg, id: elemID };
 		document.getElementById('messageText').value = '';
 		$.ajax({
@@ -18,23 +17,23 @@ function sendMsg() {
 			url: '/chat',
 			data: sentMsg,
 			success: function(data) {
+				document.getElementById('messageText').placeholder = 'Type a message...';
 				load();
 			},
 			error: function () {
 				alert('error sending message!');
+				document.getElementById('messageText').placeholder = 'Type a message...';
 			}
 		});
 	}
 }
 
-setInterval(load, 4000);
-
 function load() {
-	const elementSlct = document.querySelector('.person').getAttribute('id');
+	const elementSlct = document.getElementById('personEmail').value;
 	let from_arr = new Array;
 	let to_arr = new Array;
-	let send = { email: 'yf123124124@2523.com' }; //hardcoded
-
+	let send = { email: elementSlct };
+	
 	$.ajax({
 		type: 'POST',
 		url: '/data',
@@ -59,3 +58,5 @@ function load() {
 		}
 	});
 };
+
+setInterval(load, 4000);

@@ -62,26 +62,18 @@ html(lang="en")
                     .container-fluid.task-box
                         - idStr = "'" + id + "'";
                         form(action="matched_profile", method="post", id= id)
+                            input(type="hidden", name="unique", value="1")
+                            input(type="hidden", name="_id", value= id)
                             p.pt-1.pb-1= "Chatting with "
                                 a.person(id=id href=`javascript: submitform(${idStr})`)= username
                     .container-fluid.chat-box.pt-2.mb-3
-                        //- if messages
-                            //- for data, i in messages
                         #text-s
-                                    //- p.mb-0= data.message
-                                    //- p.msgInfo= "from " + data.from + " at " + data.time
-                        //- if messages_from
-                            //- for dataFrom, i in messages_from
                         #text-r
-                                    //- p.mb-0= dataFrom.message
-                                    //- p.msgInfo= "from " + dataFrom.from + " at " + dataFrom.time
-                        //- else
                         #text-none
                     .container-fluid.pl-0.pr-0.mb-3
-                        //- form#messageForm(action="chat", method="post")
                         .input-group
-                            textarea#messageText.formcontrol(rows="2", name="message", placeholder="Type a message...", required)
-                            //- input(type="hidden", name="id", value= id)
+                            textarea#messageText.formcontrol(rows="2", name="message", required)
+                            input#personEmail(type="hidden", name="id", value= email)
                             .input-group-append
                                 button#sendMsg.btn.btn-secondary(type="submit", name="sendMsg", value="sendMessage") Send
 
