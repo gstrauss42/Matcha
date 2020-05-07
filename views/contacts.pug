@@ -12,6 +12,8 @@ html(lang="en")
         link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
         script(src="https://kit.fontawesome.com/17df3da6b8.js", crossorigin="anonymous")
         link(rel="stylesheet", href="main.css")
+        script(src="https://code.jquery.com/jquery-1.11.1.js")
+        script(src="./js/load_notifs.js")
 
         script.
             function submitlink(param) {
@@ -36,10 +38,7 @@ html(lang="en")
                         #navbarSuppportedContent.collapse.navbar-collapse
                             ul.navbar-nav.ml-auto
                                 li.nav-item
-                                    a.nav-link(href="notifications")
-                                        i.fas.fa-bell.mt-1
-                                        if count > 0
-                                            span.badge.badge-dark= count
+                                    a#notifBell.nav-link(href="notifications")
                                 li.nav-item.dropdown
                                     a#navbarDropdown.nav-link.dropdown-toggle(href="#" role="button" data-toggle="dropdown") More
                                     .dropdown-menu(aria-labelledby="navbarDropdown")

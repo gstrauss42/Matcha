@@ -5,22 +5,28 @@ Gabriel:
     SEARCH PAGE:
         - ordering
 
-    NOTIFICATION PAGE:
-        - live ajax notifications
+    NOTIFS:
+        - format time
 
     CHAT:
-        - investigate why clicking on person name above the chat produces error in console.
         - save the username in the message from the person who sent it.
         - format time
+
+    TO REMOVE: (to make loading pages faster)
+        - fetching of messages when entering chat page. Pretty sure you can remove the route. Handled by ajax
+        - fetching of notification amount when entering every page. Handled by ajax
+        - fetching of notifications when entering notification page. Handlded by ajax
 
     EXTRA:
         - handle errors (error message appears)
         - make fields secure
         - update location to work with postal codes or something like that
-        - might need to change login from email to username
 
 Jadon:
-    - test alles
+    - ajax for notifs page
+    - messages displaying in chronological order
+    - test last seen
+    - test block and report feature
 
 ERROR CODES:
     DONE:

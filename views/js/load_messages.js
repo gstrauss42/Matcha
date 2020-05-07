@@ -39,7 +39,7 @@ function load() {
 		url: '/data',
 		data: send,
 		success: function(data) {
-			if (data[1].length !== 0 && data[0].length !== 0) {
+			if (data[1].length !== 0 || data[0].length !== 0) {
 				data[1].forEach(element => {
 					from_arr += `<div id=\"text-receive\" class=\"text-left\"><p class=\"mb-0\">${element.message}</p><p class=\"msgInfo\">from ${element.from} at ${element.time}</p></div>`;
 				});
