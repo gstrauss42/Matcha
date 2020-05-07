@@ -10,11 +10,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 function sendMsg() {
 	const msg = document.getElementById('messageText').value;
 	if (msg !== '') {
-		const sentMsg = { message : msg };
+		const sentMsg = { sendMsg: 'sendMessage', message : msg };
 		document.getElementById('messageText').value = '';
 		$.ajax({
 			type: 'POST',
-			url: '/urltosendmsg',
+			url: '/chat',
 			data: sentMsg,
 			success: function(data) {
 				load();
@@ -54,7 +54,7 @@ function load() {
 			}
         },
 		error: function () {
-			alert('error loading messages!');
+			console.log('error loading messages!');
 		}
 	});
 };

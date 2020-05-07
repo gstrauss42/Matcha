@@ -185,9 +185,9 @@ html(lang="en")
                             ul.navbar-nav.ml-auto
                                 li.nav-item
                                     a.nav-link(href="notifications")
-                                        i.fas.fa-bell.mt-1
-                                        if count > 0
-                                            span.badge.badge-dark= count
+                                        i#notifBell.fas.fa-bell.mt-1
+                                        //- if count > 0
+                                        //-     span.badge.badge-dark= count
                                 li.nav-item
                                     form#contacts(action="contacts" method="get")
                                         a.nav-link(href="javascript: submitlink('contacts')") Chats
