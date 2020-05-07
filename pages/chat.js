@@ -43,16 +43,16 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
         })
       }
       // finding all messages and rendering them
-      models.messages.find({"to": chatter.email, "from": doc.email}, function(err, messages){
-        models.messages.find({"to": doc.email, "from": chatter.email}, function(err, messages_from){
-          messages_from.forEach(element => {
-            element.read = true;
-          });
+      // models.messages.find({"to": chatter.email, "from": doc.email}, function(err, messages){
+      //   models.messages.find({"to": doc.email, "from": chatter.email}, function(err, messages_from){
+      //     messages_from.forEach(element => {
+      //       element.read = true;
+      //     });
           res.render('chat.pug', {"username" : chatter.username, "id" : req.body.id, "email": chatter.email});
         });
       });
-    });
-  })
+    // });
+  // })
   }
 });
 
