@@ -59,4 +59,4 @@ function load() {
 	});
 };
 
-setInterval(load, 4000);
+setInterval(load, 3000);

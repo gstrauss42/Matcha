@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	loadNotifs();
 });
 
-setInterval(loadNotifs, 3000);
+setInterval(loadNotifs, 2000);
 
 function loadNotifs() {
 

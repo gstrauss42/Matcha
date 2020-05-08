@@ -164,34 +164,12 @@ footer {
 
 /* for notifications page */
 
-.notification-box {
-    max-width: 900px;
-    width: 55%;
+#notifBox {
+    width: 80%;
 }
 
-.notif-heading {
-    font-size: 20px;
-}
-
-.notif-bg {
-    background: rgba(255, 127, 80, 0.9);
-}
-
-.notif {
-    height: 36px;
-}
-
-.notif-color {
-    color: black
-}
-
-@media only screen and (max-width:  768px) {
-    .toast {
-        font-size: 11px;
-    }
-    .notif-heading {
-        font-size: 15px;
-    }
+.notifContent {
+    font-size: 14px;
 }
 
 /* User profile page */

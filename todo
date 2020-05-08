@@ -7,6 +7,9 @@ Gabriel:
 
     NOTIFS:
         - format time
+        - add 'read' field to them
+        - when we direct to notification page - set all notifications as read
+        - also when 'live_notifications' route of GET method is used then only fetch unread notifications
 
     CHAT:
         - save the username in the message from the person who sent it.
@@ -15,7 +18,7 @@ Gabriel:
     TO REMOVE: (to make loading pages faster)
         - fetching of messages when entering chat page. Pretty sure you can remove the route. Handled by ajax
         - fetching of notification amount when entering every page. Handled by ajax
-        - fetching of notifications when entering notification page. Handlded by ajax
+        - fetching of notifications when entering notification page. Handled by ajax
 
     EXTRA:
         - handle errors (error message appears)
@@ -23,7 +26,6 @@ Gabriel:
         - update location to work with postal codes or something like that
 
 Jadon:
-    - ajax for notifs page
     - messages displaying in chronological order
     - test last seen
     - test block and report feature
