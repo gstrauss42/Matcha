@@ -319,12 +319,16 @@ footer {
 
 /* Chat page */
 
+#chatBody {
+    background-color: #55b9f3;
+}
+
 .chat-box {
     -moz-box-shadow:    inset 0 0 4px #000000;
     -webkit-box-shadow: inset 0 0 4px #000000;
     box-shadow:         inset 0 0 4px #000000;
     height: 50%;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 .task-box {
@@ -333,8 +337,10 @@ footer {
     box-shadow:         0 0 2px #000000;
 }
 
-textarea {
+#messageText {
     overflow: auto;
+    width: 40%;
+    background-color: #55b9f3;
 }
 
 #messageText {

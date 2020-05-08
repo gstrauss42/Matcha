@@ -29,6 +29,7 @@ Jadon:
     - messages displaying in chronological order
     - test last seen
     - test block and report feature
+    - remove delete notif functionality from notifs
 
 ERROR CODES:
     DONE:
