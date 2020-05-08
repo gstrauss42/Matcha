@@ -2,6 +2,10 @@ Gabriel:
     STATS:
         - if a username already exists in liked, likes, viewed, views them do not add it again into the DB.
 
+    PROFILE:
+        - we need to add an address field apparently for GPS positioning. (will ask others about this)
+        - otherwise we can get their IP address and locate via that by city.
+
     SEARCH PAGE:
         - ordering
 
@@ -10,6 +14,9 @@ Gabriel:
         - add 'read' field to them
         - when we direct to notification page - set all notifications as read
         - also when 'live_notifications' route of GET method is used then only fetch unread notifications
+        - add notification for when a user unlikes you
+        - add notification for when someone has sent you a message
+        - (apparently theres a difference between a 'like' and someone who has 'liked back')
 
     CHAT:
         - save the username in the message from the person who sent it.
