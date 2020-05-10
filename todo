@@ -8,6 +8,7 @@ Gabriel:
 
     SEARCH PAGE:
         - only display users that are verified. (isVerified = true).
+        - search by location now needs to utilise 'location' field in DB. The location is working
         - ordering
 
     NOTIFS:
@@ -17,21 +18,18 @@ Gabriel:
         - also when 'live_notifications' route of GET method is used then only fetch unread notifications
         - add notification for when a user unlikes you
         - add notification for when someone has sent you a message
-        - (apparently theres a difference between a 'like' and someone who has 'liked back')
+        - (apparently theres a difference between someone who 'liked' your profile and someone who has 'liked back')
 
     CHAT:
         - save the username in the message from the person who sent it.
         - format time
 
     TO REMOVE: (to make loading pages faster)
-        - fetching of messages when entering chat page. Pretty sure you can remove the route. Handled by ajax
-        - fetching of notification amount when entering every page. Handled by ajax
-        - fetching of notifications when entering notification page. Handled by ajax
+        - fetching of notifications when entering notification page. Handled by ajax on 'live_notifications' route
 
     EXTRA:
         - handle errors (error message appears)
         - make fields secure
-        - update location to work with postal codes or something like that
 
 Jadon:
     - messages displaying in chronological order

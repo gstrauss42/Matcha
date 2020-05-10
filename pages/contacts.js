@@ -11,7 +11,7 @@ router.get('/', function(req, res){
         models.user.findOne({"email": req.session.name}, function(err, doc){
             models.user.find({"isverified":true},function(err,chatters){
                 var results = new Array;
-                var i=0;
+                var i = 0;
                 chatters.forEach(element => {
                     if(doc.contacts)
                     {

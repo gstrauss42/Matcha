@@ -16,7 +16,6 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
         {
             console.log(req.body)
             var p = 0;
-            Models.notifications.find({"email": req.session.name}, function(err, notif){
 
             // below is sorting, requires order to be either 1 or -1, and if no sort is selected then age or something is selected
 
@@ -164,7 +163,6 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                     {
                         res.render('search', {
                             "tags" : doc.tags,
-                            "count" : notif.length,
                             "advanced_matches": val
                         });
                     }
@@ -172,12 +170,10 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                     {
                         res.render('search', {
                             "tags" : doc.tags,
-                            "count" : notif.length,
                             "basic_matches": val
                         });
                     }
                 });
-            });
         });
     }
 });

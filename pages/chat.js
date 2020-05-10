@@ -7,11 +7,10 @@ var router = express.Router();
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
   if(!req.session.name)
     res.render('oops', {error: '2'});
-  else
-  {
+  else {
     console.log(req.body)
-  // obtaining user info
-  models.user.findOne({"email" : req.session.name}, function(err, doc){
+    // obtaining user info
+    models.user.findOne({"email" : req.session.name}, function(err, doc){
     // obtaining chatter id
     models.user.findOne({ "_id" : req.body.id}, function(err, chatter){
       //creating new chat contact if not exists
