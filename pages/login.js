@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 var Models = require("../models/models");
 var crypto = require('crypto');
-const requestIp = require('request-ip');
+const request = require('request');
 
 router.get("/", (req,res) => {
    res.render("login");
@@ -19,18 +19,29 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
 
             if(user.password == safe && user.isverified == 1)
             {
-               const clientIp = requestIp.getClientIp(req);
                // ip tracking
-               Models.user.findOneAndUpdate({ email : req.body.email },
-               { "location" : clientIp },
-               function(err, _update){
-                     console.log("updated Ip Location");
+               request(`https://ipinfo.io?token=${process.env.TOKEN}`, { json: true }, (err, res, body) => {
+                  if (err) { 
+                     return console.log('ipinfo.io error: ', err);
+                  } else {
+                     let ipLocat = `${body.city}, ${body.region}, ${body.country}, ${body.postal}`;
+                     console.log('ipLocat: ', ipLocat); // debug
+                     Models.user.findOneAndUpdate({ email : req.body.email }, { "location" : ipLocat }, function(err, _update){
+                        if (err) {
+                           console.log('error updating location');
+                        } else {
+                           console.log("updated location");
+                        }
+                     });
+                  }
                });
                // online status
-               Models.user.findOneAndUpdate({ email : req.body.email },
-               { "status" : "online" },
-               function(err, _update){
-                   console.log("user set to online");
+               Models.user.findOneAndUpdate({ email : req.body.email }, { "status" : "online" }, function(err, _update){
+                  if (err) {
+                     console.log('error updating status');
+                  } else {
+                     console.log("user set to online");
+                  }
                });
               //setting session
                req.session.name = user.email;

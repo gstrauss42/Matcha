@@ -136,10 +136,10 @@ html(lang="en")
                                     .col-md-0.mr-3
                                             strong
                                                 h3.mb-0.pb-0.custom-text-name= username
-                                            if status === "offline:time"
-                                                small.text-muted.pt-0.mt-0= 'last seen: ' + time
-                                            else
+                                            if status === "online"
                                                 small.text-muted.pt-0.mt-0 online now
+                                            else
+                                                small.text-muted.pt-0.mt-0= 'last seen: ' + status
                                     .col-md-0.mr-1
                                         if liked == 0 && one
                                                 form(action="matched_profile", method="post")
@@ -203,13 +203,14 @@ html(lang="en")
                         p.mb-1.pl-2.para-re= 'Looking for: ' + prefferances
                         p.mb-1.pl-2.para-re= 'Age: ' + age
                         p.mb-1.pl-2.para-re.d-inline= "Tags: "
-                        if tags[0]
+                        if tags.length > 0
                             for gold in tags
                                 p.d-inline= '#' + gold + " "
                         else
                             p.d-inline= "None"
                         if location_status == 1
                             p.mb-1.pl-2.para-re Location usage: Yes
+                            p.mb-1.pl-2.para-re= 'Location: ' + location
                         else
                             p.mb-1.pl-2.para-re Location usage: No
 

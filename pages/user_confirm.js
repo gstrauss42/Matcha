@@ -4,8 +4,8 @@ var Models = require("../models/models");
 
 router.get('/', function(req, res){
    var check = req.originalUrl.substring(1);
-   Models.user.findOne({"verif":check, "isverified":"true"}, function(err, doc){
-      if(doc)
+   Models.user.findOne({"verif":check, "isverified":"true"}, function(err, doc) {
+      if (doc)
          return res.render('reset_password', {url:check});
       else
       {

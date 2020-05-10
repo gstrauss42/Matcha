@@ -128,11 +128,11 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
             }        
         });
     }
-    // porifle doc passed for rendering
+    // profile doc passed for rendering
     Models.user.findOne({email : req.session.name}, function(err, ret){
         res.redirect(('profile'));
     });
 });
- 
+
 //export this router to use in our index.js
 module.exports = router;

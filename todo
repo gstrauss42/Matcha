@@ -1,12 +1,13 @@
 Gabriel:
+
+    LOGIN:
+        - status and location are not updating to the DB on login
+
     STATS:
         - if a username already exists in liked, likes, viewed, views them do not add it again into the DB.
 
-    PROFILE:
-        - we need to add an address field apparently for GPS positioning. (will ask others about this)
-        - otherwise we can get their IP address and locate via that by city.
-
     SEARCH PAGE:
+        - only display users that are verified. (isVerified = true).
         - ordering
 
     NOTIFS:
@@ -34,9 +35,9 @@ Gabriel:
 
 Jadon:
     - messages displaying in chronological order
-    - test last seen
     - test block and report feature
-    - remove delete notif functionality from notifs
+    - remove delete notif functionality from notifs (bonus)
+    - check changing of email in profile and username - must be unique
 
 ERROR CODES:
     DONE:

@@ -318,7 +318,7 @@ html(lang="en")
                                         input#username.form-control.form-control-sm.pl-1.ml-2.col-md-4(type="text", name="username", placeholder= username)
                                     .form-group
                                         label.ml-2.mr-1(for="age") Age:
-                                        input#age.form-control.form-control-sm.pl-1.ml-2.col-md-4(type="text", name="age", placeholder= age)
+                                        input#age.form-control.form-control-sm.pl-1.ml-2.col-md-4(type="number", name="age", placeholder= age)
                                     .form-group
                                         label.ml-2.mr-1(for="email") Email Address:
                                         input#email.form-control.form-control-sm.pl-1.ml-1.col-md-4(type="email", name="email", placeholder= email)
@@ -345,6 +345,12 @@ html(lang="en")
                                                 input(type="hidden", name="location_status", value=location_status)
                                                 input#locat.custom-control-input(type="checkbox", name="location_status_check", value=1, onChange="this.form.submit();")
                                             label.custom-control-label.mt-2(for="locat") Use location to match with users
+                                form(action="profile/update_location", method="post")
+                                    .form-group
+                                        label.mr-2.ml-1(for="location") Current location:
+                                        input#repeat.form-control.form-control-sm.pl-1.ml-1.col-md-4(type="text", name="location_text" required value= location)
+                                    .form-group
+                                        input.btn.btn-dark.ml-1(type="submit", name="submit_location", value="Save Location")
 
                     //- add interest tags
                     .container-fluid.mb-5
@@ -406,4 +412,4 @@ html(lang="en")
         script(src="https://kit.fontawesome.com/17df3da6b8.js", crossorigin="anonymous")
         script(src="https://code.jquery.com/jquery-1.11.1.js")
         script(src="./js/load_notifs.js")
-        script(src="./js/profile_alterations.js")
+        script(src="./js/profile.js")

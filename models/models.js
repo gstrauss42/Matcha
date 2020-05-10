@@ -13,7 +13,6 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
    gender: String,
    prefferances: String,
    fame_rating: String,
-   location: String,
    password: String,
    contacts: [{
       type: String
@@ -35,6 +34,9 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
    likes: [{
       type: String
    }],
+   liked: [{
+      type: String
+   }],
    blocked: [{
       type: String
    }],
@@ -43,6 +45,7 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
       type: String
    }],
    status: String,               //this is for if theyre online or offline. Will contain text "online" OR "offline-12:30"
+   location: String,
    location_status: String,
    main_image: String,
    image_one: String, 
@@ -50,7 +53,6 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
    image_three: String,
    image_four: String,
    connected: String,
-   liked: String
 });
 
 var notificationsSchema = new mongoose.Schema({

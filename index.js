@@ -79,3 +79,4 @@ app.use('/live_notifications', live_notifications);
 app.use('/:var_words', user_confirm);
 app.use('/remove_tag', remove_tag);
 app.use('/oops', oops);
+app.use('/profile/update_location', profile);

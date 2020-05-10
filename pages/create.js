@@ -25,7 +25,7 @@ router.post('/create', bodyParser.urlencoded({extended: true}), function(req, re
       {
          var safe = crypto.pbkdf2Sync(randomstring.generate(), '100' ,1000, 64, `sha512`).toString(`hex`);
          var pass = crypto.pbkdf2Sync(req.body.password, '100' ,1000, 64, `sha512`).toString(`hex`);
-      
+
          var _user = new Model.user ({
             name: req.body.name,
             username: req.body.username,
@@ -50,14 +50,14 @@ router.post('/create', bodyParser.urlencoded({extended: true}), function(req, re
          })
          _notif.save(function(err){
             if(err)
-               console.log(err);
+               console.log('notif save error: ', err);
             else
                console.log("updated notifications");
          })
-         
+
          _user.save(function(err){
             if(err)
-               console.error(error);
+               console.error('user save error: ', error);
             else
             {
                // emailer
