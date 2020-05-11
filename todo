@@ -13,7 +13,7 @@ Gabriel:
         - (apparently theres a difference between someone who 'liked' your profile and someone who has 'liked back') - will investigate
 
     CHAT:
-        - add notification for when someone has sent you a message
+        - contacts are not being generated
         - save the username in the chat message from the person who sent it.
 
     TO REMOVE: (to make loading pages faster)

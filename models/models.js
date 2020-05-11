@@ -1,8 +1,7 @@
-var mongoose = require("mongoose");
+const mongoose = require('mongoose');
+const db = mongoose.connection;
 
-var db = mongoose.connection;
-
-var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
+var userSchema = new mongoose.Schema({
    name: String,
    username: String,
    bio: String,
@@ -71,15 +70,17 @@ var messagesSchema = new mongoose.Schema({
    read: Boolean
 });
 
-db.on("error", console.error.bind(console, "Connection error:"));
-db.once("open", function(callback) {
-   console.log("Connected to MongoDB"); /* Once the database connection has succeeded, the code in db.once is executed. */
+db.on('error', console.error.bind(console, 'Connection error:'));
+// Once the database connection has succeeded, the code in db.once is executed.
+db.once('open', function(callback) {
+   console.log('Connected to MongoDB');
 });
 
-var user = mongoose.model("users", userSchema); //This creates the Bug model.
-var notifications = mongoose.model("notifications", notificationsSchema);
-var messages = mongoose.model("messages", messagesSchema);
+// This creates the Bug model
+var user = mongoose.model('users', userSchema);
+var notifications = mongoose.model('notifications', notificationsSchema);
+var messages = mongoose.model('messages', messagesSchema);
 
-module.exports.user = user; /* Export the Bug model so index.js can access it. */
+module.exports.user = user;
 module.exports.notifications = notifications;
 module.exports.messages = messages;

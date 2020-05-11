@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser');
-var models = require('../models/models');
-var express = require('express');
-var router = express.Router();
+const models = require('../models/models');
+const express = require('express');
+const router = express.Router();
 
 // rendering chat page
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
@@ -26,15 +26,15 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
         if(req.body.sendMsg == 'sendMessage')
         {
           // save message to chat
-          var present_time = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
-          var message = new models.messages ({
+          const present_time = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+          const message = new models.messages ({
             message: req.body.message,
             to: chatter.email,
             from: doc.email,
             time: present_time,
             read: false
           });
-          message.save(function(err){
+          message.save( function(err) {
             if (err)
                 console.log('Error saving message: ', err);
             else
@@ -42,18 +42,18 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res) {
           });
 
           // new message notification
-          var notif = new models.notifications ({
-             email: req.session.name,
-             name: 'new message',
-             content: req.body.message,
-             time: present_time,
-             read: false
+          const notif = new models.notifications ({
+            email: chatter.email,
+            name: 'new message from: ' + chatter.username,
+            content: req.body.message,
+            time: present_time,
+            read: false
           });
-          notif.save(function(err){
-             if(err)
-                console.log('Error saving notif: ', err);
+          notif.save( function(err) {
+             if (err)
+                console.log('Error saving message notif: ', err);
              else
-                console.log('updated notifications');
+                console.log('updated notification for new message');
           });
         }
               // finding all messages and rendering them - NOT NEEDED

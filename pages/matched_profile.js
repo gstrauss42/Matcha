@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var Models = require('../models/models');
+const express = require('express');
+const router = express.Router();
+const Models = require('../models/models');
 const bodyParser = require('body-parser');
 
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
