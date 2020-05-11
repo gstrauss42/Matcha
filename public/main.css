@@ -168,8 +168,8 @@ footer {
     width: 80%;
 }
 
-.notifContent {
-    font-size: 14px;
+#notifHead, #oldNotifHead {
+    margin-left: 9.2rem;
 }
 
 /* User profile page */

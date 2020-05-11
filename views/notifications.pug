@@ -46,32 +46,14 @@ html(lang="en")
                 .container
                     .row.ml-0.mr-0
                         .col
-                            #notifHead.d-flex.justify-content-center.align-items-center(aria-live="polite" aria-atomic="true")
-                                //- if notifications.length > 0
-                                //-     strong.notif-heading.mb-2 
-                                //-         | You have #{notifications.length} notification
-                                //-         if notifications.length > 1
-                                //-             | s:
-                                //-         else
-                                //-             | :
-                                //- else
-                                //-     strong.notif-heading.mb-2 You have no notifications!
+                            .d-flex.justify-content-center.align-items-center(aria-live="polite" aria-atomic="true")
+                                strong Notifications
                             hr.mb-4
-
+                            #notifHead.mb-3
                             #notifBox.container-fluid
-                            //- if notifications.length > 0
-                            //-     for data, i in notifications
-                            //-         .d-flex.justify-content-center.align-items-center.mb-3(aria-live="polite" aria-atomic="true")
-                            //-             .toast.notification-box(role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false")
-                            //-                 .toast-header.notif-bg.notif
-                            //-                     strong.mr-auto.notif-color= data['name']
-                            //-                     small.ml-4= data['time']
-                            //-                     form(action="notifications", method="post")
-                            //-                         input(type="hidden", name="identifier", value= i)
-                            //-                         button.ml-2.mb-1.close.mt-2(type='submit', name="dismiss", data-dismiss="toast", aria-label="Close")
-                            //-                             span(aria-hidden="true") &times;
-                            //-                 .toast-body
-                            //-                     p= data['content']
+                            hr.mb-4
+                            #oldNotifHead.mb-3
+                            #oldNotifBox.container-fluid
                             hr.mb-4
 
             //- footer

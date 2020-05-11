@@ -8,8 +8,6 @@ Gabriel:
         - ordering
 
     NOTIFS:
-        - when we direct to notification page - set all notifications as read
-        - also when 'live_notifications' route of GET method is used then only fetch unread notifications
         - (apparently theres a difference between someone who 'liked' your profile and someone who has 'liked back') - will investigate
 
     CHAT:
@@ -26,7 +24,6 @@ Gabriel:
 Jadon:
     - messages displaying in chronological order
     - test block and report feature
-    - remove delete notif functionality from notifs (bonus)
     - check changing of email in profile and username - must be unique
 
 ERROR CODES:

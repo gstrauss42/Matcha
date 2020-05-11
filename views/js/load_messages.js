@@ -2,10 +2,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	load();
 	document.getElementById('messageText').placeholder = 'Type a message...';
 	const sendBtn = document.getElementById('sendMsg');
-	sendBtn.addEventListener('click', sendMsg);
+	sendBtn.addEventListener('click', sendMsgFunc);
 });
 
-function sendMsg() {
+function sendMsgFunc() {
 	const msg = document.getElementById('messageText').value;
 	const elemID = document.querySelector('.person').getAttribute('id');
 	if (msg !== '') {

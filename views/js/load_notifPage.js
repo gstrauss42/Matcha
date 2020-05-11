@@ -1,17 +1,54 @@
 window.addEventListener('DOMContentLoaded', (event)  => {
 	fetch_notifs();
+	const btnClear = document.getElementById('clear');
+	btnClear.addEventListener('click', updateRead);
 });
+
+function updateRead() {
+	$.ajax({
+		type: 'GET',
+		url: '/live_notifications/update_read',
+		success: function (data) {
+			fetch_notifs();
+		},
+		error: function () {
+			alert('Error updating read notifications!')
+		}
+	});
+}
 
 function fetch_notifs() {
 	notifArr = new Array;
+	oldNotifArr = new Array;
 
 	$.ajax({
 		type: 'POST',
 		url: '/live_notifications',
 		success: function (data) {
-			if (data.length !== 0) {
-				data.forEach(element => {
+			// new notifications
+			if (data.new.length !== 0) {
+				data.new.slice().reverse().forEach(element => {
 					notifArr += `<div class=\"alert alert-info alert-dismissible fade show ml-4 mr-4 pb-0\" role="alert">
+									<strong class=\"mr-2\">${element.name}</strong><small>${element.time}</small>
+									<p class=\"mb-3 notifContent\">${element.content}</p>
+								</div>`;
+				});
+				if (data.new.length == 1)
+					heading = `<h6>You have ${data.new.length} unread notification:</h6>
+								<button id="clear" class="badge badge-light pt-1 pb-1 mb-1" name="clear">Mark all as read</button>`;
+				else
+					heading = `<h6>You have ${data.new.length} unread notifications:</h6>
+								<button id="clear" class="badge badge-light pt-1 pb-1 mb-1" name="clear">Mark all as read</button>`;;
+				$('#notifHead').html(heading);
+				$('#notifBox').html(notifArr);
+			} else {
+				heading = `<h6>No new notifications</h6>`;
+				$('#notifHead').html(heading);
+			}
+			// old notifications
+			if (data.old.length !== 0) {
+				data.old.slice().reverse().forEach(element => {
+					oldNotifArr += `<div class=\"alert alert-info alert-dismissible fade show ml-4 mr-4 pb-0\" role="alert">
 									<strong class=\"mr-2\">${element.name}</strong><small>${element.time}</small>
 									<p class=\"mb-0 notifContent\">${element.content}</p>
 									<form action="notifications" method="post">
@@ -22,15 +59,15 @@ function fetch_notifs() {
 									</form>
 								</div>`;
 				});
-				if (data.length == 1)
-					heading = `<strong class=\"mb-2\">You have ${data.length} notification!</strong>`;
+				if (data.old.length == 1)
+					heading = `<h6>You have ${data.old.length} read notification:</h6>`;
 				else
-					heading = `<strong class=\"mb-2\">You have ${data.length} notifications!</strong>`;
-				$('#notifHead').html(heading);
-				$('#notifBox').html(notifArr);
+					heading = `<h6>You have ${data.old.length} read notifications:</h6>`;
+				$('#oldNotifHead').html(heading);
+				$('#oldNotifBox').html(oldNotifArr);
 			} else {
-				heading = `<strong class=\"mb-2\">You have no notifications!</strong>`;
-				$('#notifHead').html(heading);
+				heading = '';
+				$('#oldNotifHead').html(heading);
 			}
 		},
 		error: function () {
@@ -39,4 +76,4 @@ function fetch_notifs() {
 	});
 }
 
-setInterval(fetch_notifs, 3000);
+setInterval(fetch_notifs, 5000);
