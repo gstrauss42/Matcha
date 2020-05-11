@@ -63,7 +63,8 @@ html(lang="en")
                     .container-fluid.pl-0.pr-0.mb-3
                         .input-group
                             textarea#messageText.formcontrol(rows="2", name="message", required)
-                            input#personEmail(type="hidden", name="id", value= email)
+                            input#personEmail(type="hidden", name="email", value= email)
+                            input#personUsername(type="hidden", name="user", value= username)
                             .input-group-append
                                 button#sendMsg.btn.btn-secondary(type="submit", name="sendMsg", value="sendMessage") Send
 

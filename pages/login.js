@@ -3,12 +3,12 @@ var router = express.Router();
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
-var Models = require("../models/models");
+var Models = require('../models/models');
 var crypto = require('crypto');
 const request = require('request');
 
-router.get("/", (req,res) => {
-   res.render("login");
+router.get('/', (req,res) => {
+   res.render('login');
 })
 
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
@@ -25,22 +25,22 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                      return console.log('ipinfo.io error: ', err);
                   } else {
                      let ipLocat = `${body.city}, ${body.region}, ${body.country}, ${body.postal}`;
-                     console.log('ipLocat: ', ipLocat); // debug
-                     Models.user.findOneAndUpdate({ email : req.body.email }, { "location" : ipLocat }, function(err, _update){
+                     console.log('ipLocat: ', ipLocat); //debug
+                     Models.user.findOneAndUpdate({ 'username' : req.body.username }, { 'location' : ipLocat }, function(err, _update){
                         if (err) {
                            console.log('error updating location');
                         } else {
-                           console.log("updated location");
+                           console.log('updated location');
                         }
                      });
                   }
                });
                // online status
-               Models.user.findOneAndUpdate({ email : req.body.email }, { "status" : "online" }, function(err, _update){
+               Models.user.findOneAndUpdate({ 'username' : req.body.username }, { 'status' : 'online' }, function(err, _update){
                   if (err) {
                      console.log('error updating status');
                   } else {
-                     console.log("user set to online");
+                     console.log('user set to online');
                   }
                });
               //setting session
@@ -48,13 +48,13 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                res.redirect('/profile');
             }
             else if (user.isverified !== 1)
-               res.render("oops", {error: '6'})
+               res.render('oops', {error: '6'})
             else
-               res.render("oops", {error: '1'});
+               res.render('oops', {error: '1'});
       }
       else
       {
-         res.render("oops", {error: '1'});
+         res.render('oops', {error: '1'});
       }
    });
 });

@@ -30,10 +30,12 @@ function sendMsg() {
 
 function load() {
 	const elementSlct = document.getElementById('personEmail').value;
+	// const elementSlct = document.getElementById('personUsername').value;
 	let from_arr = new Array;
 	let to_arr = new Array;
 	let send = { email: elementSlct };
-	
+	// let send = { username: elementSlct };
+
 	$.ajax({
 		type: 'POST',
 		url: '/data',
@@ -48,6 +50,8 @@ function load() {
 					to_arr += `<div id=\"text-send\" class=\"text-right\"><p class=\"mb-0\">${element.message}</p><p class=\"msgInfo\">from ${element.from} at ${element.time}</p></div>`;
 				});
 				$('#text-s').html(to_arr);
+				let noRes = '';
+				$('#text-none').html(noRes);
 			} else {
 				let noRes = '<h6 class=\"text-center\">There are no messsages here! Start a chat</h6>';
 				$('#text-none').html(noRes);

@@ -41,19 +41,20 @@ router.post('/create', bodyParser.urlencoded({extended: true}), function(req, re
             location_status : '1'
          });
 
-         var present_time = Math.floor(Date.now() / 1000);
+         var present_time = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
          var _notif = new Model.notifications ({
             email: req.body.email,
             name: "Welcome",
             content: "Welcome to matcha, may the love be with you",
-            time: present_time
+            time: present_time,
+            read: false
          })
          _notif.save(function(err){
             if(err)
                console.log('notif save error: ', err);
             else
                console.log("updated notifications");
-         })
+         });
 
          _user.save(function(err){
             if(err)
@@ -61,24 +62,20 @@ router.post('/create', bodyParser.urlencoded({extended: true}), function(req, re
             else
             {
                // emailer
-
                let transporter = nodeMailer.createTransport({
                   host: 'smtp.gmail.com',
                   port: 465,
                   secure: true,
                   auth: {
-                      user: 'ftmatcha@gmail.com',
-                      pass: 'qwerty0308'
+                     user: 'ftmatcha@gmail.com',
+                     pass: 'qwerty0308'
                   }
                });
-
                var mailOptions = {
-                  // should be replaced with real recipient's account
                   to: req.body.email,
                   subject: 'Email Confirmation',
                   text: 'please follow this link to validate your account localhost:' + process.env.port + '/' + safe
                };
-
                transporter.sendMail(mailOptions, (error, info) => {
                   if (error) {
                       return console.log(error);

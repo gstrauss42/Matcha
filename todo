@@ -1,28 +1,20 @@
 Gabriel:
-
-    LOGIN:
-        - status and location are not updating to the DB on login
-
     STATS:
         - if a username already exists in liked, likes, viewed, views them do not add it again into the DB.
 
     SEARCH PAGE:
         - only display users that are verified. (isVerified = true).
-        - search by location now needs to utilise 'location' field in DB. The location is working
+        - search by location now needs to utilise 'location' field in DB. The location is now working
         - ordering
 
     NOTIFS:
-        - format time
-        - add 'read' field to them
         - when we direct to notification page - set all notifications as read
         - also when 'live_notifications' route of GET method is used then only fetch unread notifications
-        - add notification for when a user unlikes you
-        - add notification for when someone has sent you a message
-        - (apparently theres a difference between someone who 'liked' your profile and someone who has 'liked back')
+        - (apparently theres a difference between someone who 'liked' your profile and someone who has 'liked back') - will investigate
 
     CHAT:
-        - save the username in the message from the person who sent it.
-        - format time
+        - add notification for when someone has sent you a message
+        - save the username in the chat message from the person who sent it.
 
     TO REMOVE: (to make loading pages faster)
         - fetching of notifications when entering notification page. Handled by ajax on 'live_notifications' route

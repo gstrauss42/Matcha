@@ -1,5 +1,5 @@
 const bodyParser = require('body-parser');
-var models = require("../models/models");
+var models = require('../models/models');
 var express = require('express');
 var router = express.Router();
 
@@ -8,8 +8,8 @@ router.get('/', function(req, res){
         res.render('oops', {error : '2'});
     else
     {
-        models.user.findOne({"email": req.session.name}, function(err, doc){
-            models.user.find({"isverified":true},function(err,chatters){
+        models.user.findOne({'email': req.session.name}, function(err, doc){
+            models.user.find({'isverified':true},function(err,chatters){
                 var results = new Array;
                 var i = 0;
                 chatters.forEach(element => {
@@ -25,8 +25,8 @@ router.get('/', function(req, res){
                       });
                     }
                 });
-                res.render("contacts", {"contacts":results});
-                console.log("\n\n"+ results +"\n\n");                
+                res.render('contacts', {'contacts':results});
+                console.log('\nContacts: ', results);                
             });
         });
     }

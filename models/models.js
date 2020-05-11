@@ -41,10 +41,10 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
       type: String
    }],
    fame: Number,
-   old_notifications: [{
+   old_notifications: [{      // whats this used for?
       type: String
    }],
-   status: String,               //this is for if theyre online or offline. Will contain text "online" OR "offline-12:30"
+   status: String,
    location: String,
    location_status: String,
    main_image: String,
@@ -57,9 +57,10 @@ var userSchema = new mongoose.Schema({ //This is where bugSchema is defined.
 
 var notificationsSchema = new mongoose.Schema({
    email: String,
-   name:String,
+   name: String,
    content: String,
-   time: Number
+   time: String,
+   read: Boolean
 })
 
 var messagesSchema = new mongoose.Schema({
