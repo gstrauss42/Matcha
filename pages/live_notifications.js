@@ -3,7 +3,10 @@ var models = require("../models/models");
 var router = express.Router();
 
 router.get('/update_read', (req, res) => {
-    console.log('updated all notifications to read');
+    models.notifications.find({email:req.session.name}, function(err, count){
+        // make all notifs 'read' = true. save
+        console.log('updated all notifications to read');
+    });   
 });
 
 router.get("/", (req, res) => {

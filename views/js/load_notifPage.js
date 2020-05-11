@@ -1,7 +1,5 @@
 window.addEventListener('DOMContentLoaded', (event)  => {
 	fetch_notifs();
-	const btnClear = document.getElementById('clear');
-	btnClear.addEventListener('click', updateRead);
 });
 
 function updateRead() {
@@ -20,7 +18,7 @@ function updateRead() {
 function fetch_notifs() {
 	notifArr = new Array;
 	oldNotifArr = new Array;
-
+	
 	$.ajax({
 		type: 'POST',
 		url: '/live_notifications',
@@ -29,18 +27,20 @@ function fetch_notifs() {
 			if (data.new.length !== 0) {
 				data.new.slice().reverse().forEach(element => {
 					notifArr += `<div class=\"alert alert-info alert-dismissible fade show ml-4 mr-4 pb-0\" role="alert">
-									<strong class=\"mr-2\">${element.name}</strong><small>${element.time}</small>
-									<p class=\"mb-3 notifContent\">${element.content}</p>
+								<strong class=\"mr-2\">${element.name}</strong><small>${element.time}</small>
+								<p class=\"mb-3 notifContent\">${element.content}</p>
 								</div>`;
 				});
 				if (data.new.length == 1)
-					heading = `<h6>You have ${data.new.length} unread notification:</h6>
-								<button id="clear" class="badge badge-light pt-1 pb-1 mb-1" name="clear">Mark all as read</button>`;
+				heading = `<h6>You have ${data.new.length} unread notification:</h6>
+							<button id="clear" class="badge badge-light pt-1 pb-1 mb-1" name="clear">Mark all as read</button>`;
 				else
-					heading = `<h6>You have ${data.new.length} unread notifications:</h6>
-								<button id="clear" class="badge badge-light pt-1 pb-1 mb-1" name="clear">Mark all as read</button>`;;
+				heading = `<h6>You have ${data.new.length} unread notifications:</h6>
+							<button id="clear" class="badge badge-light pt-1 pb-1 mb-1" name="clear">Mark all as read</button>`;;
 				$('#notifHead').html(heading);
 				$('#notifBox').html(notifArr);
+				const btnClear = document.getElementById('clear');
+				btnClear.addEventListener('click', updateRead);
 			} else {
 				heading = `<h6>No new notifications</h6>`;
 				$('#notifHead').html(heading);
