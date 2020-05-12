@@ -1,9 +1,9 @@
 Gabriel:
     STATS:
-        - if a username already exists in liked, likes, viewed, views them do not add it again into the DB.
+        - check: if a username already exists in liked, likes, viewed, views them do not add it again into the DB.
 
     SEARCH PAGE:
-        - only display users that are verified. (isVerified = true).
+        - check: only display users that are verified. (isVerified = true).
         - search by location now needs to utilise 'location' field in DB. The location is now working
         - ordering
 
@@ -23,8 +23,9 @@ Gabriel:
 
 Jadon:
     - messages displaying in chronological order
+    - notification count only fetches new notifs
     - test block and report feature
-    - check changing of email in profile and username - must be unique
+    - unliking someone removes a fame rating from them
 
 ERROR CODES:
     DONE:
@@ -36,3 +37,5 @@ ERROR CODES:
         - err 6: account isnt verified
         - err 7: check email for verification link
         - err 8: make sure both passwords are the same
+        - err 9: email already exists (updating profile)
+        - err 10: username taken (updating profile)
