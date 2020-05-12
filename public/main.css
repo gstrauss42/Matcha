@@ -164,12 +164,8 @@ footer {
 
 /* for notifications page */
 
-#notifBox {
+#notifBox, #oldNotifBox, #notifHead, #oldNotifHead {
     width: 80%;
-}
-
-#notifHead, #oldNotifHead {
-    margin-left: 9.2rem;
 }
 
 /* User profile page */
