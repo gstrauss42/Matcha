@@ -73,7 +73,7 @@ app.use('/logout', logout);
 app.use('/update_profile', update_profile);
 app.use('/reset_password', reset_password);
 app.use('/upload_picture', upload_picture);
-app.use('/check/:var_words', email_update);
+app.use('/check/:var_words', email_update); // this is not in use
 app.use('/data', data);
 app.use('/live_notifications', live_notifications);
 app.use('/:var_words', user_confirm);

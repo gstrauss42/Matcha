@@ -53,6 +53,14 @@ html(lang="en")
             .jumbotron.remove-padd
                 h4.display-4.connect-heading Oops! Something went wrong...
                 p.lead Please make sure you fill out the email input.
+        else if error == 12
+            .jumbotron.remove-padd
+                h4.display-4.connect-heading Oops! Something went wrong...
+                p.lead Please make sure the email address entered is a valid email.
+        else if error == 12
+            .jumbotron.remove-padd
+                h4.display-4.connect-heading Oops! Something went wrong...
+                p.lead Unable to update password. Please try the link in your email again.
 
         script(src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous")
         script(src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous")
