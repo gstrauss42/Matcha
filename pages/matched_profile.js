@@ -11,16 +11,18 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
          items.forEach(element => {
              fs.unlink(process.env.path + '/' + element)
          });
-     });
-         if(req.body.unique != '1')
-         {
-            if(req.body.like == '')
-            {
+      });
+         if(req.body.unique != '1') {
+            if(req.body.like == '') {
                Models.user.findOne({'_id': req.body._id}, function(err, doc){
                   // fame increment
                   rating = doc.fame + 1;
                   Models.user.findOneAndUpdate({'_id': req.body._id}, {fame: rating}, function(err, temp){
-                     console.log('incremented fame rating');
+                     if (err) {
+                        console.log('could not increment fame rating - like operation: ', err);
+                     } else {
+                        console.log('incremented fame rating - like operation');
+                     }
                   });
                   // render and render checks
                   Models.user.findOneAndUpdate({email : req.session.name}, {$addToSet : {likes: doc.username}}, function(err, ret){
@@ -28,7 +30,16 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                      if(doc.likes.includes(ret.username)){
                         connected = '1';
                      }
-                     console.log('liked user\nupdated notifications');
+                     console.log('liked user');
+                     console.log('Connected state: ', connected);
+                     // adding logged in user into liked users 'liked' array
+                     Models.user.findOneAndUpdate({'_id': req.body._id}, {$addToSet : {liked: ret.username}}, function(err, ret){
+                        if (err) {
+                           console.log('unable to add username to liked users liked array: ', err);
+                        } else {
+                           console.log('added username to liked users liked array');
+                        }
+                     });
                      res.render('matched_profile', {name : doc.name,
                                                    email : doc.email,
                                                    surname:doc.surname,
@@ -50,7 +61,6 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                                                    liked: '1',
                                                    'connected': connected,
                                                    bio: doc.bio});
-                     console.log('Connected state: ', connected);
                      // like notification
                      var present_time = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
                      var _notif = new Models.notifications ({
@@ -60,20 +70,43 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                         time: present_time,
                         read: false
                      });
-                     _notif.save(function(err){
+                     _notif.save(function(err) {
                         if(err)
-                           console.log(err);
+                           console.log('could not save notification - like operation', err);
                         else
-                           console.log('updated notifications');
+                           console.log('updated notifications - like operation');
                      });
                   });
             });
          }
-         else if(req.body.unlike == '')
-         {
-            Models.user.findOne({'_id': req.body._id}, function(err, doc){
-               Models.user.findOneAndUpdate({email : req.session.name},{$pull : {likes: doc.username}}, function(err, ret){
-                  console.log('unliked user');
+         else if(req.body.unlike == '') {
+            Models.user.findOne({'_id': req.body._id}, function(err, doc) {
+               // fame decrement
+               if (doc.fame >= 1) {
+                  rating = doc.fame - 1;
+                  Models.user.findOneAndUpdate({'_id': req.body._id}, {fame: rating}, function(err, temp){
+                     if (err) {
+                        console.log('could not decrement fame rating - unlike operation: ', err);
+                     } else {
+                        console.log('decremented fame rating - unlike operation');
+                     }
+                  });
+               }
+               // render
+               Models.user.findOneAndUpdate({email : req.session.name},{$pull : {likes: doc.username}}, function(err, ret) {
+                  if (err) {
+                     console.log('could not unlike user: ', err);
+                  } else {
+                     console.log('unliked user');
+                  }
+                  // removing logged in user into liked users 'liked' array
+                  Models.user.findOneAndUpdate({'_id': req.body._id}, {$pull : {liked: ret.username}}, function(err, ret){
+                     if (err) {
+                        console.log('unable to remove username from liked users "liked" array: ', err);
+                     } else {
+                        console.log('removed username from liked users "liked" array');
+                     }
+                  });
                   res.render('matched_profile', {name : doc.name,
                                                 surname:doc.surname,
                                                 username: doc.username,
@@ -95,6 +128,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                                                 liked: '0',
                                                 connected : '0',
                                                 bio: doc.bio});
+                  // unlike notification
                   var present_time = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
                   var _notif = new Models.notifications ({
                      email: doc.email,
@@ -105,9 +139,9 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                   });
                   _notif.save(function(err){
                      if(err)
-                        console.log(err);
+                        console.log('could not save notification - unlike operation', err);
                      else
-                        console.log('updated notifications');
+                        console.log('updated notifications - unlike operation');
                   });
                });
             });

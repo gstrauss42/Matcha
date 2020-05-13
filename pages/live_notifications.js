@@ -19,13 +19,13 @@ router.get('/update_read', (req, res) => {
 });
 
 router.get("/", (req, res) => {
-    models.notifications.find({email:req.session.name}, function(err, count){
+    models.notifications.find({ email:req.session.name, read: false }, function(err, count){
         res.json(count.length);
     });
 });
 
 router.post('/', (req, res) => {
-    models.notifications.find({"email":req.session.name}, function(err,notif){
+    models.notifications.find({ "email":req.session.name }, function(err,notif){
         let oldNotifs = new Array;
         let newNotifs = new Array;
         notif.forEach(element => {

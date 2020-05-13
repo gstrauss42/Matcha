@@ -27,25 +27,11 @@ router.get('/', function(req, res){
       return(res.render('oops', {error: '2'}));
    } else {
       Models.user.findOne({"email":req.session.name}, function(err, doc){
-
-         console.log('profile: ', doc.name,     //debug
-                                 doc.surname,
-                                 doc.email,
-                                 doc.username,
-                                 doc.views,
-                                 doc.viewed,
-                                 doc.likes,
-                                 doc.liked,
-                                 doc.fame,
-                                 doc.gender,
-                                 doc.prefferances,
-                                 doc.age,
-                                 doc.tags,
-                                 doc.location_status,
-                                 doc.location,
-                                 doc.bio
+         // debug
+         console.log('profile: ', doc.name, doc.surname, doc.email, doc.username, doc.views, doc.viewed,
+                                 doc.likes, doc.liked, doc.fame, doc.gender, doc.prefferances, doc.age,
+                                 doc.tags, doc.location_status, doc.location, doc.bio
          );
-
          res.render("profile", {name: doc.name,
                            surname: doc.surname,
                            email: doc.email,
@@ -58,8 +44,7 @@ router.get('/', function(req, res){
                            views: doc.views,
                            viewed: doc.viewed,
                            likes: doc.likes,
-                           liked: doc.liked, //when someone likes a profile - make sure that the person who did the 'liking' goes into the liked users array called 'liked'.
-                                             // so if Gabriel liked Jadons profile. Put Gabriel into Jadons 'liked' array.
+                           liked: doc.liked,
                            rating: doc.fame,
                            gender: doc.gender,
                            prefferances: doc.prefferances,
