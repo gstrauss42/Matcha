@@ -26,6 +26,7 @@ Jadon:
     - notification count only fetches new notifs
     - test block and report feature
     - unliking someone removes a fame rating from them
+    - validate passwords to be correct security level
 
 ERROR CODES:
     DONE:
@@ -39,3 +40,5 @@ ERROR CODES:
         - err 8: make sure both passwords are the same
         - err 9: email already exists (updating profile)
         - err 10: username taken (updating profile)
+        - err 11: make sure email address is a valid email
+        - err 12: unable to update password from link in email

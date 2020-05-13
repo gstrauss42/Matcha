@@ -14,7 +14,7 @@ router.post('/update_password', bodyParser.urlencoded({extended: true}), functio
         if (req.body.pass && req.body.repeat_pass && req.body.pass == req.body.repeat_pass) {
             const pass = crypto.pbkdf2Sync(req.body.pass, '100', 1000, 64, `sha512`).toString(`hex`);
             Models.user.findOneAndUpdate({ email : req.session.name }, { 'password' : pass }, function(err, _update) {
-                console.log('updated password');
+                console.log('updated password - profile update');
                 Models.user.findOne({email : req.session.name}, function(err, ret){
                     res.redirect('/profile');
                 });
@@ -33,39 +33,46 @@ router.post('/update_email', bodyParser.urlencoded({extended: true}), function(r
     {
         Models.user.findOne({email : req.body.email}, function(err, yes){
             if (err) {
-                console.log('Error finding User - Update Email:', err);
+                console.log('Error finding User  - email and profile update: ', err);
+                res.render('oops', {error: '3'});
             }
-            if (yes) {
-                console.log('existing user found');
+            else if (yes) {
+                console.log('existing user found - profile update');
                 res.render('oops', {error: '9'});
             } else if (yes == null) {
                 var safe = crypto.pbkdf2Sync(randomstring.generate(), '100' ,1000, 64, `sha512`).toString(`hex`);
                 console.log(req.body.email);
                 Models.user.findOneAndUpdate({ email : req.session.name }, { $set : {'verif' : safe, 'verif_email' : req.body.email}}, function(err, _update) {
-                        console.log('set new verif');
-                });
-                let transporter = nodeMailer.createTransport({
-                    host: 'smtp.gmail.com',
-                    port: 465,
-                    secure: true,
-                    auth: {
-                        user: 'ftmatcha@gmail.com',
-                        pass: process.env.password
-                    }
-                });
-                var mailOptions = {
-                    to: req.body.email,
-                    subject: 'Update Email',
-                    text: 'please follow this link to validate your account localhost:' + process.env.port + '/check/' + safe
-                };
-                transporter.sendMail(mailOptions, (error, info) => {
-                    if (error) {
-                        return console.log('error sending mail: ', error);
+                    if (err) {
+                        console.log('unable to set verif - profile update: ', err);
+                        res.render('oops', {error: '3'});
                     } else {
-                        console.log('sent mail');
+                        console.log('set new verif - profile update');
+                        let transporter = nodeMailer.createTransport({
+                            host: 'smtp.gmail.com',
+                            port: 465,
+                            secure: true,
+                            auth: {
+                                user: 'ftmatcha@gmail.com',
+                                pass: process.env.password
+                            }
+                        });
+                        var mailOptions = {
+                            to: req.body.email,
+                            subject: 'Update Email',
+                            text: 'please follow this link to validate your account localhost:' + process.env.port + '/check/' + safe
+                        };
+                        transporter.sendMail(mailOptions, (error, info) => {
+                            if (error) {
+                                console.log('error sending mail - profile update: ', error);
+                                res.render('oops', {error: '3'});
+                            } else {
+                                console.log('sent mail - profile update');
+                                res.render('oops', {error: '7'});
+                            }
+                        });
                     }
                 });
-                res.render('oops', {error: '7'});
             }
         });
     } else {
@@ -74,89 +81,70 @@ router.post('/update_email', bodyParser.urlencoded({extended: true}), function(r
 });
 
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
-
-    if(req.body.location_status)
-    {
-        if(req.body.location_status == '0')
+    if(!req.session.name) {
+        res.render('oops', {error: '2'});
+    } else {
+        if(req.body.location_status)
         {
-            Models.user.findOneAndUpdate({email: req.session.name},
-                {'location_status': '1'},
-                function(err, doc){
-                    console.log('updated location tracking policy');    
+            if(req.body.location_status == '0')
+            {
+                Models.user.findOneAndUpdate({email: req.session.name}, {'location_status': '1'}, function(err, doc){
+                    console.log('profile update - updated location tracking policy to: ', doc.location_status);    
                 });
-        }
-        else
-        {
-            Models.user.findOneAndUpdate({email: req.session.name},
-                {'location_status': '0'},
-                function(err, doc){
-                    console.log('updated location tracking policy');    
-                });
-        }
-    }
-    if(req.body.bio)
-    {
-        Models.user.findOneAndUpdate({ email : req.session.name },
-            { 'bio' : req.body.bio }
-            , function(err, _update) {
-                console.log('updated bio');
-        });
-    }
-    if(req.body.username)
-    {
-        Models.user.find({email : req.body.email}, function(err, ret){
-            if (ret.length == 0) {
-                Models.user.findOneAndUpdate({ email : req.session.name }, { 'username' : req.body.username }, function(err, _update) {
-                    console.log('updated username');
-                });
-            } else {
-                // render oops page. will need a seperate route
             }
+            else if (req.body.location_status == '1')
+            {
+                Models.user.findOneAndUpdate({email: req.session.name}, {'location_status': '0'}, function(err, doc){
+                    console.log('profile update - updated location tracking policy to: ', doc.location_status);    
+                });
+            }
+        }
+        if(req.body.bio)
+        {
+            Models.user.findOneAndUpdate({ email : req.session.name }, { 'bio' : req.body.bio }, function(err, _update) {
+                console.log('updated bio - profile update');
+            });
+        }
+        if(req.body.username)
+        {
+            Models.user.findOneAndUpdate({ email : req.session.name }, { 'username' : req.body.username }, function(err, _update) {
+                console.log('updated username - profile update');
+            });
+        }
+        if(req.body.name)
+        {
+            Models.user.findOneAndUpdate({ email : req.session.name }, { 'name' : req.body.name }, function(err, _update) {
+                console.log('updated name - profile update');
+            });
+        }
+        if(req.body.surname)
+        {
+            Models.user.findOneAndUpdate({ email : req.session.name }, { 'surname' : req.body.surname }, function(err, _update) {
+                console.log('updated surname - profile update');
+            });
+        }
+        if(req.body.age)
+        {
+            Models.user.findOneAndUpdate({ email : req.session.name }, { 'age' : req.body.age }, function(err, _update) {
+                console.log('updated age - profile update');
+            });
+        }
+        if(req.body.gender_select)
+        {
+            Models.user.findOneAndUpdate({ email : req.session.name }, { 'gender' : req.body.gender_select }, function(err, _update) {
+                console.log('updated gender - profile update');
+            });
+        }
+        if(req.body.pref_select)
+        {
+            Models.user.findOneAndUpdate({ email : req.session.name }, { 'prefferances' : req.body.pref_select }, function(err, _update) {
+                console.log('updated prefferaces - profile update');
+            });
+        }
+        Models.user.findOne({email : req.session.name}, function(err, ret){
+            res.redirect('profile');
         });
     }
-    if(req.body.name)
-    {
-        Models.user.findOneAndUpdate({ email : req.session.name },
-            { 'name' : req.body.name }
-            , function(err, _update) {
-                console.log('updated name');
-        });
-    }
-    if(req.body.surname)
-    {
-        Models.user.findOneAndUpdate({ email : req.session.name },
-            { 'surname' : req.body.surname }
-            , function(err, _update) {
-                console.log('updated surname');
-        });
-    }
-    if(req.body.age)
-    {
-        Models.user.findOneAndUpdate({ email : req.session.name },
-            { 'age' : req.body.age }
-            , function(err, _update) {
-                console.log('updated age');
-        });
-    }
-    if(req.body.gender_select)
-    {
-        Models.user.findOneAndUpdate({ email : req.session.name },
-            { 'gender' : req.body.gender_select }
-            , function(err, _update) {
-                console.log('updated gender');
-        });
-    }
-    if(req.body.pref_select)
-    {
-        Models.user.findOneAndUpdate({ email : req.session.name },
-            { 'prefferances' : req.body.pref_select }
-            , function(err, _update) {
-                console.log('updated prefferaces');
-        });
-    }
-    Models.user.findOne({email : req.session.name}, function(err, ret){
-        res.redirect('profile');
-    });
 });
 
 //export this router to use in our index.js
