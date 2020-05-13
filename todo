@@ -1,18 +1,14 @@
 Gabriel:
-    STATS:
-        - check: if a username already exists in liked, likes, viewed, views them do not add it again into the DB.
-
     SEARCH PAGE:
-        - check: only display users that are verified. (isVerified = true).
-        - search by location now needs to utilise 'location' field in DB. The location is now working
+        - search by location needs to search by city (which is one part of the location string)
         - ordering
-
-    NOTIFS:
-        - (apparently theres a difference between someone who 'liked' your profile and someone who has 'liked back') - will investigate
 
     CHAT:
         - contacts are not being generated
         - save the username in the chat message from the person who sent it.
+
+    NOTIFS:
+        - (apparently theres a difference between someone who 'liked' your profile and someone who has 'liked back') - will investigate
 
     TO REMOVE: (to make loading pages faster)
         - fetching of notifications when entering notification page. Handled by ajax on 'live_notifications' route
@@ -26,16 +22,15 @@ Jadon:
     - messages displaying in chronological order
 
 ERROR CODES:
-    DONE:
-        - err 1: try again (incorrect login details or some such)
-        - err 2: access is denied please login first
-        - err 3: generic error
-        - err 4: check email for password reset link
-        - err 5: user already exists
-        - err 6: account isnt verified
-        - err 7: check email for verification link
-        - err 8: make sure both passwords are the same
-        - err 9: email already exists (updating profile)
-        - err 10: username taken (updating profile)
-        - err 11: make sure email address is a valid email
-        - err 12: unable to update password from link in email
+    - err 1: try again (incorrect login details or some such)
+    - err 2: access is denied please login first
+    - err 3: generic error
+    - err 4: check email for password reset link
+    - err 5: user already exists
+    - err 6: account isnt verified
+    - err 7: check email for verification link
+    - err 8: make sure both passwords are the same
+    - err 9: email already exists (updating profile)
+    - err 10: username taken (updating profile)
+    - err 11: make sure email address is a valid email
+    - err 12: unable to update password from link in email
