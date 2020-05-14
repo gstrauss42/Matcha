@@ -136,10 +136,12 @@ html(lang="en")
                                     .col-md-0.mr-3
                                             strong
                                                 h3.mb-0.pb-0.custom-text-name= username
-                                            if status === "online"
+                                            if status && status === "online"
                                                 small.text-muted.pt-0.mt-0 online now
-                                            else
+                                            else if status
                                                 small.text-muted.pt-0.mt-0= 'last seen: ' + status
+                                            else
+                                                small.text-muted.pt-0.mt-0= 'new user'
                                     .col-md-0.mr-1
                                         if liked == 0 && one
                                                 form(action="matched_profile", method="post")
@@ -210,7 +212,10 @@ html(lang="en")
                             p.d-inline= "None"
                         if location_status == 1
                             p.mb-1.pl-2.para-re Location usage: Yes
-                            p.mb-1.pl-2.para-re= 'Location: ' + location
+                            if location
+                                p.mb-1.pl-2.para-re= 'Location: ' + location
+                            else
+                                p.mb-1.pl-2.para-re= 'Location: No location found'
                         else
                             p.mb-1.pl-2.para-re Location usage: No
 

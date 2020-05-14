@@ -1,8 +1,4 @@
 Gabriel:
-    SEARCH PAGE:
-        - search by location needs to search by city (which is one part of the location string)
-        - ordering
-
     CHAT:
         - contacts are not being generated
         - save the username in the chat message from the person who sent it.
@@ -17,6 +13,8 @@ Gabriel:
         - make fields secure
 
 Jadon:
+    - likes, liked, views, viewed arrays are overwriting when saving
+    - filtering/ordering (new route with ajax)
     - validate passwords to be correct security level
     - test block and report feature
     - messages displaying in chronological order

@@ -51,7 +51,7 @@ html(lang="en")
                             .col-md-6
                                 .form-group
                                     label.label-text.mr-1(for="age") Age
-                                    input#age.pl-1(type="text", name="age", placeholder="18+")
+                                    input#age.pl-1(type="number", name="age", placeholder="18+", min=18, max=200)
                                 .form-group
                                     .custom-control.custom-checkbox
                                         input#location.custom-control-input(type="checkbox", name="location")
@@ -67,11 +67,10 @@ html(lang="en")
                                 //- iterating through each tag and creating a new array of all tags
                                 .form-group.mb-0
                                     if tags
-                                        for gold in tags
+                                        for singleTag in tags
                                             .custom-control.custom-checkbox
-                                                input.custom-control-input(type="checkbox", name="color[]", id=gold, value= gold)
-                                                label.label-text.custom-control-label(for=gold)= gold
-                                    input(type="hidden", name="tag_array", value= array)
+                                                input.custom-control-input(type="checkbox", name="color[]", id=singleTag, value= singleTag)
+                                                label.label-text.custom-control-label(for=singleTag)= singleTag
                                 small.form-text.text-muted
                                     | To add/see more tags appear here make sure you have added them to your 
                                     a(href="profile") profile 
