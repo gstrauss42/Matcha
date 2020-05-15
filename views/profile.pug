@@ -353,11 +353,11 @@ html(lang="en")
                                             else
                                                 input(type="hidden", name="location_status", value=location_status)
                                                 input#locat.custom-control-input(type="checkbox", name="location_status_check", value=1, onChange="this.form.submit();")
-                                            label.custom-control-label.mt-2(for="locat") Use location to match with users
+                                            label.custom-control-label.mt-2(for="locat") Location can be viewed by others
                                 form(action="profile/update_location", method="post")
                                     .form-group
                                         label.mr-2.ml-1(for="location") Current location:
-                                        input#repeat.form-control.form-control-sm.pl-1.ml-1.col-md-4(type="text", name="location_text" required value= location placeholder="City, Region, Country, Postal Code")
+                                        input#repeat.form-control.form-control-sm.pl-1.ml-1.col-md-4(type="text", name="location_text", value= location, placeholder="City, Region, Country, Postal Code" required)
                                     .form-group
                                         input.btn.btn-dark.ml-1(type="submit", name="submit_location", value="Save Location")
 

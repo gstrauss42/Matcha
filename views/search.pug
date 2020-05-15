@@ -48,21 +48,22 @@ html(lang="en")
                     h4.advanced-heading.ml-3.mb-3 Advanced Search
                     form(action="/search", method="post")
                         .row.ml-0.mr-0
-                            .col-md-6
+                            .col-md-2
                                 .form-group
-                                    label.label-text.mr-1(for="age") Age
-                                    input#age.pl-1(type="number", name="age", placeholder="18+", min=18, max=200)
+                                    label.label-text.mr-1(for="age") Age gap:
+                                    input#age.form-control.pl-1(type="number", name="age", placeholder="5", min=0, max=100)
+                                    //- .custom-control.custom-checkbox
+                                    //-     input#location.custom-control-input(type="checkbox", name="location")
+                                    //-     label.label-text.custom-control-label(for="location") Nearby location
+                            .col-md-2
                                 .form-group
-                                    .custom-control.custom-checkbox
-                                        input#location.custom-control-input(type="checkbox", name="location")
-                                        label.label-text.custom-control-label(for="location") Nearby location
+                                    label.label-text.mr-1(for="rating") Fame rating gap:
+                                    input#rating.form-control.pl-1(type="number", name="rating", placeholder="5", min=0, max=100)
+                            .col-md-2
                                 .form-group
-                                    .custom-control.custom-checkbox
-                                        input#rating.custom-control-input(type="checkbox", name="rating")
-                                        label.label-text.custom-control-label(for="rating") Similar fame rating
-                                .form-group
-                                    input.btn.btn-dark(type="submit", name="advanced_search", value="Match!")
-                            .col
+                                    label.label-text.mr-1(for="location") Specify a location:
+                                    input#location.form-control.pl-1(type="text", name="location", placeholder="Cape Town", maxlength="30")
+                            .col-md-4
                                 h6 Include various tags
                                 //- iterating through each tag and creating a new array of all tags
                                 .form-group.mb-0
@@ -75,6 +76,8 @@ html(lang="en")
                                     | To add/see more tags appear here make sure you have added them to your 
                                     a(href="profile") profile 
                                     | first
+                            .col-md-2
+                                input.btn.btn-dark(type="submit", name="advanced_search", value="Match!")
 
                     hr
                 //- by default show users from same area & ONLY correct sex (in bi/non-specified case match with all): this can be sorted by age, location, fame rating, common tags
@@ -87,14 +90,14 @@ html(lang="en")
                                     select#selectGender.form-control(name="filter")
                                         option(value="age") Age
                                         option(value="location") Location
-                                        option(value="rating") Fame Rating
-                                        option(value="common_tags") Tags in common
+                                        option(value="fame") Fame Rating
+                                        option(value="tags") Tags in common
                             .col-md-2
                                 .form-group
                                     label.label-text(for="selectGender") Order
                                     select#selectGender.form-control(name="order")
-                                        option(value="1") Ascending
-                                        option(value="-1") Descending
+                                        option(value="asc", required) Ascending
+                                        option(value="desc", required) Descending
                             .col-md-2
                                 input.btn.btn-dark.filter-btn(type="submit", name="filter_all", value="Go!")
 
