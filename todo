@@ -15,7 +15,6 @@ Gabriel:
 Jadon:
     - ordering
     - likes, liked, views, viewed arrays are overwriting when saving
-    - validate passwords to be correct security level
     - test block and report feature
     - hook contacts page up with ajax
     - messages displaying in chronological order

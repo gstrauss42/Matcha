@@ -333,12 +333,12 @@ html(lang="en")
                                 form(action="/update_profile/update_password", method="post")
                                     .form-group
                                         label.ml-2.mr-1(for="password") New Password:
-                                        input#password.form-control.form-control-sm.pl-1.ml-1.col-md-4(type="password", name="pass" required)
+                                        input#password.form-control.form-control-sm.pl-1.ml-1.col-md-4(type="password", name="pass", minlength="8" required)
                                         small#passwordHelpBlock.form-text.text-muted.ml-2
-                                            | Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters or emojis.
+                                            | Your password must be at least 8 characters long and must not contain spaces.
                                     .form-group
                                         label.mr-2.ml-1(for="repeat") Repeat Password:
-                                        input#repeat.form-control.form-control-sm.pl-1.ml-1.col-md-4(type="password", name="repeat_pass" required)
+                                        input#repeat.form-control.form-control-sm.pl-1.ml-1.col-md-4(type="password", name="repeat_pass", minlength="8" required)
                                     .form-group
                                         input.btn.btn-dark.ml-1(type="submit", name="submit_password", value="Update Password")
 

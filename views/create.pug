@@ -73,7 +73,7 @@ html
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="gender") Gender
-                                                                select#gender.form-control(name="gender", placeholder="", required)
+                                                                select#gender.form-control(name="gender", required)
                                                                     option(value="Male") Male
                                                                     option(value="Female") Female
                                                                     option(value="Other", selected="selected") Other
@@ -81,7 +81,7 @@ html
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="preferences") Preferences
-                                                                select#preferences.form-control(name="preferences")
+                                                                select#preferences.form-control(name="preferences", required)
                                                                     option(value="Male") Male
                                                                     option(value="Female") Female
                                                                     option(value="Bi-Sexual", selected="selected") Bi-Sexual
@@ -89,7 +89,8 @@ html
                                                         .row.form-group
                                                             .col-md-12
                                                                 label(for="password") Password
-                                                                input#password.form-control(type="password", name="password", required)
+                                                                input#password.form-control(type="password", name="password", minlength="8", required)
+                                                                small.form-text.text-muted Your password must be at least 8 characters long and must not contain spaces.
                                                         
                                                         .row.form-group
                                                             .col-md-12

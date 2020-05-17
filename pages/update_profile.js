@@ -6,21 +6,36 @@ var crypto = require('crypto');
 var randomstring = require('randomstring');
 var nodeMailer = require('nodemailer');
 
+function passwordCheck(password) {
+    if (password.length >= 8) {
+        if (password.includes(' ') || password.includes('\t') || password.includes('\n') || password.includes('\s')) {
+            return false;
+        }
+        return true;
+    } else {
+        return false;
+    }
+}
+
 router.post('/update_password', bodyParser.urlencoded({extended: true}), function(req, res){
     if(!req.session.name) {
-        return(res.render('oops', {error: '2'}));
+        res.render('oops', {error: '2'});
     }
     else {
         if (req.body.pass && req.body.repeat_pass && req.body.pass == req.body.repeat_pass) {
-            const pass = crypto.pbkdf2Sync(req.body.pass, '100', 1000, 64, `sha512`).toString(`hex`);
-            Models.user.findOneAndUpdate({ email : req.session.name }, { 'password' : pass }, function(err, _update) {
-                console.log('updated password - profile update');
-                Models.user.findOne({email : req.session.name}, function(err, ret){
-                    res.redirect('/profile');
+            if (passwordCheck(req.body.pass)) {
+                const pass = crypto.pbkdf2Sync(req.body.pass, '100', 1000, 64, `sha512`).toString(`hex`);
+                Models.user.findOneAndUpdate({ email : req.session.name }, { 'password' : pass }, function(err, _update) {
+                    console.log('updated password - profile update');
+                    Models.user.findOne({email : req.session.name}, function(err, ret){
+                        res.redirect('/profile');
+                    });
                 });
-            });
+            } else {
+                res.render('oops', {error: '13'});
+            }
         } else {
-            return(res.render('oops', {error: '8'}));
+            res.render('oops', {error: '8'});
         }
     }
 });
