@@ -93,7 +93,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                   });
                }
                // render
-               Models.user.findOneAndUpdate({email : req.session.name},{$pull : {likes: doc.username}}, function(err, ret) {
+               Models.user.findOneAndUpdate({email : req.session.name}, {$pull : {likes: doc.username}}, function(err, ret) {
                   if (err) {
                      console.log('could not unlike user: ', err);
                   } else {
@@ -147,18 +147,21 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
             });
          }
          // report fake user
-         else if(req.body.fake == '')
+         else if (req.body.fake == '')
          {
-            Models.user.findOneAndUpdate({'_id' : req.body._id}, {$push : {reports: 'report info:\n' + req.body.details}}, function(err, doc){
-               Models.user.findOneAndUpdate({email : req.session.name}, {$push : {blocked: doc.email}}, function(err, check){
+            Models.user.findOneAndUpdate({'_id' : req.body._id}, {$push : {reports: 'Report: ' + req.body.details}}, function(err, doc){
+               if (err) {
+                  console.log('could not report user: ', err);
+               } else {
+                  console.log('reported user: ', doc.username);
+               }
+               Models.user.findOneAndUpdate({email : req.session.name}, function(err, curr){
                   connected = '0';
                   liked = '0';
-                  if(check.likes)
-                  {
-                     if(check.likes.includes(doc.username))
-                     {
+                  if (curr.likes) {
+                     if (curr.likes.includes(doc.username)) {
                         liked = '1';
-                        if(doc.likes.includes(check.username))
+                        if(doc.likes.includes(curr.username))
                            connected = '1';
                      }
                   }
@@ -184,20 +187,20 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                                                 'connected': connected,
                                                 bio: doc.bio});
                });
-               console.log('reported fake user');
             });
          }
          // block user
-         else if(req.body.block == '')
+         else if (req.body.block == '')
          {
             Models.user.findOne({'_id' : req.body._id}, function(err, doc){
-               Models.user.findOneAndUpdate({email : req.session.name}, {$push :{blocked : doc.email}}, function(err, check){
+               Models.user.findOneAndUpdate({email : req.session.name}, {$push : {blocked : doc.email}}, function(err, check){
                   connected = '0';
                   liked = '0';
-                  if(check.likes)
-                  {
-                     if(check.likes.includes(doc.username))
-                     {
+
+                  // SHOULD REMOVE THE CONNECTION BETWEEN THESE TWO USERS IF THEY ARE BLOCKED.
+
+                  if(check.likes) {
+                     if(check.likes.includes(doc.username)) {
                         liked = '1';
                         if(doc.likes.includes(check.username))
                            connected = '1';
@@ -289,7 +292,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                   else
                      console.log('updated notifications');
                });
-               Models.user.findOneAndUpdate({'email' : req.session.name}, {'viewed': doc.username}, function(err, temp){
+               Models.user.findOneAndUpdate({'email' : req.session.name}, {$addToSet : {viewed : doc.username}}, function(err, temp){
                   console.log('updated the view history')
                   // add a check to exclude adding people multiple times
                });

@@ -1,35 +1,46 @@
-const bodyParser = require('body-parser');
-var models = require('../models/models');
-var express = require('express');
-var router = express.Router();
+const models = require('../models/models');
+const express = require('express');
+const router = express.Router();
 
 router.get('/', function(req, res){
     if(!req.session.name)
         res.render('oops', {error : '2'});
-    else
-    {
-        models.user.findOne({'email': req.session.name}, function(err, doc){
-            models.user.find({'isverified':true},function(err,chatters){
-                var results = new Array;
-                var i = 0;
-                chatters.forEach(element => {
-                    if(doc.contacts)
-                    {
-                        doc.contacts.forEach(names => {
-                            if(names == element.email)
-                            {
-                                results[i] = new models.user;
-                                results[i] = element;
-                                i++;
-                            }
-                      });
-                    }
-                });
-                res.render('contacts', {'contacts':results});
-                console.log('\nContacts: ', results);                
-            });
+    else {
+        res.render('contacts');
+    }
+});
+
+router.get('/live_contacts', function(req, res){
+    if(!req.session.name)
+        res.render('oops', {error : '2'});
+    else {
+        models.user.findOne({ 'email' : req.session.name }, function (err, doc){
+            if (err) {
+                console.log('error retrieving current user details - contacts: ', err);
+                res.render('oop', {error : '3'});
+            } else {
+                contacts = doc.contacts;
+                if (contacts.length !== 0) {
+                    models.user.find({ 'isverified' : true }, function (err, chatters){
+                        let contArr = new Array;
+                        if (err) {
+                            console.log('error retrieving users - contacts: ', err);
+                        } else {
+                            chatters.forEach(element => {
+                                if (contacts.includes(element.email)) {
+                                    contArr.push(element);
+                                    console.log('put new contact in resulting array: ', element.username, element.email);
+                                }
+                            });
+                        }
+                        res.json({ contactArr : contArr });
+                    });
+                } else {
+                    res.json({ contactArr : [] });
+                }
+            }
         });
     }
-})
+});
 
 module.exports = router;

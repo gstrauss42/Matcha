@@ -1,9 +1,9 @@
-var express = require('express');
-var models = require("../models/models");
-var router = express.Router();
+const express = require('express');
+const models = require('../models/models');
+const router = express.Router();
 
 router.get('/update_read', (req, res) => {
-    models.notifications.find({ email : req.session.name }, function (err, notifications) {
+    models.notifications.find({ email : req.session.name }, function(err, notifications) {
         if (err) {
             console.log('Error getting notifications');
         } else {
@@ -18,14 +18,14 @@ router.get('/update_read', (req, res) => {
     });
 });
 
-router.get("/", (req, res) => {
-    models.notifications.find({ email:req.session.name, read: false }, function(err, count){
+router.get('/', (req, res) => {
+    models.notifications.find({ email : req.session.name, read: false }, function(err, count){
         res.json(count.length);
     });
 });
 
 router.post('/', (req, res) => {
-    models.notifications.find({ "email":req.session.name }, function(err,notif){
+    models.notifications.find({ 'email' : req.session.name }, function(err,notif) {
         let oldNotifs = new Array;
         let newNotifs = new Array;
         notif.forEach(element => {

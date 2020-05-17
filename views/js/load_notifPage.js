@@ -10,7 +10,7 @@ function updateRead() {
 			clearNotifs();
 		},
 		error: function () {
-			alert('Error updating read notifications!')
+			alert('Error updating read notifications!');
 		}
 	});
 }
@@ -82,4 +82,4 @@ function fetch_notifs() {
 	});
 }
 
-setInterval(fetch_notifs, 5000);
+setInterval(fetch_notifs, 3000);

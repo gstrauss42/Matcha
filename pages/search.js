@@ -209,14 +209,14 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                             users = orderedArr;
                             console.log('Advanced search has been ordered');
                         }
-                        res.render('search', { 'tags' : currUser.tags, 'advanced_matches': users });
+                        res.render('search', { 'tags': currUser.tags, 'advanced_matches': users });
                     }
                     else {
                         if (orderedArr) {
                             users = orderedArr;
                             console.log('Search has been ordered');
                         }
-                        res.render('search', { 'tags' : currUser.tags, 'basic_matches': users });
+                        res.render('search', { 'tags': currUser.tags, 'basic_matches': users });
                     }
                 });
         });

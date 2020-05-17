@@ -49,41 +49,10 @@ html(lang="en")
                 .container
                     .row.ml-0.mr-0
                         .col
-                            .d-flex.justify-content-center.align-items-center(aria-live="polite" aria-atomic="true")
-                                if contacts.length > 0
-                                    strong.notif-heading.mb-2 
-                                        | You have existing chats with #{contacts.length} user
-                                        if contacts.length > 1
-                                            | s:
-                                        else
-                                            | :
-                                else
-                                    strong.notif-heading.mb-2 Chats
+                            #heading.d-flex.justify-content-center.align-items-center(aria-live="polite" aria-atomic="true")
                             hr.mb-4
-                            if contacts.length !== 0
-                                for person, j in contacts
-                                    - id = "'" + person['id'] + "'";
-                                    .container-fluid
-                                        form(action="matched_profile", method="post", id= person['_id'])
-                                            input(type="hidden", name="unique", value="1")
-                                            input(type="hidden", name="_id", value= person['_id'])
-                                            .alert.alert-primary.alert-dismissible.fade.show.ml-4.mr-4(role="alert")
-                                                .media
-                                                    if person['main_image']
-                                                        a(href=`javascript: submitform(${id})`)
-                                                            img.rounded.mr-2.search-profile(src= `data:image/*;base64,${person['main_image']}`, alt="profile_image")
-                                                    else
-                                                        a(href=`javascript: submitform(${id})`)
-                                                            img.rounded.mr-2.search-profile(src="user.jpg", alt="profile_image")
-                                                    .media-body
-                                                        a(href=`javascript: submitform(${id})`)
-                                                            strong.custom-username= person['username']
-                                                        p.search-profile-descrip.mb-0= person['bio']
-                                                button.close(type="button" data-dismiss="alert" aria-label="Close")
-                                                    span(aria-hidden="true") &times;
-                            //- no contacts
-                            else
-                                h6 You have no chats as of yet! Start a chat with someone to add them to this list.
+                            #chats
+                            #subheading
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark
@@ -119,4 +88,5 @@ html(lang="en")
         script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous")
         script(src="https://kit.fontawesome.com/17df3da6b8.js", crossorigin="anonymous")
         script(src="https://code.jquery.com/jquery-1.11.1.js")
+        script(src="./js/load_contactsPage.js")
         script(src="./js/load_notifs.js")

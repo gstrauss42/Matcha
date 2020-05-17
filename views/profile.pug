@@ -182,8 +182,7 @@ html(lang="en")
                                 li.nav-item
                                     a#notifBell.nav-link(href="notifications")
                                 li.nav-item
-                                    form#contacts(action="contacts" method="get")
-                                        a.nav-link(href="javascript: submitlink('contacts')") Chats
+                                    a.nav-link(href="contacts") Chats
                                 li.nav-item
                                     form#link(action="search", method="post")
                                         a.nav-link(href="javascript: submitlink('link')") Match Me!
@@ -357,7 +356,7 @@ html(lang="en")
                                 form(action="profile/update_location", method="post")
                                     .form-group
                                         label.mr-2.ml-1(for="location") Current location:
-                                        input#repeat.form-control.form-control-sm.pl-1.ml-1.col-md-4(type="text", name="location_text", value= location, placeholder="City, Region, Country, Postal Code" required)
+                                        input.form-control.form-control-sm.pl-1.ml-1.col-md-4(type="text", name="location_text", value= location, placeholder="City, Region, Country, Postal Code" required)
                                     .form-group
                                         input.btn.btn-dark.ml-1(type="submit", name="submit_location", value="Save Location")
 

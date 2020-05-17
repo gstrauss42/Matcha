@@ -1,24 +1,22 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const app = express()
 const bodyParser = require('body-parser');
+const Models = require('../models/models');
 app.use(bodyParser.urlencoded({ extended: true }));
-var Models = require("../models/models");
 
-router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
-    // user signed in check
+router.post('/', bodyParser.urlencoded({extended: true}), function (req, res){
     if(!req.session.name)
         res.render('oops', {error: '2'});
-    // saving tag to db and reloading the page
-    else
-    {
-        Models.user.findOneAndUpdate(
-            { email : req.session.name },
-            { $push : { tags: req.body.tag}}
-            , function(err, _update) {
-                res.redirect('/profile');
-                console.log("added tag");
-          });
+    else {
+        Models.user.findOneAndUpdate({ email : req.session.name }, { $push : { tags: req.body.tag}}, function(err, _update) {
+            if (err) {
+                console.log('could not add tag: ', err);
+            } else {
+                console.log('added tag');
+            }
+            res.redirect('/profile');
+        });
     }
 });
 

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Models = require("../models/models");
+var Models = require('../models/models');
 const bodyParser = require('body-parser');
 
 router.post('/update_location', bodyParser.urlencoded({extended: true}), function(req, res){
@@ -8,7 +8,7 @@ router.post('/update_location', bodyParser.urlencoded({extended: true}), functio
       return(res.render('oops', {error: '2'}));
    } else {
       if (req.body.location_text) {
-         Models.user.findOneAndUpdate({email: req.session.name}, {"location": req.body.location_text}, function(err, doc){
+         Models.user.findOneAndUpdate({email: req.session.name}, {'location': req.body.location_text}, function(err, doc){
             if (err) {
                console.log('error updating location - profile');
             } else {
@@ -26,13 +26,13 @@ router.get('/', function(req, res){
    if(!req.session.name) {
       return(res.render('oops', {error: '2'}));
    } else {
-      Models.user.findOne({"email":req.session.name}, function(err, doc){
+      Models.user.findOne({'email' : req.session.name}, function(err, doc){
          // debug
          console.log('profile: ', doc.name, doc.surname, doc.email, doc.username, doc.views, doc.viewed,
                                  doc.likes, doc.liked, doc.fame, doc.gender, doc.prefferances, doc.age,
                                  doc.tags, doc.location_status, doc.location, doc.bio
          );
-         res.render("profile", {name: doc.name,
+         res.render('profile', {name: doc.name,
                            surname: doc.surname,
                            email: doc.email,
                            username: doc.username,

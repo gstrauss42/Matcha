@@ -26,7 +26,7 @@ var userSchema = new mongoose.Schema({
    reports: [{
       type: String
    }],
-   isverified: { type: Boolean, default: false},
+   isverified: { type: Boolean, default: false },
    tags: [{
       type: String
    }],

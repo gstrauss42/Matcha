@@ -1,6 +1,5 @@
 Gabriel:
     CHAT:
-        - contacts are not being generated
         - save the username in the chat message from the person who sent it.
 
     NOTIFS:
@@ -13,10 +12,9 @@ Gabriel:
         - make fields secure
 
 Jadon:
-    - ordering
-    - likes, liked, views, viewed arrays are overwriting when saving
+    - blocking someone removes the connection between the two
     - test block and report feature
-    - hook contacts page up with ajax
+    - ordering
     - messages displaying in chronological order
 
 ERROR CODES:
