@@ -12,8 +12,8 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
              fs.unlink(process.env.path + '/' + element)
          });
       });
-         if(req.body.unique != '1') {
-            if(req.body.like == '') {
+         if (req.body.unique !== '1') {
+            if (req.body.like == '') {
                Models.user.findOne({'_id': req.body._id}, function(err, doc){
                   // fame increment
                   rating = doc.fame + 1;
@@ -79,7 +79,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                   });
             });
          }
-         else if(req.body.unlike == '') {
+         else if (req.body.unlike == '') {
             Models.user.findOne({'_id': req.body._id}, function(err, doc) {
                // fame decrement
                if (doc.fame >= 1) {
@@ -190,8 +190,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
             });
          }
          // block user
-         else if (req.body.block == '')
-         {
+         else if (req.body.block == '') {
             Models.user.findOne({'_id' : req.body._id}, function(err, doc){
                Models.user.findOneAndUpdate({email : req.session.name}, {$push : {blocked : doc.email}}, function(err, check){
                   connected = '0';
@@ -231,23 +230,21 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                console.log('blocked user');
             });
          }
-         else
-         {
-            console.log('both connected');
+         else {
             Models.user.findOne({email : req.session.name}, function(err, check){
                Models.user.findOne({'_id' : req.body._id}, function(err, doc){
                   connected = '0';
                   liked = '0';
-                  if(check.likes)
-                  {
-                     if(check.likes.includes(doc.username))
-                     {
+                  if (check.likes) {
+                     if (check.likes.includes(doc.username)) {
                         liked = '1';
-                        if(doc.likes.includes(check.username))
+                        if (doc.likes.includes(check.username)) {
                            connected = '1';
+                           console.log('both connected');
+                        }
                      }
                   }
-               res.render('matched_profile', {name : doc.name,
+                  res.render('matched_profile', {name : doc.name,
                                              surname:doc.surname,
                                              username: doc.username,
                                              status: doc.status,
@@ -275,7 +272,6 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
       // start of the psuedo get
       else {
          Models.user.findOne({email : req.session.name}, function(err, check){
-            // update notifications to save to the notifications colection and not the notifications under the user collection
             Models.user.findOneAndUpdate({'_id' : req.body._id}, {$addToSet : {views : check.username }}, function(err, doc){
                // notification of viewed profile
                var present_time = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
@@ -287,24 +283,28 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                   read: false
                });
                _notif.save(function(err){
-                  if(err)
-                     console.log(err);
+                  if (err)
+                     console.log('could not save notif: ', err);
                   else
                      console.log('updated notifications');
                });
+               // viewed statistics
                Models.user.findOneAndUpdate({'email' : req.session.name}, {$addToSet : {viewed : doc.username}}, function(err, temp){
-                  console.log('updated the view history')
-                  // add a check to exclude adding people multiple times
+                  if (err)
+                     console.log('could not update view history: ', err);
+                  else
+                     console.log('updated the view history')
                });
+               // checking for likes, connectivity
                connected = '0';
                liked = '0';
-               if(check.likes)
-               {
-                  if(check.likes.includes(doc.username))
-                  {
+               if (check.likes) {
+                  if (check.likes.includes(doc.username)) {
                      liked = '1';
-                     if(doc.likes.includes(check.username))
+                     if (doc.likes.includes(check.username)) {
                         connected = '1';
+                        console.log('both connected');
+                     }
                   }
                }
                res.render('matched_profile', {name : doc.name,

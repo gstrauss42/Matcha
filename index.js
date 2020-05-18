@@ -1,16 +1,12 @@
-/*
-* App Variables
-*/
+// App Variables
 const express   = require("express");
 const app       = require('express')();
-var   mongoose  = require('mongoose');
+const mongoose  = require('mongoose');
 const path      = require("path");
-var   session   = require('express-session');
-var   http      = require('http').createServer(app);
+const session   = require('express-session');
+const http      = require('http').createServer(app);
 
-/*
-*  App Configuration
-*/
+// App Configuration
 require('dotenv').config()
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
@@ -20,16 +16,12 @@ app.use('/js', express.static('views/js'));
 app.use(express.static(path.join(__dirname, "public")));
 mongoose.connect('mongodb+srv://gstrauss:' + process.env.password +'@matcha-ch0yb.gcp.mongodb.net/shell?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
 
-/*
- * Server Activation
- */
+// Server Activation
 http.listen(process.env.port, function(){
   console.log(`listening on port: ${process.env.port}`);
 });
 
-/*
-* Page Variables
-*/
+// Page Variables
 var index               = require('./pages/index.js')
 var home                = require('./pages/home.js')
 var login               = require('./pages/login.js');
@@ -79,7 +71,3 @@ app.use('/live_notifications', live_notifications);
 app.use('/:var_words', user_confirm);
 app.use('/remove_tag', remove_tag);
 app.use('/oops', oops);
-app.use('/profile/update_location', profile);
-app.use('/live_notifications/update_read', live_notifications);
-app.use('/update_profile/update_password', update_profile);
-app.use('/update_profile/update_email', update_profile);
