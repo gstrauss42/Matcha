@@ -1,4 +1,6 @@
 window.addEventListener('DOMContentLoaded', (event)  => {
+	heading = `<strong class=\"notif-heading mb-2\">Loading chats...</strong>`;
+	$('#heading').html(heading);
 	fetch_contacts();
 });
 
@@ -77,4 +79,4 @@ function fetch_contacts() {
 	});
 }
 
-setInterval(fetch_contacts(), 3000);
+setInterval(fetch_contacts, 5000);

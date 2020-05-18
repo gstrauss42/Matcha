@@ -12,8 +12,9 @@ Gabriel:
         - make fields secure
 
 Jadon:
-    - blocking someone removes the connection between the two
-    - test block and report feature
+    - search page - only fetch necessary info
+    - contacts undefined in bio
+    - test report feature
     - ordering
     - messages displaying in chronological order
 

@@ -13,6 +13,18 @@ var userSchema = new mongoose.Schema({
    prefferances: String,
    fame_rating: String,
    password: String,
+   verif: String,
+   isverified: { type: Boolean, default: false },
+   fame: Number,
+   status: String,
+   location: String,
+   location_status: String,
+   main_image: String,
+   image_one: String, 
+   image_two: String,
+   image_three: String,
+   image_four: String,
+   connected: String,
    contacts: [{
       type: String
    }],
@@ -22,11 +34,9 @@ var userSchema = new mongoose.Schema({
    views: [{
       type: String
    }],
-   verif: String,
    reports: [{
       type: String
    }],
-   isverified: { type: Boolean, default: false },
    tags: [{
       type: String
    }],
@@ -39,19 +49,9 @@ var userSchema = new mongoose.Schema({
    blocked: [{
       type: String
    }],
-   fame: Number,
    old_notifications: [{      // whats this used for?
       type: String
    }],
-   status: String,
-   location: String,
-   location_status: String,
-   main_image: String,
-   image_one: String, 
-   image_two: String,
-   image_three: String,
-   image_four: String,
-   connected: String,
 });
 
 var notificationsSchema = new mongoose.Schema({
