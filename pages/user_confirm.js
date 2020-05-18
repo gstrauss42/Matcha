@@ -8,16 +8,16 @@ router.get('/', function(req, res){
       if (err) {
          console.log('error finding verif key - user confirm: ', err);
       } else if (doc) {
-         console.log('here - user confirm 1');
+         console.log('user confirm route');
          res.render('reset_password', {url:check});
       } else {
          // insert user check for forgot password link
-         console.log('here - user confirm 2');
+         console.log('user confirm route - verify link');
          Models.user.findOneAndUpdate({ verif : check }, { $set : { isverified: 'true'}}, function(err, doc) {
             if (doc && doc.email) {
-               return res.render('login', {url: check});
+               res.render('login', {url: check});
             } else {
-               return res.render('oops', { error : '3' });
+               res.render('oops', { error : '3' });
             }
          });
       }

@@ -17,45 +17,87 @@ function fetch_contacts() {
 			if (ret.contactArr.length !== 0) {
 				ret.contactArr.forEach(element => {
 					if (element.main_image) {
-						chatArr += `<div class="container-fluid">
-										<form action="matched_profile" method="post" id=${element._id}>
-											<input type="hidden" name="unique" value="1" />
-											<input type="hidden" name="_id" value=${element._id} />
-											<div class="alert alert-primary alert-dismissible fade show ml-4 mr-4" role="alert">
-												<div class="media">
-													<a href="javascript: submitform('${element._id}')">
-														<img class="rounded mr-2 search-profile" src="data:image/*;base64,${element.main_image}" alt="profile_image"/>
-													</a>
-													<div class="media-body">
+						if (element.bio) {
+							chatArr += `<div class="container-fluid">
+											<form action="matched_profile" method="post" id=${element._id}>
+												<input type="hidden" name="unique" value="1" />
+												<input type="hidden" name="_id" value=${element._id} />
+												<div class="alert alert-primary alert-dismissible fade show ml-4 mr-4" role="alert">
+													<div class="media">
 														<a href="javascript: submitform('${element._id}')">
-															<strong class="custom-username">${element.username}</strong>
+															<img class="rounded mr-2 search-profile" src="data:image/*;base64,${element.main_image}" alt="profile_image"/>
 														</a>
-														<p class="search-profile-descrip mb-0">${element.bio}</p>
+														<div class="media-body">
+															<a href="javascript: submitform('${element._id}')">
+																<strong class="custom-username">${element.username}</strong>
+															</a>
+															<p class="search-profile-descrip mb-0">${element.bio}</p>
+														</div>
 													</div>
 												</div>
-											</div>
-										</form>
-									</div>`;
+											</form>
+										</div>`;
+						} else {
+							chatArr += `<div class="container-fluid">
+											<form action="matched_profile" method="post" id=${element._id}>
+												<input type="hidden" name="unique" value="1" />
+												<input type="hidden" name="_id" value=${element._id} />
+												<div class="alert alert-primary alert-dismissible fade show ml-4 mr-4" role="alert">
+													<div class="media">
+														<a href="javascript: submitform('${element._id}')">
+															<img class="rounded mr-2 search-profile" src="data:image/*;base64,${element.main_image}" alt="profile_image"/>
+														</a>
+														<div class="media-body">
+															<a href="javascript: submitform('${element._id}')">
+																<strong class="custom-username">${element.username}</strong>
+															</a>
+														</div>
+													</div>
+												</div>
+											</form>
+										</div>`;
+						}
 					} else {
-						chatArr += `<div class="container-fluid">
-										<form action="matched_profile" method="post" id=${element._id}>
-											<input type="hidden" name="unique" value="1" />
-											<input type="hidden" name="_id" value=${element._id} />
-											<div class="alert alert-primary alert-dismissible fade show ml-4 mr-4" role="alert">
-												<div class="media">
-													<a href="javascript: submitform('${element._id}')">
-														<img class="rounded mr-2 search-profile" src="user.jpg" alt="profile_image"/>
-													</a>
-													<div class="media-body">
+						if (element.bio) {
+							chatArr += `<div class="container-fluid">
+											<form action="matched_profile" method="post" id=${element._id}>
+												<input type="hidden" name="unique" value="1" />
+												<input type="hidden" name="_id" value=${element._id} />
+												<div class="alert alert-primary alert-dismissible fade show ml-4 mr-4" role="alert">
+													<div class="media">
 														<a href="javascript: submitform('${element._id}')">
-															<strong class="custom-username">${element.username}</strong>
+															<img class="rounded mr-2 search-profile" src="user.jpg" alt="profile_image"/>
 														</a>
-														<p class="search-profile-descrip mb-0">${element.bio}</p>
+														<div class="media-body">
+															<a href="javascript: submitform('${element._id}')">
+																<strong class="custom-username">${element.username}</strong>
+															</a>
+															<p class="search-profile-descrip mb-0">${element.bio}</p>
+														</div>
 													</div>
 												</div>
-											</div>
-										</form>
-									</div>`;
+											</form>
+										</div>`;
+						} else {
+							chatArr += `<div class="container-fluid">
+											<form action="matched_profile" method="post" id=${element._id}>
+												<input type="hidden" name="unique" value="1" />
+												<input type="hidden" name="_id" value=${element._id} />
+												<div class="alert alert-primary alert-dismissible fade show ml-4 mr-4" role="alert">
+													<div class="media">
+														<a href="javascript: submitform('${element._id}')">
+															<img class="rounded mr-2 search-profile" src="user.jpg" alt="profile_image"/>
+														</a>
+														<div class="media-body">
+															<a href="javascript: submitform('${element._id}')">
+																<strong class="custom-username">${element.username}</strong>
+															</a>
+														</div>
+													</div>
+												</div>
+											</form>
+										</div>`;
+						}
 					}
 				});
 				if (ret.contactArr.length == 1)

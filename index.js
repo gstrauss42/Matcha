@@ -22,17 +22,17 @@ http.listen(process.env.port, function(){
 });
 
 // Page Variables
-var index               = require('./pages/index.js')
-var home                = require('./pages/home.js')
+var index               = require('./pages/index.js');
+var home                = require('./pages/home.js');
 var login               = require('./pages/login.js');
 var create              = require('./pages/create.js');
 var forgot_password     = require('./pages/forgot_password.js');
 var reset_password      = require('./pages/reset_password.js');
-var user_confirm        = require('./pages/user_confirm.js')
+var user_confirm        = require('./pages/user_confirm.js');
 var logout              = require('./pages/logout.js');
 var profile             = require('./pages/profile.js');
 var update_profile      = require('./pages/update_profile.js');
-var email_update        = require('./pages/email_update.js')
+var email_update        = require('./pages/email_update.js');
 var add_tag             = require('./pages/add_tag.js');
 var upload_picture      = require('./pages/upload_picture.js');
 var notifications       = require('./pages/notifications.js');
@@ -49,8 +49,8 @@ var live_notifications  = require('./pages/live_notifications.js')
 * Page Routing
 */
 
-app.use('/', index)
-app.use('/home', home)
+app.use('/', index);
+app.use('/home', home);
 app.use('/login', login);
 app.use('/create', create);
 app.use('/chat', chat);

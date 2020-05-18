@@ -1,8 +1,8 @@
-var express = require('express');
-var router = express.Router();
-var Models = require('../models/models');
+const express = require('express');
+const router = express.Router();
+const Models = require('../models/models');
 const bodyParser = require('body-parser');
-var crypto = require('crypto');
+const crypto = require('crypto');
 
 function passwordCheck(password) {
     if (password.length >= 8) {
@@ -16,9 +16,9 @@ function passwordCheck(password) {
 }
 
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
-    if(req.body.password == req.body.repeat) {
+    if (req.body.password == req.body.repeat) {
         if (passwordCheck(req.body.password)) {
-            var pass = crypto.pbkdf2Sync(req.body.password, '100' ,1000, 64, `sha512`).toString(`hex`);
+            const pass = crypto.pbkdf2Sync(req.body.password, '100' ,1000, 64, `sha512`).toString(`hex`);
             Models.user.findOneAndUpdate({ verif : req.body.url }, { 'password' : pass }, function(err, doc){
                 if (err) {
                     console.log('could not reset password: ', err);

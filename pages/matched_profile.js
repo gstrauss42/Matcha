@@ -163,14 +163,16 @@ router.post('/', bodyParser.urlencoded({ extended: true }), function (req, res) 
          }
          // report fake user
          else if (req.body.fake == '') {
+            // reportContent = new Array;
             reportContent = { reportee : req.session.name, report : req.body.details };
+            // reportContent[1] = { report : req.body.details };
             Models.user.findOneAndUpdate({ '_id': req.body._id }, { $push: { reports: reportContent } }, function (err, doc) {
                if (err) {
                   console.log('could not report user: ', err);
                } else {
                   console.log('reported user: ', doc.username);
                }
-               Models.user.findOneAndUpdate({ email: req.session.name }, function (err, curr) {
+               Models.user.findOne({ email: req.session.name }, function (err, curr) {
                   connected = '0';
                   liked = '0';
                   if (curr.likes) {

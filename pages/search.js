@@ -16,7 +16,8 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
             // below is sorting, requires order to be either 1 or -1, and if no sort is selected then age or something is selected
             // var input = req.body.filter;
             //  Models.user.find({$query:{'isverified': 'true'}, $orderby:{ input : req.body.order}}, function(err,val){});
-                Models.user.find({'isverified': 'true'}, function(err, users) {
+                Models.user.find({'isverified': true},  { 'contacts' : 0, 'viewed' : 0, 'views' : 0, 'liked' : 0, 'likes' : 0, 'blocked' : 0, 'reports' : 0,
+                'password' : 0, 'status' : 0, 'image_one' : 0, 'image_two' : 0, 'image_three' : 0, 'image_four' : 0, 'verif' : 0}, function(err, users) {
                     let orderedArr = null;
                     if (err) {
                         console.log('Error finding users for search: ', err);
@@ -115,15 +116,9 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                                     }
                                     a = 0;
                                 }
-                                // // if theyre blocked
+                                // // if theyre blocked by me
                                 // if (currUser.blocked && currUser.blocked.includes(users[i].email)) {
                                 //     console.log('removed blocked users by me: ', users[i].username);
-                                //     users.splice(i, 1);
-                                //     break;
-                                // }
-                                // // if theyre reported  
-                                // if (currUser.reported && currUser.reported.contains(users[i].email)) {
-                                //     console.log('removed reported users by me: ', users[i].username);
                                 //     users.splice(i, 1);
                                 //     break;
                                 // }

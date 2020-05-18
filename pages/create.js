@@ -14,12 +14,12 @@ router.get('/', function (req, res) {
 
 function passwordCheck(password) {
    if (password.length >= 8) {
-       if (password.includes(' ') || password.includes('\t') || password.includes('\n') || password.includes('\s')) {
-           return false;
-       }
-       return true;
+      if (password.includes(' ') || password.includes('\t') || password.includes('\n') || password.includes('\s')) {
+         return false;
+      }
+      return true;
    } else {
-       return false;
+      return false;
    }
 }
 

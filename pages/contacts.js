@@ -21,7 +21,7 @@ router.get('/live_contacts', function(req, res){
             } else {
                 contacts = doc.contacts;
                 if (contacts.length !== 0) {
-                    models.user.find({ 'isverified' : true }, function (err, chatters){
+                    models.user.find({ 'isverified' : true }, { 'main_image' : 1, 'username' : 1, 'bio' : 1, 'email' : 1 },  function (err, chatters) {
                         let contArr = new Array;
                         if (err) {
                             console.log('error retrieving users - contacts: ', err);
@@ -29,7 +29,7 @@ router.get('/live_contacts', function(req, res){
                             chatters.forEach(element => {
                                 if (contacts.includes(element.email)) {
                                     contArr.push(element);
-                                    console.log('put new contact in resulting array: ', element.username, element.email);
+                                    console.log('put new contact in resulting array: ', element.username, element.email, element.bio);
                                 }
                             });
                         }

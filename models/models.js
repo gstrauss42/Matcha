@@ -35,7 +35,7 @@ var userSchema = new mongoose.Schema({
       type: String
    }],
    reports: [{
-      type: String
+      type: Object
    }],
    tags: [{
       type: String
@@ -49,9 +49,9 @@ var userSchema = new mongoose.Schema({
    blocked: [{
       type: String
    }],
-   old_notifications: [{      // whats this used for?
-      type: String
-   }],
+   // old_notifications: [{      // not in use
+   //    type: String
+   // }],
 });
 
 var notificationsSchema = new mongoose.Schema({

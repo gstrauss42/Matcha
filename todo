@@ -1,33 +1,28 @@
 Gabriel:
     CHAT:
-        - save the username in the chat message from the person who sent it.
+        - save the username in the chat message from the person who sent it - optional, will require a lot of changing
 
     NOTIFS:
         - (apparently theres a difference between someone who 'liked' your profile and someone who has 'liked back') - will investigate
-
-    TO REMOVE: (to make loading pages faster)
-        - fetching of notifications when entering notification page. Handled by ajax on 'live_notifications' route
 
     EXTRA:
         - make fields secure
 
 Jadon:
-    - search page - only fetch necessary info
-    - contacts undefined in bio
-    - test report feature
+    - searching by tags do not work
     - ordering
     - messages displaying in chronological order
 
 ERROR CODES:
-    - err 1: try again (incorrect login details or some such)
-    - err 2: access is denied please login first
-    - err 3: generic error
-    - err 4: check email for password reset link
-    - err 5: user already exists
-    - err 6: account isnt verified
-    - err 7: check email for verification link
-    - err 8: make sure both passwords are the same
-    - err 9: email already exists (updating profile)
-    - err 10: username taken (updating profile)
-    - err 11: make sure email address is a valid email
-    - err 12: unable to update password from link in email
+    - err 1: Please make sure your login details are correct. Try again!
+    - err 2: Access Denied! Please login first.
+    - err 3: Either we are having server downtime or something went wrong client side :/
+    - err 4: Please check your email for the link we have sent you.
+    - err 5: Please make sure you fill out all inputs and use a unique email address and username.
+    - err 6: Please make sure your account has been verified by using the link sent to your email.
+    - err 7: Please use the link in the email sent to you to verify your account.
+    - err 8: Please make sure both passwords are the same.
+    - err 9: This email address is already registered with a Matcha account.  (updating profile)
+    - err 10: This username is already registered with a Matcha account. (updating profile)
+    - err 11: Please make sure you fill out the email input.
+    - err 13: Your password must be at least 8 characters long and must not contain spaces.
