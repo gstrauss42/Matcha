@@ -1,24 +1,31 @@
-var express = require('express');
-var router = express.Router();
-var Models = require('../models/models');
+const express = require('express');
+const router = express.Router();
+const Models = require('../models/models');
 const bodyParser = require('body-parser');
-var app = express();
+const app = express();
 app.use(bodyParser.json());
 
-router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
+router.get('/', function(req, res) {
+    if(!req.session.name) {
+        res.render('oops', {error: '2'});
+    } else {
+        Models.user.findOne({email: req.session.name}, function(err, currUser) {
+            if (err) {
+                console.log('getting error finding user - search: ', err);
+            }
+            res.render('search', { 'tags': currUser.tags });
+        });
+    }
+});
+
+router.post('/fetchResults', bodyParser.urlencoded({extended: true}), function(req, res) {
     if(!req.session.name) {
         return(res.render('oops', {error: '2'}));
     }
     else {
-        console.log('search page requirements: ', req.body);
         Models.user.findOne({email: req.session.name}, function(err, currUser) {
-
-            // below is sorting, requires order to be either 1 or -1, and if no sort is selected then age or something is selected
-            // var input = req.body.filter;
-            //  Models.user.find({$query:{'isverified': 'true'}, $orderby:{ input : req.body.order}}, function(err,val){});
-                Models.user.find({'isverified': true},  { 'contacts' : 0, 'viewed' : 0, 'views' : 0, 'liked' : 0, 'likes' : 0, 'blocked' : 0, 'reports' : 0,
-                'password' : 0, 'status' : 0, 'image_one' : 0, 'image_two' : 0, 'image_three' : 0, 'image_four' : 0, 'verif' : 0}, function(err, users) {
-                    let orderedArr = null;
+            Models.user.find({'isverified': true},  { 'contacts' : 0, 'viewed' : 0, 'views' : 0, 'liked' : 0, 'likes' : 0, 'blocked' : 0, 'reports' : 0,
+            'password' : 0, 'status' : 0, 'image_one' : 0, 'image_two' : 0, 'image_three' : 0, 'image_four' : 0, 'verif' : 0}, function(err, users) {
                     if (err) {
                         console.log('Error finding users for search: ', err);
                     } else {
@@ -75,8 +82,8 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                                 }
                                 // REQUIRED FILTERING
                                 // automatic fame filter
-                                if (!req.body.advanced_search && !req.body.fame) {
-                                    if (users[i].fame !== users[i].fame) {
+                                if (!req.body.advanced_search && !req.body.rating) {
+                                    if (users[i].fame !== currUser.fame) {
                                         console.log('removed unequal fame rated users: ', users[i].username);
                                         users.splice(i, 1);
                                         break;
@@ -126,8 +133,8 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                                 // ADVANCED FILTERS BELOW
                                 if (req.body.advanced_search) {
                                     // advanced age gap search
-                                    let ageGap = req.body.age;
-                                    let fameGap = req.body.fame;
+                                    const ageGap = req.body.age;
+                                    const fameGap = req.body.rating;
                                     if (req.body.age && ((users[i].age > currUser.age + ageGap) || (users[i].age < currUser.age - ageGap))) {
                                         console.log('removed user not in age gap: ', users[i].username);
                                         users.splice(i, 1);
@@ -152,7 +159,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                                         a = 0;
                                     }
                                     // advanced fame gap search
-                                    if (req.body.fame && ((users[i].fame < users[i].fame - fameGap) || (users[i].fame > users[i].fame + fameGap))) {
+                                    if (req.body.rating && ((users[i].fame < currUser.fame - fameGap) || (users[i].fame > currUser.fame + fameGap))) {
                                         console.log('removed user not in fame gap: ', users[i].username);
                                         users.splice(i, 1);
                                         break;
@@ -175,75 +182,18 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                                 i++;
                             }
                         }
-                        // do ordering here
-                        if (req.body.filter && req.body.order) {
-                            if (req.body.filter == 'age') {
-                                orderedArr = users.sort(compareValues('age', req.body.order));
-                                console.log('sorted by age');
-                            } else if (req.body.filter == 'location') {
-                                orderedArr = users.sort(compareValues('location', req.body.order));
-                                console.log('sorted by location');
-                            } else if (req.body.filter == 'fame') {
-                                orderedArr = users.sort(compareValues('fame', req.body.order));
-                                console.log('sorted by fame');
-                            } else if (req.body.filter == 'tags') {
-                                orderedArr = users.sort(compareValues('tags', req.body.order));
-                                console.log('sorted by common tags');
-                            }
-                            // console logging new ordered array
-                            let j = 0;
-                            console.log('\n\nORDERED ARRAY BY: ' + req.body.filter + ' ' + req.body.order + '\n\n');
-                            while (orderedArr[j]) {
-                                console.log('user: ', orderedArr[j].age, orderedArr[j].location, orderedArr[j].fame, orderedArr[j].tags);
-                                j++;
-                            }
-                        }
                     }
+                    // return response
                     if (req.body.advanced_search) {
-                        if (orderedArr) {
-                            users = orderedArr;
-                            console.log('Advanced search has been ordered');
-                        }
-                        res.render('search', { 'tags': currUser.tags, 'advanced_matches': users });
+                        res.json({'advanced_matches': users });
                     }
                     else {
-                        if (orderedArr) {
-                            users = orderedArr;
-                            console.log('Search has been ordered');
-                        }
-                        res.render('search', { 'tags': currUser.tags, 'basic_matches': users });
+                        res.json({'basic_matches': users});
                     }
                 });
         });
     }
 });
-
-function compareValues(key, order) {
-
-    return function innerSort(a, b) {
-
-        if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-            return 0;
-        }
-        
-        let propertyOne = (typeof a[key] === 'string') ? a[key].toUpperCase() : a[key];
-        let propertyTwo = (typeof b[key] === 'string') ? b[key].toUpperCase() : b[key];
-        let comparison = 0;
-        if (key == 'location') {
-            propertyOne = a[key].split(',').trim();
-            propertyTwo = b[key].split(',').trim();
-            console.log('comparing two locations: ', propertyOne, propertyTwo);
-        }
-
-        if (propertyOne > propertyTwo) {
-            comparison = 1;
-        } else if (propertyOne < propertyTwo) {
-            comparison = -1;
-        }
-
-        return((order === 'desc') ? (comparison * -1) : comparison);
-    };
-}
 
 //export this router to use in our index.js
 module.exports = router;
