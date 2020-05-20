@@ -9,8 +9,6 @@ Gabriel:
         - make fields secure
 
 Jadon:
-    - get advanced searches working with post request
-    - make filter string fro user msgs
     - ordering in ajax file
     - test search by tags thoroughly
     - messages displaying in chronological order
