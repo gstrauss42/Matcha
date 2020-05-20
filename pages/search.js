@@ -82,20 +82,19 @@ router.post('/fetchResults', bodyParser.urlencoded({extended: true}), function(r
                                     }
                                 }
                                 // REQUIRED FILTERING
-                                // automatic fame filter
+                                // automatic fame filter - removes users with a rating bigger than yours
                                 if (!req.body.advanced_search && !req.body.rating) {
-                                    if (users[i].fame !== currUser.fame) {
-                                        console.log('removed unequal fame rated users: ', users[i].username);
+                                    if (users[i].fame > currUser.fame) {
+                                        console.log('removed larger fame rated users: ', users[i].username);
                                         users.splice(i, 1);
                                         break;
                                     }
                                 }
                                 // automatic location filter
                                 if (!req.body.advanced_search && !req.body.location) {
-                                    if (users[i].location && currUser.location) {
-                                        let city = users[i].location.split(',');
+                                    if (users[i].location) {
                                         let myCity = currUser.location.split(',');
-                                        if (city[0].trim() !== myCity[0].trim()) {
+                                        if (!users[i].location.includes(myCity[0].trim())) {
                                             console.log('removed users with a different city: ', users[i].username);
                                             users.splice(i, 1);
                                             break;
@@ -106,23 +105,21 @@ router.post('/fetchResults', bodyParser.urlencoded({extended: true}), function(r
                                         break;
                                     }
                                 }
-                                // automatic tag filter for max tags
+                                // automatic tag filter - removes user that doesn't have at least one tag in common
                                 if (!req.body.advanced_search && !req.body.color) {
+                                    let match = false;
                                     let a = 0;
                                     while (currUser.tags[a]) {
-                                        if (users[i].tags && users[i].tags.includes(currUser.tags[a]))
-                                            a++;
-                                        else {
-                                            console.log('removed user with non max tags: ', users[i].username);
-                                            users.splice(i, 1);
-                                            break;
+                                        if (users[i].tags && users[i].tags.includes(currUser.tags[a])) {
+                                            match = true;
                                         }
+                                        a++;
                                     }
-                                    if (currUser.tags[a]) {
-                                        a = 0;
+                                    if (match !== true) {
+                                        console.log('removed user with not one matched tag: ', users[i].username);
+                                        users.splice(i, 1);
                                         break;
                                     }
-                                    a = 0;
                                 }
                                 // // if theyre blocked by me
                                 // if (currUser.blocked && currUser.blocked.includes(users[i].email)) {
@@ -133,7 +130,7 @@ router.post('/fetchResults', bodyParser.urlencoded({extended: true}), function(r
 
                                 // ADVANCED FILTERS BELOW
                                 if (req.body.advanced_search) {
-                                    // advanced age gap search
+                                    // advanced age gap search - user age must be within the determined gap, bigger or smaller
                                     const ageGap = req.body.age;
                                     const fameGap = req.body.rating;
                                     if (req.body.age && ((users[i].age > currUser.age + ageGap) || (users[i].age < currUser.age - ageGap))) {
@@ -141,7 +138,27 @@ router.post('/fetchResults', bodyParser.urlencoded({extended: true}), function(r
                                         users.splice(i, 1);
                                         break;
                                     }
-                                    // advanced tag search
+                                    // advanced fame gap search - user fame must be within the determined gap, bigger or smaller
+                                    if (req.body.rating && ((users[i].fame < currUser.fame - fameGap) || (users[i].fame > currUser.fame + fameGap))) {
+                                        console.log('removed user not in fame gap: ', users[i].username);
+                                        users.splice(i, 1);
+                                        break;
+                                    }
+                                    // advanced location search - users location must contain the sent string
+                                    if (req.body.location) {
+                                        if (users[i].location) {
+                                            if (!users[i].location.includes(req.body.location)) {
+                                                console.log('removed users with a different location: ', users[i].username);
+                                                users.splice(i, 1);
+                                                break;
+                                            }
+                                        } else {
+                                            console.log('removed users with no location: ', users[i].username);
+                                            users.splice(i, 1);
+                                            break;
+                                        }
+                                    }
+                                    // advanced tag search - must match all tags that were sent in array
                                     if (req.body.color) {
                                         let a = 0;
                                         while (req.body.color[a]) {
@@ -158,26 +175,6 @@ router.post('/fetchResults', bodyParser.urlencoded({extended: true}), function(r
                                             break;
                                         }
                                         a = 0;
-                                    }
-                                    // advanced fame gap search
-                                    if (req.body.rating && ((users[i].fame < currUser.fame - fameGap) || (users[i].fame > currUser.fame + fameGap))) {
-                                        console.log('removed user not in fame gap: ', users[i].username);
-                                        users.splice(i, 1);
-                                        break;
-                                    }
-                                    // advanced location search
-                                    if (req.body.location) {
-                                        if (users[i].location) {
-                                            if (!users[i].location.includes(req.body.location)) {
-                                                console.log('removed users with a different location: ', users[i].username);
-                                                users.splice(i, 1);
-                                                break;
-                                            }
-                                        } else {
-                                            console.log('removed users with no location: ', users[i].username);
-                                            users.splice(i, 1);
-                                            break;
-                                        }
                                     }
                                 }
                                 i++;

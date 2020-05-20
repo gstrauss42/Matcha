@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', (event)  => {
-	loadStr = `<h5 class=\"ml-4\">Loading suggestions...</h5>`;
+	loadStr = `<h5 class=\"ml-4 mb-3\">Loading suggestions...</h5>`;
 	$('#filterStr').html(loadStr);
 	fetch_suggestions();
 });
@@ -98,18 +98,18 @@ function fetch_suggestions() {
 					}
 				});
 				if (ret.basic_matches.length > 1)
-					loadStr = `<h6 class=\"ml-4\">Showing ${ret.basic_matches.length} results.</h6>`;
+					loadStr = `<p class=\"ml-4 mb-3\">Showing ${ret.basic_matches.length} suggestions</p>`;
 				else
-					loadStr = `<h6 class=\"ml-4\">Showing ${ret.basic_matches.length} result.</h6>`;
+					loadStr = `<p class=\"ml-4 mb-3\">Showing ${ret.basic_matches.length} suggestions</p>`;
 				$('#filterStr').html(loadStr);
 				$('#searchResultsBox').html(resultsArr);
 			} else {
-				loadStr = `<h5 class=\"ml-4\">No suggestions at this moment! Try an advanced search.</h5>`;
+				loadStr = `<h6 class=\"ml-4 mb-3\">No suggestions at this moment! Try an advanced search.</h6>`;
 				$('#filterStr').html(loadStr);
 			}
 		},
 		error: function () {
-			loadStr = `<h5 class=\"ml-4\">Error loading suggestions.</h5>`;
+			loadStr = `<h5 class=\"ml-4 mb-3\">Error loading suggestions!</h5>`;
 			$('#filterStr').html(loadStr);
 		}
 	});
@@ -167,7 +167,6 @@ function fetch_advanced() {
 		url: '/search/fetchResults',
 		data: searchObj,
 		success: function (ret) {
-			console.log('results: ', ret.advanced_matches); // debug
 			globalRes = ret.advanced_matches;
 			globalTags = ret.tags;
 			setVariables();
@@ -250,16 +249,15 @@ function fetch_advanced() {
 					}
 				});
 				loadStr = buildCustomMsg(ret.advanced_matches.length, tagArr, ratingInput, ageInput, locationInput);
-				// loadStr = `<h6 class=\"ml-4\">Showing ${ret.advanced_matches.length} result.</h6>`;
 				$('#filterStr').html(loadStr);
 				$('#searchResultsBox').html(resultsArr);
 			} else {
-				loadStr = `<h6 class=\"ml-4\">No results at this moment!</h6>`;
+				loadStr = `<h6 class=\"ml-4 mb-3\">No results at this moment!</h6>`;
 				$('#filterStr').html(loadStr);
 			}
 		},
 		error: function () {
-			loadStr = `<h5 class=\"ml-4\">Error loading results.</h5>`;
+			loadStr = `<h5 class=\"ml-4 mb-3\">Error loading results!</h5>`;
 			$('#filterStr').html(loadStr);
 		}
 	});
@@ -268,30 +266,30 @@ function fetch_advanced() {
 function buildCustomMsg(resCount, tags, rating, age, location) {
 	let userMsg;
 	if (resCount > 1) {
-		userMsg = `<h6 class=\"ml-4\">Showing ${resCount} result for `;
+		userMsg = `<p class=\"ml-4 mb-3\">Showing ${resCount} results for `;
 	} else {
-		userMsg = `<h6 class=\"ml-4\">Showing ${resCount} results for `;
+		userMsg = `<p class=\"ml-4 mb-3\">Showing ${resCount} result for `;
 	}
 	if (age !== '') {
-		userMsg += `age = '${age}' `;
+		userMsg += `age gap = <b>'${age}'</b> `;
 	}
 	if (location !== '') {
-		userMsg += `location = '${location}' `;
+		userMsg += `location = <b>'${location}'</b> `;
 	}
 	if (rating !== '') {
-		userMsg += `fame rating = '${rating}' `;
+		userMsg += `fame rating gap = <b>'${rating}'</b> `;
 	}
 	if (tags.length !== 0) {
 		let i = 0;
 		while (tags[i]) {
 			if (i == 0)
-				userMsg += `tags = '${tags[i]}' `;
+				userMsg += `tags = <b>'${tags[i]}'</b> `;
 			else
-				userMsg += `'${tags[i]}' `;
+				userMsg += `<b>'${tags[i]}'</b> `;
 			i++;
 		}
 	}
-	userMsg += '</h6>';
+	userMsg += '</p>';
 	return userMsg;
 }
 
