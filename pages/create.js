@@ -3,9 +3,9 @@ var router = express.Router();
 const app = express()
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
-var Model = require("../models/models");
+var Model = require('../models/models');
 var crypto = require('crypto');
-var randomstring = require("randomstring");
+var randomstring = require('randomstring');
 var nodeMailer = require('nodemailer');
 
 router.get('/', function (req, res) {
@@ -47,15 +47,15 @@ router.post('/create', bodyParser.urlencoded({extended: true}), function(req, re
                prefferances: req.body.preferences,
                verif: safe,
                fame: 0,
-               blocked : "",
+               blocked : [],
                location_status : '1'
             });
    
             var present_time = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
             var _notif = new Model.notifications ({
                email: req.body.email,
-               name: "Welcome",
-               content: "Welcome to matcha, may the love be with you",
+               name: 'Welcome',
+               content: 'Welcome to matcha, may the love be with you',
                time: present_time,
                read: false
             })
@@ -63,7 +63,7 @@ router.post('/create', bodyParser.urlencoded({extended: true}), function(req, re
                if(err)
                   console.log('notif save error: ', err);
                else
-                  console.log("updated notifications");
+                  console.log('updated notifications');
             });
             _user.save(function(err){
                if(err)
@@ -91,7 +91,7 @@ router.post('/create', bodyParser.urlencoded({extended: true}), function(req, re
                      }
                   });
                   res.render('oops', {error: '7'})
-                  console.log("created account");
+                  console.log('created account');
                }
             });
          } else {

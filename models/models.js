@@ -48,10 +48,7 @@ var userSchema = new mongoose.Schema({
    }],
    blocked: [{
       type: String
-   }],
-   // old_notifications: [{      // not in use
-   //    type: String
-   // }],
+   }]
 });
 
 var notificationsSchema = new mongoose.Schema({

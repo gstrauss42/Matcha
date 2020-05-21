@@ -4,5 +4,6 @@ Gabriel:
     - make fields secure
 
 Jadon:
+    - make profile stats with ajax
     - filtering in ajax search file
     - messages to display in chronological order
