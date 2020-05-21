@@ -24,6 +24,9 @@ router.post('/fetchResults', bodyParser.urlencoded({extended: true}), function(r
     }
     else {
         console.log('advanced search param: ', req.body);
+        if (req.body.advanced_search == 1 && !req.body.age && !req.body.location && !req.body.color && !req.body.rating) {
+            req.body.advanced_search = null;
+        }
         Models.user.findOne({email: req.session.name}, function(err, currUser) {
             Models.user.find({'isverified': true},  { 'contacts' : 0, 'viewed' : 0, 'views' : 0, 'liked' : 0, 'likes' : 0, 'blocked' : 0, 'reports' : 0,
             'password' : 0, 'status' : 0, 'image_one' : 0, 'image_two' : 0, 'image_three' : 0, 'image_four' : 0, 'verif' : 0}, function(err, users) {
@@ -181,13 +184,7 @@ router.post('/fetchResults', bodyParser.urlencoded({extended: true}), function(r
                             }
                         }
                     }
-                    // return response
-                    if (req.body.advanced_search) {
-                        res.json({ 'advanced_matches': users, 'tags' : currUser.tags });
-                    }
-                    else {
-                        res.json({ 'basic_matches': users, 'tags' : currUser.tags });
-                    }
+                    res.json({ 'matches': users, 'tags' : currUser.tags });
                 });
         });
     }

@@ -1,14 +1,8 @@
 Gabriel:
-    CHAT:
-        - save the username in the chat message from the person who sent it - optional, will require a lot of changing
-
-    NOTIFS:
-        - (apparently theres a difference between someone who 'liked' your profile and someone who has 'liked back') - will investigate
-
-    EXTRA:
-        - make fields secure
+    - save the username in the chat message from the person who sent it - optional, will require a lot of changing
+    - (apparently theres a difference between someone who 'liked' your profile and someone who has 'liked back') - will investigate
+    - make fields secure
 
 Jadon:
-    - ordering in ajax search file
     - filtering in ajax search file
     - messages to display in chronological order
