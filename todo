@@ -1,8 +1,5 @@
 Gabriel:
-    - save the username in the chat message from the person who sent it - optional, will require a lot of changing
-    - (apparently theres a difference between someone who 'liked' your profile and someone who has 'liked back') - will investigate
     - make fields secure
 
 Jadon:
     - make profile stats with ajax
-    - messages to display in chronological order

@@ -3,6 +3,17 @@ const models = require('../models/models');
 const express = require('express');
 const router = express.Router();
 
+router.post('/data', bodyParser.urlencoded({extended: true}), (req, res) => {
+  models.messages.find({'from': req.session.name, 'to': req.body.email}, function(err, sent){
+      models.messages.find({'to': req.session.name, 'from': req.body.email}, function(err, received){
+          let thing = new Array;
+          thing.splice(0, 0, sent);
+          thing.splice(1,0, received);
+          res.json(thing);
+      });
+  });
+});
+
 // rendering chat page
 router.post('/', bodyParser.urlencoded({ extended: true }), function (req, res) {
   if (!req.session.name)
@@ -15,12 +26,14 @@ router.post('/', bodyParser.urlencoded({ extended: true }), function (req, res) 
 
         if (req.body.sendMsg == 'sendMessage') {
           // save message to chat
-          const present_time = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+          let roughDate = new Date();
+          let newDate = roughDate.toLocaleTimeString() + ' ' + roughDate.toLocaleDateString();
           const message = new models.messages({
             message: req.body.message,
             to: chatter.email,
             from: doc.email,
-            time: present_time,
+            time: newDate,
+            sort_time: roughDate.getTime(),
             read: false
           });
           message.save(function (err) {
@@ -54,7 +67,7 @@ router.post('/', bodyParser.urlencoded({ extended: true }), function (req, res) 
             email: chatter.email,
             name: 'new message from: ' + doc.username,
             content: req.body.message,
-            time: present_time,
+            time: newDate,
             read: false
           });
           notif.save(function (err) {

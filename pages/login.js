@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
-var Models = require('../models/models');
-var crypto = require('crypto');
+const Models = require('../models/models');
+const crypto = require('crypto');
 const request = require('request');
 
 router.get('/', (req,res) => {

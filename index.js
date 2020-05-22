@@ -42,7 +42,6 @@ var matched_profile     = require('./pages/matched_profile.js');
 var chat                = require('./pages/chat.js');
 var remove_tag          = require('./pages/remove_tag.js');
 var oops                = require('./pages/oops.js');
-var data                = require('./pages/data.js');
 var live_notifications  = require('./pages/live_notifications.js')
 
 /*
@@ -66,7 +65,6 @@ app.use('/update_profile', update_profile);
 app.use('/reset_password', reset_password);
 app.use('/upload_picture', upload_picture);
 app.use('/check/:var_words', email_update); // this is not in use
-app.use('/data', data);
 app.use('/live_notifications', live_notifications);
 app.use('/:var_words', user_confirm);
 app.use('/remove_tag', remove_tag);

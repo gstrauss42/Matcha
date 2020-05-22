@@ -64,6 +64,7 @@ var messagesSchema = new mongoose.Schema({
    to: String,
    from: String,
    time: String,
+   sort_time: Number,
    read: Boolean
 });
 

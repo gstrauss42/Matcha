@@ -122,7 +122,7 @@ function buildCustomMsg(resCount, tags, rating, age, location) {
 
 	// if no input was given but advanced match btn was pressed, else calc msg
 	if (tags.length == 0 && rating == '' && age == '' && location == '') {
-		if (resCount > 1) {
+		if (resCount > 1 || resCount == 0) {
 			userMsg = `<p class=\"ml-4 mb-3\">Showing ${resCount} results`;
 		} else {
 			userMsg = `<p class=\"ml-4 mb-3\">Showing ${resCount} result`;

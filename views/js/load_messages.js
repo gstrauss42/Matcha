@@ -31,25 +31,33 @@ function sendMsgFunc() {
 function load() {
 	const elementSlct = document.getElementById('personEmail').value;
 	// const elementSlct = document.getElementById('personUsername').value;
-	let from_arr = new Array;
-	let to_arr = new Array;
+	let resArr = new Array;
+	let merge = new Array;
 	let send = { email: elementSlct };
 	// let send = { username: elementSlct };
 
 	$.ajax({
 		type: 'POST',
-		url: '/data',
+		url: '/chat/data',
 		data: send,
 		success: function(data) {
 			if (data[1].length !== 0 || data[0].length !== 0) {
-				data[1].forEach(element => {
-					from_arr += `<div id=\"text-receive\" class=\"text-left\"><p class=\"mb-0\">${element.message}</p><p class=\"msgInfo\">from ${element.from} at ${element.time}</p></div>`;
+
+				// merge two arrays and sort by sent time
+				merge = data[0].concat(data[1]);
+				merge.sort( function (a, b) {
+					return a.sort_time - b.sort_time;
 				});
-				$('#text-r').html(from_arr);
-				data[0].forEach(element => {
-					to_arr += `<div id=\"text-send\" class=\"text-right\"><p class=\"mb-0\">${element.message}</p><p class=\"msgInfo\">from ${element.from} at ${element.time}</p></div>`;
+
+				// create chat array in order and by user
+				merge.forEach(element => {
+					if (element.from == elementSlct) {
+						resArr += `<div id=\"text-receive\" class=\"text-left\"><p class=\"mb-0\">${element.message}</p><p class=\"msgInfo\">from ${element.from} at ${element.time}</p></div>`;
+					} else {
+						resArr += `<div id=\"text-send\" class=\"text-right\"><p class=\"mb-0\">${element.message}</p><p class=\"msgInfo\">from ${element.from} at ${element.time}</p></div>`;
+					}
 				});
-				$('#text-s').html(to_arr);
+				$('#messages').html(resArr);
 				let noRes = '';
 				$('#text-none').html(noRes);
 			} else {
