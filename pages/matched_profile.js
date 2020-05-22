@@ -75,12 +75,13 @@ router.post('/', bodyParser.urlencoded({ extended: true }), function (req, res) 
                      }
                   });
                   // like notification
-                  var present_time = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+                  let roughDate = new Date();
+                  let newDate = roughDate.toLocaleTimeString() + ' ' + roughDate.toLocaleDateString();
                   var _notif = new Models.notifications({
                      email: doc.email,
                      name: 'liked',
                      content: 'you where just liked by ' + ret.username,
-                     time: present_time,
+                     time: newDate,
                      read: false
                   });
                   _notif.save(function (err) {
@@ -146,12 +147,13 @@ router.post('/', bodyParser.urlencoded({ extended: true }), function (req, res) 
                      }
                   });
                   // unlike notification
-                  var present_time = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+                  let roughDate = new Date();
+                  let newDate = roughDate.toLocaleTimeString() + ' ' + roughDate.toLocaleDateString();
                   var _notif = new Models.notifications({
                      email: doc.email,
                      name: 'unliked',
                      content: 'you where just unliked by ' + ret.username,
-                     time: present_time,
+                     time: newDate,
                      read: false
                   });
                   _notif.save(function (err) {
@@ -382,12 +384,13 @@ router.post('/', bodyParser.urlencoded({ extended: true }), function (req, res) 
                      console.log('updated the view history')
                });
                // notification of viewed profile
-               var present_time = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+               let roughDate = new Date();
+               let newDate = roughDate.toLocaleTimeString() + ' ' + roughDate.toLocaleDateString();
                var _notif = new Models.notifications({
                   email: doc.email,
                   name: 'profile view',
                   content: check.username + ' viewed your profile!',
-                  time: present_time,
+                  time: newDate,
                   read: false
                });
                _notif.save(function (err) {
