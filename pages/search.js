@@ -10,8 +10,7 @@ router.get('/', function(req, res) {
         res.render('oops', {error: '2'});
     } else {
         // render search page with current users tags (need them for the ui)
-        Models.user.findOne({email: req.session.name}, { 'contacts' : 0, 'viewed' : 0, 'views' : 0, 'liked' : 0, 'likes' : 0, 'blocked' : 0, 'reports' : 0,
-        'password' : 0, 'status' : 0, 'image_one' : 0, 'image_two' : 0, 'image_three' : 0, 'image_four' : 0, 'verif' : 0}, function(err, currUser) {
+        Models.user.findOne({email : req.session.name}, { tags : 1 }, function(err, currUser) {
             if (err) {
                 console.log('getting error finding user - search: ', err);
             }
@@ -36,10 +35,10 @@ router.post('/fetchResults', bodyParser.urlencoded({extended: true}), function(r
 
         // find current user to compare with then find all other verified users to compare with
         Models.user.findOne({email: req.session.name}, { 'contacts' : 0, 'viewed' : 0, 'views' : 0, 'liked' : 0, 'likes' : 0, 'blocked' : 0, 'reports' : 0,
-        'password' : 0, 'status' : 0, 'image_one' : 0, 'image_two' : 0, 'image_three' : 0, 'image_four' : 0, 'verif' : 0}, function(err, currUser) {
+        'password' : 0, 'status' : 0, 'image_one' : 0, 'image_two' : 0, 'image_three' : 0, 'image_four' : 0, 'verif' : 0, 'verif_email' : 0}, function(err, currUser) {
 
             Models.user.find({isverified: true},  { 'contacts' : 0, 'viewed' : 0, 'views' : 0, 'liked' : 0, 'likes' : 0, 'blocked' : 0, 'reports' : 0,
-            'password' : 0, 'status' : 0, 'image_one' : 0, 'image_two' : 0, 'image_three' : 0, 'image_four' : 0, 'verif' : 0}, function(err, users) {
+            'password' : 0, 'status' : 0, 'image_one' : 0, 'image_two' : 0, 'image_three' : 0, 'image_four' : 0, 'verif' : 0, 'verif_email' : 0}, function(err, users) {
     
                 if (err) {
                         console.log('Error finding users for search: ', err);

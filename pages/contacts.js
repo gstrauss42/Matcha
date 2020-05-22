@@ -14,14 +14,14 @@ router.get('/live_contacts', function(req, res){
     if(!req.session.name)
         res.render('oops', {error : '2'});
     else {
-        models.user.findOne({ 'email' : req.session.name }, function (err, doc){
+        models.user.findOne({ email : req.session.name }, { contacts : 1 },  function (err, doc){
             if (err) {
                 console.log('error retrieving current user details - contacts: ', err);
                 res.render('oop', {error : '3'});
             } else {
                 contacts = doc.contacts;
                 if (contacts.length !== 0) {
-                    models.user.find({ 'isverified' : true }, { 'main_image' : 1, 'username' : 1, 'bio' : 1, 'email' : 1 },  function (err, chatters) {
+                    models.user.find({ isverified : true }, { main_image : 1, username : 1, bio : 1, email : 1 },  function (err, chatters) {
                         let contArr = new Array;
                         if (err) {
                             console.log('error retrieving users - contacts: ', err);

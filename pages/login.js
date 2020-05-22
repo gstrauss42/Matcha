@@ -12,12 +12,12 @@ router.get('/', (req,res) => {
 })
 
 router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
-   Models.user.findOne({ 'username': req.body.username }, function(err, user) {
-      if(user)
-      {
-         var safe = crypto.pbkdf2Sync(req.body.password, '100' ,1000, 64, `sha512`).toString(`hex`);
 
-            if(user.password == safe && user.isverified == 1)
+   Models.user.findOne({ username: req.body.username }, { username : 1, password : 1, isverified : 1, email : 1 }, function(err, user) {
+      if (user) {
+         const safe = crypto.pbkdf2Sync(req.body.password, '100' ,1000, 64, `sha512`).toString(`hex`);
+
+            if (user.password == safe && user.isverified == true)
             {
                // ip tracking
                request(`https://ipinfo.io?token=${process.env.TOKEN}`, { json: true }, (err, res, body) => {
@@ -25,8 +25,9 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                      return console.log('ipinfo.io error: ', err);
                   } else {
                      let ipLocat = `${body.city}, ${body.region}, ${body.country}, ${body.postal}`;
-                     console.log('ipLocat: ', ipLocat); //debug
-                     Models.user.findOneAndUpdate({ 'username' : req.body.username }, { 'location' : ipLocat }, function(err, _update){
+                     console.log('ipLocat: ', ipLocat);
+
+                     Models.user.findOneAndUpdate({ username : req.body.username }, { location : ipLocat }, function(err, _update){
                         if (err) {
                            console.log('error updating location');
                         } else {
@@ -36,7 +37,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                   }
                });
                // online status
-               Models.user.findOneAndUpdate({ 'username' : req.body.username }, { 'status' : 'online' }, function(err, _update){
+               Models.user.findOneAndUpdate({ username : req.body.username }, { status : 'online' }, function(err, _update){
                   if (err) {
                      console.log('error updating status');
                   } else {
@@ -47,7 +48,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                req.session.name = user.email;
                res.redirect('/profile');
             }
-            else if (user.isverified !== 1)
+            else if (user.isverified !== true)
                res.render('oops', {error: '6'})
             else
                res.render('oops', {error: '1'});

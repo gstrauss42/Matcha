@@ -3,8 +3,11 @@ const router = express.Router();
 const Models = require('../models/models');
 
 router.get('/', function(req, res){
+
    const check = req.originalUrl.substring(1);
-   Models.user.findOne({verif : check, isverified : 'true'}, function(err, doc) {
+
+   Models.user.findOne({verif : check, isverified : 'true'}, { email : 1 }, function(err, doc) {
+   
       if (err) {
          console.log('error finding verif key - user confirm: ', err);
       } else if (doc) {
@@ -13,6 +16,7 @@ router.get('/', function(req, res){
       } else {
          // insert user check for forgot password link
          console.log('user confirm route - verify link');
+
          Models.user.findOneAndUpdate({ verif : check }, { $set : { isverified: 'true'}}, function(err, doc) {
             if (doc && doc.email) {
                res.render('login', {url: check});

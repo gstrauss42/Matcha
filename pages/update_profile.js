@@ -27,9 +27,7 @@ router.post('/update_password', bodyParser.urlencoded({extended: true}), functio
                 const pass = crypto.pbkdf2Sync(req.body.pass, '100', 1000, 64, `sha512`).toString(`hex`);
                 Models.user.findOneAndUpdate({ email : req.session.name }, { 'password' : pass }, function(err, _update) {
                     console.log('updated password - profile update');
-                    Models.user.findOne({email : req.session.name}, function(err, ret){
-                        res.redirect('/profile');
-                    });
+                    res.redirect('/profile');
                 });
             } else {
                 res.render('oops', {error: '13'});
@@ -46,13 +44,13 @@ router.post('/update_email', bodyParser.urlencoded({extended: true}), function(r
     }
     else if (req.body.email)
     {
-        Models.user.findOne({email : req.body.email}, function(err, yes){
+        Models.user.findOne({email : req.body.email}, { email : 1 }, function(err, yes){
             if (err) {
-                console.log('Error finding User  - email and profile update: ', err);
+                console.log('Error finding User  - email profile update: ', err);
                 res.render('oops', {error: '3'});
             }
             else if (yes) {
-                console.log('existing user found - profile update');
+                console.log('existing user found - profile email update');
                 res.render('oops', {error: '9'});
             } else if (yes == null) {
                 var safe = crypto.pbkdf2Sync(randomstring.generate(), '100' ,1000, 64, `sha512`).toString(`hex`);
@@ -156,9 +154,7 @@ router.post('/', bodyParser.urlencoded({extended: true}), function(req, res){
                 console.log('updated prefferaces - profile update');
             });
         }
-        Models.user.findOne({email : req.session.name}, function(err, ret){
-            res.redirect('profile');
-        });
+        res.redirect('/profile');
     }
 });
 

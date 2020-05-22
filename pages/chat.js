@@ -9,8 +9,9 @@ router.post('/', bodyParser.urlencoded({ extended: true }), function (req, res) 
     res.render('oops', { error: '2' });
   else {
     console.log('chat page req: ', req.body);
-    models.user.findOne({ 'email': req.session.name }, function (err, doc) {
-      models.user.findOne({ '_id': req.body.id }, function (err, chatter) {
+
+    models.user.findOne({ email : req.session.name }, { username : 1, email : 1 }, function (err, doc) {
+      models.user.findOne({ _id : req.body.id }, { username : 1, email : 1 }, function (err, chatter) {
 
         if (req.body.sendMsg == 'sendMessage') {
           // save message to chat
@@ -32,7 +33,7 @@ router.post('/', bodyParser.urlencoded({ extended: true }), function (req, res) 
           res.render('chat', { 'username': chatter.username, 'id': chatter._id, 'email': chatter.email });
 
           // finding current user and putting friend user's email in contacts
-          models.user.findOneAndUpdate({ 'email': req.session.name }, { $addToSet: { 'contacts': chatter.email }}, function (err, contacts) {
+          models.user.findOneAndUpdate({ 'email': req.session.name }, { $addToSet: { 'contacts': chatter.email } }, function (err, contacts) {
             if (err) {
               console.log('could not update logged in user contacts - chats: ', err);
             } else {
@@ -40,7 +41,7 @@ router.post('/', bodyParser.urlencoded({ extended: true }), function (req, res) 
             }
           });
           // finding friend user and putting current user's email in contacts
-          models.user.findOneAndUpdate({ '_id': req.body.id }, { $addToSet: { 'contacts': doc.email }}, function (err, temp) {
+          models.user.findOneAndUpdate({ '_id': req.body.id }, { $addToSet: { 'contacts': doc.email } }, function (err, temp) {
             if (err) {
               console.log('could not update chatters contacts - chats: ', err);
             } else {

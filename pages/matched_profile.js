@@ -4,9 +4,11 @@ const Models = require('../models/models');
 const bodyParser = require('body-parser');
 
 router.post('/', bodyParser.urlencoded({ extended: true }), function (req, res) {
+
    if (!req.session.name) {
       return (res.render('oops', { error: '2' }));
    } else {
+      // removes images from uload directory when someone accesses this page
       fs.readdir(process.env.path, function (err, items) {
          items.forEach(element => {
             fs.unlink(process.env.path + '/' + element)
@@ -15,7 +17,7 @@ router.post('/', bodyParser.urlencoded({ extended: true }), function (req, res) 
       if (req.body.unique !== '1') {
          // liking user
          if (req.body.like == '') {
-            Models.user.findOne({ '_id': req.body._id }, function (err, doc) {
+            Models.user.findOne({ '_id': req.body._id }, { password : 0, isverified : 0, contacts : 0, reports : 0, blocked : 0, verif : 0, verif_email : 0}, function (err, doc) {
                // fame increment
                rating = doc.fame + 1;
                Models.user.findOneAndUpdate({ '_id': req.body._id }, { fame: rating }, function (err, temp) {
@@ -92,7 +94,7 @@ router.post('/', bodyParser.urlencoded({ extended: true }), function (req, res) 
          }
          // unlike user
          else if (req.body.unlike == '') {
-            Models.user.findOne({ '_id': req.body._id }, function (err, doc) {
+            Models.user.findOne({ '_id': req.body._id }, { password : 0, isverified : 0, contacts : 0, reports : 0, blocked : 0, verif : 0, verif_email : 0}, function (err, doc) {
                // fame decrement
                if (doc.fame >= 1) {
                   rating = doc.fame - 1;
@@ -163,16 +165,14 @@ router.post('/', bodyParser.urlencoded({ extended: true }), function (req, res) 
          }
          // report fake user
          else if (req.body.fake == '') {
-            // reportContent = new Array;
             reportContent = { reportee : req.session.name, report : req.body.details };
-            // reportContent[1] = { report : req.body.details };
             Models.user.findOneAndUpdate({ '_id': req.body._id }, { $push: { reports: reportContent } }, function (err, doc) {
                if (err) {
                   console.log('could not report user: ', err);
                } else {
                   console.log('reported user: ', doc.username);
                }
-               Models.user.findOne({ email: req.session.name }, function (err, curr) {
+               Models.user.findOne({ email: req.session.name }, { likes : 1, username : 1 }, function (err, curr) {
                   connected = '0';
                   liked = '0';
                   if (curr.likes) {
@@ -210,16 +210,27 @@ router.post('/', bodyParser.urlencoded({ extended: true }), function (req, res) 
          }
          // block user
          else if (req.body.block == '') {
-            Models.user.findOne({ '_id': req.body._id }, function (err, doc) {
+            Models.user.findOne({ '_id': req.body._id }, { password : 0, isverified : 0, contacts : 0, reports : 0, blocked : 0, verif : 0, verif_email : 0}, function (err, doc) {
                Models.user.findOneAndUpdate({ email: req.session.name }, { $addToSet: { blocked : doc.username } }, function (err, check) {
-                  // fame decrement
+                  // fame decrement friend user
                   if (doc.fame >= 1) {
                      rating = doc.fame - 1;
                      Models.user.findOneAndUpdate({ '_id': req.body._id }, { fame: rating }, function (err, temp) {
                         if (err) {
-                           console.log('could not decrement fame rating - block operation: ', err);
+                           console.log('could not decrement fame rating of friend - block operation: ', err);
                         } else {
-                           console.log('decremented fame rating - block operation');
+                           console.log('decremented fame rating of friend - block operation');
+                        }
+                     });
+                  }
+                  // fame decrement current user
+                  if (check.fame >= 1) {
+                     rating = check.fame - 1;
+                     Models.user.findOneAndUpdate({ email: req.session.name }, { fame: rating }, function (err, temp) {
+                        if (err) {
+                           console.log('could not decrement fame rating of current user - block operation: ', err);
+                        } else {
+                           console.log('decremented fame rating of current user - block operation');
                         }
                      });
                   }
@@ -284,8 +295,8 @@ router.post('/', bodyParser.urlencoded({ extended: true }), function (req, res) 
          }
          else {
             console.log('THIS "ELSE" STATEMENT IS IN USE - matched profile');
-            Models.user.findOne({ email: req.session.name }, function (err, check) {
-               Models.user.findOne({ '_id': req.body._id }, function (err, doc) {
+            Models.user.findOne({ email: req.session.name }, { likes : 1, username : 1 }, function (err, check) {
+               Models.user.findOne({ '_id': req.body._id }, { password : 0, isverified : 0, contacts : 0, reports : 0, blocked : 0, verif : 0, verif_email : 0}, function (err, doc) {
                   connected = '0';
                   liked = '0';
                   if (check.likes) {
@@ -326,7 +337,7 @@ router.post('/', bodyParser.urlencoded({ extended: true }), function (req, res) 
       }
       // else if req.body.unique == '1'
       else {
-         Models.user.findOne({ email: req.session.name }, function (err, check) {
+         Models.user.findOne({ email: req.session.name }, { likes : 1, username : 1 }, function (err, check) {
             Models.user.findOneAndUpdate({ '_id': req.body._id }, { $addToSet: { views: check.username } }, function (err, doc) {
                // checking for likes, connectivity
                connected = '0';
