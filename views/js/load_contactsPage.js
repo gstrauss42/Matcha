@@ -4,9 +4,9 @@ window.addEventListener('DOMContentLoaded', (event)  => {
 	fetch_contacts();
 });
 
-function removeChat(chatID) {
+function removeChat(chatterEmail) {
 
-	const chatSend = { id : chatID };
+	const chatSend = { email : chatterEmail };
 	$.ajax({
 		type: 'POST',
 		url: '/contacts/remove_chat',
@@ -49,7 +49,7 @@ function fetch_contacts() {
 														<p class="search-profile-descrip mb-0">${element.bio}</p>
 													</div>
 												</div>
-												<button class=\"close\" type="button" onclick="removeChat('${element._id}')">
+												<button class=\"close\" type="button" onclick="removeChat('${element.email}')">
 													<span aria-hidden="true">&times;</span>
 												</button>
 											</div>
@@ -69,7 +69,7 @@ function fetch_contacts() {
 														</a>
 													</div>
 												</div>
-												<button class=\"close\" type="button" onclick="removeChat('${element._id}')">
+												<button class=\"close\" type="button" onclick="removeChat('${element.email}')">
 													<span aria-hidden="true">&times;</span>
 												</button>
 											</div>
@@ -92,7 +92,7 @@ function fetch_contacts() {
 														<p class="search-profile-descrip mb-0">${element.bio}</p>
 													</div>
 												</div>
-												<button class=\"close\" type="button" onclick="removeChat('${element._id}')">
+												<button class=\"close\" type="button" onclick="removeChat('${element.email}')">
 													<span aria-hidden="true">&times;</span>
 												</button>
 											</div>
@@ -112,7 +112,7 @@ function fetch_contacts() {
 														</a>
 													</div>
 												</div>
-												<button class=\"close\" type="button" onclick="removeChat('${element._id}')">
+												<button class=\"close\" type="button" onclick="removeChat('${element.email}')">
 													<span aria-hidden="true">&times;</span>
 												</button>
 											</div>
@@ -141,4 +141,4 @@ function fetch_contacts() {
 	});
 }
 
-setInterval(fetch_contacts, 5000);
+setInterval(fetch_contacts, 4000);

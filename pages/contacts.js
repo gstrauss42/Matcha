@@ -4,8 +4,18 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 
 router.post('/remove_chat', bodyParser.urlencoded({ extended: true }), function(req, res){
-    console.log('id sent: ', req.body.id);
-    // delete chat with 
+
+    if(!req.session.name)
+        res.render('oops', {error : '2'});
+    else {
+        models.user.findOneAndUpdate({ email : req.session.name }, { $pull : { contacts : req.body.email } }, function (err, res) {
+            if (err) {
+                console.log('unable to delete user from contacts: ', req.body.email);
+            } else {
+                console.log('deleted user from contacts: ', req.body.email);
+            }
+        });
+    }
 });
 
 router.get('/', function(req, res){
