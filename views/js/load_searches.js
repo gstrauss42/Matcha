@@ -1,7 +1,6 @@
 // on page load fetch suggestions
 window.addEventListener('DOMContentLoaded', (event)  => {
-	loadStr = `<h5 class=\"ml-4 mb-3\">Loading suggestions...</h5>`;
-	$('#filterStr').html(loadStr);
+	$('#filterStr').html('<h5 class=\"ml-4 mb-3\">Loading suggestions...</h5>');
 	fetchSuggestions();
 });
 
@@ -14,20 +13,23 @@ let filteredRes = new Array;
 // current user used for filtering
 let globalCurrUser;
 
-// sets event listeners on buttons once globalRes is established for the first time on page load
+// function sets event listeners on buttons once globalRes is established for the first time on page load
 function setVariables() {
 	const advancedBtn = document.getElementById('advancedBtn');
 	const orderBtn = document.getElementById('sortBtn');
 	const filterBtn = document.getElementById('filterBtn');
+	const clearFilterBtn = document.getElementById('clearFilterBtn');
 	advancedBtn.addEventListener('click', fetch_advanced);
 	orderBtn.addEventListener('click', order_results);
 	filterBtn.addEventListener('click', filter_results);
+	clearFilterBtn.addEventListener('click', clearFilters);
 }
 
+// function used to iterate through results and display
 function displayResults(arr) {
 
-	// check if either filteredRes or globalRes sent through has users
-	if (arr.length !== 0 || filteredRes[0] !== 'noresults') {
+	// check if either filteredRes or globalRes(the parameter sent through) has users AND if a filter has been activated with no results
+	if (arr.length !== 0 && filteredRes[0] !== 'noresults') {
 		let resultsArr = new Array;
 	
 		arr.forEach(element => {
@@ -113,8 +115,11 @@ function displayResults(arr) {
 	}
 }
 
+// function that builds the custom user message when an advanced search is made
 function buildCustomMsg(resCount, tags, rating, age, location) {
+
 	let userMsg;
+
 	// if no input was given but advanced match btn was pressed, else calc msg
 	if (tags.length == 0 && rating == '' && age == '' && location == '') {
 		if (resCount > 1) {
@@ -152,6 +157,7 @@ function buildCustomMsg(resCount, tags, rating, age, location) {
 	return userMsg;
 }
 
+// function fetches suggestions on page load
 function fetchSuggestions() {
 
 	let loadStr;
@@ -165,37 +171,36 @@ function fetchSuggestions() {
 			globalTags = ret.tags;
 			globalCurrUser = ret.currUser;
 			setVariables();
+			displayResults(ret.matches);
 
+			// calc user message
 			if (ret.matches.length !== 0) {
-				displayResults(ret.matches);
 				if (ret.matches.length > 1)
 					loadStr = `<p class=\"ml-4 mb-3\">Showing ${ret.matches.length} suggestions</p>`;
 				else
 					loadStr = `<p class=\"ml-4 mb-3\">Showing ${ret.matches.length} suggestions</p>`;
 				$('#filterStr').html(loadStr);
 			} else {
-				loadStr = `<h6 class=\"ml-4 mb-3\">No suggestions at this moment! Try an advanced search.</h6>`;
-				$('#filterStr').html(loadStr);
+				$('#filterStr').html('<h6 class=\"ml-4 mb-3\">No suggestions at this moment! Try an advanced search.</h6>');
 			}
 		},
 		error: function () {
-			loadStr = `<h5 class=\"ml-4 mb-3\">Error loading suggestions!</h5>`;
-			$('#filterStr').html(loadStr);
+			$('#filterStr').html('<h5 class=\"ml-4 mb-3\">Error loading suggestions!</h5>');
 		}
 	});
 }
 
+// function used when an advanced search is made
 function fetch_advanced() {
 	const ageInput = document.getElementById('age').value;
 	const locationInput = document.getElementById('location').value;
 	const ratingInput = document.getElementById('rating').value;
 
-	let resultsArr = new Array;
 	let tagArr = new Array;
 	let searchObj = new Object;
-	let loadStr;
 	let i = 0;
 
+	// obtain checked tags
 	while (globalTags[i]) {
 		let check = document.getElementById(globalTags[i]).checked;
 		if (check) {
@@ -204,12 +209,11 @@ function fetch_advanced() {
 		i++;
 	}
 
-	resultsArr = '';
-	$('#searchResultsBox').html(resultsArr);
-	loadStr = `<h5 class=\"ml-4\">Loading...</h5>`;
-	$('#filterStr').html(loadStr);
+	$('#searchResultsBox').html('');
+	$('#filterStr').html('<h5 class=\"ml-4\">Loading...</h5>');
+	
+	// populate search query object
 	searchObj.advanced_search = '1';
-
 	if (ageInput !== '') {
 		searchObj.age = ageInput;
 	}
@@ -234,40 +238,40 @@ function fetch_advanced() {
 			globalCurrUser = ret.currUser;
 			filteredRes = [];
 			setVariables();
+			displayResults(ret.matches);
 
+			// calc user message using query parameters
 			if (ret.matches.length !== 0) {
-				displayResults(ret.matches);
-				loadStr = buildCustomMsg(ret.matches.length, tagArr, ratingInput, ageInput, locationInput);
+				let loadStr = buildCustomMsg(ret.matches.length, tagArr, ratingInput, ageInput, locationInput);
 				$('#filterStr').html(loadStr);
 			} else {
-				loadStr = `<h6 class=\"ml-4 mb-3\">No results at this moment!</h6>`;
-				$('#filterStr').html(loadStr);
+				$('#filterStr').html('<h6 class=\"ml-4 mb-3\">No results at this moment!</h6>');
 			}
 		},
 		error: function () {
-			loadStr = `<h5 class=\"ml-4 mb-3\">Error loading results!</h5>`;
-			$('#filterStr').html(loadStr);
+			$('#filterStr').html('<h5 class=\"ml-4 mb-3\">Error loading results!</h5>');
 		}
 	});
 }
 
+// function used for ordering in either asc or desc the suggestions/advanced results/filtered results
 function order_results() {
 	const sortInput = document.getElementById('slctSort').value;
 	const orderInput = document.getElementById('slctOrdr').value;
 
 	$('#searchResultsBox').html('');
 	orderedArr = new Array;
+	let loadStr;
 
 	// check if the globalRes has been filtered - if true then order the filteredRes
 	if (filteredRes.length !== 0) {
 		orderedArr = filteredRes.sort(compareValues(sortInput, orderInput));
-		console.log('using filtered res');
 	} else if (filteredRes[0] !== 'noresults') {
 		orderedArr = globalRes.sort(compareValues(sortInput, orderInput));
-		console.log('using global res');
 	}
 	displayResults(orderedArr);
 
+	// calc user message
 	if (orderedArr.length > 1 || orderedArr.length == 0)
 		loadStr = `<p class=\"ml-4 mb-3\">Showing ${orderedArr.length} results for <b>${sortInput}</b> ordered ${orderInput}</p>`;
 	else if (orderedArr[0] == 'noresults')
@@ -307,41 +311,64 @@ function compareValues(key, order) {
 	};
 }
 
+// function used for filtering suggestions/advanced search results
 function filter_results() {
 	let i = 0;
 	let allUsers = [...globalRes];
 	const filterInput = document.getElementById('slctFltr').value;
 
-	// filtering out unsuitable users according to filter parameter
-	while (allUsers[i]) {
-		if (allUsers[i][filterInput] !== globalCurrUser[filterInput]) {
-			console.log('removed user from allUsers array due to filtering: ', allUsers[i].username);
-			allUsers.splice(i, 1);
-		} else {
-			i++;
+	// filtering out unsuitable users according to filter parameter - partial match looks for at least one tag in common
+	if (filterInput == 'partial') {
+		while (allUsers[i]) {
+			let match = false;
+			let a = 0;
+			while (globalCurrUser.tags[a]) {
+				if (allUsers[i].tags && allUsers[i].tags.includes(globalCurrUser.tags[a])) {
+					match = true;
+				}
+				a++;
+			}
+			if (match !== true) {
+				allUsers.splice(i, 1);
+			} else {
+				i++;
+			}
 		}
-	};
+	} else {
+		while (allUsers[i]) {
+			if (allUsers[i][filterInput] !== globalCurrUser[filterInput]) {
+				console.log('removed user from allUsers array due to filtering: ', allUsers[i].username);
+				allUsers.splice(i, 1);
+			} else {
+				i++;
+			}
+		};
+	}
 	// save filtered results in global array
 	filteredRes = [...allUsers];
 	displayResults(allUsers);
 
+	// calc user message
 	if (allUsers.length !== 0) {
 		if (allUsers.length > 1)
-			loadStr = `<p class=\"ml-4 mb-3\">Showing ${allUsers.length} filtered results</p>`;
+			loadStr = `<p class=\"ml-4 mb-3\">Showing ${allUsers.length} filtered results for <b>${filterInput}</b></p>`;
 		else
-			loadStr = `<p class=\"ml-4 mb-3\">Showing ${allUsers.length} filtered result</p>`;
+			loadStr = `<p class=\"ml-4 mb-3\">Showing ${allUsers.length} filtered result for <b>${filterInput}</b></p>`;
 		$('#filterStr').html(loadStr);
 	} else {
 		// save this so that when ordering an empty filtered result array it won't resort to globalRes
 		filteredRes[0] = 'noresults';
 
-		loadStr = `<h6 class=\"ml-4 mb-3\">No results</h6>`;
-		$('#filterStr').html(loadStr);
+		$('#filterStr').html('<h6 class=\"ml-4 mb-3\">No results</h6>');
 	}
 }
 
 // function to clear filters and display original results again
 function clearFilters() {
 	filteredRes = [];
+	// use this function to fake a message
+	let loadstr = buildCustomMsg(globalRes.length, [], '', '', '');
+	$('#filterStr').html(loadstr);
+
 	displayResults(globalRes);
 }

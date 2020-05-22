@@ -85,10 +85,12 @@ html(lang="en")
                                     option(value="age") Age
                                     option(value="location") Location
                                     option(value="fame") Fame Rating
-                                    option(value="tags") Tags in common
+                                    option(value="tags") Tags in common (full match)
+                                    option(value="partial") Tags in common (partial match)
                                 small.form-text.text-muted.mb-0 (matches of the selected option will only be shown)
-                        .col-md-2
-                            input#filterBtn.btn.btn-dark.filter-btn(type="submit", name="filter_all", value="Filter")
+                        .col-md-2.pl-0.pr-0
+                            input#filterBtn.btn.btn-dark.filter-btn.mr-2(type="submit", name="filter_all", value="Filter")
+                            input#clearFilterBtn.btn.btn-dark.filter-btn(type="button", name="clearFilters", value="Remove filter")
                         .col-md-2
                             .form-group
                                 label.label-text(for="slctSort") Sort by
@@ -101,8 +103,8 @@ html(lang="en")
                             .form-group
                                 label.label-text(for="slctOrdr") Order
                                 select#slctOrdr.form-control(name="order")
-                                    option(value="ascending", required) Ascending
-                                    option(value="descending", required) Descending
+                                    option(value="ascending") Ascending
+                                    option(value="descending") Descending
                         .col-md-2
                             input#sortBtn.btn.btn-dark.filter-btn(type="submit", name="sort_all", value="Sort")
 
