@@ -2,12 +2,28 @@ window.addEventListener('DOMContentLoaded', (event)  => {
 	fetch_notifs();
 });
 
+function removeNotif(notifID) {
+
+	const notifSend = { id : notifID };
+	$.ajax({
+		type: 'POST',
+		url: '/live_notifications/remove_notif',
+		data: notifSend,
+		success: function (data) {
+			fetch_notifs();
+		},
+		error: function () {
+			console.log('error deleting notification: ', notifID);
+		}
+	});
+}
+
 function updateRead() {
 	$.ajax({
 		type: 'GET',
 		url: '/live_notifications/update_read',
 		success: function (data) {
-			clearNotifs();
+			fetch_notifs();
 		},
 		error: function () {
 			alert('Error updating read notifications!');
@@ -56,12 +72,10 @@ function fetch_notifs() {
 				data.old.slice().reverse().forEach(element => {
 					oldNotifArr += `<div class=\"alert alert-info alert-dismissible fade show pb-0\" role="alert">
 										<strong class=\"mr-2\">${element.name}</strong><small>${element.time}</small>
-										<p class=\"mb-0 notifContent\">${element.content}</p>
-										<form action="notifications" method="post">
-											<input type="hidden" name="identifier" />
-											<button class=\"close\" type="submit" name="dismiss" data-dismiss="alert" aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
+										<button class=\"close\" type="button" onclick="removeNotif('${element._id}')">
+											<span aria-hidden="true">&times;</span>
+										</button>
+										<p class=\"mb-3 notifContent\">${element.content}</p>
 										</form>
 									</div>`;
 				});

@@ -4,6 +4,22 @@ window.addEventListener('DOMContentLoaded', (event)  => {
 	fetch_contacts();
 });
 
+function removeChat(chatID) {
+
+	const chatSend = { id : chatID };
+	$.ajax({
+		type: 'POST',
+		url: '/contacts/remove_chat',
+		data: chatSend,
+		success: function(data) {
+			fetch_contacts();
+		},
+		error: function() {
+			console.log('error deleting contact/chat: ', chatID);
+		}
+	});
+}
+
 function fetch_contacts() {
 
 	let chatArr = new Array;
@@ -33,6 +49,9 @@ function fetch_contacts() {
 														<p class="search-profile-descrip mb-0">${element.bio}</p>
 													</div>
 												</div>
+												<button class=\"close\" type="button" onclick="removeChat('${element._id}')">
+													<span aria-hidden="true">&times;</span>
+												</button>
 											</div>
 										</form>`;
 						} else {
@@ -50,6 +69,9 @@ function fetch_contacts() {
 														</a>
 													</div>
 												</div>
+												<button class=\"close\" type="button" onclick="removeChat('${element._id}')">
+													<span aria-hidden="true">&times;</span>
+												</button>
 											</div>
 										</form>`;
 						}
@@ -70,6 +92,9 @@ function fetch_contacts() {
 														<p class="search-profile-descrip mb-0">${element.bio}</p>
 													</div>
 												</div>
+												<button class=\"close\" type="button" onclick="removeChat('${element._id}')">
+													<span aria-hidden="true">&times;</span>
+												</button>
 											</div>
 										</form>`;
 						} else {
@@ -87,6 +112,9 @@ function fetch_contacts() {
 														</a>
 													</div>
 												</div>
+												<button class=\"close\" type="button" onclick="removeChat('${element._id}')">
+													<span aria-hidden="true">&times;</span>
+												</button>
 											</div>
 										</form>`;
 						}

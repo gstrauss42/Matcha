@@ -1,6 +1,12 @@
 const models = require('../models/models');
 const express = require('express');
 const router = express.Router();
+const bodyParser = require('body-parser');
+
+router.post('/remove_chat', bodyParser.urlencoded({ extended: true }), function(req, res){
+    console.log('id sent: ', req.body.id);
+    // delete chat with 
+});
 
 router.get('/', function(req, res){
     if(!req.session.name)

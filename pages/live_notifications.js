@@ -1,6 +1,18 @@
 const express = require('express');
 const models = require('../models/models');
 const router = express.Router();
+const bodyParser = require('body-parser');
+
+router.post('/remove_notif', bodyParser.urlencoded({ extended: true }), (req, res) => {
+
+    models.notifications.findByIdAndDelete({ _id : req.body.id }, function (err, ret) {
+        if (err) {
+            console.log('unable to delete notification by id: ', err);
+        } else {
+            console.log('deleted notification by id: ', req.body.id);
+        }
+    });
+});
 
 router.get('/update_read', (req, res) => {
     models.notifications.find({ email : req.session.name }, function(err, notifications) {
