@@ -1,19 +1,19 @@
 // App Variables
-const express   = require("express");
+const express   = require('express');
 const app       = require('express')();
 const mongoose  = require('mongoose');
-const path      = require("path");
+const path      = require('path');
 const session   = require('express-session');
 const http      = require('http').createServer(app);
 
 // App Configuration
 require('dotenv').config()
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "pug");
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 app.use(session({secret: process.env.secret, resave: true, saveUninitialized: true}));
 app.use(express.static('public'));
 app.use('/js', express.static('views/js'));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'public')));
 mongoose.connect('mongodb+srv://gstrauss:' + process.env.password +'@matcha-ch0yb.gcp.mongodb.net/shell?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
 
 // Server Activation
