@@ -37,13 +37,7 @@
     "nodemailer": "^6.3.1",
     "pug": "^2.0.4",
     "randomstring": "^1.1.5",
-<<<<<<< HEAD
     "save": "^2.4.0",
-=======
-    "request": "^2.88.2",
-    "request-ip": "^2.1.3",
-    "socket.io": "^2.3.0",
->>>>>>> f165b136da36c8068a413de051c32c37e04556db
     "utf-8-validate": "^5.0.2"
   }
 }
