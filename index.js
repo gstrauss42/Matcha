@@ -14,7 +14,7 @@ app.use(session({secret: process.env.secret, resave: true, saveUninitialized: tr
 app.use(express.static('public'));
 app.use('/js', express.static('views/js'));
 app.use(express.static(path.join(__dirname, 'public')));
-mongoose.connect('mongodb+srv://gstrauss:' + process.env.password +'@matcha-ch0yb.gcp.mongodb.net/shell?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://gstrauss:' + process.env.password +'@matcha-ch0yb.gcp.mongodb.net/shell?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 
 // Server Activation
 http.listen(process.env.port, function(){
