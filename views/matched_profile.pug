@@ -46,7 +46,8 @@ html(lang="en")
                             span(aria-hidden="true") &times;
                     .modal-body
                         //- populate their images here
-                        img.modal-image(src= `data:image/*;base64,${one}`, alt="main-profile")
+                        if one
+                            img.modal-image(src= `data:image/*;base64,${one}`, alt="main-profile")
 
         //- modal for TWO profile image
         #twoMod.modal.fade(tabindex="-1", role="dialog", aria-labelledby="twoModalLabel", aria-hidden="true")
@@ -57,7 +58,8 @@ html(lang="en")
                             span(aria-hidden="true") &times;
                     .modal-body
                         //- populate their images here
-                        img.modal-image(src= `data:image/*;base64,${two}`, alt="main-profile")
+                        if two
+                            img.modal-image(src= `data:image/*;base64,${two}`, alt="main-profile")
 
         //- modal for THREE profile image
         #threeMod.modal.fade(tabindex="-1", role="dialog", aria-labelledby="threeModalLabel", aria-hidden="true")
@@ -68,7 +70,8 @@ html(lang="en")
                             span(aria-hidden="true") &times;
                     .modal-body
                         //- populate their images here
-                        img.modal-image(src= `data:image/*;base64,${three}`, alt="main-profile")
+                        if three
+                            img.modal-image(src= `data:image/*;base64,${three}`, alt="main-profile")
 
         //- modal for FOUR profile image
         #fourMod.modal.fade(tabindex="-1", role="dialog", aria-labelledby="fourModalLabel", aria-hidden="true")
@@ -79,7 +82,8 @@ html(lang="en")
                             span(aria-hidden="true") &times;
                     .modal-body
                         //- populate their images here
-                        img.modal-image(src= `data:image/*;base64,${four}`, alt="main-profile")
+                        if four
+                            img.modal-image(src= `data:image/*;base64,${four}`, alt="main-profile")
 
         //- modal for FIVE profile image
         #fiveMod.modal.fade(tabindex="-1", role="dialog", aria-labelledby="fiveModalLabel", aria-hidden="true")
@@ -90,7 +94,8 @@ html(lang="en")
                             span(aria-hidden="true") &times;
                     .modal-body
                         //- populate their images here
-                        img.modal-image(src= `data:image/*;base64,${five}`, alt="main-profile")
+                        if five
+                            img.modal-image(src= `data:image/*;base64,${five}`, alt="main-profile")
 
         .page-container.ml-0.mr-0
             .content-wrap
@@ -180,19 +185,19 @@ html(lang="en")
                                 .col-sm-3.col-md-3.pl-0.pr-1
                                     if one
                                         if two
-                                            img#two.friends-images(src= `data:image/*;base64,${two}`, alt="img-two", data-toggle="modal", data-target="#twoMod")
+                                            img#profile-img-two.friends-images(src= `data:image/*;base64,${two}`, alt="img-two", data-toggle="modal", data-target="#twoMod")
                                 .col-sm-3.col-md-3.pl-0.pr-1
                                     if one && two
                                         if three
-                                            img#three.friends-images(src= `data:image/*;base64,${three}`, alt="img-three", data-toggle="modal", data-target="#threeMod")
+                                            img#profile-img-three.friends-images(src= `data:image/*;base64,${three}`, alt="img-three", data-toggle="modal", data-target="#threeMod")
                                 .col-sm-3.col-md-3.pl-0.pr-1
                                     if one && two && three
                                         if four
-                                            img#four.friends-images(src= `data:image/*;base64,${four}`, alt="img-four", data-toggle="modal", data-target="#fourMod")
+                                            img#profile-img-four.friends-images(src= `data:image/*;base64,${four}`, alt="img-four", data-toggle="modal", data-target="#fourMod")
                                 .col-sm-3.col-md-3.pl-0.pr-1
                                     if one && two && three && four
                                         if five
-                                            img#five.friends-images(src= `data:image/*;base64,${five}`, alt="img-five", data-toggle="modal", data-target="#fiveMod")
+                                            img#profile-img-five.friends-images(src= `data:image/*;base64,${five}`, alt="img-five", data-toggle="modal", data-target="#fiveMod")
 
                     .container-fluid.mb-4
                         h5.about-heading About Me
@@ -214,6 +219,18 @@ html(lang="en")
                                 p.mb-1.pl-2.para-re= 'Location: No location found'
                         else
                             p.mb-1.pl-2.para-re Location usage: No
+
+                //- to avoid the warning in the console
+                if !one
+                    #profile-img-one
+                if !two
+                    #profile-img-two
+                if !three
+                    #profile-img-three
+                if !four
+                    #profile-img-four
+                if !five
+                    #profile-img-five
 
             //- footer
             footer.page-footer.font-small.mdb-color.bg-light.text-dark

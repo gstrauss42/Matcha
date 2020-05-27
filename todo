@@ -1,5 +1,0 @@
-Gabriel:
-    - make fields secure against SQL injection and other attacks
-
-Jadon:
-    - make profile stats with ajax
