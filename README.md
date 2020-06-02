@@ -3,6 +3,7 @@ Matcha is a recreation of the popular dating app, Tinder, except with Matcha we 
 quite refreshing to use with your match!
 
 # How to use
+- A .env file with various constants will be needed to run this application properly.
 - In the root project directory in your terminal run the command 'npm install'.
 - In the same directory run the command 'npm start'.
 - Then navigate to 'localhost:777' in your browser.
