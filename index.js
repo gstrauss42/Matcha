@@ -6,6 +6,8 @@ const path      = require('path');
 const session   = require('express-session');
 const http      = require('http').createServer(app);
 
+const PORT = process.env.PORT || 3000;
+
 // App Configuration
 require('dotenv').config()
 app.set('views', path.join(__dirname, 'views'));
@@ -17,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 mongoose.connect('mongodb+srv://gstrauss:' + process.env.password +'@matcha-ch0yb.gcp.mongodb.net/shell?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 
 // Server Activation
-http.listen(process.env.port, function(){
+http.listen(PORT, function(){
   console.log(`listening on port: ${process.env.port}`);
 });
 
