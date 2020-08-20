@@ -20,7 +20,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "base64-stream": "^1.0.0",
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "bufferutil": "^4.0.1",
     "connect-busboy": "0.0.2",
