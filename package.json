@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/gstrauss42/matcha#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "base64-stream": "^1.0.0",
     "bcrypt": "^3.0.7",
     "body-parser": "^1.19.0",
